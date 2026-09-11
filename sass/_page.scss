@@ -1,0 +1,6 @@
+.test{
+    font-size: rem(40);
+    @include mq('md'){
+        font-size: rem(20);
+    }
+}

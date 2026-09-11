@@ -1,0 +1,13 @@
+.inner {
+  width: 100%;
+  padding-right: $padding-pc;
+  padding-left: $padding-pc;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $inner + strip-unit($padding-pc) * 2;
+  @include mq("md") {
+    max-width: 500px;
+    padding-right: $padding-sp;
+    padding-left: $padding-sp;
+  }
+}

@@ -1,0 +1,205 @@
+@charset "UTF-8";
+/*--------------------------
+文字に対して、一括でfont-size、line-height、letter-spacing、font-weightを指定する
+---------------------------*/
+/*--------------------------
+文字に対して、一括でfont-size、line-height、letter-spacing、font-weightを指定する
+line-heightが％の場合
+---------------------------*/
+/*--------------------------------
+    remの換算
+--------------------------------*/
+/*--------------------------------
+    vwにする
+--------------------------------*/
+/*--------------------------------
+    親要素に対する割合
+--------------------------------*/
+/*--------------------------------
+    親要素に対する割合
+--------------------------------*/
+/*--------------------------------
+背景のグラデーション
+--------------------------------*/
+/*--------------------------------
+一次関数
+画面幅 1440pxの時は、120pxで、そこからどんどん小さくなり、1000pxの時に20pxになるという実装の際に使える関数。
+--------------------------------*/
+/*--------------------------------
+一次関数（最大値、最小値付き）
+画面幅 1440pxの時は、120pxで、そこからどんどん小さくなり、1000pxの時に20pxになるという実装の際に使える関数。
+--------------------------------*/
+/*--------------------------------
+擬似要素の背景
+--------------------------------*/
+/*--------------------------------
+三角形
+--------------------------------*/
+/*--------------------------------
+リキッドの設定
+--------------------------------*/
+html {
+  font-size: 16px;
+}
+@media (max-width: 1280px) {
+  html {
+    font-size: 1.25vw;
+  }
+}
+@media (max-width: 767px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media (max-width: 375px) {
+  html {
+    font-size: 4.2666666667vw;
+  }
+}
+
+/*--------------------------
+  フォント読み込み
+---------------------------*/
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  color: #3b3b3b;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default padding */
+ul,
+ol {
+  padding: 0;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Set core root defaults */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Remove list styles on ul, ol elements with a class attribute */
+ul,
+ol {
+  list-style: none;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img {
+  max-width: 100%;
+  display: block;
+  width: 100%;
+}
+
+/* Natural flow and rhythm in articles by default */
+article > * + * {
+  margin-top: 1em;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Blur images when they have no alt attribute */
+img:not([alt]) {
+  filter: blur(10px);
+}
+
+/* フォームリセット */
+input,
+button,
+select,
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  font: inherit;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input[type=checkbox],
+input[type=radio] {
+  display: none;
+}
+
+input[type=submit],
+input[type=button],
+label,
+button,
+select {
+  cursor: pointer;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.inner {
+  width: 100%;
+  padding-right: 25px;
+  padding-left: 25px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1330px;
+}
+@media screen and (max-width: 768px) {
+  .inner {
+    max-width: 500px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
+.test {
+  font-size: 2.5rem;
+}
+@media screen and (max-width: 768px) {
+  .test {
+    font-size: 1.25rem;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
