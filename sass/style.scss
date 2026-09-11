@@ -221,14 +221,8 @@ html {
 // ゴシック体
 $sans: "Noto Sans JP", sans-serif;
 
-// 明朝体
-$serif: "Shippori Mincho", YuMincho, "Yu Mincho", "Noto Serif JP", serif,
-  "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "Hiragino Sans",
-  "ヒラギノ角ゴシック", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic",
-  Arial, Helvetica, sans-serif;
-
-// EB Garamond
-$en: "Roboto", sans-serif;
+// 欧文
+$en: "Montserrat", sans-serif;
 
 // フォントウェイトの変数指定
 $light: 300;
@@ -239,11 +233,9 @@ $bold: 700;
 $extra: 900;
 
 // カラーの変数指定
-$black: #3b3b3b;
+$black: #031A23;
 $white: #ffffff;
-$green: #669868;
-$beige: #b4a173;
-$blue: #7a759f;
+$green: #0c998a;
 
 body {
   font-family: $sans;
