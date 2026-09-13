@@ -1,0 +1,629 @@
+/* ==================================================
+*  about page
+================================================== */
+
+/* ---------- make classic ---------- */
+.about-mc {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: rem(80);
+
+  @include mq("md") {
+    padding-bottom: rem(60);
+  }
+}
+
+.about-mc__inner {
+  position: relative;
+}
+
+.about-mc__row {
+  display: flex;
+  align-items: flex-start;
+  margin-top: rem(40);
+
+  @include mq("md") {
+    margin-top: rem(30);
+    display: block;
+  }
+}
+
+.about-mc__side {
+  flex-shrink: 0;
+  margin-top: rem(178);
+  max-width: rem(445);
+  width: 100%;
+  position: absolute;
+  left: calc((#{$inner} + #{$padding-pc} * 2 - 1440px) / 2 - 60px);
+
+  @include mq("md") {
+    display: none;
+  }
+}
+
+.about-mc__side img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.about-mc__body {
+  max-width: rem(775);
+  width: 100%;
+  margin-left: auto;
+}
+
+.about-mc__text-box{
+  margin-bottom: rem(40);
+  @include mq(md){
+    margin-bottom: rem(20);
+  }
+}
+
+.about-mc__text {
+  color: $black;
+  @include font(18, 36, 50, $regular);
+
+  @include mq("md") {
+    @include font(14, 26, 50, $regular);
+  }
+}
+
+.about-mc__text + .about-mc__text {
+  margin-top: rem(16);
+
+  @include mq("md") {
+    margin-top: rem(14);
+  }
+}
+
+.about-mc__accent {
+  color: $green;
+  font-weight: $bold;
+}
+
+.about-mc__lead {
+  color: $green;
+  @include font(24, 48, 50, $bold);
+
+  @include mq("md") {
+    @include font(16, 28, 50, $bold);
+  }
+}
+
+/* ---------- value ---------- */
+.about-value {
+  background-color: rgba($green, .1);
+  padding-top: rem(80);
+  padding-bottom: rem(80);
+
+  @include mq("md") {
+    padding-top: rem(60);
+    padding-bottom: rem(60);
+  }
+}
+
+.about-value__list {
+  margin-top: rem(40);
+  max-width: rem(866);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include mq("md") {
+    margin-top: rem(40);
+  }
+}
+
+.about-value__item {
+  display: flex;
+  align-items: center;
+
+  @include mq("md") {
+    align-items: flex-start;
+  }
+}
+
+.about-value__item + .about-value__item {
+  @include mq("md") {
+    margin-top: rem(24);
+  }
+}
+
+.about-value__item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.about-value__circle {
+  flex-shrink: 0;
+  width: rem(120);
+  height: rem(120);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba($green, .2);
+  color: $white;
+  font-family: $en;
+  @include font(48, 48, 50, $bold);
+
+  @include mq("md") {
+    width: rem(80);
+    height: rem(80);
+    @include font(26, 26, 50, $bold);
+  }
+}
+
+.about-value__content {
+  margin-left: rem(-16);
+
+  @include mq("md") {
+    margin-left: rem(-8);
+  }
+}
+
+.about-value__item:nth-child(even) .about-value__content {
+  margin-right: rem(-16);
+  text-align: right;
+  position: relative;
+
+  @include mq("md") {
+    margin-right: rem(-8);
+  }
+}
+
+.about-value__title {
+  display: inline-flex;
+  padding: rem(8) rem(16);
+  background-color: $white;
+  color: $green;
+  @include font(18, 26, 50, $bold);
+  border: 1px solid $green;
+  border-bottom: none;
+
+  @include mq("md") {
+    padding: rem(6) rem(12);
+    @include font(14, 20, 50, $bold);
+  }
+}
+
+.about-value__box {
+  padding: rem(8) rem(16);
+  border: 1px solid $green;
+  background-color: $white;
+  color: $black;
+  @include font(16, 24, 50, $regular);
+
+  @include mq("md") {
+    padding: rem(6) rem(12);
+    @include font(12, 22, 50, $regular);
+  }
+}
+
+/* ---------- message ---------- */
+.about-message {
+  padding-top: rem(80);
+  padding-bottom: rem(100);
+  background: linear-gradient(to bottom, #F5F7F9 0%, #F5F7F9 74%, $white 74%, $white 100%);
+  
+  @include mq("md") {
+    padding-top: rem(60);
+    padding-bottom: rem(80);
+    background: linear-gradient(to bottom, #F5F7F9 0%, #F5F7F9 40%, $white 40%, $white 100%);
+  }
+}
+
+.about-message__row {
+  display: flex;
+  align-items: flex-start;
+  gap: rem(120);
+  margin-top: rem(40);
+  max-width: rem(1040);
+  width: 100%;
+  margin-left: auto;
+
+  @include mq("md") {
+    flex-direction: column;
+    gap: rem(60);
+    margin-top: rem(30);
+  }
+}
+
+.about-message__photo {
+  flex-shrink: 0;
+  max-width: rem(300);
+  width: 100%;
+  position: relative;
+
+  @include mq("md") {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.about-message__photo img {
+  width: 100%;
+  aspect-ratio: 300 / 400;
+  object-fit: cover;
+  display: block;
+}
+
+.about-message__caption {
+  background-color: $white;
+  color: $black;
+  border-top: 1px solid $green;
+  border-left: 1px solid $green;
+  @include font(14, 20, 50, $regular);
+  padding: rem(8) rem(16);
+  position: absolute;
+  bottom: rem(-18);
+  right: rem(-40);
+  
+  span.name{
+    margin-top: rem(4);
+    @include font(18, 26, 50, $bold);
+  }
+
+  @include mq("md") {
+    @include font(12, 18, 50, $regular);
+    bottom: rem(-10);
+    right: rem(-20);
+
+    span.name{
+      margin-top: rem(2);
+      @include font(16, 24, 50, $bold);
+    }
+  }
+
+}
+
+.about-message__body {
+  position: relative;
+  flex: 1;
+
+  &::before {
+    content: "“";
+    position: absolute;
+    top: rem(-82);
+    left: rem(-60);
+    color: #F5F7F9;
+    -webkit-text-stroke: 2px $green;
+    paint-order: stroke;
+    font-family: $en;
+    @include font(120, 120, 50, $bold);
+  }
+
+  &::after {
+    content: "“";
+    position: absolute;
+    bottom: rem(-145);
+    right: rem(-60);
+    color: #fff;
+    transform: rotate(180deg);
+    -webkit-text-stroke: 2px $green;
+    paint-order: stroke;
+    font-family: $en;
+    @include font(120, 120, 50, $bold);
+  }
+
+  @include mq("md") {
+    &::before {
+      top: rem(-35);
+      left: rem(-12);
+      color: #ffffff;
+      @include font(60, 60, 50, $bold);
+    }
+
+    &::after {
+      bottom: rem(-35);
+      right: rem(-12);
+      @include font(60, 60, 50, $bold);
+    }
+  }
+}
+
+.about-message__text {
+  color: $black;
+  @include font(16, 28, 50, $regular);
+
+  @include mq("md") {
+    @include font(14, 26, 50, $regular);
+  }
+}
+
+/* ---------- member ---------- */
+.about-member {
+  padding-bottom: rem(80);
+
+  @include mq("md") {
+    padding-bottom: rem(60);
+  }
+}
+
+.about-member__list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: rem(4);
+  margin-top: rem(40);
+
+  @include mq("md") {
+    grid-template-columns: repeat(2, 1fr);
+    gap: rem(18) rem(4);
+    margin-top: rem(30);
+  }
+}
+
+.about-member__card {
+  display: block;
+  position: relative;
+  padding: rem(10);
+  cursor: pointer;
+
+  @include mq(md){
+    padding: rem(6);
+  }
+}
+
+.about-member__photo {
+  width: 100%;
+  aspect-ratio: 200 / 266;
+  overflow: hidden;
+}
+
+.about-member__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-member__role {
+  background-color: #fff;
+  color: $black;
+  @include font(12, 14, 50, $regular);
+  border-bottom: 1px solid $green;
+  border-right: 1px solid $green;
+  padding: rem(4) rem(8);
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  @include mq("md") {
+    @include font(11, 13, 50, $regular);
+  }
+}
+
+.about-member__name {
+  background-color: #fff;
+  color: $black;
+  @include font(16, 23, 50, $bold);
+  border-top: 1px solid $green;
+  border-left: 1px solid $green;
+  padding: rem(4) rem(8);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  @include mq("md") {
+    @include font(14, 21, 50, $bold);
+  }
+}
+
+/* ==================================================
+*  modal(メンバープロフィール)
+================================================== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modal__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba($black, .6);
+  cursor: pointer;
+}
+
+.modal__inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  width: 95%;
+  max-width: rem(1120);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: rem(40) rem(56);
+  border: 1px solid $green;
+  background-color: $white;
+
+  @include mq("md") {
+    padding: rem(20);
+  }
+}
+
+.modal__close {
+  position: absolute;
+  top: rem(40);
+  right: rem(56);
+  width: rem(30);
+  height: rem(30);
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  
+  @include mq(md){
+    top: rem(20);
+    right: rem(10);
+    width: rem(20);
+    height: rem(20);
+  }
+}
+
+.modal__close span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: rem(30);
+  height: 3px;
+  background-color: $green;
+
+  @include mq(md){
+    width: rem(20);
+    height: 2px;
+  }
+}
+
+.modal__close span:nth-child(1) {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.modal__close span:nth-child(2) {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.modal__row {
+  display: flex;
+  gap: rem(40);
+
+  @include mq("md") {
+    flex-direction: column;
+    gap: rem(20);
+  }
+}
+
+.modal__photo {
+  flex-shrink: 0;
+  max-width: rem(280);
+  width: 100%;
+
+  @include mq("md") {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.modal__photo img {
+  width: 100%;
+  aspect-ratio: 280 / 373;
+  object-fit: cover;
+  display: block;
+}
+
+.modal__info {
+  flex: 1;
+  max-width: rem(666);
+  width: 100%;
+}
+
+.modal__role {
+  color: $black;
+  @include font(16, 23, 50, $regular);
+
+  @include mq(md){
+    @include font(14, 21, 50, $regular);
+  }
+}
+
+.modal__name {
+  display: flex;
+  align-items: baseline;
+  gap: rem(16.5);
+  color: $black;
+  @include font(32, 46, 0, $medium);
+
+  @include mq("md") {
+    gap: rem(8);
+    @include font(20, 28, 20, $bold);
+  }
+}
+
+.modal__name-en {
+  color: $green;
+  font-family: $en;
+  @include font(16, 19, 0, $bold);
+
+  @include mq(md){
+    @include font(14, 17, 0, $bold);
+  }
+}
+
+.modal__profile {
+  margin-top: rem(16);
+
+  @include mq(md){
+    margin-top: rem(12);
+  }
+}
+
+.modal__profile-title {
+  padding: rem(8) 0;
+  border-bottom: 1px solid #DBDBDB;
+  color: $black;
+  @include font(18, 26, 0, $medium);
+
+  @include mq(md){
+    padding: rem(6) 0;
+    @include font(16, 24, 0, $medium);
+  }
+}
+
+.modal__profile-text {
+  padding: rem(8) rem(4.5);
+  color: $black;
+  @include font(16, 27, 0, $regular);
+
+  @include mq("md") {
+    padding: rem(6) rem(2.5);
+    @include font(13, 24, 0, $regular);
+  }
+}
+
+.modal__btn{
+  margin-top: rem(40);
+  text-align: center;
+
+  @include mq(md){
+    margin-top: rem(30);
+  }
+}
+
+.modal__btn a {
+  display: inline-flex;
+  align-items: center;
+  gap: rem(16);
+  padding: rem(22) rem(24);
+  background-color: $green;
+  color: $white;
+  @include font(16, 23, 50, $bold);
+
+  &::after{
+    content: "";
+    background-image: url(../img/common/icon-arrow_wh.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: rem(31);
+    height: rem(31);
+  }
+
+  @include mq(md){
+    gap: rem(10);
+    padding: rem(18) rem(20);
+    @include font(14, 21, 50, $bold);
+
+    &::after{
+      width: rem(20);
+      height: rem(20);
+    }
+  }
+}
+
+
