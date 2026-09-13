@@ -1,0 +1,188 @@
+/* ==================================================
+*  contact page
+================================================== */
+.contact-form {
+  margin-top: rem(-22);
+  padding-bottom: rem(80);
+
+  @include mq("md") {
+    margin-top: 0;
+    padding-bottom: rem(60);
+  }
+}
+
+.contact-form__panel {
+  padding: rem(40) rem(75);
+  background-color: rgba($green, .1);
+
+  @include mq("md") {
+    padding: rem(30) rem(20);
+  }
+}
+
+.contact-form__row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: rem(40);
+
+  @include mq("md") {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: rem(8);
+  }
+}
+
+.contact-form__row--textarea {
+  align-items: flex-start;
+}
+
+.contact-form__row + .contact-form__row {
+  margin-top: rem(24);
+
+  @include mq("md") {
+    margin-top: rem(20);
+  }
+}
+
+.contact-form__label {
+  flex-shrink: 0;
+  width: rem(266);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: rem(24);
+  color: $black;
+  @include font(18, 27, 0, $regular);
+
+  @include mq("md") {
+    width: 100%;
+    justify-content: flex-start;
+    gap: rem(12);
+    @include font(14, 20, 0, $regular);
+  }
+}
+
+// .contact-form__row--textarea .contact-form__label {
+//   padding-top: rem(12);
+
+//   @include mq("md") {
+//     padding-top: 0;
+//   }
+// }
+
+.contact-form__required {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: rem(3) rem(6);
+  background-color: #FF0000;
+  color: $white;
+  @include font(12, 18, 0, $bold);
+
+  &.is-hidden {
+    visibility: hidden;
+  }
+
+  @include mq(md){
+    padding: rem(2) rem(4);
+    @include font(10, 18, 0, $bold);
+  }
+}
+
+.contact-form__control {
+  flex: 1;
+  display: flex;
+  gap: rem(40);
+  max-width: rem(640);
+  width: 100%;
+
+  @include mq("md") {
+    width: 100%;
+    gap: rem(16);
+  }
+}
+
+.contact-form__control input,
+.contact-form__control textarea {
+  flex: 1;
+  min-width: 0;
+  padding: rem(11) rem(24);
+  border: 1px solid #DBDBDB;
+  background-color: $white;
+  color: $black;
+  @include font(16, 24, 0, $regular);
+
+  &::placeholder {
+    color: #BDBDBD;
+  }
+
+  @include mq("md") {
+    padding: rem(10) rem(16);
+    @include font(14, 20, 0, $regular);
+  }
+}
+
+.contact-form__control textarea {
+  height: rem(247);
+  resize: vertical;
+}
+
+.contact-form__select {
+  flex: 1;
+  position: relative;
+  min-width: 0;
+}
+
+.contact-form__select select {
+  width: 100%;
+  padding: rem(11) rem(48) rem(11) rem(24);
+  border: 1px solid #DBDBDB;
+  background-color: $white;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7' fill='none'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23031A23' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right rem(30) center;
+  color: $black;
+  @include font(16, 24, 0, $regular);
+
+  @include mq("md") {
+    padding: rem(10) rem(40) rem(10) rem(16);
+    background-position: right rem(16) center;
+    @include font(14, 20, 0, $regular);
+  }
+}
+
+.contact-form__submit {
+  margin-top: rem(40);
+  text-align: center;
+
+  @include mq("md") {
+    margin-top: rem(30);
+  }
+}
+
+.contact-form__submit-btn {
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  padding: rem(21) rem(95) rem(21) rem(24);
+  background-color: $green;
+  background-image: url(../img/common/icon-arrow_wh.svg);
+  background-repeat: no-repeat;
+  background-position: right rem(24) center;
+  background-size: rem(31) rem(31);
+  color: $white;
+  @include font(16, 23, 50, $bold);
+
+  &:hover {
+    opacity: .8;
+  }
+
+  @include mq("md") {
+    padding: rem(16) rem(52) rem(16) rem(20);
+    background-position: right rem(16) center;
+    background-size: rem(24) rem(24);
+    @include font(14, 20, 50, $bold);
+  }
+}

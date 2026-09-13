@@ -22,20 +22,7 @@ jQuery(function ($) { // この中であればWordpressでも「$」が使用可
         return false;
     });
 
-    //ドロワーメニュー
-    $("#MenuButton").click(function () {
-        // $(".l-drawer-menu").toggleClass("is-show");
-        // $(".p-drawer-menu").toggleClass("is-show");
-        $(".js-drawer-open").toggleClass("open");
-        $(".drawer-menu").toggleClass("open");
-        $("html").toggleClass("is-fixed");
-
-    });
-
-
-
     // スムーススクロール (絶対パスのリンク先が現在のページであった場合でも作動)
-
     $(document).on('click', 'a[href*="#"]', function () {
         let time = 400;
         let header = $('header').innerHeight();
@@ -75,11 +62,13 @@ jQuery(function ($) { // この中であればWordpressでも「$」が使用可
     function openDrawer() {
         $(".js-drawer").addClass("is-open");
         $(".js-hamburger").addClass("is-open");
+        $("body").addClass("is-drawer-open");
     }
 
     function closeDrawer() {
         $(".js-drawer").removeClass("is-open");
         $(".js-hamburger").removeClass("is-open");
+        $("body").removeClass("is-drawer-open");
     }
 
     // modal
@@ -95,5 +84,23 @@ jQuery(function ($) { // この中であればWordpressでも「$」が使用可
     $(".js-modal-close").on("click", function () {
         $(".js-modal").fadeOut();
         $("html,body").css("overflow", "initial");
+    });
+});
+
+
+/* ==================================================
+*  headerカラー変更
+================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+    const header = document.querySelector(".header");
+    const lowerMv = document.querySelector(".lower-mv");
+    const fvHeight = lowerMv ? lowerMv.offsetHeight : header.offsetHeight; // FVの高さ（mvがないページはheader分でスクロール判定）
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > fvHeight) {
+            header.classList.add("is-scrolled");
+        } else {
+            header.classList.remove("is-scrolled");
+        }
     });
 });

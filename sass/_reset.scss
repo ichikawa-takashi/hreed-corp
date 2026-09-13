@@ -44,6 +44,16 @@ ol {
   list-style: none;
 }
 
+a{
+  text-decoration: none;
+  color: inherit;
+  transition: all ease .3s;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
 /* A elements that don't have a class get default styles */
 a:not([class]) {
   text-decoration-skip-ink: auto;

@@ -47,7 +47,7 @@ line-heightが％の場合
     }
 
     @if $letter-spacing {
-        letter-spacing: calc($letter-spacing / 1000 * 1em);
+        letter-spacing: calc($letter-spacing / 100 * 1em);
     }
     // letter-spacingが％で書かれている時は、/100に変更する
 
@@ -294,5 +294,55 @@ $breakpoints: (
 
 @import "reset";
 @import "common";
-@import "test";
 @import "page";
+@import "about";
+@import "company";
+@import "news";
+@import "contact";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
