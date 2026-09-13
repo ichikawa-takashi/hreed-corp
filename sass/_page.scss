@@ -1,6 +1,867 @@
-.test{
-    font-size: rem(40);
-    @include mq('md'){
-        font-size: rem(20);
-    }
+/*--------------------------------
+  共通：セクション見出し（タイトル＋タグ）
+--------------------------------*/
+.sec-head {
+  margin-bottom: 48px;
+
+  @include mq('md') {
+    margin-bottom: 24px;
+  }
+}
+
+.sec-head__title {
+  display: inline-block;
+  background-color: $green;
+  color: $white;
+  font-family: $en;
+  @include font(36, 43, null, $extra);
+  padding: 12px 24px;
+
+  @include mq('md') {
+    @include font(24, 29, null, $extra);
+    padding: 8px 16px;
+  }
+}
+
+.sec-head__tag {
+  display: block;
+  width: fit-content;
+  margin-top: 8px;
+  background-color: $green;
+  color: $white;
+  font-family: $sans;
+  @include font(14, 20, null, $bold);
+  padding: 4px 16px;
+
+  @include mq('md') {
+    @include font(12, 18, null, $bold);
+    padding: 3px 12px;
+  }
+}
+
+.sec-head--onphoto .sec-head__title {
+  background-color: $white;
+  color: $black;
+}
+
+.sec-head--onphoto .sec-head__tag {
+  background-color: $white;
+  color: $black;
+}
+
+/*--------------------------------
+  共通：もっと見るボタン
+--------------------------------*/
+.btn-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background-color: $white;
+  color: $black;
+  font-family: $sans;
+  @include font(15, 22, null, $bold);
+  padding: 16px 16px 16px 28px;
+  text-decoration: none;
+
+  @include mq('md') {
+    @include font(14, 20, null, $bold);
+    padding: 12px 12px 12px 20px;
+    gap: 16px;
+  }
+}
+
+.btn-more__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: $green;
+  color: $white;
+
+  @include mq('md') {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.btn-more--solid {
+  background-color: $green;
+  color: $white;
+}
+
+.btn-more--solid .btn-more__arrow {
+  background-color: $white;
+  color: $green;
+}
+
+/*--------------------------------
+  MV
+--------------------------------*/
+.mv {
+  position: relative;
+  overflow: hidden;
+  background-color: $bg;
+  padding: 96px 0 64px;
+
+  @include mq('md') {
+    padding: 48px 0 40px;
+  }
+}
+
+.mv__deco {
+  position: absolute;
+  left: 0;
+  top: 57px;
+  width: 400px;
+  pointer-events: none;
+
+  @include mq('md') {
+    width: 200px;
+    top: 24px;
+  }
+}
+
+.mv__inner {
+  position: relative;
+  padding-left: 64px;
+
+  @include mq('md') {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+.mv__head {
+  display: inline-block;
+  background-color: $green;
+  color: $white;
+  font-family: $en;
+  @include font(64, 77, null, $extra);
+  padding: 19px 24px;
+
+  @include mq('md') {
+    @include font(32, 38, null, $extra);
+    padding: 10px 16px;
+  }
+}
+
+.mv__row {
+  display: flex;
+  align-items: flex-start;
+  gap: 56px;
+  margin-top: 26px;
+
+  @include mq('md') {
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+  }
+}
+
+.mv__tag {
+  flex-shrink: 0;
+  margin-top: 24px;
+  background-color: $green;
+  color: $white;
+  font-family: $sans;
+  @include font(18, 26, null, $bold);
+  padding: 8px 20px;
+  white-space: nowrap;
+
+  @include mq('md') {
+    margin-top: 0;
+    @include font(14, 20, null, $bold);
+    padding: 6px 14px;
+    white-space: normal;
+  }
+}
+
+.mv__media {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: grid;
+}
+
+.mv__photo {
+  grid-area: 1 / 1;
+  width: 100%;
+  aspect-ratio: 1020 / 535;
+  object-fit: cover;
+}
+
+.mv__news {
+  grid-area: 1 / 1;
+  align-self: end;
+  justify-self: end;
+  width: 32%;
+  min-width: 200px;
+  transform: translateY(14px);
+  background-color: $white;
+  padding: 20px;
+
+  @include mq('md') {
+    width: 62%;
+    min-width: 0;
+    padding: 12px;
+    transform: translateY(10px);
+  }
+}
+
+.mv__news-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.mv__news-date {
+  font-family: $en;
+  @include font(13, 16, null, $medium);
+  color: $black;
+}
+
+.mv__news-tag {
+  border: 1px solid $green;
+  color: $green;
+  font-family: $sans;
+  @include font(11, 16, null, $medium);
+  padding: 2px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.mv__news-text {
+  margin-top: 8px;
+  font-family: $sans;
+  @include font(13, 22, null, $regular);
+  color: $black;
+}
+
+.mv__news-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: $green;
+  color: $white;
+  margin-top: 12px;
+  margin-left: auto;
+
+  @include mq('md') {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/*--------------------------------
+  About
+--------------------------------*/
+.about {
+  background-color: $bg;
+  padding: 120px 0;
+
+  @include mq('md') {
+    padding: 64px 0;
+  }
+}
+
+.about__inner {
+  position: relative;
+}
+
+.about__deco {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  @include mq('md') {
+    display: none;
+  }
+}
+
+.about__deco-svg {
+  position: absolute;
+  fill: none;
+  stroke: $green;
+  stroke-width: 1;
+  overflow: visible;
+}
+
+.about__deco-svg--square {
+  left: 431px;
+  top: 122px;
+  width: 64px;
+  height: 64px;
+}
+
+.about__deco-svg--top {
+  left: 894px;
+  top: 5px;
+  width: 194px;
+  height: 251px;
+}
+
+.about__deco-svg--bottom {
+  left: -95px;
+  top: 430px;
+  width: 246px;
+  height: 203px;
+}
+
+.about__deco-svg--lone {
+  left: 1097px;
+  top: 565px;
+  width: 56px;
+  height: 56px;
+}
+
+.about__head {
+  position: relative;
+}
+
+.about__body {
+  display: flex;
+  align-items: flex-start;
+  gap: 64px;
+  margin-top: 24px;
+
+  @include mq('md') {
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 24px;
+  }
+}
+
+.about__photos {
+  flex-shrink: 0;
+  width: 480px;
+
+  @include mq('md') {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+.about__photo {
+  width: 320px;
+}
+
+.about__photo--1 {
+  aspect-ratio: 320 / 179;
+  object-fit: cover;
+}
+
+.about__photo--2 {
+  width: 300px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  margin-top: -49px;
+  margin-left: 180px;
+
+  @include mq('md') {
+    width: 62%;
+    margin-top: -15%;
+    margin-left: 38%;
+  }
+}
+
+.about__content {
+  flex: 1;
+  min-width: 0;
+  padding-top: 8px;
+}
+
+.about__text {
+  font-family: $sans;
+  color: $black;
+  @include font(16, 32, null, $regular);
+
+  @include mq('md') {
+    @include font(15, 28, null, $regular);
+  }
+}
+
+.about__more {
+  margin-top: 40px;
+
+  @include mq('md') {
+    margin-top: 32px;
+  }
+}
+
+/*--------------------------------
+  Service
+--------------------------------*/
+.service {
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0;
+  isolation: isolate;
+
+  @include mq('md') {
+    padding: 64px 0;
+  }
+}
+
+.service__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.service__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: $green;
+  opacity: .82;
+}
+
+.service__watermark {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  z-index: -1;
+  font-family: $en;
+  font-size: rem(160);
+  font-weight: $extra;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba($white, .35);
+  white-space: nowrap;
+  pointer-events: none;
+
+  @include mq('md') {
+    font-size: rem(90);
+    top: 16px;
+  }
+}
+
+.service__head {
+  position: relative;
+}
+
+.service__list {
+  margin-top: 64px;
+
+  @include mq('md') {
+    margin-top: 40px;
+  }
+}
+
+.service__item {
+  margin-top: 96px;
+
+  @include mq('md') {
+    margin-top: 56px;
+  }
+}
+
+.service__item:first-child {
+  margin-top: 0;
+}
+
+.service__num {
+  display: block;
+  font-family: $en;
+  @include font(64, 64, null, $extra);
+  color: $white;
+
+  @include mq('md') {
+    @include font(40, 40, null, $extra);
+  }
+}
+
+.service__cards {
+  display: flex;
+  align-items: flex-start;
+  margin-top: -42px;
+  padding-left: 47px;
+
+  @include mq('md') {
+    flex-direction: column;
+    margin-top: 12px;
+    padding-left: 0;
+  }
+}
+
+.service__logo {
+  flex-shrink: 0;
+  width: 478px;
+  height: 278px;
+  background-color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+
+  @include mq('md') {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 478 / 278;
+  }
+}
+
+.service__logo-text {
+  font-family: $en;
+  @include font(28, 34, null, $bold);
+  color: $black;
+  text-align: center;
+}
+
+.service__logo-text--jp {
+  font-family: $sans;
+}
+
+.service__body {
+  margin-top: 185px;
+  margin-left: -123px;
+  width: 718px;
+  max-width: calc(100% - 355px);
+  background-color: $white;
+  padding: 32px;
+
+  @include mq('md') {
+    margin-top: 0;
+    margin-left: 0;
+    width: 100%;
+    max-width: none;
+    padding: 20px;
+  }
+}
+
+.service__body-title {
+  font-family: $sans;
+  color: $green;
+  @include font(20, 28, null, $bold);
+}
+
+.service__body-title--center {
+  text-align: center;
+}
+
+.service__body-text {
+  margin-top: 12px;
+  font-family: $sans;
+  color: $black;
+  @include font(14, 26, null, $regular);
+}
+
+.service__body--wide {
+  margin-top: 24px;
+  margin-left: 0;
+  width: 100%;
+  max-width: none;
+  padding: 32px 40px;
+}
+
+.service__more {
+  margin-top: 64px;
+
+  @include mq('md') {
+    margin-top: 40px;
+  }
+}
+
+/*--------------------------------
+  Case
+--------------------------------*/
+.case {
+  position: relative;
+  overflow: hidden;
+  background-color: $bg;
+  padding: 120px 0;
+
+  @include mq('md') {
+    padding: 64px 0;
+  }
+}
+
+.case__head {
+  position: relative;
+}
+
+.case__grid {
+  display: flex;
+  align-items: flex-start;
+  gap: 56px;
+  margin-top: 40px;
+
+  @include mq('md') {
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 24px;
+  }
+}
+
+.case__col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.case__col--offset {
+  margin-top: -204px;
+
+  @include mq('md') {
+    margin-top: 0;
+  }
+}
+
+.case__card {
+  display: block;
+}
+
+.case__client {
+  font-family: $sans;
+  color: $black;
+  @include font(15, 22, null, $bold);
+}
+
+.case__photo {
+  margin-top: 12px;
+  width: 100%;
+  aspect-ratio: 532 / 308;
+  object-fit: cover;
+}
+
+.case__card-title {
+  margin-top: 16px;
+  font-family: $sans;
+  color: $black;
+  @include font(18, 27, null, $bold);
+}
+
+.case__card-text {
+  margin-top: 8px;
+  font-family: $sans;
+  color: $black;
+  @include font(14, 24, null, $regular);
+}
+
+.case__pill {
+  display: inline-block;
+  margin-top: 12px;
+  border: 1px solid $green;
+  color: $green;
+  font-family: $sans;
+  @include font(12, 18, null, $medium);
+  padding: 4px 16px;
+  border-radius: 999px;
+}
+
+.case__more {
+  margin-top: 56px;
+
+  @include mq('md') {
+    margin-top: 40px;
+  }
+}
+
+.case__watermark {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  font-family: $en;
+  font-size: rem(140);
+  font-weight: $extra;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba($green, .3);
+  white-space: nowrap;
+  pointer-events: none;
+
+  @include mq('md') {
+    display: none;
+  }
+}
+
+/*--------------------------------
+  News
+--------------------------------*/
+.news {
+  background-color: $white;
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+
+  @include mq('md') {
+    padding: 64px 0;
+  }
+}
+
+.news__grid {
+  display: flex;
+  align-items: flex-start;
+  gap: 64px;
+
+  @include mq('md') {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+.news__side {
+  flex-shrink: 0;
+  width: 336px;
+
+  @include mq('md') {
+    width: 100%;
+  }
+}
+
+.news__head {
+  position: relative;
+}
+
+.news__filter {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include mq('md') {
+    margin-top: 24px;
+  }
+}
+
+.news__filter-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: $sans;
+  color: $black;
+  @include font(15, 22, null, $regular);
+  cursor: pointer;
+}
+
+.news__filter-radio {
+  display: block;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid $green;
+  position: relative;
+}
+
+.news__filter-radio::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: $green;
+  opacity: 0;
+}
+
+.news__filter-input:checked+.news__filter-radio::after {
+  opacity: 1;
+}
+
+.news__more {
+  margin-top: 32px;
+}
+
+.news__list {
+  flex: 1;
+  min-width: 0;
+}
+
+.news__item {
+  padding: 20px 0;
+  border-bottom: 1px solid $mint;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.news__item:first-child {
+  padding-top: 0;
+}
+
+.news__item-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.news__item-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.news__item-date {
+  font-family: $en;
+  @include font(14, 20, null, $medium);
+  color: $black;
+}
+
+.news__item-tag {
+  border: 1px solid $green;
+  color: $green;
+  font-family: $sans;
+  @include font(11, 16, null, $medium);
+  padding: 2px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.news__item-text {
+  margin-top: 4px;
+  font-family: $sans;
+  color: $black;
+  @include font(15, 24, null, $regular);
+}
+
+.news__item-arrow {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: $green;
+  color: $white;
+  text-decoration: none;
+}
+
+.news__watermark {
+  position: absolute;
+  left: 0;
+  bottom: -20px;
+  z-index: 0;
+  font-family: $en;
+  font-size: rem(150);
+  font-weight: $extra;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba($green, .3);
+  white-space: nowrap;
+  pointer-events: none;
+
+  @include mq('md') {
+    display: none;
+  }
 }
