@@ -464,15 +464,11 @@
   }
 }
 
-.service__logo-text {
-  font-family: $en;
-  @include font(28, 34, null, $bold);
-  color: $black;
-  text-align: center;
-}
-
-.service__logo-text--jp {
-  font-family: $sans;
+.service__logo-img {
+  width: auto;
+  max-width: 240px;
+  height: auto;
+  max-height: 64px;
 }
 
 .service__body {

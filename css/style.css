@@ -1574,17 +1574,11 @@ body.is-drawer-open {
   }
 }
 
-.service__logo-text {
-  font-family: "Montserrat", sans-serif;
-  font-size: 1.75rem;
-  line-height: 1.2142857143;
-  font-weight: 700;
-  color: #031A23;
-  text-align: center;
-}
-
-.service__logo-text--jp {
-  font-family: "Noto Sans JP", sans-serif;
+.service__logo-img {
+  width: auto;
+  max-width: 240px;
+  height: auto;
+  max-height: 64px;
 }
 
 .service__body {
