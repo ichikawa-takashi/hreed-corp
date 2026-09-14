@@ -324,8 +324,8 @@ body.is-drawer-open {
 *  lower-mv(下層ページ共通メインビュー)
 ================================================== */
 .lower-mv {
-  // 上部(ヘッダー下〜写真下まで)は#F5F7F9、それ以降は白にする境界線をグラデーションで作成
-  // SPは要素が縦積みになり構成比が変わるため、境界位置(%)をPCと別で持たせています
+  position: relative;
+  overflow: hidden;
   background: linear-gradient(to bottom, #F5F7F9 0%, #F5F7F9 66%, $white 66%, $white 100%);
   padding-bottom: rem(40);
 
@@ -336,7 +336,6 @@ body.is-drawer-open {
 }
 
 .lower-mv__inner {
-  position: relative;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -356,6 +355,8 @@ body.is-drawer-open {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  position: relative;
+  z-index: 10;
 }
 
 .lower-mv__tag {
@@ -409,8 +410,8 @@ body.is-drawer-open {
 }
 
 .lower-mv__deco--01 {
-  bottom: rem(128);
-  left: rem(-83);
+  bottom: rem(168);
+  left: rem(52);
   width: rem(55.34);
 
   @include mq("md") {
@@ -422,12 +423,12 @@ body.is-drawer-open {
 }
 
 .lower-mv__deco--02 {
-  bottom: rem(40);
-  left: rem(355);
+  bottom: rem(80);
+  left: rem(490);
   width: rem(170);
 
   @include mq("md") {
-    bottom: rem(-25);
+    bottom: rem(12);
     left: initial;
     right: rem(100);
     width: rem(60);
@@ -436,7 +437,7 @@ body.is-drawer-open {
 
 .lower-mv__deco--03 {
   top: rem(185);
-  right: rem(504);
+  right: rem(638);
   width: rem(44);
 
   @include mq("md") {
@@ -447,8 +448,8 @@ body.is-drawer-open {
 }
 
 .lower-mv__deco--04 {
-  bottom: rem(34);
-  right: rem(-78);
+  bottom: rem(74);
+  right: rem(58);
   width: rem(56);
 
   @include mq("md") {
@@ -499,7 +500,7 @@ body.is-drawer-open {
 }
 
 /* ==================================================
-*  link-cards(下層ページ共通・Service/Recruitリンクカード)
+*  link-cards
 ================================================== */
 .link-cards {
   position: relative;
@@ -594,8 +595,80 @@ body.is-drawer-open {
   }
 }
 
+.link-cards__deco {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.link-cards__deco--01 {
+  top: rem(66);
+  left: rem(88);
+  width: rem(44);
+
+  @include mq("md") {
+    top: rem(14);
+    left: rem(10);
+    width: rem(22);
+  }
+}
+
+.link-cards__deco--02 {
+  bottom: rem(35);
+  left: rem(40);
+  width: rem(140);
+
+  @include mq("md") {
+    bottom: initial;
+    top: rem(10);
+    left: initial;
+    right: rem(40);
+    width: rem(60);
+  }
+}
+
+.link-cards__deco--03 {
+  top: rem(62);
+  right: rem(56);
+  width: rem(95);
+
+  @include mq("md") {
+    top: initial;
+    bottom: rem(14);
+    right: initial;
+    left: rem(30);
+    width: rem(45);
+  }
+}
+
+.link-cards__deco--04 {
+  top: rem(163);
+  right: rem(40);
+  width: rem(32);
+
+  @include mq("md") {
+    top: initial;
+    bottom: rem(45);
+    right: rem(150);
+    width: rem(22);
+  }
+}
+
+.link-cards__deco--05 {
+  bottom: rem(153);
+  right: rem(58);
+  width: rem(56);
+
+  @include mq("md") {
+    bottom: rem(20);
+    right: rem(50);
+    width: rem(30);
+  }
+}
+
 /* ==================================================
-*  cta-banner(下層ページ共通・お問い合わせバナー)
+*  cta-banner
 ================================================== */
 .cta-banner {
   padding-top: rem(80);
