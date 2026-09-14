@@ -1,55 +1,4 @@
 /*--------------------------------
-  共通：セクション見出し（タイトル＋タグ）
---------------------------------*/
-.sec-head {
-  margin-bottom: 48px;
-
-  @include mq('md') {
-    margin-bottom: 24px;
-  }
-}
-
-.sec-head__title {
-  display: inline-block;
-  background-color: $green;
-  color: $white;
-  font-family: $en;
-  @include font(36, 43, null, $extra);
-  padding: 12px 24px;
-
-  @include mq('md') {
-    @include font(24, 29, null, $extra);
-    padding: 8px 16px;
-  }
-}
-
-.sec-head__tag {
-  display: block;
-  width: fit-content;
-  margin-top: 8px;
-  background-color: $green;
-  color: $white;
-  font-family: $sans;
-  @include font(14, 20, null, $bold);
-  padding: 4px 16px;
-
-  @include mq('md') {
-    @include font(12, 18, null, $bold);
-    padding: 3px 12px;
-  }
-}
-
-.sec-head--onphoto .sec-head__title {
-  background-color: $white;
-  color: $black;
-}
-
-.sec-head--onphoto .sec-head__tag {
-  background-color: $white;
-  color: $black;
-}
-
-/*--------------------------------
   共通：もっと見るボタン
 --------------------------------*/
 .btn-more {
@@ -330,12 +279,12 @@
   display: flex;
   align-items: flex-start;
   gap: 64px;
-  margin-top: 24px;
+  margin-top: 72px;
 
   @include mq('md') {
     flex-direction: column;
     gap: 40px;
-    margin-top: 24px;
+    margin-top: 48px;
   }
 }
 
@@ -456,10 +405,10 @@
 }
 
 .service__list {
-  margin-top: 64px;
+  margin-top: 112px;
 
   @include mq('md') {
-    margin-top: 40px;
+    margin-top: 64px;
   }
 }
 
@@ -599,12 +548,12 @@
   display: flex;
   align-items: flex-start;
   gap: 56px;
-  margin-top: 40px;
+  margin-top: 88px;
 
   @include mq('md') {
     flex-direction: column;
     gap: 40px;
-    margin-top: 24px;
+    margin-top: 48px;
   }
 }
 
@@ -732,13 +681,13 @@
 }
 
 .news__filter {
-  margin-top: 40px;
+  margin-top: 88px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 
   @include mq('md') {
-    margin-top: 24px;
+    margin-top: 48px;
   }
 }
 

@@ -1065,68 +1065,6 @@ body.is-drawer-open {
 }
 
 /*--------------------------------
-  共通：セクション見出し（タイトル＋タグ）
---------------------------------*/
-.sec-head {
-  margin-bottom: 48px;
-}
-@media screen and (max-width: 768px) {
-  .sec-head {
-    margin-bottom: 24px;
-  }
-}
-
-.sec-head__title {
-  display: inline-block;
-  background-color: #0c998a;
-  color: #ffffff;
-  font-family: "Montserrat", sans-serif;
-  font-size: 2.25rem;
-  line-height: 1.1944444444;
-  font-weight: 900;
-  padding: 12px 24px;
-}
-@media screen and (max-width: 768px) {
-  .sec-head__title {
-    font-size: 1.5rem;
-    line-height: 1.2083333333;
-    font-weight: 900;
-    padding: 8px 16px;
-  }
-}
-
-.sec-head__tag {
-  display: block;
-  width: fit-content;
-  margin-top: 8px;
-  background-color: #0c998a;
-  color: #ffffff;
-  font-family: "Noto Sans JP", sans-serif;
-  font-size: 0.875rem;
-  line-height: 1.4285714286;
-  font-weight: 700;
-  padding: 4px 16px;
-}
-@media screen and (max-width: 768px) {
-  .sec-head__tag {
-    font-size: 0.75rem;
-    line-height: 1.5;
-    font-weight: 700;
-    padding: 3px 12px;
-  }
-}
-
-.sec-head--onphoto .sec-head__title {
-  background-color: #ffffff;
-  color: #031A23;
-}
-
-.sec-head--onphoto .sec-head__tag {
-  background-color: #ffffff;
-  color: #031A23;
-}
-
-/*--------------------------------
   共通：もっと見るボタン
 --------------------------------*/
 .btn-more {
@@ -1437,13 +1375,13 @@ body.is-drawer-open {
   display: flex;
   align-items: flex-start;
   gap: 64px;
-  margin-top: 24px;
+  margin-top: 72px;
 }
 @media screen and (max-width: 768px) {
   .about__body {
     flex-direction: column;
     gap: 40px;
-    margin-top: 24px;
+    margin-top: 48px;
   }
 }
 
@@ -1574,11 +1512,11 @@ body.is-drawer-open {
 }
 
 .service__list {
-  margin-top: 64px;
+  margin-top: 112px;
 }
 @media screen and (max-width: 768px) {
   .service__list {
-    margin-top: 40px;
+    margin-top: 64px;
   }
 }
 
@@ -1735,13 +1673,13 @@ body.is-drawer-open {
   display: flex;
   align-items: flex-start;
   gap: 56px;
-  margin-top: 40px;
+  margin-top: 88px;
 }
 @media screen and (max-width: 768px) {
   .case__grid {
     flex-direction: column;
     gap: 40px;
-    margin-top: 24px;
+    margin-top: 48px;
   }
 }
 
@@ -1883,14 +1821,14 @@ body.is-drawer-open {
 }
 
 .news__filter {
-  margin-top: 40px;
+  margin-top: 88px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 @media screen and (max-width: 768px) {
   .news__filter {
-    margin-top: 24px;
+    margin-top: 48px;
   }
 }
 
