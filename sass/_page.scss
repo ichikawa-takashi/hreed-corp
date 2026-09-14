@@ -574,19 +574,28 @@
 
 .case__card {
   display: block;
+  position: relative;
 }
 
 .case__client {
   font-family: $sans;
   color: $black;
   @include font(15, 22, null, $bold);
+  display: inline-block;
+  padding: rem(8) rem(16);
+  background-color: #F5F7F9;
+  position: absolute;
+  top: 0;
+  left: 0;
+    border-right: 1px solid $green;
+    border-bottom: 1px solid $green;
 }
 
 .case__photo {
-  margin-top: 12px;
   width: 100%;
   aspect-ratio: 532 / 308;
   object-fit: cover;
+  border: 1px solid $green;
 }
 
 .case__card-title {
