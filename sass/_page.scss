@@ -89,12 +89,12 @@
   background-color: $green;
   color: $white;
   font-family: $en;
-  @include font(120, 144, null, $extra);
-  padding: 19px 24px;
+  @include font(120, 144, null, $bold);
+  padding: 12px 24px;
 
   @include mq('md') {
-    @include font(32, 38, null, $extra);
-    padding: 10px 16px;
+    @include font(32, 38, null, $bold);
+    padding: 6px 16px;
   }
 }
 

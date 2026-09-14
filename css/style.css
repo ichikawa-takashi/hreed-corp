@@ -1166,15 +1166,15 @@ body.is-drawer-open {
   font-family: "Montserrat", sans-serif;
   font-size: 7.5rem;
   line-height: 1.2;
-  font-weight: 900;
-  padding: 19px 24px;
+  font-weight: 700;
+  padding: 12px 24px;
 }
 @media screen and (max-width: 768px) {
   .mv__head {
     font-size: 2rem;
     line-height: 1.1875;
-    font-weight: 900;
-    padding: 10px 16px;
+    font-weight: 700;
+    padding: 6px 16px;
   }
 }
 
