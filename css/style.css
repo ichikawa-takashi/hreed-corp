@@ -1164,8 +1164,8 @@ body.is-drawer-open {
   background-color: #0c998a;
   color: #ffffff;
   font-family: "Montserrat", sans-serif;
-  font-size: 4rem;
-  line-height: 1.203125;
+  font-size: 7.5rem;
+  line-height: 1.2;
   font-weight: 900;
   padding: 19px 24px;
 }
@@ -1198,8 +1198,8 @@ body.is-drawer-open {
   background-color: #0c998a;
   color: #ffffff;
   font-family: "Noto Sans JP", sans-serif;
-  font-size: 1.125rem;
-  line-height: 1.4444444444;
+  font-size: 1.5rem;
+  line-height: 1.4583333333;
   font-weight: 700;
   padding: 8px 20px;
   white-space: nowrap;

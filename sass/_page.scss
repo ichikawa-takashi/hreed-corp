@@ -89,7 +89,7 @@
   background-color: $green;
   color: $white;
   font-family: $en;
-  @include font(64, 77, null, $extra);
+  @include font(120, 144, null, $extra);
   padding: 19px 24px;
 
   @include mq('md') {
@@ -117,7 +117,7 @@
   background-color: $green;
   color: $white;
   font-family: $sans;
-  @include font(18, 26, null, $bold);
+  @include font(24, 35, null, $bold);
   padding: 8px 20px;
   white-space: nowrap;
 
