@@ -4,6 +4,10 @@
 
 .news-list__inner{
   max-width: rem(1330);
+
+  @include mq(md){
+    max-width: 500px;
+  }
 }
 
 /* ---------- filter ---------- */
