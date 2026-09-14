@@ -1080,6 +1080,7 @@ body.is-drawer-open {
   font-weight: 700;
   padding: 16px 16px 16px 28px;
   text-decoration: none;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 @media screen and (max-width: 768px) {
   .btn-more {
@@ -1093,14 +1094,9 @@ body.is-drawer-open {
 
 .btn-more__arrow {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-shrink: 0;
   width: 34px;
   height: 34px;
-  border-radius: 50%;
-  background-color: #0c998a;
-  color: #ffffff;
 }
 @media screen and (max-width: 768px) {
   .btn-more__arrow {
@@ -1109,14 +1105,15 @@ body.is-drawer-open {
   }
 }
 
+.btn-more__arrow img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 .btn-more--solid {
   background-color: #0c998a;
   color: #ffffff;
-}
-
-.btn-more--solid .btn-more__arrow {
-  background-color: #ffffff;
-  color: #0c998a;
 }
 
 /*--------------------------------
