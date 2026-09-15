@@ -1,0 +1,738 @@
+/* ==================================================
+*  service page
+================================================== */
+
+/* ---------- lead（採用に悩む時間を〜） ---------- */
+.service-lead {
+  position: relative;
+  overflow: hidden;
+  background-color: $white;
+  padding-top: rem(64);
+
+  @include mq("md") {
+    padding-top: rem(40);
+  }
+}
+
+.service-lead__inner {
+  position: relative;
+  text-align: center;
+}
+
+.service-lead__rays {
+  position: absolute;
+  top: rem(-40);
+  left: 50%;
+  width: rem(900);
+  height: rem(360);
+  transform: translateX(-50%);
+  background: repeating-conic-gradient(from -18deg at 50% 0%,
+      rgba($mint, .7) 0deg 6deg,
+      transparent 6deg 16deg);
+  pointer-events: none;
+  z-index: 0;
+
+  @include mq("md") {
+    width: rem(500);
+    height: rem(220);
+  }
+}
+
+.service-lead__heading {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  border: 1px solid $green;
+  color: $black;
+  @include font(32, 46, 50, $bold);
+  padding: rem(16) rem(32);
+
+  @include mq("md") {
+    @include font(18, 27, 50, $bold);
+    padding: rem(12) rem(16);
+  }
+}
+
+.service-lead__heading-accent {
+  color: $green;
+}
+
+.service-lead__text {
+  position: relative;
+  z-index: 1;
+  margin-top: rem(24);
+  color: $black;
+  @include font(16, 26, 50, $medium);
+
+  @include mq("md") {
+    margin-top: rem(16);
+    @include font(13, 22, 50, $medium);
+  }
+}
+
+.service-lead__divider {
+  position: relative;
+  z-index: 1;
+  margin-top: rem(48);
+  border-top: 1px solid $green;
+
+  @include mq("md") {
+    margin-top: rem(32);
+  }
+}
+
+.service-lead__logos {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: rem(16);
+  padding: rem(32) 0;
+  border-bottom: 1px solid $green;
+
+  @include mq("md") {
+    padding: rem(20) 0;
+    gap: rem(8);
+  }
+}
+
+.service-lead__logo {
+  flex: 1;
+  min-width: 0;
+  aspect-ratio: 130 / 90;
+  background-color: #F2F3F4;
+}
+
+/* ---------- worry（こんなお悩みありませんか） ---------- */
+.worry {
+  position: relative;
+  overflow: hidden;
+  background-color: $bg;
+  padding: rem(96) 0;
+
+  @include mq("md") {
+    padding: rem(56) 0;
+  }
+}
+
+.worry__tag {
+  display: inline-block;
+  background-color: $green;
+  color: $white;
+  @include font(28, 41, 50, $bold);
+  padding: rem(12) rem(24);
+
+  @include mq("md") {
+    @include font(18, 27, 50, $bold);
+    padding: rem(10) rem(16);
+  }
+}
+
+.worry__list {
+  margin-top: rem(64);
+
+  @include mq("md") {
+    margin-top: rem(40);
+  }
+}
+
+.worry__item {
+  display: flex;
+  align-items: center;
+  gap: rem(32);
+
+  @include mq("md") {
+    gap: rem(16);
+  }
+}
+
+.worry__item+.worry__item {
+  margin-top: rem(-24);
+
+  @include mq("md") {
+    margin-top: rem(16);
+  }
+}
+
+.worry__item--reverse {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.worry__icon {
+  flex-shrink: 0;
+  width: rem(200);
+  height: rem(200);
+  border-radius: 50%;
+  background-color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include mq("md") {
+    width: rem(88);
+    height: rem(88);
+  }
+}
+
+.worry__icon img {
+  width: 70%;
+  height: auto;
+}
+
+.worry__card {
+  flex: 1;
+  min-width: 0;
+  max-width: rem(480);
+}
+
+.worry__item--reverse .worry__card {
+  margin-left: auto;
+}
+
+.worry__title {
+  display: inline-block;
+  border: 1px solid $green;
+  background-color: $white;
+  color: $black;
+  @include font(18, 26, 50, $bold);
+  padding: rem(10) rem(20);
+
+  @include mq("md") {
+    @include font(14, 20, 50, $bold);
+    padding: rem(8) rem(14);
+  }
+}
+
+.worry__text {
+  display: block;
+  margin-top: rem(8);
+  border: 1px solid $green;
+  background-color: $white;
+  color: $black;
+  @include font(14, 24, 50, $regular);
+  padding: rem(10) rem(20);
+
+  @include mq("md") {
+    @include font(12, 20, 50, $regular);
+    padding: rem(8) rem(14);
+  }
+}
+
+/* ---------- approach（採用を「作業」ではなく「仕組み」に変えます） ---------- */
+.approach {
+  position: relative;
+  overflow: hidden;
+  background-color: $mint;
+  padding: rem(80) 0;
+  text-align: center;
+
+  @include mq("md") {
+    padding: rem(48) 0;
+  }
+}
+
+.approach__inner {
+  position: relative;
+}
+
+.approach__deco {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  z-index: 0;
+
+  @include mq("md") {
+    display: none;
+  }
+}
+
+.approach__deco--01 {
+  left: rem(-40);
+  top: rem(0);
+  width: rem(44);
+}
+
+.approach__deco--02 {
+  left: rem(60);
+  bottom: rem(20);
+  width: rem(120);
+}
+
+.approach__deco--03 {
+  right: rem(80);
+  top: rem(10);
+  width: rem(56);
+}
+
+.approach__deco--04 {
+  right: rem(-30);
+  bottom: rem(0);
+  width: rem(36);
+}
+
+.approach__head {
+  position: relative;
+  z-index: 1;
+  color: $black;
+  @include font(28, 41, 50, $bold);
+
+  @include mq("md") {
+    @include font(18, 27, 50, $bold);
+  }
+}
+
+.approach__head-accent {
+  color: $green;
+}
+
+.approach__lead {
+  position: relative;
+  z-index: 1;
+  margin-top: rem(24);
+  color: $black;
+  @include font(16, 26, 50, $regular);
+
+  @include mq("md") {
+    margin-top: rem(16);
+    @include font(13, 22, 50, $regular);
+  }
+}
+
+.approach__flow {
+  position: relative;
+  z-index: 1;
+  margin-top: rem(16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: rem(8);
+  color: $black;
+  @include font(16, 26, 50, $regular);
+
+  @include mq("md") {
+    @include font(13, 22, 50, $regular);
+  }
+}
+
+.approach__flow-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(72);
+  height: rem(72);
+  border-radius: 50%;
+  background-color: $green;
+  color: $white;
+  @include font(16, 24, 50, $bold);
+
+  @include mq("md") {
+    width: rem(52);
+    height: rem(52);
+    @include font(13, 20, 50, $bold);
+  }
+}
+
+.approach__flow-arrow {
+  color: $green;
+}
+
+.approach__tags {
+  position: relative;
+  z-index: 1;
+  margin-top: rem(32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: rem(16);
+
+  @include mq("md") {
+    margin-top: rem(24);
+    gap: rem(12);
+  }
+}
+
+.approach__tag {
+  border: 1px solid $green;
+  background-color: $white;
+  color: $green;
+  @include font(18, 27, 50, $bold);
+  padding: rem(12) rem(24);
+
+  @include mq("md") {
+    @include font(13, 20, 50, $bold);
+    padding: rem(10) rem(16);
+  }
+}
+
+/* ---------- feature（サービスの特長） ---------- */
+.feature {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: rem(96) 0;
+
+  @include mq("md") {
+    padding: rem(56) 0;
+  }
+}
+
+.feature__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.feature__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.feature__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: $green;
+  opacity: .85;
+}
+
+.feature__head {
+  position: relative;
+}
+
+.feature__list {
+  margin-top: rem(64);
+
+  @include mq("md") {
+    margin-top: rem(40);
+  }
+}
+
+.feature__item {
+  display: flex;
+  align-items: flex-start;
+  gap: rem(40);
+
+  @include mq("md") {
+    flex-direction: column;
+    gap: rem(16);
+  }
+}
+
+.feature__item+.feature__item {
+  margin-top: rem(64);
+
+  @include mq("md") {
+    margin-top: rem(40);
+  }
+}
+
+.feature__item--reverse {
+  flex-direction: row-reverse;
+
+  @include mq("md") {
+    flex-direction: column;
+  }
+}
+
+.feature__photo {
+  position: relative;
+  flex-shrink: 0;
+  width: rem(480);
+
+  @include mq("md") {
+    width: 100%;
+  }
+}
+
+.feature__photo img {
+  width: 100%;
+  aspect-ratio: 480 / 320;
+  object-fit: cover;
+}
+
+.feature__num {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-30%, -30%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(56);
+  height: rem(56);
+  background-color: $green;
+  color: $white;
+  @include font(28, 42, 50, $extra);
+
+  @include mq("md") {
+    width: rem(40);
+    height: rem(40);
+    @include font(20, 30, 50, $extra);
+  }
+}
+
+.feature__item--reverse .feature__num {
+  left: auto;
+  right: 0;
+  transform: translate(30%, -30%);
+}
+
+.feature__body {
+  flex: 1;
+  min-width: 0;
+  background-color: $white;
+  padding: rem(32);
+
+  @include mq("md") {
+    padding: rem(20);
+  }
+}
+
+.feature__title {
+  color: $green;
+  @include font(22, 32, 50, $bold);
+}
+
+.feature__text {
+  margin-top: rem(16);
+  color: $black;
+  @include font(14, 26, 50, $regular);
+}
+
+.feature__text+.feature__text {
+  margin-top: rem(12);
+}
+
+/* ---------- flow（ご支援の流れ） ---------- */
+.flow {
+  position: relative;
+  background-color: $white;
+  padding: rem(96) 0;
+
+  @include mq("md") {
+    padding: rem(56) 0;
+  }
+}
+
+.flow__list {
+  margin-top: rem(64);
+  max-width: rem(760);
+
+  @include mq("md") {
+    margin-top: rem(40);
+  }
+}
+
+.flow__item {
+  display: flex;
+  align-items: flex-start;
+  gap: rem(24);
+
+  @include mq("md") {
+    gap: rem(12);
+  }
+}
+
+.flow__item+.flow__item {
+  margin-top: rem(8);
+}
+
+.flow__num {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flow__num-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(56);
+  height: rem(56);
+  border-radius: 50%;
+  background-color: $green;
+  color: $white;
+  @include font(20, 30, 50, $bold);
+
+  @include mq("md") {
+    width: rem(40);
+    height: rem(40);
+    @include font(15, 22, 50, $bold);
+  }
+}
+
+.flow__num-arrow {
+  margin-top: rem(6);
+  margin-bottom: rem(6);
+  color: $green;
+  @include font(16, 16, null, $bold);
+}
+
+.flow__item:last-child .flow__num-arrow {
+  visibility: hidden;
+}
+
+.flow__body {
+  flex: 1;
+  min-width: 0;
+  padding-bottom: rem(28);
+
+  @include mq("md") {
+    padding-bottom: rem(20);
+  }
+}
+
+.flow__title {
+  display: inline-block;
+  border: 1px solid $green;
+  color: $black;
+  @include font(16, 24, 50, $bold);
+  padding: rem(6) rem(16);
+
+  @include mq("md") {
+    @include font(13, 20, 50, $bold);
+    padding: rem(5) rem(12);
+  }
+}
+
+.flow__text {
+  margin-top: rem(10);
+  color: $black;
+  @include font(14, 24, 50, $regular);
+}
+
+.flow__text-accent {
+  color: $green;
+  font-weight: $bold;
+}
+
+/* ---------- faq（よくあるご質問） ---------- */
+.faq {
+  position: relative;
+  background-color: $bg;
+  padding: rem(96) 0;
+
+  @include mq("md") {
+    padding: rem(56) 0;
+  }
+}
+
+.faq__list {
+  margin-top: rem(64);
+  background-color: $white;
+
+  @include mq("md") {
+    margin-top: rem(40);
+  }
+}
+
+.faq__item {
+  border-bottom: 1px solid #E1E5E8;
+}
+
+.faq__question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: rem(16);
+  padding: rem(24) rem(32);
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  @include mq("md") {
+    padding: rem(16) rem(20);
+    gap: rem(10);
+  }
+}
+
+.faq__q-icon {
+  flex-shrink: 0;
+  display: flex;
+  width: rem(24);
+  height: rem(24);
+}
+
+.faq__q-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.faq__q-text {
+  flex: 1;
+  min-width: 0;
+  color: $black;
+  @include font(16, 24, 50, $bold);
+
+  @include mq("md") {
+    @include font(13, 20, 50, $bold);
+  }
+}
+
+.faq__toggle {
+  flex-shrink: 0;
+  position: relative;
+  width: rem(20);
+  height: rem(20);
+}
+
+.faq__toggle::before,
+.faq__toggle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: $green;
+  transform: translate(-50%, -50%);
+  transition: transform .3s ease, opacity .3s ease;
+}
+
+.faq__toggle::before {
+  width: 100%;
+  height: 2px;
+}
+
+.faq__toggle::after {
+  width: 2px;
+  height: 100%;
+}
+
+.faq__item.is-open .faq__toggle::after {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.faq__answer {
+  display: flex;
+  align-items: flex-start;
+  gap: rem(16);
+  padding: 0 rem(32) rem(24) rem(64);
+
+  @include mq("md") {
+    padding: 0 rem(20) rem(20) rem(46);
+  }
+}
+
+.faq__a-icon {
+  flex-shrink: 0;
+  color: $green;
+  @include font(20, 24, 50, $extra);
+}
+
+.faq__a-text {
+  flex: 1;
+  min-width: 0;
+  color: $black;
+  @include font(14, 26, 50, $regular);
+
+  @include mq("md") {
+    @include font(12, 22, 50, $regular);
+  }
+}

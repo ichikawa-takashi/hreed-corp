@@ -85,6 +85,16 @@ jQuery(function ($) { // この中であればWordpressでも「$」が使用可
         $(".js-modal").fadeOut();
         $("html,body").css("overflow", "initial");
     });
+
+    // FAQ アコーディオン
+    $(".js-faq-question").on("click", function () {
+        var item = $(this).closest(".faq__item");
+        var answer = item.find(".faq__answer");
+
+        item.toggleClass("is-open");
+        $(this).attr("aria-expanded", item.hasClass("is-open"));
+        answer.stop().slideToggle(300);
+    });
 });
 
 
