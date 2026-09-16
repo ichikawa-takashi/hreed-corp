@@ -71,12 +71,14 @@
     var scene = new THREE.Scene();
 
     var camera = new THREE.PerspectiveCamera(42, width / height, 1, 100);
-    camera.position.set(0, 0, 34);
+    var restDistance = 24; // distance the camera settles at once assembled; framing is calibrated to this
+    var startDistance = 34; // far distance the camera dollies in from during the intro
+    camera.position.set(0, 0, startDistance);
 
     var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     renderer.setSize(width, height);
-    renderer.setClearColor(0x031a23, 1);
+    renderer.setClearColor(0x010607, 1);
     if ("outputEncoding" in renderer) renderer.outputEncoding = THREE.sRGBEncoding;
     stage.appendChild(renderer.domElement);
 
@@ -146,7 +148,7 @@
     var logoSize = box.getSize(new THREE.Vector3());
 
     function frameLogo() {
-      var distance = camera.position.z - rig.position.z;
+      var distance = restDistance;
       var vFov = (camera.fov * Math.PI) / 180;
       var visibleHeight = 2 * Math.tan(vFov / 2) * distance;
       var visibleWidth = visibleHeight * camera.aspect;
@@ -158,16 +160,15 @@
       rig.scale.set(s, -s, s);
     }
     frameLogo();
-    window.__debugOpening = { camera: camera, rig: rig, logoSize: logoSize, width: width, height: height };
 
     // --- postprocessing (bloom) --------------------------------------
     var composer = new THREE.EffectComposer(renderer);
     composer.addPass(new THREE.RenderPass(scene, camera));
     var bloomPass = new THREE.UnrealBloomPass(
       new THREE.Vector2(width, height),
-      0.85,
-      0.55,
-      0.18
+      0.62,
+      0.4,
+      0.35
     );
     composer.addPass(bloomPass);
 
@@ -252,9 +253,8 @@
         done();
       },
     });
-    window.__openingTL = tl;
 
-    tl.to(camera.position, { z: 24, duration: 1.6, ease: "power2.out" }, 0)
+    tl.to(camera.position, { z: restDistance, duration: 1.6, ease: "power2.out" }, 0)
       .to(
         iconMeshes.map(function (m) { return m.position; }),
         { x: 0, y: 0, z: 0, duration: 1.1, stagger: 0.07, ease: "expo.out" },
