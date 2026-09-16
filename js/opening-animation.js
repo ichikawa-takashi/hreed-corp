@@ -52,8 +52,7 @@
     THREE.SVGLoader &&
     window.HREED_OPENING_LOGO_SVG;
 
-  // --- loading progress: bar + count-up percentage -----------------------
-  var loaderEl = opening.querySelector(".js-opening-loader");
+  // --- loading progress: bar + count-up percentage, shown under the logo ---
   var percentEl = opening.querySelector(".js-opening-percent");
   var barFillEl = opening.querySelector(".js-opening-bar-fill");
 
@@ -74,19 +73,26 @@
     });
   }
 
-  function trackLoadProgress(onDone) {
+  // resolves once real page assets (images + web fonts) have loaded
+  var loadingDone = false;
+  var onLoadingDone = null;
+
+  function markLoadingDone() {
+    if (loadingDone) return;
+    loadingDone = true;
+    setProgress(100);
+    if (onLoadingDone) onLoadingDone();
+  }
+
+  function trackLoadProgress() {
     var images = Array.prototype.slice.call(document.images);
     var total = images.length + 1; // +1 for web fonts
     var loaded = 0;
-    var done = false;
 
     function tick() {
       loaded++;
       setProgress((loaded / total) * 100);
-      if (!done && loaded >= total) {
-        done = true;
-        onDone();
-      }
+      if (loaded >= total) markLoadingDone();
     }
 
     images.forEach(function (img) {
@@ -105,39 +111,22 @@
     }
 
     // safety net: never let a stalled asset block the site indefinitely
-    setTimeout(function () {
-      if (!done) {
-        done = true;
-        setProgress(100);
-        onDone();
-      }
-    }, 6000);
+    setTimeout(markLoadingDone, 6000);
+  }
+  trackLoadProgress();
+
+  if (!canRun3D) {
+    if (loadingDone) {
+      gsap.to(opening, { opacity: 0, duration: 0.5, onComplete: finish });
+    } else {
+      onLoadingDone = function () {
+        gsap.to(opening, { opacity: 0, duration: 0.5, delay: 0.2, onComplete: finish });
+      };
+    }
+    return;
   }
 
-  var MIN_LOADER_MS = 700;
-  var loaderStart = Date.now();
-
-  trackLoadProgress(function () {
-    var wait = Math.max(0, MIN_LOADER_MS - (Date.now() - loaderStart));
-    setTimeout(proceedAfterLoad, wait);
-  });
-
-  function proceedAfterLoad() {
-    gsap.to(loaderEl, {
-      opacity: 0,
-      y: -6,
-      duration: 0.4,
-      ease: "power1.out",
-      onComplete: function () {
-        if (loaderEl) loaderEl.style.display = "none";
-        if (canRun3D) {
-          runOpeningScene(opening, finish);
-        } else {
-          gsap.to(opening, { opacity: 0, duration: 0.5, onComplete: finish });
-        }
-      },
-    });
-  }
+  runOpeningScene(opening, finish);
 
   function runOpeningScene(root, done) {
     var stage = root.querySelector(".js-opening-stage");
@@ -228,7 +217,7 @@
       var visibleWidth = visibleHeight * camera.aspect;
 
       var scaleForWidth = (visibleWidth * 0.66) / logoSize.x;
-      var scaleForHeight = (visibleHeight * 0.5) / logoSize.y;
+      var scaleForHeight = (visibleHeight * 0.42) / logoSize.y;
       var s = Math.min(scaleForWidth, scaleForHeight);
 
       rig.scale.set(s, -s, s);
@@ -317,13 +306,46 @@
       mesh.material.opacity = 0;
     });
 
-    var tl = gsap.timeline({
-      delay: 0.1,
-      onComplete: function () {
-        cleanup();
-        done();
-      },
-    });
+    var idleTween = null;
+
+    // once assembled, the logo idles gently in place until the real page
+    // load (tracked by the progress bar beneath it) actually completes
+    function startIdle() {
+      idleTween = gsap.to(rig.rotation, {
+        y: 0.16,
+        duration: 2.4,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
+      if (loadingDone) {
+        playExit();
+      } else {
+        onLoadingDone = playExit;
+      }
+    }
+
+    function playExit() {
+      if (idleTween) idleTween.kill();
+
+      gsap
+        .timeline({
+          onComplete: function () {
+            cleanup();
+            done();
+          },
+        })
+        .to(rig.rotation, { y: 0, duration: 0.4, ease: "power1.inOut" }, 0)
+        .to(camera.position, { z: 15, duration: 0.6, ease: "power2.in" }, 0.1)
+        .to(
+          meshes.map(function (m) { return m.material; }),
+          { opacity: 0, duration: 0.45, ease: "power1.in" },
+          0.1
+        )
+        .to(root, { opacity: 0, duration: 0.5, ease: "power1.in" }, "<0.05");
+    }
+
+    var tl = gsap.timeline({ delay: 0.1, onComplete: startIdle });
 
     tl.to(camera.position, { z: restDistance, duration: 1.6, ease: "power2.out" }, 0)
       .to(
@@ -386,16 +408,6 @@
         ease: "power1.out",
         yoyo: true,
         repeat: 1,
-      }, 1.75)
-      .to(rig.rotation, { y: 0.18, duration: 1, ease: "sine.inOut" }, 1.9)
-      .to(rig.rotation, { y: -0.08, duration: 1.2, ease: "sine.inOut" }, "+=0")
-      .to({}, { duration: 0.35 })
-      .to(camera.position, { z: 15, duration: 0.6, ease: "power2.in" }, ">-0.1")
-      .to(
-        meshes.map(function (m) { return m.material; }),
-        { opacity: 0, duration: 0.45, ease: "power1.in" },
-        "<"
-      )
-      .to(root, { opacity: 0, duration: 0.5, ease: "power1.in" }, "<0.05");
+      }, 1.75);
   }
 })();
