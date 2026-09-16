@@ -2,18 +2,6 @@
   var opening = document.querySelector(".js-opening");
   if (!opening) return;
 
-  var STORAGE_KEY = "hreedOpeningPlayed";
-
-  var alreadyPlayed = false;
-  try {
-    alreadyPlayed = sessionStorage.getItem(STORAGE_KEY) === "1";
-  } catch (e) {}
-
-  if (alreadyPlayed) {
-    opening.remove();
-    return;
-  }
-
   if (!window.gsap) {
     opening.remove();
     return;
@@ -23,9 +11,6 @@
 
   function finish() {
     document.documentElement.classList.remove("is-opening");
-    try {
-      sessionStorage.setItem(STORAGE_KEY, "1");
-    } catch (e) {}
     opening.remove();
   }
 
@@ -53,6 +38,7 @@
     window.HREED_OPENING_LOGO_SVG;
 
   // --- loading progress: bar + count-up percentage, shown under the logo ---
+  var loaderEl = opening.querySelector(".js-opening-loader");
   var percentEl = opening.querySelector(".js-opening-percent");
   var barFillEl = opening.querySelector(".js-opening-bar-fill");
 
@@ -63,13 +49,14 @@
     if (barFillEl) barFillEl.style.width = rounded + "%";
   }
 
-  function setProgress(target) {
+  function setProgress(target, onComplete) {
     gsap.to(progress, {
       pct: target,
       duration: 0.4,
       ease: "power1.out",
       overwrite: true,
       onUpdate: renderProgress,
+      onComplete: onComplete,
     });
   }
 
@@ -80,7 +67,19 @@
   function markLoadingDone() {
     if (loadingDone) return;
     loadingDone = true;
-    setProgress(100);
+    // let the bar visibly land on 100%, then have it disappear right away
+    // instead of sitting there while the logo keeps doing its own thing
+    setProgress(100, function () {
+      if (loaderEl) {
+        gsap.to(loaderEl, {
+          opacity: 0,
+          y: -8,
+          duration: 0.4,
+          delay: 0.15,
+          ease: "power1.out",
+        });
+      }
+    });
     if (onLoadingDone) onLoadingDone();
   }
 

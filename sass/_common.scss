@@ -34,10 +34,6 @@ html.is-opening body {
   overflow: hidden;
 }
 
-html.no-opening .opening {
-  display: none;
-}
-
 .opening {
   position: fixed;
   z-index: 9999;
