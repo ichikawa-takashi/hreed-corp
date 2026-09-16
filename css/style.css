@@ -1170,9 +1170,13 @@ body.is-drawer-open {
 
 .btn-more__arrow {
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
   width: 2.125rem;
   height: 2.125rem;
+  border-radius: 50%;
+  background-color: #0c998a;
 }
 @media screen and (max-width: 768px) {
   .btn-more__arrow {
@@ -1182,14 +1186,18 @@ body.is-drawer-open {
 }
 
 .btn-more__arrow img {
-  width: 100%;
-  height: 100%;
+  width: 44%;
+  height: auto;
   display: block;
 }
 
 .btn-more--solid {
   background-color: #0c998a;
   color: #ffffff;
+}
+
+.btn-more--solid .btn-more__arrow {
+  background-color: #ffffff;
 }
 
 /*--------------------------------
