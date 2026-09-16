@@ -38,7 +38,6 @@
     window.HREED_OPENING_LOGO_SVG;
 
   // --- loading progress: bar + count-up percentage, shown under the logo ---
-  var loaderEl = opening.querySelector(".js-opening-loader");
   var percentEl = opening.querySelector(".js-opening-percent");
   var barFillEl = opening.querySelector(".js-opening-bar-fill");
 
@@ -49,49 +48,28 @@
     if (barFillEl) barFillEl.style.width = rounded + "%";
   }
 
-  function setProgress(target, onComplete) {
+  function setProgress(target, duration) {
     gsap.to(progress, {
       pct: target,
-      duration: 0.4,
+      duration: duration == null ? 0.35 : duration,
       ease: "power1.out",
       overwrite: true,
       onUpdate: renderProgress,
-      onComplete: onComplete,
     });
   }
 
-  // resolves once real page assets (images + web fonts) have loaded
-  var loadingDone = false;
-  var onLoadingDone = null;
+  // real asset loading (images + web fonts)
+  var realLoaded = 0;
+  var realTotal = 1;
+  var realDone = false;
 
-  function markLoadingDone() {
-    if (loadingDone) return;
-    loadingDone = true;
-    // let the bar visibly land on 100%, then have it disappear right away
-    // instead of sitting there while the logo keeps doing its own thing
-    setProgress(100, function () {
-      if (loaderEl) {
-        gsap.to(loaderEl, {
-          opacity: 0,
-          y: -8,
-          duration: 0.4,
-          delay: 0.15,
-          ease: "power1.out",
-        });
-      }
-    });
-    if (onLoadingDone) onLoadingDone();
-  }
-
-  function trackLoadProgress() {
+  function trackRealLoad() {
     var images = Array.prototype.slice.call(document.images);
-    var total = images.length + 1; // +1 for web fonts
-    var loaded = 0;
+    realTotal = images.length + 1; // +1 for web fonts
 
     function tick() {
-      loaded++;
-      setProgress((loaded / total) * 100);
-      if (loaded >= total) markLoadingDone();
+      realLoaded++;
+      if (realLoaded >= realTotal) realDone = true;
     }
 
     images.forEach(function (img) {
@@ -110,18 +88,43 @@
     }
 
     // safety net: never let a stalled asset block the site indefinitely
-    setTimeout(markLoadingDone, 6000);
+    setTimeout(function () {
+      realLoaded = realTotal;
+      realDone = true;
+    }, 6000);
   }
-  trackLoadProgress();
+  trackRealLoad();
+
+  // Paces the bar so it never claims 100% before the reveal is actually
+  // ready: it eases up to 96% over `paceMs` (blended with real load
+  // progress so slow connections still read honestly), then only jumps to
+  // 100% once both the pacing time AND the real load are done — at which
+  // point `onReady` fires and the whole opening exits together with it,
+  // instead of the bar finishing on its own partway through the reveal.
+  function paceProgressUntilReady(paceMs, onReady) {
+    var start = Date.now();
+    var settled = false;
+
+    var timer = setInterval(function () {
+      if (settled) return;
+      var elapsed = Date.now() - start;
+      var paced = Math.min(96, (elapsed / paceMs) * 96);
+      var real = (realLoaded / realTotal) * 100;
+      setProgress(Math.max(paced, Math.min(real, 96)));
+
+      if (realDone && elapsed >= paceMs) {
+        settled = true;
+        clearInterval(timer);
+        setProgress(100, 0.3);
+        gsap.delayedCall(0.3, onReady);
+      }
+    }, 90);
+  }
 
   if (!canRun3D) {
-    if (loadingDone) {
+    paceProgressUntilReady(900, function () {
       gsap.to(opening, { opacity: 0, duration: 0.5, onComplete: finish });
-    } else {
-      onLoadingDone = function () {
-        gsap.to(opening, { opacity: 0, duration: 0.5, delay: 0.2, onComplete: finish });
-      };
-    }
+    });
     return;
   }
 
@@ -306,9 +309,10 @@
     });
 
     var idleTween = null;
+    var readyToExit = false;
 
-    // once assembled, the logo idles gently in place until the real page
-    // load (tracked by the progress bar beneath it) actually completes
+    // once assembled, the logo idles gently in place until the progress
+    // bar underneath it is ready to complete (see paceProgressUntilReady)
     function startIdle() {
       idleTween = gsap.to(rig.rotation, {
         y: 0.16,
@@ -317,11 +321,7 @@
         yoyo: true,
         repeat: -1,
       });
-      if (loadingDone) {
-        playExit();
-      } else {
-        onLoadingDone = playExit;
-      }
+      if (readyToExit) playExit();
     }
 
     function playExit() {
@@ -408,5 +408,14 @@
         yoyo: true,
         repeat: 1,
       }, 1.75);
+
+    // pace the progress bar to this intro's actual length, so it can never
+    // finish (and take the whole opening out with it) before the logo has
+    // fully assembled
+    var introMs = (tl.delay() + tl.duration()) * 1000;
+    paceProgressUntilReady(introMs, function () {
+      readyToExit = true;
+      if (idleTween) playExit();
+    });
   }
 })();
