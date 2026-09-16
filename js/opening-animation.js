@@ -158,6 +158,7 @@
       rig.scale.set(s, -s, s);
     }
     frameLogo();
+    window.__debugOpening = { camera: camera, rig: rig, logoSize: logoSize, width: width, height: height };
 
     // --- postprocessing (bloom) --------------------------------------
     var composer = new THREE.EffectComposer(renderer);
@@ -251,6 +252,7 @@
         done();
       },
     });
+    window.__openingTL = tl;
 
     tl.to(camera.position, { z: 24, duration: 1.6, ease: "power2.out" }, 0)
       .to(
