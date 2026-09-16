@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Hreed — Opening B</title>
+</head>
+
+<body>
+  <div class="opening js-opening" aria-hidden="true">
+    <div class="js-opening-stage opening__stage"></div>
+
+    <div class="opening__loader js-opening-loader">
+      <p class="opening__loader-percent">
+        <span class="js-opening-percent">0</span><span class="opening__loader-percent-sign">%</span>
+      </p>
+      <div class="opening__loader-bar">
+        <div class="opening__loader-bar-fill js-opening-bar-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <header class="header js-header">
+    <div class="header__inner">
+      <h1 class="header__logo">
+        <a href="./index.html">
+          <img src="./img/common/logo.svg" alt="Hreed">
+        </a>
+      </h1>
+
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li class="header__nav-item">
+            <a href="./about.html" class="header__nav-link">
+              <span class="header__nav-link-ja">私たちについて</span>
+              <span class="header__nav-link-en">About</span>
+            </a>
+          </li>
+          <li class="header__nav-item">
+            <a href="./company.html" class="header__nav-link">
+              <span class="header__nav-link-ja">会社概要</span>
+              <span class="header__nav-link-en">Company</span>
+            </a>
+          </li>
+          <li class="header__nav-item">
+            <a href="./service.html" class="header__nav-link">
+              <span class="header__nav-link-ja">サービス</span>
+              <span class="header__nav-link-en">Service</span>
+            </a>
+          </li>
+          <li class="header__nav-item">
+            <a href="./news.html" class="header__nav-link">
+              <span class="header__nav-link-ja">お知らせ</span>
+              <span class="header__nav-link-en">News</span>
+            </a>
+          </li>
+          <li class="header__nav-item">
+            <a href="./case.html" class="header__nav-link">
+              <span class="header__nav-link-ja">支援事例</span>
+              <span class="header__nav-link-en">Case</span>
+            </a>
+          </li>
+          <li class="header__nav-item">
+            <a href="./recruit.html" class="header__nav-link">
+              <span class="header__nav-link-ja">採用</span>
+              <span class="header__nav-link-en">Recruit</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header__side">
+        <a href="https://note.com/" class="header__note" target="_blank" rel="noopener noreferrer">
+          <img src="./img/common/icon-note.svg" alt="note">
+        </a>
+        <a href="./contact.html" class="header__contact">
+          Contact
+          <span class="btn-more__arrow" aria-hidden="true">
+            <img src="./img/common/arrow-green.svg" alt="矢印アイコン" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+            <img src="./img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
+          </span>
+        </a>
+      </div>
+
+      <button type="button" class="header__hamburger js-hamburger" aria-label="メニューを開閉する">
+        <span class="header__hamburger-line"></span>
+        <span class="header__hamburger-line"></span>
+        <span class="header__hamburger-line"></span>
+      </button>
+    </div>
+
+    <div class="header__drawer js-drawer">
+      <nav class="header__drawer-nav">
+        <ul class="header__drawer-list">
+          <li class="header__drawer-item">
+            <a href="./about.html" class="header__drawer-link">
+              <span class="header__drawer-link-ja">私たちについて</span>
+              <span class="header__drawer-link-en">About</span>
+            </a>
+          </li>
+          <li class="header__drawer-item">
+            <a href="./company.html" class="header__drawer-link">
+              <span class="header__drawer-link-ja">会社概要</span>
+              <span class="header__drawer-link-en">Company</span>
+            </a>
+          </li>
+          <li class="header__drawer-item">
+            <a href="./service.html" class="header__drawer-link">
+              <span class="header__drawer-link-ja">サービス</span>
+              <span class="header__drawer-link-en">Service</span>
+            </a>
+          </li>
+          <li class="header__drawer-item">
+            <a href="./news.html" class="header__drawer-link">
+              <span class="header__drawer-link-ja">お知らせ</span>
+              <span class="header__drawer-link-en">News</span>
+            </a>
+          </li>
+          <li class="header__drawer-item">
+            <a href="./case.html" class="header__drawer-link">
+              <span class="header__drawer-link-ja">支援事例</span>
+              <span class="header__drawer-link-en">Case</span>
+            </a>
+          </li>
+          <li class="header__drawer-item">
+            <a href="./recruit.html" class="header__drawer-link">
+              <span class="header__drawer-link-ja">採用</span>
+              <span class="header__drawer-link-en">Recruit</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header__drawer-side">
+        <a href="https://note.com/" class="header__drawer-note" target="_blank" rel="noopener noreferrer">
+          <img src="./img/common/icon-note.svg" alt="note">
+        </a>
+        <a href="./contact.html" class="header__drawer-contact">
+          Contact
+          <span class="btn-more__arrow" aria-hidden="true">
+            <img src="./img/common/arrow-green.svg" alt="矢印アイコン" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+            <img src="./img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
+          </span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+  <!-- ================= MV ================= -->
+  <section class="mv">
+    <img class="mv__deco" src="./img/top/mv-deco.svg" alt="" aria-hidden="true">
+
+    <div class="mv__inner">
+      <h1 class="mv__head">Make Classic</h1>
+
+      <div class="mv__row">
+        <p class="mv__tag">次のスタンダードを作る</p>
+
+        <div class="mv__media">
+          <img class="mv__photo" src="./img/top/mv-photo.jpg" alt="Hreedのオフィス風景">
+
+          <div class="mv__news">
+            <div class="mv__news-meta">
+              <time class="mv__news-date">2025.10.06</time>
+              <span class="mv__news-tag">プレスリリース</span>
+            </div>
+            <p class="mv__news-text">タイトルが入ります。タイトルが入ります。タイトルが入ります。</p>
+            <span class="mv__news-arrow btn-more__arrow" aria-hidden="true">
+              <img src="./img/common/arrow-white.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+              <img src="./img/common/arrow-white.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= About ================= -->
+  <section class="about">
+    <div class="inner about__inner">
+      <div class="about__deco" aria-hidden="true">
+        <svg class="about__deco-svg about__deco-svg--square" viewBox="0 0 64 64">
+          <rect class="js-draw" x="1" y="1" width="62" height="62" />
+        </svg>
+
+        <svg class="about__deco-svg about__deco-svg--top" viewBox="0 0 194 251">
+          <path class="js-draw"
+            d="M182.726 145.442H66.6885V98.3027H10.0654V249.811H66.6885V188.77H136.052V249.771H183.052V189.771H182.726V145.442Z" />
+          <circle class="js-draw" cx="159.552" cy="81.589" r="34.448" />
+          <circle class="js-draw" cx="34.448" cy="34.448" r="34.448" />
+        </svg>
+
+        <svg class="about__deco-svg about__deco-svg--bottom" viewBox="0 0 246 203">
+          <path class="js-draw" d="M109 101V0H218V109H155V155H0V101H109Z" />
+          <circle class="js-draw" cx="218" cy="175" r="27.5" />
+        </svg>
+
+        <svg class="about__deco-svg about__deco-svg--lone" viewBox="0 0 56 56">
+          <circle class="js-draw" cx="28" cy="28" r="27.5" />
+        </svg>
+      </div>
+
+      <div class="about__head sec-title">
+        <h2 class="sec-title__en"><span class="sec-title__text">About</span></h2>
+        <p class="sec-title__ja"><span class="sec-title__text">私たちについて</span></p>
+      </div>
+
+      <div class="about__body">
+        <div class="about__photos">
+          <img class="about__photo about__photo--1" src="./img/top/about-photo-sub.jpg" alt="">
+          <img class="about__photo about__photo--2" src="./img/top/about-photo-main.jpg" alt="採用コンサルティングの様子">
+        </div>
+
+        <div class="about__content">
+          <p class="about__text">
+            採用は、事業のスピードと未来を左右します。<br>
+            Hreedは、人材紹介と採用コンサルティングを掛け合わせ、<br>
+            短期的な充足ではなく、<br>
+            事業成長につながる採用を設計・実行します。<br>
+            採用を、もっと戦略的に。<br>
+            人と事業の可能性を、まっすぐつなぐために。
+          </p>
+          <a href="#" class="about__more btn-more">
+            もっと見る
+            <span class="btn-more__arrow" aria-hidden="true">
+              <img src="./img/common/arrow-white.svg" alt="矢印アイコン" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+              <img src="./img/common/arrow-white.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Service ================= -->
+  <section class="service">
+    <div class="service__bg">
+      <img class="service__bg-img" src="./img/top/service-bg.jpg" alt="">
+    </div>
+    <p class="service__watermark" aria-hidden="true">Service</p>
+
+    <div class="inner">
+      <div class="service__head sec-title sec-title--reverse">
+        <h2 class="sec-title__en"><span class="sec-title__text">Service</span></h2>
+        <p class="sec-title__ja"><span class="sec-title__text">事業内容</span></p>
+      </div>
+
+      <ul class="service__list">
+        <li class="service__item">
+          <span class="service__num">01</span>
+          <div class="service__cards">
+            <div class="service__logo">
+              <img class="service__logo-img" src="./img/top/service-logo-growth.png" alt="Growth&amp;Growth">
+            </div>
+            <div class="service__body">
+              <h3 class="service__body-title">転職支援サービス</h3>
+              <p class="service__body-text">
+                テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+                テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+                テキストが入ります。テキストが入ります。テキストが入ります。
+              </p>
+            </div>
+          </div>
+        </li>
+
+        <li class="service__item">
+          <span class="service__num">02</span>
+          <div class="service__cards">
+            <div class="service__logo">
+              <img class="service__logo-img" src="./img/top/service-logo-banson.png" alt="バーソン">
+            </div>
+            <div class="service__body">
+              <h3 class="service__body-title">採用支援サービス</h3>
+              <p class="service__body-text">
+                テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+                テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+                テキストが入ります。テキストが入ります。テキストが入ります。
+              </p>
+            </div>
+          </div>
+        </li>
+
+        <li class="service__item service__item--wide">
+          <span class="service__num">03</span>
+          <div class="service__body service__body--wide">
+            <h3 class="service__body-title service__body-title--center">クリエイティブ制作</h3>
+            <p class="service__body-text">
+              テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+            </p>
+          </div>
+        </li>
+      </ul>
+
+      <a href="#" class="service__more btn-more">
+        もっと見る
+        <span class="btn-more__arrow" aria-hidden="true">
+          <img src="./img/common/arrow-white.svg" alt="矢印アイコン" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+          <img src="./img/common/arrow-white.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ================= Case ================= -->
+  <section class="case">
+    <div class="inner">
+      <div class="case__head sec-title">
+        <h2 class="sec-title__en"><span class="sec-title__text">Case</span></h2>
+        <p class="sec-title__ja"><span class="sec-title__text">ご支援事例</span></p>
+      </div>
+
+      <div class="case__grid">
+        <div class="case__col">
+          <article class="case__card">
+            <p class="case__client">株式会社システム・リノベイト様</p>
+            <img class="case__photo" src="./img/top/case-photo-systemrenovate.jpg" alt="株式会社システム・リノベイト様">
+            <h3 class="case__card-title">研修満足度97%を達成!研修参加率も向上しました</h3>
+            <p class="case__card-text">業種や従業員数、より詳しい効果についての説明が入ります。業種や従業員数、より詳しい効果についての説明が入ります。</p>
+            <span class="case__pill">採用コンサル</span>
+          </article>
+
+          <article class="case__card">
+            <p class="case__client">freee株式会社様</p>
+            <img class="case__photo" src="./img/top/case-photo-freee.jpg" alt="freee株式会社様">
+            <h3 class="case__card-title">研修満足度97%を達成!研修参加率も向上しました</h3>
+            <p class="case__card-text">業種や従業員数、より詳しい効果についての説明が入ります。業種や従業員数、より詳しい効果についての説明が入ります。</p>
+            <span class="case__pill">RPO</span>
+          </article>
+        </div>
+
+        <div class="case__col case__col--offset">
+          <article class="case__card">
+            <p class="case__client">freee株式会社様</p>
+            <img class="case__photo" src="./img/top/case-photo-freee.jpg" alt="freee株式会社様">
+            <h3 class="case__card-title">研修満足度97%を達成!研修参加率も向上しました</h3>
+            <p class="case__card-text">業種や従業員数、より詳しい効果についての説明が入ります。業種や従業員数、より詳しい効果についての説明が入ります。</p>
+            <span class="case__pill">RPO</span>
+          </article>
+
+          <article class="case__card">
+            <p class="case__client">株式会社システム・リノベイト様</p>
+            <img class="case__photo" src="./img/top/case-photo-systemrenovate.jpg" alt="株式会社システム・リノベイト様">
+            <h3 class="case__card-title">研修満足度97%を達成!研修参加率も向上しました</h3>
+            <p class="case__card-text">業種や従業員数、より詳しい効果についての説明が入ります。業種や従業員数、より詳しい効果についての説明が入ります。</p>
+            <span class="case__pill">採用コンサル</span>
+          </article>
+        </div>
+      </div>
+
+      <a href="#" class="case__more btn-more btn-more--solid">
+        一覧を見る
+        <span class="btn-more__arrow" aria-hidden="true">
+          <img src="./img/common/arrow-green.svg" alt="矢印アイコン" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+          <img src="./img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
+        </span>
+      </a>
+    </div>
+    <p class="case__watermark" aria-hidden="true">Case</p>
+  </section>
+
+  <!-- ================= News ================= -->
+  <section class="news">
+    <div class="inner">
+      <div class="news__grid">
+        <div class="news__side">
+          <div class="news__head sec-title">
+            <h2 class="sec-title__en"><span class="sec-title__text">News</span></h2>
+            <p class="sec-title__ja"><span class="sec-title__text">お知らせ</span></p>
+          </div>
+
+          <ul class="news__filter">
+            <li class="news__filter-item">
+              <label class="news__filter-label">
+                <input type="radio" name="news-category" class="news__filter-input" checked>
+                <span class="news__filter-radio" aria-hidden="true"></span>
+                すべて
+              </label>
+            </li>
+            <li class="news__filter-item">
+              <label class="news__filter-label">
+                <input type="radio" name="news-category" class="news__filter-input">
+                <span class="news__filter-radio" aria-hidden="true"></span>
+                お知らせ
+              </label>
+            </li>
+            <li class="news__filter-item">
+              <label class="news__filter-label">
+                <input type="radio" name="news-category" class="news__filter-input">
+                <span class="news__filter-radio" aria-hidden="true"></span>
+                プレスリリース
+              </label>
+            </li>
+          </ul>
+
+          <a href="#" class="news__more btn-more btn-more--solid">
+            一覧を見る
+            <span class="btn-more__arrow" aria-hidden="true">
+              <img src="./img/common/arrow-green.svg" alt="矢印アイコン" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+              <img src="./img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
+            </span>
+          </a>
+        </div>
+
+        <ul class="news__list">
+          <li class="news__item">
+            <a href="#" class="news__item-link">
+              <div class="news__item-meta">
+                <time class="news__item-date">2025.10.06</time>
+                <span class="news__item-tag">プレスリリース</span>
+              </div>
+              <p class="news__item-text">タイトルが入ります。タイトルが入ります。タイトルが入ります。</p>
+              <span class="news__item-arrow" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li class="news__item">
+            <a href="#" class="news__item-link">
+              <div class="news__item-meta">
+                <time class="news__item-date">2025.10.06</time>
+                <span class="news__item-tag">お知らせ</span>
+              </div>
+              <p class="news__item-text">タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。</p>
+              <span class="news__item-arrow" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li class="news__item">
+            <a href="#" class="news__item-link">
+              <div class="news__item-meta">
+                <time class="news__item-date">2025.10.06</time>
+                <span class="news__item-tag">プレスリリース</span>
+              </div>
+              <p class="news__item-text">タイトルが入ります。タイトルが入ります。タイトルが入ります。</p>
+              <span class="news__item-arrow" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li class="news__item">
+            <a href="#" class="news__item-link">
+              <div class="news__item-meta">
+                <time class="news__item-date">2025.10.06</time>
+                <span class="news__item-tag">プレスリリース</span>
+              </div>
+              <p class="news__item-text">タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。</p>
+              <span class="news__item-arrow" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li class="news__item">
+            <a href="#" class="news__item-link">
+              <div class="news__item-meta">
+                <time class="news__item-date">2025.10.06</time>
+                <span class="news__item-tag">お知らせ</span>
+              </div>
+              <p class="news__item-text">タイトルが入ります。タイトルが入ります。タイトルが入ります。</p>
+              <span class="news__item-arrow" aria-hidden="true"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <p class="news__watermark" aria-hidden="true">News</p>
+  </section>
+
+  <!-- ================= Link cards (Company / Recruit) ================= -->
+  <section class="link-cards">
+    <div class="link-cards__inner inner">
+      <ul class="link-cards__list">
+        <li class="link-cards__item">
+          <a href="./company.html" class="link-cards__card">
+            <div class="link-cards__photo">
+              <img src="./img/company/mv-photo.jpg" alt="Company">
+            </div>
+            <div class="link-cards__foot">
+              <div class="sec-title sec-title--reverse">
+                <h3 class="sec-title__en"><span class="sec-title__text">Company</span></h3>
+                <p class="sec-title__ja"><span class="sec-title__text">会社概要</span></p>
+              </div>
+              <span class="arrow-btn">
+                <img src="./img/common/icon-arrow_grn.svg" alt="矢印アイコン">
+              </span>
+            </div>
+          </a>
+        </li>
+
+        <li class="link-cards__item">
+          <a href="./recruit.html" class="link-cards__card">
+            <div class="link-cards__photo">
+              <img src="./img/common/link-recruit.jpg" alt="Recruit">
+            </div>
+            <div class="link-cards__foot">
+              <div class="sec-title sec-title--reverse">
+                <h3 class="sec-title__en"><span class="sec-title__text">Recruit</span></h3>
+                <p class="sec-title__ja"><span class="sec-title__text">採用情報</span></p>
+              </div>
+              <span class="arrow-btn">
+                <img src="./img/common/icon-arrow_grn.svg" alt="矢印アイコン">
+              </span>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= CTA banner (Contact) ================= -->
+  <section class="cta-banner">
+    <div class="cta-banner__inner inner">
+      <a href="./contact.html" class="cta-banner__link">
+        <img src="./img/common/cta-bg.png" alt="お問い合わせ背景" class="cta-banner__bg">
+
+        <div class="cta-banner__wrapper">
+          <div class="sec-title sec-title--reverse cta-banner__title">
+            <h2 class="sec-title__en"><span class="sec-title__text">Contact us</span></h2>
+            <p class="sec-title__ja"><span class="sec-title__text">お問い合わせ</span></p>
+          </div>
+
+          <div class="cta-banner__note">
+            <p class="cta-banner__text">採用にお困りの方はこちらから</p>
+            <span class="btn-more__arrow" aria-hidden="true">
+              <img src="./img/common/arrow-green.svg" alt="矢印アイコン" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+              <img src="./img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
+            </span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner inner">
+      <div class="footer__top">
+        <h2 class="footer__logo">
+          <a href="./index.html">
+            <img src="./img/common/logo.svg" alt="Hreed">
+          </a>
+        </h2>
+
+        <div class="footer__wrap">
+          <nav class="footer__nav">
+            <ul class="footer__nav-list">
+              <li class="footer__nav-item"><a href="./about.html">私たちについて</a></li>
+              <li class="footer__nav-item"><a href="./company.html">会社概要</a></li>
+              <li class="footer__nav-item"><a href="./service.html">サービス</a></li>
+              <li class="footer__nav-item"><a href="./news.html">お知らせ</a></li>
+              <li class="footer__nav-item"><a href="./case.html">支援事例</a></li>
+              <li class="footer__nav-item"><a href="./recruit.html">採用</a></li>
+              <li class="footer__nav-item"><a href="https://note.com/" target="_blank" rel="noopener noreferrer"><img src="./img/common/icon-note.svg" alt="note"></a></li>
+            </ul>
+          </nav>
+
+          <ul class="footer__legal">
+            <li class="footer__legal-item"><a href="./privacy.html">プライバシーポリシー</a></li>
+            <li class="footer__legal-item"><a href="./terms.html">利用規約</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="footer__copyright">&copy; 2023 Hreed株式会社. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="./js/gsap.js"></script>
+  <script src="./js/ScrollTrigger.js"></script>
+  <script src="./js/about-animation.js"></script>
+  <script src="./js/sec-title-animation.js"></script>
+  <script src="./js/vendor/three.min.js"></script>
+  <script src="./js/vendor/SVGLoader.js"></script>
+  <script src="./js/opening-logo.js"></script>
+  <script src="./js/opening-animation-b.js"></script>
+</body>
+
+</html>
