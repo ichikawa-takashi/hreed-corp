@@ -27,6 +27,37 @@ br.sp {
 }
 
 /* ==================================================
+*  opening animation
+================================================== */
+html.is-opening,
+html.is-opening body {
+  overflow: hidden;
+}
+
+html.no-opening .opening {
+  display: none;
+}
+
+.opening {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: $black;
+}
+
+.opening__stage {
+  width: 100%;
+  height: 100%;
+}
+
+.opening__stage canvas {
+  display: block;
+}
+
+/* ==================================================
 *  header
 ================================================== */
 .header {

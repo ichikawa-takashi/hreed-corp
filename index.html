@@ -4,6 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (function () {
+      try {
+        if (sessionStorage.getItem("hreedOpeningPlayed") === "1") {
+          document.documentElement.classList.add("no-opening");
+        }
+      } catch (e) {}
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -15,6 +24,10 @@
 </head>
 
 <body>
+  <div class="opening js-opening" aria-hidden="true">
+    <div class="js-opening-stage opening__stage"></div>
+  </div>
+
   <header class="header js-header">
     <div class="header__inner">
       <h1 class="header__logo">
@@ -538,6 +551,16 @@
   <script src="./js/gsap.js"></script>
   <script src="./js/ScrollTrigger.js"></script>
   <script src="./js/about-animation.js"></script>
+  <script src="./js/vendor/three.min.js"></script>
+  <script src="./js/vendor/SVGLoader.js"></script>
+  <script src="./js/vendor/EffectComposer.js"></script>
+  <script src="./js/vendor/RenderPass.js"></script>
+  <script src="./js/vendor/ShaderPass.js"></script>
+  <script src="./js/vendor/CopyShader.js"></script>
+  <script src="./js/vendor/LuminosityHighPassShader.js"></script>
+  <script src="./js/vendor/UnrealBloomPass.js"></script>
+  <script src="./js/opening-logo.js"></script>
+  <script src="./js/opening-animation.js"></script>
 </body>
 
 </html>
