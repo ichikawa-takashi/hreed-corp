@@ -451,18 +451,6 @@ body.is-no-mv,
   letter-spacing: 0.05em;
   font-weight: 700;
 }
-.header__contact::after {
-  content: "";
-  background-image: url(../img/common/icon-arrow_wh.svg);
-  background-size: 100%;
-  background-repeat: no-repeat;
-  display: inline-block;
-  width: 1.25rem;
-  height: 1.25rem;
-}
-.header__contact:hover {
-  opacity: 0.8;
-}
 
 .header__hamburger {
   display: none;
@@ -588,14 +576,22 @@ body.is-no-mv,
   letter-spacing: 0.05em;
   font-weight: 700;
 }
-.header__drawer-contact::after {
-  content: "";
-  background-image: url(../img/common/icon-arrow_wh.svg);
-  background-size: 100%;
-  background-repeat: no-repeat;
-  display: inline-block;
-  width: 1.25rem;
-  height: 1.25rem;
+
+.header__contact .btn-more__arrow,
+.header__drawer-contact .btn-more__arrow {
+  background-color: #ffffff;
+}
+
+.header__contact:hover .btn-more__arrow-icon--current,
+.header__drawer-contact:hover .btn-more__arrow-icon--current {
+  opacity: 0;
+  transform: translate(120%, -50%);
+}
+
+.header__contact:hover .btn-more__arrow-icon--next,
+.header__drawer-contact:hover .btn-more__arrow-icon--next {
+  opacity: 1;
+  transform: translate(-50%, -50%);
 }
 
 body.is-drawer-open {
@@ -1095,14 +1091,26 @@ body.is-drawer-open {
   }
 }
 
-.cta-banner__note .arrow-btn {
-  max-width: 4rem;
-  width: 100%;
+.cta-banner__note .btn-more__arrow {
+  width: 4rem;
+  height: 4rem;
+  background-color: #ffffff;
 }
 @media screen and (max-width: 768px) {
-  .cta-banner__note .arrow-btn {
-    max-width: 2.75rem;
+  .cta-banner__note .btn-more__arrow {
+    width: 2.75rem;
+    height: 2.75rem;
   }
+}
+
+.cta-banner__link:hover .btn-more__arrow-icon--current {
+  opacity: 0;
+  transform: translate(120%, -50%);
+}
+
+.cta-banner__link:hover .btn-more__arrow-icon--next {
+  opacity: 1;
+  transform: translate(-50%, -50%);
 }
 
 /* ==================================================
@@ -1476,14 +1484,8 @@ body.is-drawer-open {
 }
 
 .mv__news-arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 2rem;
   height: 2rem;
-  border-radius: 50%;
-  background-color: #0c998a;
-  color: #ffffff;
   margin-top: 0.75rem;
   margin-left: auto;
 }
@@ -1492,6 +1494,16 @@ body.is-drawer-open {
     width: 1.625rem;
     height: 1.625rem;
   }
+}
+
+.mv__news:hover .btn-more__arrow-icon--current {
+  opacity: 0;
+  transform: translate(120%, -50%);
+}
+
+.mv__news:hover .btn-more__arrow-icon--next {
+  opacity: 1;
+  transform: translate(-50%, -50%);
 }
 
 /*--------------------------------

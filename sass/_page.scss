@@ -224,14 +224,8 @@
 }
 
 .mv__news-arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: rem(32);
     height: rem(32);
-    border-radius: 50%;
-    background-color: $green;
-    color: $white;
     margin-top: rem(12);
     margin-left: auto;
 
@@ -239,6 +233,16 @@
         width: rem(26);
         height: rem(26);
     }
+}
+
+.mv__news:hover .btn-more__arrow-icon--current {
+    opacity: 0;
+    transform: translate(120%, -50%);
+}
+
+.mv__news:hover .btn-more__arrow-icon--next {
+    opacity: 1;
+    transform: translate(-50%, -50%);
 }
 
 /*--------------------------------

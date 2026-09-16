@@ -245,20 +245,6 @@ body.is-no-mv,
   font-family: $en;
   white-space: nowrap;
   @include font(16, 20, 50, $bold);
-
-  &::after{
-    content: "";
-    background-image: url(../img/common/icon-arrow_wh.svg);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    display: inline-block;
-    width: rem(20);
-    height: rem(20);
-  }
-
-  &:hover {
-    opacity: .8;
-  }
 }
 
 .header__hamburger {
@@ -373,16 +359,23 @@ body.is-no-mv,
   font-family: $en;
   white-space: nowrap;
   @include font(14, 18, 50, $bold);
+}
 
-  &::after{
-    content: "";
-    background-image: url(../img/common/icon-arrow_wh.svg);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    display: inline-block;
-    width: rem(20);
-    height: rem(20);
-  }
+.header__contact .btn-more__arrow,
+.header__drawer-contact .btn-more__arrow {
+  background-color: $white;
+}
+
+.header__contact:hover .btn-more__arrow-icon--current,
+.header__drawer-contact:hover .btn-more__arrow-icon--current {
+  opacity: 0;
+  transform: translate(120%, -50%);
+}
+
+.header__contact:hover .btn-more__arrow-icon--next,
+.header__drawer-contact:hover .btn-more__arrow-icon--next {
+  opacity: 1;
+  transform: translate(-50%, -50%);
 }
 
 body.is-drawer-open {
@@ -824,13 +817,25 @@ body.is-drawer-open {
   }
 }
 
-.cta-banner__note .arrow-btn{
-  max-width: rem(64);
-  width: 100%;
+.cta-banner__note .btn-more__arrow {
+  width: rem(64);
+  height: rem(64);
+  background-color: $white;
 
   @include mq(md){
-    max-width: rem(44);
+    width: rem(44);
+    height: rem(44);
   }
+}
+
+.cta-banner__link:hover .btn-more__arrow-icon--current {
+  opacity: 0;
+  transform: translate(120%, -50%);
+}
+
+.cta-banner__link:hover .btn-more__arrow-icon--next {
+  opacity: 1;
+  transform: translate(-50%, -50%);
 }
 
 /* ==================================================
