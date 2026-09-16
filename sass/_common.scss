@@ -45,16 +45,53 @@ html.no-opening .opening {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: $black;
+  display: grid;
+  background-color: $white;
 }
 
 .opening__stage {
+  grid-area: 1 / 1;
   width: 100%;
   height: 100%;
 }
 
 .opening__stage canvas {
   display: block;
+}
+
+.opening__loader {
+  grid-area: 1 / 1;
+  place-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: rem(14);
+}
+
+.opening__loader-percent {
+  display: flex;
+  align-items: baseline;
+  font-family: $en;
+  color: $black;
+  @include font(20, 24, 20, $semi);
+}
+
+.opening__loader-percent-sign {
+  margin-left: rem(2);
+  @include font(12, 16, 20, $medium);
+}
+
+.opening__loader-bar {
+  overflow: hidden;
+  width: rem(160);
+  height: rem(2);
+  background-color: rgba(3, 26, 35, 0.12);
+}
+
+.opening__loader-bar-fill {
+  width: 0%;
+  height: 100%;
+  background-color: $black;
 }
 
 /* ==================================================

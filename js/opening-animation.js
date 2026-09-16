@@ -14,6 +14,11 @@
     return;
   }
 
+  if (!window.gsap) {
+    opening.remove();
+    return;
+  }
+
   document.documentElement.classList.add("is-opening");
 
   function finish() {
@@ -45,22 +50,94 @@
     isWebGLAvailable() &&
     window.THREE &&
     THREE.SVGLoader &&
-    THREE.EffectComposer &&
-    window.gsap &&
     window.HREED_OPENING_LOGO_SVG;
 
-  if (!canRun3D) {
-    if (window.gsap) {
-      gsap.to(opening, { opacity: 0, duration: 0.5, delay: 0.25, onComplete: finish });
-    } else {
-      opening.style.transition = "opacity .5s ease";
-      opening.style.opacity = "0";
-      setTimeout(finish, 550);
-    }
-    return;
+  // --- loading progress: bar + count-up percentage -----------------------
+  var loaderEl = opening.querySelector(".js-opening-loader");
+  var percentEl = opening.querySelector(".js-opening-percent");
+  var barFillEl = opening.querySelector(".js-opening-bar-fill");
+
+  var progress = { pct: 0 };
+  function renderProgress() {
+    var rounded = Math.round(progress.pct);
+    if (percentEl) percentEl.textContent = rounded;
+    if (barFillEl) barFillEl.style.width = rounded + "%";
   }
 
-  runOpeningScene(opening, finish);
+  function setProgress(target) {
+    gsap.to(progress, {
+      pct: target,
+      duration: 0.4,
+      ease: "power1.out",
+      overwrite: true,
+      onUpdate: renderProgress,
+    });
+  }
+
+  function trackLoadProgress(onDone) {
+    var images = Array.prototype.slice.call(document.images);
+    var total = images.length + 1; // +1 for web fonts
+    var loaded = 0;
+    var done = false;
+
+    function tick() {
+      loaded++;
+      setProgress((loaded / total) * 100);
+      if (!done && loaded >= total) {
+        done = true;
+        onDone();
+      }
+    }
+
+    images.forEach(function (img) {
+      if (img.complete) {
+        tick();
+      } else {
+        img.addEventListener("load", tick, { once: true });
+        img.addEventListener("error", tick, { once: true });
+      }
+    });
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(tick);
+    } else {
+      tick();
+    }
+
+    // safety net: never let a stalled asset block the site indefinitely
+    setTimeout(function () {
+      if (!done) {
+        done = true;
+        setProgress(100);
+        onDone();
+      }
+    }, 6000);
+  }
+
+  var MIN_LOADER_MS = 700;
+  var loaderStart = Date.now();
+
+  trackLoadProgress(function () {
+    var wait = Math.max(0, MIN_LOADER_MS - (Date.now() - loaderStart));
+    setTimeout(proceedAfterLoad, wait);
+  });
+
+  function proceedAfterLoad() {
+    gsap.to(loaderEl, {
+      opacity: 0,
+      y: -6,
+      duration: 0.4,
+      ease: "power1.out",
+      onComplete: function () {
+        if (loaderEl) loaderEl.style.display = "none";
+        if (canRun3D) {
+          runOpeningScene(opening, finish);
+        } else {
+          gsap.to(opening, { opacity: 0, duration: 0.5, onComplete: finish });
+        }
+      },
+    });
+  }
 
   function runOpeningScene(root, done) {
     var stage = root.querySelector(".js-opening-stage");
@@ -78,23 +155,22 @@
     var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     renderer.setSize(width, height);
-    renderer.setClearColor(0x010607, 1);
-    if ("outputEncoding" in renderer) renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.setClearColor(0xffffff, 1);
     stage.appendChild(renderer.domElement);
 
-    // --- lights -----------------------------------------------------
-    scene.add(new THREE.AmbientLight(0x0b1f1c, 1.1));
+    // --- lights: soft studio setup for a black logo on white -----------------
+    scene.add(new THREE.AmbientLight(0xffffff, 0.55));
 
-    var key = new THREE.PointLight(0x1fe0c4, 60, 200, 2);
-    key.position.set(12, 10, 18);
+    var key = new THREE.DirectionalLight(0xffffff, 0.55);
+    key.position.set(10, 14, 18);
     scene.add(key);
 
-    var rim = new THREE.PointLight(0xffffff, 30, 200, 2);
-    rim.position.set(-14, -6, 10);
-    scene.add(rim);
+    var fill = new THREE.DirectionalLight(0xffffff, 0.2);
+    fill.position.set(-12, -6, 10);
+    scene.add(fill);
 
-    var sweep = new THREE.PointLight(0x0c998a, 40, 200, 2);
-    sweep.position.set(0, 0, 14);
+    var sweep = new THREE.PointLight(0xffffff, 0.35, 200, 2);
+    sweep.position.set(0, 0, 16);
     scene.add(sweep);
 
     // --- logo geometry -------------------------------------------------
@@ -126,11 +202,9 @@
       shapes.forEach(function (shape) {
         var geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
         var material = new THREE.MeshStandardMaterial({
-          color: 0x0c998a,
-          emissive: 0x0c998a,
-          emissiveIntensity: 0.55,
-          metalness: 0.72,
-          roughness: 0.22,
+          color: 0x031a23,
+          metalness: 0.25,
+          roughness: 0.48,
           side: THREE.DoubleSide,
           transparent: true,
           opacity: 1,
@@ -161,17 +235,6 @@
     }
     frameLogo();
 
-    // --- postprocessing (bloom) --------------------------------------
-    var composer = new THREE.EffectComposer(renderer);
-    composer.addPass(new THREE.RenderPass(scene, camera));
-    var bloomPass = new THREE.UnrealBloomPass(
-      new THREE.Vector2(width, height),
-      0.62,
-      0.4,
-      0.35
-    );
-    composer.addPass(bloomPass);
-
     // --- resize --------------------------------------------------------
     function onResize() {
       width = window.innerWidth;
@@ -179,7 +242,6 @@
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
-      composer.setSize(width, height);
       frameLogo();
     }
     window.addEventListener("resize", onResize);
@@ -208,7 +270,7 @@
       sweep.position.x = Math.sin(t * 0.6) * 16;
       sweep.position.y = Math.cos(t * 0.5) * 10;
 
-      composer.render();
+      renderer.render(scene, camera);
     }
     renderLoop();
 
@@ -221,16 +283,16 @@
         mesh.geometry.dispose();
         mesh.material.dispose();
       });
-      composer.renderTarget1.dispose();
-      composer.renderTarget2.dispose();
       renderer.dispose();
     }
 
-    // --- intro: scatter in the dark, then converge into the lockup --------
-    var iconMeshes = meshes.slice(0, 5);
+    // --- intro: pieces fly in and converge into the lockup -----------------
+    // mark pieces: [0,1] = the two accent dots, [2,3,4] = the "H" body
+    var dotMeshes = meshes.slice(0, 2);
+    var bodyMeshes = meshes.slice(2, 5);
     var wordMeshes = meshes.slice(5);
 
-    meshes.forEach(function (mesh) {
+    bodyMeshes.concat(wordMeshes).forEach(function (mesh) {
       var angle = Math.random() * Math.PI * 2;
       var radius = 420 + Math.random() * 640;
       mesh.position.set(
@@ -246,8 +308,17 @@
       mesh.material.opacity = 0;
     });
 
+    // the accent dots get their own entrance: drop in from above with a
+    // bounce, slightly after the body, so they read as a deliberate beat
+    dotMeshes.forEach(function (mesh) {
+      mesh.position.set(0, 140, 40);
+      mesh.rotation.z = (Math.random() - 0.5) * 1.2;
+      mesh.scale.setScalar(0.01);
+      mesh.material.opacity = 0;
+    });
+
     var tl = gsap.timeline({
-      delay: 0.15,
+      delay: 0.1,
       onComplete: function () {
         cleanup();
         done();
@@ -256,48 +327,69 @@
 
     tl.to(camera.position, { z: restDistance, duration: 1.6, ease: "power2.out" }, 0)
       .to(
-        iconMeshes.map(function (m) { return m.position; }),
+        bodyMeshes.map(function (m) { return m.position; }),
         { x: 0, y: 0, z: 0, duration: 1.1, stagger: 0.07, ease: "expo.out" },
         0.1
       )
       .to(
-        iconMeshes.map(function (m) { return m.rotation; }),
+        bodyMeshes.map(function (m) { return m.rotation; }),
         { x: 0, y: 0, z: 0, duration: 1.1, stagger: 0.07, ease: "expo.out" },
         0.1
       )
       .to(
-        iconMeshes.map(function (m) { return m.material; }),
+        bodyMeshes.map(function (m) { return m.material; }),
         { opacity: 1, duration: 0.7, stagger: 0.07, ease: "power1.out" },
         0.1
+      )
+      // dots: delayed, bouncy pop-in accent
+      .to(
+        dotMeshes.map(function (m) { return m.position; }),
+        { x: 0, y: 0, z: 0, duration: 0.8, stagger: 0.12, ease: "bounce.out" },
+        0.55
+      )
+      .to(
+        dotMeshes.map(function (m) { return m.rotation; }),
+        { z: 0, duration: 0.6, stagger: 0.12, ease: "power2.out" },
+        0.55
+      )
+      .to(
+        dotMeshes.map(function (m) { return m.scale; }),
+        { x: 1, y: 1, z: 1, duration: 0.55, stagger: 0.12, ease: "back.out(2.6)" },
+        0.55
+      )
+      .to(
+        dotMeshes.map(function (m) { return m.material; }),
+        { opacity: 1, duration: 0.3, stagger: 0.12, ease: "power1.out" },
+        0.55
       )
       .to(
         wordMeshes.map(function (m) { return m.position; }),
         { x: 0, y: 0, z: 0, duration: 1, stagger: 0.06, ease: "expo.out" },
-        0.42
+        0.5
       )
       .to(
         wordMeshes.map(function (m) { return m.rotation; }),
         { x: 0, y: 0, z: 0, duration: 1, stagger: 0.06, ease: "expo.out" },
-        0.42
+        0.5
       )
       .to(
         wordMeshes.map(function (m) { return m.material; }),
         { opacity: 1, duration: 0.6, stagger: 0.06, ease: "power1.out" },
-        0.42
+        0.5
       )
-      .to(
-        meshes.map(function (m) { return m.material; }),
-        { emissiveIntensity: 1.3, duration: 0.25, ease: "power1.out" },
-        1.55
-      )
-      .to(
-        meshes.map(function (m) { return m.material; }),
-        { emissiveIntensity: 0.5, duration: 0.6, ease: "power2.out" },
-        1.8
-      )
-      .to(rig.rotation, { y: 0.22, duration: 1.1, ease: "sine.inOut" }, 1.6)
-      .to(rig.rotation, { y: -0.1, duration: 1.3, ease: "sine.inOut" }, "+=0")
-      .to({}, { duration: 0.4 })
+      // settle: a small unified punch once everything has landed
+      .to(rig.scale, {
+        x: "*=1.04",
+        y: "*=1.04",
+        z: "*=1.04",
+        duration: 0.18,
+        ease: "power1.out",
+        yoyo: true,
+        repeat: 1,
+      }, 1.75)
+      .to(rig.rotation, { y: 0.18, duration: 1, ease: "sine.inOut" }, 1.9)
+      .to(rig.rotation, { y: -0.08, duration: 1.2, ease: "sine.inOut" }, "+=0")
+      .to({}, { duration: 0.35 })
       .to(camera.position, { z: 15, duration: 0.6, ease: "power2.in" }, ">-0.1")
       .to(
         meshes.map(function (m) { return m.material; }),

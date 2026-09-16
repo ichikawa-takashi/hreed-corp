@@ -26,6 +26,15 @@
 <body>
   <div class="opening js-opening" aria-hidden="true">
     <div class="js-opening-stage opening__stage"></div>
+
+    <div class="opening__loader js-opening-loader">
+      <p class="opening__loader-percent">
+        <span class="js-opening-percent">0</span><span class="opening__loader-percent-sign">%</span>
+      </p>
+      <div class="opening__loader-bar">
+        <div class="opening__loader-bar-fill js-opening-bar-fill"></div>
+      </div>
+    </div>
   </div>
 
   <header class="header js-header">
@@ -558,12 +567,6 @@
   <script src="./js/sec-title-animation.js"></script>
   <script src="./js/vendor/three.min.js"></script>
   <script src="./js/vendor/SVGLoader.js"></script>
-  <script src="./js/vendor/EffectComposer.js"></script>
-  <script src="./js/vendor/RenderPass.js"></script>
-  <script src="./js/vendor/ShaderPass.js"></script>
-  <script src="./js/vendor/CopyShader.js"></script>
-  <script src="./js/vendor/LuminosityHighPassShader.js"></script>
-  <script src="./js/vendor/UnrealBloomPass.js"></script>
   <script src="./js/opening-logo.js"></script>
   <script src="./js/opening-animation.js"></script>
 </body>
