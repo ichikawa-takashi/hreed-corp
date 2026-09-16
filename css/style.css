@@ -1169,6 +1169,8 @@ body.is-drawer-open {
 }
 
 .btn-more__arrow {
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1185,10 +1187,31 @@ body.is-drawer-open {
   }
 }
 
-.btn-more__arrow img {
+.btn-more__arrow-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 44%;
   height: auto;
   display: block;
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  transition: transform 0.35s ease, opacity 0.3s ease;
+}
+
+.btn-more__arrow-icon--next {
+  opacity: 0;
+  transform: translate(-220%, -50%);
+}
+
+.btn-more:hover .btn-more__arrow-icon--current {
+  opacity: 0;
+  transform: translate(120%, -50%);
+}
+
+.btn-more:hover .btn-more__arrow-icon--next {
+  opacity: 1;
+  transform: translate(-50%, -50%);
 }
 
 .btn-more--solid {
