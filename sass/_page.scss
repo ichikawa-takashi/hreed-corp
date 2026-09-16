@@ -462,6 +462,8 @@
     font-family: $en;
     @include font(64, 64, null, $extra);
     color: $white;
+    -webkit-text-stroke: 2px $green;
+    paint-order: stroke;
 
     @include mq('md') {
         @include font(40, 40, null, $extra);

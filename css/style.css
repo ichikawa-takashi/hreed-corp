@@ -1647,6 +1647,8 @@ body.is-drawer-open {
   line-height: 1;
   font-weight: 900;
   color: #ffffff;
+  -webkit-text-stroke: 2px #0c998a;
+  paint-order: stroke;
 }
 @media screen and (max-width: 768px) {
   .service__num {
