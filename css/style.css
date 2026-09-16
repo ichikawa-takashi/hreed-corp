@@ -567,6 +567,10 @@ body.is-drawer-open {
   z-index: 10;
 }
 
+.lower-mv__text {
+  display: inline-block;
+}
+
 .lower-mv__tag {
   padding: 0 0.5rem;
   background-color: #0c998a;
@@ -662,7 +666,7 @@ body.is-drawer-open {
 
 .lower-mv__deco--03 {
   top: 11.5625rem;
-  right: 39.875rem;
+  right: 48.125rem;
   width: 2.75rem;
 }
 @media screen and (max-width: 768px) {
@@ -739,6 +743,10 @@ body.is-drawer-open {
 .sec-title--reverse .sec-title__ja {
   color: #031A23;
   background-color: #ffffff;
+}
+
+.sec-title__text {
+  display: inline-block;
 }
 
 /* ==================================================
