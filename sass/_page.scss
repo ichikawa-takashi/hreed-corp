@@ -207,19 +207,14 @@
     display: block;
     transform: scale(1);
     transform-origin: center;
-}
-
-@keyframes mv-photo-zoom {
-    from {
-        transform: scale(1);
-    }
-    to {
-        transform: scale(1.08);
-    }
+    // 非アクティブに戻っても、前面のスライドに完全に覆われるまで(1.1s)は
+    // 拡大した状態を維持し、隠れた瞬間に倍率を瞬時にリセットする
+    transition: transform 0s linear 1.1s !important;
 }
 
 .mv__photo-slide.swiper-slide-active .mv__photo-img {
-    animation: mv-photo-zoom 6s ease-out forwards;
+    transform: scale(1.08) !important;
+    transition: transform 6s ease-out !important;
 }
 
 .mv__news {
