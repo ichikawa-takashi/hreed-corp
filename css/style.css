@@ -1466,6 +1466,11 @@ body.is-drawer-open {
   transition: transform 6s ease-out !important;
 }
 
+.mv__photo-slide.is-zoom-reset .mv__photo-img {
+  transition: none !important;
+  transform: scale(1) !important;
+}
+
 .mv__news {
   grid-area: 1/1;
   align-self: end;

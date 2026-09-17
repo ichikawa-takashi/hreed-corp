@@ -217,6 +217,13 @@
     transition: transform 6s ease-out !important;
 }
 
+// オープニング演出終了時に1枚目のズームをやり直すためのリセット用クラス
+// (JSで一瞬付与してリフローさせ、その後外すことでtransitionを再スタートさせる)
+.mv__photo-slide.is-zoom-reset .mv__photo-img {
+    transition: none !important;
+    transform: scale(1) !important;
+}
+
 .mv__news {
     grid-area: 1 / 1;
     align-self: end;
