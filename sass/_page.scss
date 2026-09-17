@@ -130,6 +130,11 @@
     }
 }
 
+.mv__head-text,
+.mv__tag-text {
+    display: inline-block;
+}
+
 .mv__row {
     display: flex;
     align-items: flex-start;

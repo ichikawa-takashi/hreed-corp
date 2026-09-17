@@ -5,9 +5,24 @@
   var mv = document.querySelector(".mv");
   var deco = mv ? mv.querySelector(".mv__deco") : null;
   var head = mv ? mv.querySelector(".mv__head") : null;
+  var headText = mv ? mv.querySelector(".mv__head-text") : null;
   var tag = mv ? mv.querySelector(".mv__tag") : null;
+  var tagText = mv ? mv.querySelector(".mv__tag-text") : null;
   var media = mv ? mv.querySelector(".mv__media") : null;
   var news = mv ? mv.querySelector(".mv__news") : null;
+
+  // オープニング演出の裏側で見出し等が素の状態のまま一瞬見えてしまわない
+  // よう(演出が終わるまでの間、白い幕ごしに透けて見えてしまうのを防ぐ)、
+  // ページ読み込み直後の時点であらかじめ隠しておく
+  if (window.gsap) {
+    if (deco) gsap.set(deco, { opacity: 0 });
+    if (head) gsap.set(head, { scaleX: 0, transformOrigin: "left center" });
+    if (headText) gsap.set(headText, { opacity: 0, y: 8 });
+    if (tag) gsap.set(tag, { scaleX: 0, transformOrigin: "left center" });
+    if (tagText) gsap.set(tagText, { opacity: 0, y: 8 });
+    if (media) gsap.set(media, { opacity: 0, y: 24 });
+    if (news) gsap.set(news, { opacity: 0, y: 16 });
+  }
 
   var swiper = new Swiper(el, {
     effect: "fade",
@@ -24,16 +39,23 @@
   // オープニング演出中はカウントを進めず、演出終了(.js-openingの除去)後に自動再生を開始する
   swiper.autoplay.stop();
 
-  // 見出し・タグ・写真・お知らせカードなど、FVのコンテンツをまとめてアニメーション表示する
+  // 見出し・タグ・写真・お知らせカードなど、FVのコンテンツをまとめてアニメーション表示する。
+  // 見出し・タグは下層ページの見出し(sec-title)と同じく「背景が先に広がり、
+  // そこから文字が浮かび上がる」演出にする
   function revealContent() {
     if (!window.gsap) return;
 
     var tl = gsap.timeline();
-    if (deco) tl.from(deco, { opacity: 0, duration: 1, ease: "power1.out" }, 0);
-    if (head) tl.from(head, { opacity: 0, y: 30, duration: 0.7, ease: "power3.out" }, 0.15);
-    if (tag) tl.from(tag, { opacity: 0, y: 20, duration: 0.6, ease: "power3.out" }, 0.35);
-    if (media) tl.from(media, { opacity: 0, y: 24, duration: 0.8, ease: "power3.out" }, 0.45);
-    if (news) tl.from(news, { opacity: 0, y: 16, duration: 0.6, ease: "power3.out" }, 0.85);
+    if (deco) tl.to(deco, { opacity: 1, duration: 1, ease: "power1.out" }, 0);
+
+    if (head) tl.to(head, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.15);
+    if (headText) tl.to(headText, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.55);
+
+    if (tag) tl.to(tag, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 0.4);
+    if (tagText) tl.to(tagText, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.75);
+
+    if (media) tl.to(media, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0.55);
+    if (news) tl.to(news, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.95);
   }
 
   // 1枚目のクリップワイプ・ズームは、オープニング演出の裏側で先に進んでしまうと

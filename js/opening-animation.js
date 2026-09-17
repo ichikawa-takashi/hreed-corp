@@ -197,8 +197,8 @@
         var geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
         var material = new THREE.MeshStandardMaterial({
           color: 0x031a23,
-          metalness: 0.25,
-          roughness: 0.48,
+          metalness: 0.42,
+          roughness: 0.3,
           side: THREE.DoubleSide,
           transparent: true,
           opacity: 1,
@@ -252,6 +252,10 @@
     var clock = new THREE.Clock();
     var running = true;
     var rafId = null;
+    // a slow, gentle drift on top of the establishing 3/4 angle, so the
+    // opening reads as a live camera move rather than a static shot; it
+    // switches off the instant the camera starts swinging to frontal
+    var driftActive = true;
 
     function renderLoop() {
       if (!running) return;
@@ -260,6 +264,11 @@
 
       tiltGroup.rotation.y += (pointer.x * 0.25 - tiltGroup.rotation.y) * 0.04;
       tiltGroup.rotation.x += (-pointer.y * 0.15 - tiltGroup.rotation.x) * 0.04;
+
+      if (driftActive) {
+        camera.position.x = introOffset.x + Math.sin(t * 0.35) * 1.4;
+        camera.position.y = introOffset.y + Math.cos(t * 0.3) * 1;
+      }
 
       sweep.position.x = Math.sin(t * 0.6) * 16;
       sweep.position.y = Math.cos(t * 0.5) * 10;
@@ -352,34 +361,53 @@
     }
 
     // a bright glint sweeps left-to-right across the lockup once the
-    // connector lands, like light catching a polished surface
+    // connector lands, like light catching a polished surface; a softer,
+    // warm-tinted companion trails slightly behind for a richer sparkle
     function glintSweep() {
       var glintLight = new THREE.PointLight(0xffffff, 0, 900, 2);
       glintLight.position.set(-760, 20, 90);
       rig.add(glintLight);
 
+      var warmLight = new THREE.PointLight(0xffe9c2, 0, 700, 2);
+      warmLight.position.set(-820, -30, 80);
+      rig.add(warmLight);
+
       gsap.timeline({
         onComplete: function () {
           rig.remove(glintLight);
+          rig.remove(warmLight);
         },
       })
-        .to(glintLight, { intensity: 30, duration: 0.15, ease: "power1.out" }, 0)
+        .to(glintLight, { intensity: 34, duration: 0.15, ease: "power1.out" }, 0)
         .to(glintLight.position, { x: 760, duration: 0.65, ease: "power1.inOut" }, 0)
-        .to(glintLight, { intensity: 0, duration: 0.3, ease: "power1.in" }, 0.35);
+        .to(glintLight, { intensity: 0, duration: 0.3, ease: "power1.in" }, 0.35)
+        .to(warmLight, { intensity: 16, duration: 0.18, ease: "power1.out" }, 0.08)
+        .to(warmLight.position, { x: 700, duration: 0.7, ease: "power1.inOut" }, 0.08)
+        .to(warmLight, { intensity: 0, duration: 0.3, ease: "power1.in" }, 0.45);
     }
 
     var introComplete = false;
     var readyToExit = false;
+    var breatheTween = null;
 
-    // once the camera has swung to frontal and glinted, we just hold here
-    // (nothing keeps animating) until the progress bar underneath is ready
-    // to complete (see paceProgressUntilReady)
+    // once the camera has swung to frontal and glinted, it holds here with
+    // just a slow, subtle dolly breathing in place, until the progress bar
+    // underneath is ready to complete (see paceProgressUntilReady)
     function onIntroSettled() {
       introComplete = true;
+      breatheTween = gsap.to(camera.position, {
+        z: restDistance - 0.5,
+        duration: 2.6,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
       if (readyToExit) playExit();
     }
 
     function playExit() {
+      if (breatheTween) breatheTween.kill();
+
       gsap
         .timeline({
           onComplete: function () {
@@ -389,6 +417,7 @@
         })
         // hold a beat on the frontal view, then fade out and hand off to
         // the page (the MV slider starts once .js-opening leaves the DOM)
+        .set(camera.position, { z: restDistance })
         .to({}, { duration: 1 })
         .to(camera.position, { z: 15, duration: 0.6, ease: "power2.in" })
         .to(
@@ -467,6 +496,7 @@
       // the connector snaps in once both sides have landed
       .add(glitchIn(connectorMesh), 1.85)
       // the camera (not the logo) swings around to a dead-on frontal view
+      .call(function () { driftActive = false; }, null, 2.3)
       .to(camera.position, { x: 0, y: 0, duration: 0.7, ease: "power2.inOut" }, 2.3)
       // only once we're facing it head-on does the glint sweep across
       .call(glintSweep, null, 3)
