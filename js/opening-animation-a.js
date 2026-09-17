@@ -141,7 +141,10 @@
     var camera = new THREE.PerspectiveCamera(42, width / height, 1, 100);
     var restDistance = 24; // distance the camera settles at once assembled; framing is calibrated to this
     var startDistance = 34; // far distance the camera dollies in from during the intro
-    camera.position.set(0, 0, startDistance);
+    // the intro is viewed from a slight upper-right 3/4 angle for depth;
+    // playExit() straightens this back to dead-on before the final hold
+    var introOffset = { x: 9, y: 6.5 };
+    camera.position.set(introOffset.x, introOffset.y, startDistance);
 
     var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
@@ -261,6 +264,7 @@
       sweep.position.x = Math.sin(t * 0.6) * 16;
       sweep.position.y = Math.cos(t * 0.5) * 10;
 
+      camera.lookAt(0, 0, 0);
       renderer.render(scene, camera);
     }
     renderLoop();
@@ -317,10 +321,10 @@
       mesh.material.opacity = 0;
     });
 
-    // the accent dots get their own entrance: drop in from above with a
-    // bounce, as part of the HR beat
-    dotMeshes.forEach(function (mesh) {
-      mesh.position.set(0, 140, 40);
+    // the accent dots get their own entrance: they bounce in from the left
+    // like a dropped ball, as part of the HR beat
+    dotMeshes.forEach(function (mesh, i) {
+      mesh.position.set(-440 - i * 70, 120 + i * 25, 30);
       mesh.rotation.z = (Math.random() - 0.5) * 1.2;
       mesh.scale.setScalar(0.01);
       mesh.material.opacity = 0;
@@ -347,23 +351,21 @@
       return gtl;
     }
 
-    // a brief green pulse ripples outward from the connector once it lands
-    function pulseFromConnector() {
-      var connectorIndex = meshes.indexOf(connectorMesh);
-      var green = new THREE.Color(0x0c998a);
-      gsap.to(
-        meshes.map(function (m) { return m.material.color; }),
-        {
-          r: green.r,
-          g: green.g,
-          b: green.b,
-          duration: 0.22,
-          ease: "power1.inOut",
-          yoyo: true,
-          repeat: 1,
-          stagger: { each: 0.05, from: connectorIndex },
-        }
-      );
+    // a bright glint sweeps left-to-right across the lockup once the
+    // connector lands, like light catching a polished surface
+    function glintSweep() {
+      var glintLight = new THREE.PointLight(0xffffff, 0, 900, 2);
+      glintLight.position.set(-760, 20, 90);
+      rig.add(glintLight);
+
+      gsap.timeline({
+        onComplete: function () {
+          rig.remove(glintLight);
+        },
+      })
+        .to(glintLight, { intensity: 30, duration: 0.15, ease: "power1.out" }, 0)
+        .to(glintLight.position, { x: 760, duration: 0.65, ease: "power1.inOut" }, 0)
+        .to(glintLight, { intensity: 0, duration: 0.3, ease: "power1.in" }, 0.35);
     }
 
     var idleTween = null;
@@ -393,11 +395,16 @@
           },
         })
         .to(rig.rotation, { y: 0, duration: 0.4, ease: "power1.inOut" }, 0)
-        .to(camera.position, { z: 15, duration: 0.6, ease: "power2.in" }, 0.1)
+        // straighten out to a dead-on frontal view before the hand-off
+        .to(camera.position, { x: 0, y: 0, duration: 0.7, ease: "power2.inOut" }, 0)
+        // hold a beat on that frontal view, then fade out and hand off to
+        // the page (the MV slider starts once .js-opening leaves the DOM)
+        .to({}, { duration: 1 })
+        .to(camera.position, { z: 15, duration: 0.6, ease: "power2.in" })
         .to(
           meshes.map(function (m) { return m.material; }),
           { opacity: 0, duration: 0.45, ease: "power1.in" },
-          0.1
+          "<"
         )
         .to(root, { opacity: 0, duration: 0.5, ease: "power1.in" }, "<0.05");
     }
@@ -423,7 +430,17 @@
       )
       .to(
         dotMeshes.map(function (m) { return m.position; }),
-        { x: 0, y: 0, z: 0, duration: 0.8, stagger: 0.12, ease: "bounce.out" },
+        { x: 0, duration: 0.85, stagger: 0.12, ease: "power2.out" },
+        0.5
+      )
+      .to(
+        dotMeshes.map(function (m) { return m.position; }),
+        { y: 0, duration: 0.85, stagger: 0.12, ease: "bounce.out" },
+        0.5
+      )
+      .to(
+        dotMeshes.map(function (m) { return m.position; }),
+        { z: 0, duration: 0.85, stagger: 0.12, ease: "power2.out" },
         0.5
       )
       .to(
@@ -459,7 +476,7 @@
       )
       // the connector snaps in once both sides have landed
       .add(glitchIn(connectorMesh), 1.85)
-      .call(pulseFromConnector, null, 2.25)
+      .call(glintSweep, null, 2.25)
       // settle: a small unified punch once everything has landed
       .to(rig.scale, {
         x: "*=1.04",
