@@ -2,6 +2,18 @@
   var opening = document.querySelector(".js-opening");
   if (!opening) return;
 
+  var STORAGE_KEY = "hreedOpeningPlayed";
+
+  var alreadyPlayed = false;
+  try {
+    alreadyPlayed = sessionStorage.getItem(STORAGE_KEY) === "1";
+  } catch (e) {}
+
+  if (alreadyPlayed) {
+    opening.remove();
+    return;
+  }
+
   if (!window.gsap) {
     opening.remove();
     return;
@@ -11,6 +23,9 @@
 
   function finish() {
     document.documentElement.classList.remove("is-opening");
+    try {
+      sessionStorage.setItem(STORAGE_KEY, "1");
+    } catch (e) {}
     opening.remove();
   }
 
