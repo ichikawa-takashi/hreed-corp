@@ -1447,6 +1447,9 @@ body.is-drawer-open {
 
 .mv__photo-slide.swiper-slide-active {
   z-index: 2;
+}
+
+.mv__photo.is-ready .mv__photo-slide.swiper-slide-active {
   clip-path: circle(150% at 100% 0%) !important;
   transition: clip-path 1.1s cubic-bezier(0.65, 0, 0.35, 1) !important;
 }
@@ -1461,18 +1464,14 @@ body.is-drawer-open {
   transition: transform 0s linear 1.1s !important;
 }
 
-.mv__photo-slide.swiper-slide-active .mv__photo-img {
+.mv__photo.is-ready .mv__photo-slide.swiper-slide-active .mv__photo-img {
   transform: scale(1.08) !important;
   transition: transform 6s ease-out !important;
 }
 
-.mv__photo-slide.is-zoom-reset .mv__photo-img {
-  transition: none !important;
-  transform: scale(1) !important;
-}
-
 .mv__news {
   grid-area: 1/1;
+  z-index: 2;
   align-self: end;
   justify-self: end;
   width: 32%;
