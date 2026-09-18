@@ -711,6 +711,7 @@ body.is-drawer-open {
   display: block;
   pointer-events: none;
   z-index: 0;
+  will-change: transform;
 }
 
 .lower-mv__deco--01 {
@@ -1968,7 +1969,6 @@ body.is-drawer-open {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1;
   border-right: 1px solid #0c998a;
   border-bottom: 1px solid #0c998a;
 }

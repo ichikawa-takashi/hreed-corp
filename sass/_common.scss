@@ -478,6 +478,7 @@ body.is-drawer-open {
   display: block;
   pointer-events: none;
   z-index: 0;
+  will-change: transform;
 }
 
 .lower-mv__deco--01 {
