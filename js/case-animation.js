@@ -41,7 +41,7 @@ gsap.registerPlugin(ScrollTrigger);
         scrollTrigger: {
           trigger: card,
           start: "top 88%",
-          once: true,
+          toggleActions: "play none none none",
         },
       });
 

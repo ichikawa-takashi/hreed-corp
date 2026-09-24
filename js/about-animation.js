@@ -20,7 +20,7 @@ gsap.registerPlugin(ScrollTrigger);
       scrollTrigger: {
         trigger: aboutSection,
         start: "top 70%",
-        once: true,
+        toggleActions: "play none none none",
       },
     });
   });
@@ -35,7 +35,7 @@ gsap.registerPlugin(ScrollTrigger);
     scrollTrigger: {
       trigger: ".about__body",
       start: "top 80%",
-      once: true,
+      toggleActions: "play none none none",
     },
   });
 
@@ -47,7 +47,7 @@ gsap.registerPlugin(ScrollTrigger);
     scrollTrigger: {
       trigger: ".about__photos",
       start: "top 80%",
-      once: true,
+      toggleActions: "play none none none",
     },
   });
 
@@ -60,7 +60,7 @@ gsap.registerPlugin(ScrollTrigger);
     scrollTrigger: {
       trigger: ".about__photos",
       start: "top 80%",
-      once: true,
+      toggleActions: "play none none none",
     },
   });
 

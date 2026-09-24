@@ -32,7 +32,7 @@ gsap.registerPlugin(ScrollTrigger);
       scrollTrigger: {
         trigger: num,
         start: "top 90%",
-        once: true,
+        toggleActions: "play none none none",
       },
     });
   });
@@ -51,7 +51,7 @@ gsap.registerPlugin(ScrollTrigger);
       scrollTrigger: {
         trigger: logo,
         start: "top 88%",
-        once: true,
+        toggleActions: "play none none none",
       },
     });
   });
@@ -69,7 +69,7 @@ gsap.registerPlugin(ScrollTrigger);
       scrollTrigger: {
         trigger: body,
         start: "top 88%",
-        once: true,
+        toggleActions: "play none none none",
       },
     });
   });
@@ -86,7 +86,7 @@ gsap.registerPlugin(ScrollTrigger);
       scrollTrigger: {
         trigger: wideBody,
         start: "top 85%",
-        once: true,
+        toggleActions: "play none none none",
       },
     });
   }

@@ -18,7 +18,7 @@ gsap.registerPlugin(ScrollTrigger);
       scrollTrigger: {
         trigger: item,
         start: "top 85%",
-        once: true,
+        toggleActions: "play none none none",
       },
     });
 

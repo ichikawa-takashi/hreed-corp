@@ -34,7 +34,7 @@ gsap.registerPlugin(ScrollTrigger);
       scrollTrigger: {
         trigger: section,
         start: "top 75%",
-        once: true,
+        toggleActions: "play none none none",
       },
     });
   }

@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
     scrollTrigger: {
       trigger: head,
       start: "top 90%",
-      once: true,
+      toggleActions: "play none none none",
     },
   });
 
@@ -62,7 +62,7 @@ gsap.registerPlugin(ScrollTrigger);
       scrollTrigger: {
         trigger: lowerMv,
         start: "top 80%",
-        once: true,
+        toggleActions: "play none none none",
       },
     });
 
