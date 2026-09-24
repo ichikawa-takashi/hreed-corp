@@ -833,8 +833,9 @@ body.is-drawer-open {
 .link-cards {
   position: relative;
   overflow: hidden;
-  background-image: url(../img/common/link-bg.png);
+  background-image: linear-gradient(rgba(12, 153, 138, 0.82), rgba(12, 153, 138, 0.82)), url(../img/top/service-bg.jpg);
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
   padding-top: 5rem;
   padding-bottom: 5rem;
@@ -1024,6 +1025,14 @@ body.is-drawer-open {
   position: relative;
   display: block;
   overflow: hidden;
+}
+.cta-banner__link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #0c998a;
+  opacity: 0.82;
+  pointer-events: none;
 }
 
 .cta-banner__bg {

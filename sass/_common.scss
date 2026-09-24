@@ -581,8 +581,9 @@ body.is-drawer-open {
 .link-cards {
   position: relative;
   overflow: hidden;
-  background-image: url(../img/common/link-bg.png);
+  background-image: linear-gradient(rgba($green, .82), rgba($green, .82)), url(../img/top/service-bg.jpg);
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
   padding-top: rem(80);
   padding-bottom: rem(80);
@@ -760,6 +761,15 @@ body.is-drawer-open {
   position: relative;
   display: block;
   overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: $green;
+    opacity: .82;
+    pointer-events: none;
+  }
 }
 
 .cta-banner__bg {
