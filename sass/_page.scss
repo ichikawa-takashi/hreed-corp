@@ -678,15 +678,24 @@
     position: absolute;
     top: 0;
     left: 0;
+    // .case__photoはGSAPでscaleアニメーションが付き、transformを持つと
+    // スタッキングコンテキストが生まれて後発のDOM順で前面に出てしまうため、
+    // ラベルは明示的なz-indexで常に写真より手前に固定する
+    z-index: 1;
     border-right: 1px solid $green;
     border-bottom: 1px solid $green;
+}
+
+.case__photo-frame {
+    display: block;
+    overflow: hidden;
+    border: 1px solid $green;
 }
 
 .case__photo {
     width: 100%;
     aspect-ratio: 532 / 308;
     object-fit: cover;
-    border: 1px solid $green;
 }
 
 .case__card-title {

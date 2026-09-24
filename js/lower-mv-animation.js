@@ -39,10 +39,11 @@ gsap.registerPlugin(ScrollTrigger);
 })();
 
 // --- あしらい(lower-mv__deco)の線描画アニメーション -------------------------
-// トップページのaboutセクションと同じ手法: strokeのみの図形(--03の枠、
-// --04の円)はgetTotalLength()でstroke-dasharray/dashoffsetを組み、線が
-// 引かれるように見せる。--01/--02は塗りの図形(実質は縁取りだが線として
-// 描画できない)なので、同じタイミングでふわっと浮かび上がる形で揃える
+// トップページのaboutセクションと同じ手法: getTotalLength()でstroke-dasharray/
+// dashoffsetを組み、線が引かれるように見せる。--01/--02は本来は塗りの図形だが、
+// 線として描画できるようstrokeも持たせてあるので、線が引き終わった直後に
+// fill-opacityを0→1にして塗りが浮かび上がるようにし、--03/--04(塗りを持たない
+// 線のみの図形)と見た目のトーンを揃える
 (function () {
   var lowerMv = document.querySelector(".lower-mv");
   if (!lowerMv) return;
@@ -53,10 +54,10 @@ gsap.registerPlugin(ScrollTrigger);
     el.style.strokeDasharray = length;
     el.style.strokeDashoffset = length;
 
-    gsap.to(el, {
-      strokeDashoffset: 0,
-      duration: 1.2,
-      ease: "power2.out",
+    var hasFill = el.hasAttribute("fill") && el.getAttribute("fill") !== "none";
+    if (hasFill) el.style.fillOpacity = 0;
+
+    var tl = gsap.timeline({
       delay: i * 0.15,
       scrollTrigger: {
         trigger: lowerMv,
@@ -64,26 +65,13 @@ gsap.registerPlugin(ScrollTrigger);
         once: true,
       },
     });
-  });
 
-  var fadeTargets = lowerMv.querySelectorAll(
-    ".lower-mv__deco--01, .lower-mv__deco--02"
-  );
-  if (fadeTargets.length) {
-    gsap.from(fadeTargets, {
-      opacity: 0,
-      scale: 0.85,
-      duration: 0.9,
-      stagger: 0.15,
-      ease: "power2.out",
-      transformOrigin: "center",
-      scrollTrigger: {
-        trigger: lowerMv,
-        start: "top 80%",
-        once: true,
-      },
-    });
-  }
+    tl.to(el, { strokeDashoffset: 0, duration: 1.2, ease: "power2.out" });
+
+    if (hasFill) {
+      tl.to(el, { fillOpacity: 1, duration: 0.4, ease: "power1.out" }, "-=0.3");
+    }
+  });
 })();
 
 // --- あしらい(lower-mv__deco)のマウス連動パララックス -----------------------

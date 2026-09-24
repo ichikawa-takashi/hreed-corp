@@ -1969,15 +1969,21 @@ body.is-drawer-open {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1;
   border-right: 1px solid #0c998a;
   border-bottom: 1px solid #0c998a;
+}
+
+.case__photo-frame {
+  display: block;
+  overflow: hidden;
+  border: 1px solid #0c998a;
 }
 
 .case__photo {
   width: 100%;
   aspect-ratio: 532/308;
   object-fit: cover;
-  border: 1px solid #0c998a;
 }
 
 .case__card-title {
@@ -3936,6 +3942,128 @@ body.is-drawer-open {
     background-size: 1.5rem 1.5rem;
     font-size: 0.875rem;
     line-height: 1.4285714286;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+  }
+}
+
+/* ==================================================
+*  case list page
+================================================== */
+/* ---------- filter ---------- */
+.case-list__filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+@media screen and (max-width: 768px) {
+  .case-list__filter {
+    gap: 0.5rem;
+  }
+}
+
+.case-list__filter-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4375rem 0.9375rem;
+  border: 1px solid #0c998a;
+  background-color: #ffffff;
+  color: #031A23;
+  font-size: 1rem;
+  line-height: 1.4375;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+.case-list__filter-link.is-active {
+  background-color: #0c998a;
+  color: #ffffff;
+}
+@media screen and (max-width: 768px) {
+  .case-list__filter-link {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+}
+
+/* ---------- grid（トップページのcase__cardを再利用、案内列のオフセットなしで揃える） ---------- */
+.case-list__grid {
+  margin-top: 5rem;
+}
+@media screen and (max-width: 768px) {
+  .case-list__grid {
+    margin-top: 3.75rem;
+  }
+}
+
+/* ---------- pagination ---------- */
+.case-pagination {
+  margin-top: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+@media screen and (max-width: 768px) {
+  .case-pagination {
+    margin-top: 2.5rem;
+    gap: 0.75rem;
+  }
+}
+
+.case-pagination__arrow {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+  background-color: #0c998a;
+  border-radius: 50%;
+}
+.case-pagination__arrow.is-disabled {
+  opacity: 0.2;
+  pointer-events: none;
+}
+@media screen and (max-width: 768px) {
+  .case-pagination__arrow {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+.case-pagination__list {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 0 1rem;
+}
+@media screen and (max-width: 768px) {
+  .case-pagination__list {
+    gap: 1.25rem;
+    margin: 0 0.5rem;
+  }
+}
+
+.case-pagination__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #031A23;
+  font-size: 1.25rem;
+  line-height: 1.45;
+  letter-spacing: 0em;
+  font-weight: 700;
+}
+.case-pagination__link.is-current {
+  color: #0c998a;
+}
+@media screen and (max-width: 768px) {
+  .case-pagination__link {
+    font-size: 0.9375rem;
+    line-height: 1.3333333333;
     letter-spacing: 0.05em;
     font-weight: 700;
   }

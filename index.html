@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>
+  <!-- <script>
     (function () {
       try {
         if (sessionStorage.getItem("hreedOpeningPlayed") === "1") {
@@ -12,7 +12,7 @@
         }
       } catch (e) {}
     })();
-  </script>
+  </script> -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -343,7 +343,9 @@
         <div class="case__col">
           <article class="case__card">
             <p class="case__client">株式会社システム・リノベイト様</p>
-            <img class="case__photo" src="./img/top/case-photo-systemrenovate.jpg" alt="株式会社システム・リノベイト様">
+            <div class="case__photo-frame">
+              <img class="case__photo" src="./img/top/case-photo-systemrenovate.jpg" alt="株式会社システム・リノベイト様">
+            </div>
             <h3 class="case__card-title">研修満足度97%を達成!研修参加率も向上しました</h3>
             <p class="case__card-text">業種や従業員数、より詳しい効果についての説明が入ります。業種や従業員数、より詳しい効果についての説明が入ります。</p>
             <span class="case__pill">採用コンサル</span>
@@ -351,7 +353,9 @@
 
           <article class="case__card">
             <p class="case__client">freee株式会社様</p>
-            <img class="case__photo" src="./img/top/case-photo-freee.jpg" alt="freee株式会社様">
+            <div class="case__photo-frame">
+              <img class="case__photo" src="./img/top/case-photo-freee.jpg" alt="freee株式会社様">
+            </div>
             <h3 class="case__card-title">研修満足度97%を達成!研修参加率も向上しました</h3>
             <p class="case__card-text">業種や従業員数、より詳しい効果についての説明が入ります。業種や従業員数、より詳しい効果についての説明が入ります。</p>
             <span class="case__pill">RPO</span>
@@ -361,7 +365,9 @@
         <div class="case__col case__col--offset">
           <article class="case__card">
             <p class="case__client">freee株式会社様</p>
-            <img class="case__photo" src="./img/top/case-photo-freee.jpg" alt="freee株式会社様">
+            <div class="case__photo-frame">
+              <img class="case__photo" src="./img/top/case-photo-freee.jpg" alt="freee株式会社様">
+            </div>
             <h3 class="case__card-title">研修満足度97%を達成!研修参加率も向上しました</h3>
             <p class="case__card-text">業種や従業員数、より詳しい効果についての説明が入ります。業種や従業員数、より詳しい効果についての説明が入ります。</p>
             <span class="case__pill">RPO</span>
@@ -369,7 +375,9 @@
 
           <article class="case__card">
             <p class="case__client">株式会社システム・リノベイト様</p>
-            <img class="case__photo" src="./img/top/case-photo-systemrenovate.jpg" alt="株式会社システム・リノベイト様">
+            <div class="case__photo-frame">
+              <img class="case__photo" src="./img/top/case-photo-systemrenovate.jpg" alt="株式会社システム・リノベイト様">
+            </div>
             <h3 class="case__card-title">研修満足度97%を達成!研修参加率も向上しました</h3>
             <p class="case__card-text">業種や従業員数、より詳しい効果についての説明が入ります。業種や従業員数、より詳しい効果についての説明が入ります。</p>
             <span class="case__pill">採用コンサル</span>
@@ -502,8 +510,9 @@
                 <h3 class="sec-title__en"><span class="sec-title__text">Company</span></h3>
                 <p class="sec-title__ja"><span class="sec-title__text">会社概要</span></p>
               </div>
-              <span class="arrow-btn">
-                <img src="./img/common/icon-arrow_grn.svg" alt="矢印アイコン">
+              <span class="btn-more__arrow" aria-hidden="true">
+                <img src="./img/common/arrow-white.svg" alt="矢印アイコン" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+                <img src="./img/common/arrow-white.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
               </span>
             </div>
           </a>
@@ -519,8 +528,9 @@
                 <h3 class="sec-title__en"><span class="sec-title__text">Recruit</span></h3>
                 <p class="sec-title__ja"><span class="sec-title__text">採用情報</span></p>
               </div>
-              <span class="arrow-btn">
-                <img src="./img/common/icon-arrow_grn.svg" alt="矢印アイコン">
+              <span class="btn-more__arrow" aria-hidden="true">
+                <img src="./img/common/arrow-white.svg" alt="矢印アイコン" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+                <img src="./img/common/arrow-white.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
               </span>
             </div>
           </a>
@@ -534,6 +544,8 @@
     <div class="cta-banner__inner inner">
       <a href="./contact.html" class="cta-banner__link">
         <img src="./img/common/cta-bg.png" alt="お問い合わせ背景" class="cta-banner__bg">
+        <canvas class="cta-banner__canvas" aria-hidden="true"></canvas>
+        <span class="cta-banner__shine" aria-hidden="true"></span>
 
         <div class="cta-banner__wrapper">
           <div class="sec-title sec-title--reverse cta-banner__title">
@@ -593,12 +605,17 @@
   <script src="./js/ScrollTrigger.js"></script>
   <script src="./js/about-animation.js"></script>
   <script src="./js/sec-title-animation.js"></script>
+  <script src="./js/service-animation.js"></script>
+  <script src="./js/case-animation.js"></script>
+  <script src="./js/news-animation.js"></script>
+  <script src="./js/link-cards-animation.js"></script>
   <script src="./js/vendor/swiper-bundle.min.js"></script>
   <script src="./js/mv-slideshow.js"></script>
   <script src="./js/vendor/three.min.js"></script>
   <script src="./js/vendor/SVGLoader.js"></script>
   <script src="./js/opening-logo.js"></script>
   <script src="./js/opening-animation.js"></script>
+  <script src="./js/cta-banner-animation.js"></script>
 </body>
 
 </html>

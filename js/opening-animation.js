@@ -4,15 +4,15 @@
 
   var STORAGE_KEY = "hreedOpeningPlayed";
 
-  var alreadyPlayed = false;
-  try {
-    alreadyPlayed = sessionStorage.getItem(STORAGE_KEY) === "1";
-  } catch (e) {}
+//   var alreadyPlayed = false;
+//   try {
+//     alreadyPlayed = sessionStorage.getItem(STORAGE_KEY) === "1";
+//   } catch (e) {}
 
-  if (alreadyPlayed) {
-    opening.remove();
-    return;
-  }
+//   if (alreadyPlayed) {
+//     opening.remove();
+//     return;
+//   }
 
   if (!window.gsap) {
     opening.remove();
@@ -27,6 +27,14 @@
       sessionStorage.setItem(STORAGE_KEY, "1");
     } catch (e) {}
     opening.remove();
+    // オープニング再生中はoverflow: hiddenでスクロールを止めているため、
+    // 各セクションのScrollTriggerが「ページ途中から読み込んだ場合の
+    // 現在のスクロール位置」を正しく評価できていないことがある。
+    // 終了時に明示的に再計算させ、既にトリガーラインを過ぎている
+    // カード等のアニメーションを正しく発火させる。
+    if (window.ScrollTrigger) {
+      ScrollTrigger.refresh();
+    }
   }
 
   var reduceMotion = window.matchMedia(

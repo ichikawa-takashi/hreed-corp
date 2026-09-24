@@ -30,6 +30,7 @@
     slidesPerView: 1,
     speed: 1100,
     rewind: true,
+    allowTouchMove: false,
     autoplay: {
       delay: 4500,
       disableOnInteraction: false,

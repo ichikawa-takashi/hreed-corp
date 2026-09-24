@@ -1,4 +1,112 @@
 /* ==================================================
+*  case list page
+================================================== */
+
+/* ---------- filter ---------- */
+.case-list__filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: rem(16);
+
+  @include mq("md") {
+    gap: rem(8);
+  }
+}
+
+.case-list__filter-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: rem(7) rem(15);
+  border: 1px solid $green;
+  background-color: $white;
+  color: $black;
+  @include font(16, 23, 50, $medium);
+
+  &.is-active {
+    background-color: $green;
+    color: $white;
+  }
+
+  @include mq("md") {
+    padding: rem(8) rem(16);
+    @include font(12, 18, 50, $medium);
+  }
+}
+
+/* ---------- grid（トップページのcase__cardを再利用、案内列のオフセットなしで揃える） ---------- */
+.case-list__grid {
+  margin-top: rem(80);
+
+  @include mq("md") {
+    margin-top: rem(60);
+  }
+}
+
+/* ---------- pagination ---------- */
+.case-pagination {
+  margin-top: rem(80);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: rem(24);
+
+  @include mq("md") {
+    margin-top: rem(40);
+    gap: rem(12);
+  }
+}
+
+.case-pagination__arrow {
+  flex-shrink: 0;
+  width: rem(24);
+  height: rem(24);
+  display: block;
+  background-color: $green;
+  border-radius: 50%;
+
+  &.is-disabled {
+    opacity: .2;
+    pointer-events: none;
+  }
+
+  @include mq("md") {
+    width: rem(20);
+    height: rem(20);
+  }
+}
+
+.case-pagination__list {
+  display: flex;
+  align-items: center;
+  gap: rem(24);
+  margin: 0 rem(16);
+
+  @include mq("md") {
+    gap: rem(20);
+    margin: 0 rem(8);
+  }
+}
+
+.case-pagination__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: $black;
+  @include font(20, 29, 0, $bold);
+
+  &.is-current {
+    color: $green;
+  }
+
+  @include mq("md") {
+    @include font(15, 20, 50, $bold);
+  }
+}
+
+
+/* ==================================================
 *  case detail page
 ================================================== */
 
