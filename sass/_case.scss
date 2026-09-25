@@ -386,6 +386,31 @@
   }
 }
 
+// 本文はブロックエディタで入力するため、見出し・リスト・段落にデザインのスタイルを当てる
+.case-content h2 {
+  @extend .case-content__heading;
+}
+
+.case-content ul {
+  @extend .case-content__summary;
+}
+
+.case-content p {
+  @extend .case-content__text;
+}
+
+.case-list__empty {
+  margin-top: rem(80);
+  text-align: center;
+  color: $black;
+  @include font(16, 28, 50, $regular);
+
+  @include mq("md") {
+    margin-top: rem(60);
+    @include font(14, 26, 50, $regular);
+  }
+}
+
 .case-detail__back {
   margin-top: rem(80);
   text-align: center;

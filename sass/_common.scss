@@ -116,7 +116,7 @@ html.no-opening .opening {
   }
 }
 
-// メインビューを持たないページ（news-detailなど）はheader直下が白背景になるため、
+// メインビューを持たないページ（single-newsなど）はheader直下が白背景になるため、
 // bodyに付与したクラスでheaderの背景色を明示する（WordPress化時はbody_class()相当で出し分け）
 body.is-no-mv,
 .is-no-mv .header {

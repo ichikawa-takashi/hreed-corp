@@ -64,6 +64,8 @@ img {
   max-width: 100%;
   display: block;
   width: 100%;
+  // WordPressが出力するheight属性を打ち消し、aspect-ratio等のCSS指定を効かせる
+  height: auto;
 }
 
 /* Natural flow and rhythm in articles by default */
