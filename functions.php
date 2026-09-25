@@ -58,7 +58,7 @@ function enqueue_custom_styles_and_scripts() {
     $is_top          = is_front_page();
     $is_news_list    = is_home() || is_category();
     $is_case_list    = is_post_type_archive('case') || is_tax(['case_cat', 'case_tag', 'case_client']);
-    $has_lower_mv    = is_page(['about', 'company', 'service', 'contact', 'confirm', 'thanks', 'privacy', 'terms']) || $is_news_list || $is_case_list;
+    $has_lower_mv    = is_page(['about', 'company', 'service', 'contact', 'confirm', 'thanks', 'privacy', 'terms', 'harassment-policy']) || $is_news_list || $is_case_list;
     $has_sec_title   = $is_top || is_page(['about', 'company', 'service']) || $is_news_list || $is_case_list || is_singular('case');
     $has_scroll_anim = $is_top || $has_lower_mv || $has_sec_title;
 

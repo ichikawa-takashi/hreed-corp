@@ -145,3 +145,37 @@
 .legal__item + .legal__item {
   margin-top: rem(4);
 }
+
+.legal__list--disc {
+  list-style: disc;
+}
+
+.legal__text a {
+  color: $green;
+  text-decoration: underline;
+  transition: opacity .3s ease;
+
+  &:hover {
+    opacity: .7;
+  }
+}
+
+.legal__note {
+  margin-top: rem(8);
+  @include font(14, 24, 50, $regular);
+
+  @include mq("md") {
+    @include font(12, 20, 50, $regular);
+  }
+}
+
+.legal__date {
+  margin-top: rem(24);
+  text-align: right;
+  @include font(16, 28, 50, $regular);
+
+  @include mq("md") {
+    margin-top: rem(16);
+    @include font(14, 26, 50, $regular);
+  }
+}

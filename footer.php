@@ -23,6 +23,7 @@
           <ul class="footer__legal">
             <li class="footer__legal-item"><a href="<?php echo esc_url(home_url('/privacy/')); ?>">プライバシーポリシー</a></li>
             <li class="footer__legal-item"><a href="<?php echo esc_url(home_url('/terms/')); ?>">利用規約</a></li>
+            <li class="footer__legal-item"><a href="<?php echo esc_url(home_url('/harassment-policy/')); ?>">求職者ハラスメント防止方針</a></li>
           </ul>
         </div>
       </div>
