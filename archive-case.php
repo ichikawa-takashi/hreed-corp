@@ -63,7 +63,13 @@
           <?php wp_reset_postdata(); ?>
         </div>
         <?php else : ?>
-        <p class="case-list__empty">支援事例はまだありません。</p>
+        <p class="case-list__empty">
+          <?php if (is_tax()) : ?>
+          「<?php single_term_title(); ?>」に該当する支援事例は、現在登録されていません。
+          <?php else : ?>
+          支援事例は、現在登録されていません。
+          <?php endif; ?>
+        </p>
         <?php endif; ?>
 
         <?php hreed_pagination('case'); ?>

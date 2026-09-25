@@ -60,7 +60,13 @@
           <?php endwhile; ?>
         </ul>
         <?php else : ?>
-        <p class="news-list__empty">お知らせはまだありません。</p>
+        <p class="news-list__empty">
+          <?php if (is_category()) : ?>
+          「<?php single_cat_title(); ?>」に該当するお知らせは、現在登録されていません。
+          <?php else : ?>
+          お知らせは、現在登録されていません。
+          <?php endif; ?>
+        </p>
         <?php endif; ?>
 
         <?php hreed_pagination('news'); ?>
