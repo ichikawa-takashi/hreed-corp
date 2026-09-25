@@ -1,0 +1,147 @@
+/* ==================================================
+*  legal(プライバシーポリシー・利用規約・サイトポリシーなどテキストのみのページ共通)
+================================================== */
+
+/* ---------- mv(写真なしのlower-mv) ---------- */
+.lower-mv--text {
+  background: #F5F7F9;
+  padding-bottom: 0;
+}
+
+.lower-mv--text .lower-mv__inner {
+  padding-bottom: rem(80);
+
+  @include mq("md") {
+    padding-bottom: rem(48);
+  }
+}
+
+.lower-mv--text .lower-mv__deco--02 {
+  bottom: rem(24);
+  left: auto;
+  right: rem(200);
+
+  @include mq("md") {
+    bottom: rem(12);
+    right: rem(80);
+  }
+}
+
+.lower-mv--text .lower-mv__deco--03 {
+  top: rem(150);
+  right: rem(480);
+
+  @include mq("md") {
+    top: rem(80);
+    right: rem(150);
+  }
+}
+
+.lower-mv--text .lower-mv__deco--04 {
+  top: rem(130);
+  bottom: auto;
+  right: rem(80);
+
+  @include mq("md") {
+    top: rem(90);
+    right: rem(30);
+  }
+}
+
+/* ---------- contents ---------- */
+.legal {
+  padding-top: rem(80);
+  padding-bottom: rem(120);
+  background-color: $white;
+
+  @include mq("md") {
+    padding-top: rem(48);
+    padding-bottom: rem(80);
+  }
+}
+
+.legal__inner {
+  max-width: rem(1000);
+
+  @include mq("md") {
+    max-width: 500px;
+  }
+}
+
+.legal__lead {
+  color: $black;
+  @include font(16, 28, 50, $regular);
+
+  @include mq("md") {
+    @include font(14, 26, 50, $regular);
+  }
+}
+
+.legal__section {
+  margin-top: rem(56);
+  color: $black;
+
+  @include mq("md") {
+    margin-top: rem(40);
+  }
+}
+
+.legal__section:first-child {
+  margin-top: 0;
+}
+
+.legal__heading {
+  padding-top: rem(4);
+  padding-left: rem(15);
+  padding-bottom: rem(4);
+  border-left: 5px solid $green;
+  @include font(20, 30, 50, $bold);
+
+  @include mq("md") {
+    padding-left: rem(10);
+    border-left-width: 3px;
+    @include font(16, 24, 50, $bold);
+  }
+}
+
+.legal__subheading {
+  margin-top: rem(32);
+  color: $green;
+  @include font(18, 28, 50, $bold);
+
+  @include mq("md") {
+    margin-top: rem(24);
+    @include font(15, 24, 50, $bold);
+  }
+}
+
+.legal__text {
+  margin-top: rem(16);
+  @include font(16, 28, 50, $regular);
+
+  @include mq("md") {
+    margin-top: rem(12);
+    @include font(14, 26, 50, $regular);
+  }
+}
+
+.legal__text strong {
+  font-weight: $bold;
+}
+
+.legal__list {
+  margin-top: rem(12);
+  padding-left: rem(24);
+  list-style: decimal;
+  @include font(16, 28, 50, $regular);
+
+  @include mq("md") {
+    margin-top: rem(8);
+    padding-left: rem(20);
+    @include font(14, 26, 50, $regular);
+  }
+}
+
+.legal__item + .legal__item {
+  margin-top: rem(4);
+}

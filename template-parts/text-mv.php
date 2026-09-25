@@ -1,19 +1,14 @@
-<?php // お問い合わせ(入力・確認・完了)共通のMV ?>
-    <section class="lower-mv">
+<?php
+// テキストのみのページ(プライバシーポリシー・利用規約・サイトポリシーなど)共通のMV
+// 使い方: get_template_part('template-parts/text-mv', null, ['en' => 'Privacy Policy', 'ja' => 'プライバシーポリシー']);
+?>
+    <section class="lower-mv lower-mv--text">
       <div class="lower-mv__inner inner">
         <div class="lower-mv__head">
-          <span class="lower-mv__tag"><span class="lower-mv__text">Contact</span></span>
-          <h2 class="lower-mv__heading"><span class="lower-mv__text">お問い合わせ</span></h2>
+          <span class="lower-mv__tag"><span class="lower-mv__text"><?php echo esc_html($args['en']); ?></span></span>
+          <h2 class="lower-mv__heading"><span class="lower-mv__text"><?php echo esc_html($args['ja']); ?></span></h2>
         </div>
 
-        <div class="lower-mv__photo">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/contact/mv-photo.jpg" alt="Contactページメインビュー">
-        </div>
-
-        <svg width="56" height="124" viewBox="0 0 56 124" fill="none" xmlns="http://www.w3.org/2000/svg" class="lower-mv__deco lower-mv__deco--01" aria-hidden="true">
-          <path class="js-draw" d="M54.838 46.5V123.5H28.664V100.352H0.5V46.5Z" stroke="#0C998A"/>
-          <rect class="js-draw" x="0.5" y="0.5" width="25" height="25" stroke="#0C998A"/>
-        </svg>
         <svg width="170" height="141" viewBox="0 0 170 141" fill="none" xmlns="http://www.w3.org/2000/svg" class="lower-mv__deco lower-mv__deco--02" aria-hidden="true">
           <path class="js-draw" d="M75.825 70.297V0.5H150.15V74.825H106.614V106.614H0.5V70.297Z" stroke="#0C998A"/>
           <circle class="js-draw" cx="150.5" cy="121.143" r="19" stroke="#0C998A"/>

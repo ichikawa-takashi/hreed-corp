@@ -38,12 +38,38 @@ gsap.registerPlugin(ScrollTrigger);
   });
 })();
 
+// --- 写真(lower-mv__photo)の表示アニメーション -------------------------------
+// 見出しの緑帯と同じトーンで、緑の幕が左から伸びて写真を覆い、
+// 右へ抜けると同時に写真が現れる。写真は少し拡大した状態からゆっくり等倍に戻す
+(function () {
+  var photo = document.querySelector(".lower-mv__photo");
+  var img = photo ? photo.querySelector("img") : null;
+  if (!photo || !img) return;
+
+  gsap.set(photo, { visibility: "visible", "--curtain-scale": 0, "--curtain-origin": "left center" });
+  gsap.set(img, { opacity: 0, scale: 1.2 });
+
+  var tl = gsap.timeline({
+    delay: 0.2,
+    scrollTrigger: {
+      trigger: photo,
+      start: "top 90%",
+      toggleActions: "play none none none",
+    },
+  });
+
+  tl.to(photo, { "--curtain-scale": 1, duration: 0.6, ease: "power3.inOut" })
+    .set(photo, { "--curtain-origin": "right center" })
+    .set(img, { opacity: 1 })
+    .to(photo, { "--curtain-scale": 0, duration: 0.7, ease: "power3.inOut" })
+    .to(img, { scale: 1, duration: 1.6, ease: "power3.out" }, "<");
+})();
+
 // --- あしらい(lower-mv__deco)の線描画アニメーション -------------------------
 // トップページのaboutセクションと同じ手法: getTotalLength()でstroke-dasharray/
-// dashoffsetを組み、線が引かれるように見せる。--01/--02は本来は塗りの図形だが、
-// 線として描画できるようstrokeも持たせてあるので、線が引き終わった直後に
-// fill-opacityを0→1にして塗りが浮かび上がるようにし、--03/--04(塗りを持たない
-// 線のみの図形)と見た目のトーンを揃える
+// dashoffsetを組み、何もない状態から線が引かれるように見せる。
+// ファーストビューにあるため、線を隠す前に一瞬表示されないよう
+// CSSで.lower-mv__decoを非表示にしておき、dashの準備ができてから表示する
 (function () {
   var lowerMv = document.querySelector(".lower-mv");
   if (!lowerMv) return;
@@ -54,24 +80,20 @@ gsap.registerPlugin(ScrollTrigger);
     el.style.strokeDasharray = length;
     el.style.strokeDashoffset = length;
 
-    var hasFill = el.hasAttribute("fill") && el.getAttribute("fill") !== "none";
-    if (hasFill) el.style.fillOpacity = 0;
-
-    var tl = gsap.timeline({
-      delay: i * 0.15,
+    gsap.to(el, {
+      strokeDashoffset: 0,
+      duration: 1.4,
+      ease: "power2.out",
+      delay: i * 0.12,
       scrollTrigger: {
         trigger: lowerMv,
         start: "top 80%",
         toggleActions: "play none none none",
       },
     });
-
-    tl.to(el, { strokeDashoffset: 0, duration: 1.2, ease: "power2.out" });
-
-    if (hasFill) {
-      tl.to(el, { fillOpacity: 1, duration: 0.4, ease: "power1.out" }, "-=0.3");
-    }
   });
+
+  gsap.set(lowerMv.querySelectorAll(".lower-mv__deco"), { visibility: "visible" });
 })();
 
 // --- あしらい(lower-mv__deco)のマウス連動パララックス -----------------------

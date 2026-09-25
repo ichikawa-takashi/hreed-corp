@@ -460,9 +460,26 @@ body.is-drawer-open {
   flex-shrink: 0;
   position: relative;
   z-index: 10;
+  overflow: hidden;
+  // 表示アニメーションの準備ができるまで隠す(lower-mv-animation.jsで表示する)
+  visibility: hidden;
 
   @include mq("md") {
     width: 100%;
+  }
+
+  // 写真の表示アニメーションで横切る緑の幕(伸縮はJSからCSS変数で操作する)
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $green;
+    transform: scaleX(var(--curtain-scale, 0));
+    transform-origin: var(--curtain-origin, left center);
+    pointer-events: none;
   }
 }
 
@@ -479,6 +496,8 @@ body.is-drawer-open {
   pointer-events: none;
   z-index: 0;
   will-change: transform;
+  // 線を描画する準備ができるまで隠す(lower-mv-animation.jsで表示する)
+  visibility: hidden;
 }
 
 .lower-mv__deco--01 {
