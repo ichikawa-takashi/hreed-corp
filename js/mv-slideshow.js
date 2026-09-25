@@ -40,6 +40,31 @@
   // オープニング演出中はカウントを進めず、演出終了(.js-openingの除去)後に自動再生を開始する
   swiper.autoplay.stop();
 
+  // FVのお知らせ(管理画面でチェックした記事が複数ある場合のみ)を、
+  // 電光掲示板のように縦にくるっと回転させて5秒おきに切り替える
+  var newsEl = document.querySelector(".js-mv-news");
+  var newsSwiper = newsEl
+    ? new Swiper(newsEl, {
+        effect: "creative",
+        creativeEffect: {
+          perspective: true,
+          limitProgress: 1,
+          prev: { translate: [0, "-50%", -40], rotate: [90, 0, 0], opacity: 0 },
+          next: { translate: [0, "50%", -40], rotate: [-90, 0, 0], opacity: 0 },
+        },
+        slidesPerView: 1,
+        speed: 800,
+        loop: true,
+        allowTouchMove: false,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        },
+      })
+    : null;
+  if (newsSwiper) newsSwiper.autoplay.stop();
+
   // 見出し・タグ・写真・お知らせカードなど、FVのコンテンツをまとめてアニメーション表示する。
   // 見出し・タグは下層ページの見出し(sec-title)と同じく「背景が先に広がり、
   // そこから文字が浮かび上がる」演出にする
@@ -65,6 +90,7 @@
   function beginShow() {
     el.classList.add("is-ready");
     swiper.autoplay.start();
+    if (newsSwiper) newsSwiper.autoplay.start();
     revealContent();
   }
 

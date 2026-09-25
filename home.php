@@ -35,7 +35,7 @@
           <li>
             <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>" class="news-list__filter-link<?php echo is_home() ? ' is-active' : ''; ?>">すべて</a>
           </li>
-          <?php foreach (get_categories(['hide_empty' => false]) as $cat) : ?>
+          <?php foreach (get_categories(['hide_empty' => false, 'orderby' => 'term_id']) as $cat) : ?>
           <li>
             <a href="<?php echo esc_url(get_category_link($cat)); ?>" class="news-list__filter-link<?php echo is_category($cat->term_id) ? ' is-active' : ''; ?>"><?php echo esc_html($cat->name); ?></a>
           </li>

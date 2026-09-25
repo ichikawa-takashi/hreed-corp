@@ -26,21 +26,40 @@
             </div>
           </div>
 
-          <?php $latest = get_posts(['posts_per_page' => 1]); ?>
-          <?php if ($latest) : $latest = $latest[0]; ?>
-          <a href="<?php echo esc_url(get_permalink($latest)); ?>" class="mv__news">
-            <div class="mv__news-meta">
-              <time class="mv__news-date" datetime="<?php echo get_the_date('Y-m-d', $latest); ?>"><?php echo get_the_date('Y.m.d', $latest); ?></time>
-              <?php if ($cat = hreed_first_term($latest->ID, 'category')) : ?>
-              <span class="mv__news-tag"><?php echo esc_html($cat->name); ?></span>
-              <?php endif; ?>
+          <?php
+          // 管理画面で「トップページのファーストビューに表示」(ACF: mv_pickup)をオンにした記事を表示する。
+          // 1件もなければ最新の記事を1件表示する
+          $pickups = get_posts([
+            'posts_per_page' => -1,
+            'meta_key'       => 'mv_pickup',
+            'meta_value'     => '1',
+          ]);
+          if (!$pickups) {
+            $pickups = get_posts(['posts_per_page' => 1]);
+          }
+          ?>
+          <?php if ($pickups) : ?>
+          <div class="mv__news">
+            <div class="mv__news-slider swiper<?php echo count($pickups) > 1 ? ' js-mv-news' : ''; ?>">
+              <div class="swiper-wrapper">
+                <?php foreach ($pickups as $pickup) : ?>
+                <a href="<?php echo esc_url(get_permalink($pickup)); ?>" class="mv__news-item swiper-slide">
+                  <div class="mv__news-meta">
+                    <time class="mv__news-date" datetime="<?php echo get_the_date('Y-m-d', $pickup); ?>"><?php echo get_the_date('Y.m.d', $pickup); ?></time>
+                    <?php if ($cat = hreed_first_term($pickup->ID, 'category')) : ?>
+                    <span class="mv__news-tag"><?php echo esc_html($cat->name); ?></span>
+                    <?php endif; ?>
+                  </div>
+                  <p class="mv__news-text"><?php echo esc_html(get_the_title($pickup)); ?></p>
+                  <span class="mv__news-arrow btn-more__arrow" aria-hidden="true">
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
+                  </span>
+                </a>
+                <?php endforeach; ?>
+              </div>
             </div>
-            <p class="mv__news-text"><?php echo esc_html(get_the_title($latest)); ?></p>
-            <span class="mv__news-arrow btn-more__arrow" aria-hidden="true">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
-            </span>
-          </a>
+          </div>
           <?php endif; ?>
           </div>
         </div>
@@ -227,28 +246,33 @@
             <p class="sec-title__ja"><span class="sec-title__text">お知らせ</span></p>
           </div>
 
+          <?php
+          // 「すべて」+ お知らせの各カテゴリー。カテゴリーは作成順(ID順)に並べる
+          $news_filters = [[
+            'slug' => 'all',
+            'name' => 'すべて',
+            'link' => get_permalink(get_option('page_for_posts')),
+            'args' => [],
+          ]];
+          foreach (get_categories(['hide_empty' => false, 'orderby' => 'term_id']) as $cat) {
+            $news_filters[] = [
+              'slug' => $cat->slug,
+              'name' => $cat->name,
+              'link' => get_category_link($cat),
+              'args' => ['cat' => $cat->term_id],
+            ];
+          }
+          ?>
           <ul class="news__filter">
+            <?php foreach ($news_filters as $i => $filter) : ?>
             <li class="news__filter-item">
               <label class="news__filter-label">
-                <input type="radio" name="news-category" class="news__filter-input" checked>
+                <input type="radio" name="news-category" value="<?php echo esc_attr($filter['slug']); ?>" data-link="<?php echo esc_url($filter['link']); ?>" class="news__filter-input"<?php echo $i === 0 ? ' checked' : ''; ?>>
                 <span class="news__filter-radio" aria-hidden="true"></span>
-                すべて
+                <?php echo esc_html($filter['name']); ?>
               </label>
             </li>
-            <li class="news__filter-item">
-              <label class="news__filter-label">
-                <input type="radio" name="news-category" class="news__filter-input">
-                <span class="news__filter-radio" aria-hidden="true"></span>
-                お知らせ
-              </label>
-            </li>
-            <li class="news__filter-item">
-              <label class="news__filter-label">
-                <input type="radio" name="news-category" class="news__filter-input">
-                <span class="news__filter-radio" aria-hidden="true"></span>
-                プレスリリース
-              </label>
-            </li>
+            <?php endforeach; ?>
           </ul>
 
           <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>" class="news__more btn-more btn-more--solid">
@@ -260,26 +284,36 @@
           </a>
         </div>
 
-        <?php $news = new WP_Query(['posts_per_page' => 5]); ?>
-        <?php if ($news->have_posts()) : ?>
-        <ul class="news__list">
-          <?php while ($news->have_posts()) : $news->the_post(); ?>
-          <li class="news__item">
-            <a href="<?php the_permalink(); ?>" class="news__item-link">
-              <div class="news__item-meta">
-                <time class="news__item-date" datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('Y.m.d'); ?></time>
-                <?php if ($cat = hreed_first_term(get_the_ID(), 'category')) : ?>
-                <span class="news__item-tag"><?php echo esc_html($cat->name); ?></span>
-                <?php endif; ?>
-              </div>
-              <p class="news__item-text"><?php the_title(); ?></p>
-              <span class="news__item-arrow" aria-hidden="true"></span>
-            </a>
-          </li>
-          <?php endwhile; ?>
-        </ul>
-        <?php endif; ?>
-        <?php wp_reset_postdata(); ?>
+        <div class="news__body">
+          <?php foreach ($news_filters as $i => $filter) : ?>
+          <?php $news = new WP_Query(array_merge(['posts_per_page' => 5], $filter['args'])); ?>
+          <div class="news__panel" data-news-panel="<?php echo esc_attr($filter['slug']); ?>"<?php echo $i === 0 ? '' : ' hidden'; ?>>
+            <?php if ($news->have_posts()) : ?>
+            <ul class="news__list">
+              <?php while ($news->have_posts()) : $news->the_post(); ?>
+              <li class="news__item">
+                <a href="<?php the_permalink(); ?>" class="news__item-link">
+                  <div class="news__item-meta">
+                    <time class="news__item-date" datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('Y.m.d'); ?></time>
+                    <?php if ($cat = hreed_first_term(get_the_ID(), 'category')) : ?>
+                    <span class="news__item-tag"><?php echo esc_html($cat->name); ?></span>
+                    <?php endif; ?>
+                  </div>
+                  <p class="news__item-text"><?php the_title(); ?></p>
+                  <span class="news__item-arrow" aria-hidden="true"></span>
+                </a>
+              </li>
+              <?php endwhile; ?>
+            </ul>
+            <?php else : ?>
+            <p class="news__empty">
+              <?php echo $filter['slug'] === 'all' ? 'お知らせは、現在登録されていません。' : '「' . esc_html($filter['name']) . '」に該当するお知らせは、現在登録されていません。'; ?>
+            </p>
+            <?php endif; ?>
+            <?php wp_reset_postdata(); ?>
+          </div>
+          <?php endforeach; ?>
+        </div>
       </div>
     </div>
     <p class="news__watermark" aria-hidden="true">News</p>

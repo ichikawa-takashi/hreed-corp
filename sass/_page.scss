@@ -171,6 +171,8 @@
     flex: 1;
     min-width: 0;
     display: grid;
+    // お知らせのスライダー(横並びのスライド)の幅で列が広がらないよう、列幅を親に合わせる
+    grid-template-columns: minmax(0, 1fr);
 }
 
 .mv__photo {
@@ -238,13 +240,28 @@
     min-width: rem(200);
     transform: translateY(#{rem(14)});
     background-color: $white;
-    padding: rem(20);
 
     @include mq('md') {
         width: 62%;
         min-width: 0;
-        padding: rem(12);
         transform: translateY(#{rem(10)});
+    }
+}
+
+// 複数記事のときは電光掲示板のように縦回転で切り替える(js/mv-slideshow.js)
+.mv__news-slider {
+    width: 100%;
+}
+
+.mv__news-item {
+    display: flex;
+    flex-direction: column;
+    padding: rem(20);
+    // 回転中に裏面が透けないようにする
+    backface-visibility: hidden;
+
+    @include mq('md') {
+        padding: rem(12);
     }
 }
 
@@ -290,12 +307,12 @@
     }
 }
 
-.mv__news:hover .btn-more__arrow-icon--current {
+.mv__news-item:hover .btn-more__arrow-icon--current {
     opacity: 0;
     transform: translate(120%, -50%);
 }
 
-.mv__news:hover .btn-more__arrow-icon--next {
+.mv__news-item:hover .btn-more__arrow-icon--next {
     opacity: 1;
     transform: translate(-50%, -50%);
 }
@@ -839,10 +856,32 @@
     margin-top: rem(32);
 }
 
-.news__list {
+.news__body {
     flex: 1;
     min-width: 0;
+
+    @include mq('md') {
+        width: 100%;
+    }
+}
+
+.news__list {
     border-top: 1px solid $green;
+}
+
+.news__empty {
+    padding: rem(40) 0;
+    border-top: 1px solid $green;
+    border-bottom: 1px solid $green;
+    font-family: $sans;
+    color: $black;
+    @include font(14, 24, 50, $regular);
+    text-align: center;
+
+    @include mq('md') {
+        padding: rem(32) 0;
+        @include font(13, 22, 50, $regular);
+    }
 }
 
 .news__item {
