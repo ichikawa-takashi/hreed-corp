@@ -25,8 +25,9 @@
 
         <div class="single-news__back">
           <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>" class="single-news__back-link">
-            <span class="single-news__back-icon">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/common/icon-arrow_wh.svg" alt="矢印アイコン">
+            <span class="single-news__back-icon btn-more__arrow" aria-hidden="true">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
             </span>
             お知らせ一覧へ戻る
           </a>

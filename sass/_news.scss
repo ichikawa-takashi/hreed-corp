@@ -466,30 +466,42 @@
   background-color: $green;
   color: $white;
   @include font(18, 26, 50, $bold);
-  transition: opacity .3s ease;
+  // aタグの全称transition(_reset.scss)を上書き(btn-moreと同様)
+  transition: background-color .3s ease;
 
   @include mq("md") {
     gap: rem(24);
     padding: rem(14) rem(24) rem(14) rem(20);
     @include font(15, 22, 50, $bold);
   }
-
-  &:hover {
-    opacity: .8;
-  }
 }
 
 .single-news__back-icon {
-  flex-shrink: 0;
   width: rem(37);
-  transform: rotate(180deg);
-  transition: transform .3s ease;
+  height: rem(37);
+  background-color: $white;
 
   @include mq("md") {
     width: rem(28);
+    height: rem(28);
   }
 }
 
-.single-news__back-link:hover .single-news__back-icon {
-  transform: rotate(180deg) translateX(rem(4));
+// 共通のbtn-more__arrowを左右反転し、右→左へ抜ける「戻る」動きにする
+.single-news__back-icon .btn-more__arrow-icon {
+  transform: translate(-50%, -50%) scaleX(-1);
+}
+
+.single-news__back-icon .btn-more__arrow-icon--next {
+  transform: translate(120%, -50%) scaleX(-1);
+}
+
+.single-news__back-link:hover .single-news__back-icon .btn-more__arrow-icon--current {
+  opacity: 0;
+  transform: translate(-220%, -50%) scaleX(-1);
+}
+
+.single-news__back-link:hover .single-news__back-icon .btn-more__arrow-icon--next {
+  opacity: 1;
+  transform: translate(-50%, -50%) scaleX(-1);
 }
