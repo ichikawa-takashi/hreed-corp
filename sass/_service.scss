@@ -92,16 +92,33 @@
   border-bottom: 1px solid $green;
 
   @include mq("md") {
+    flex-wrap: wrap;
+    justify-content: center;
     padding: rem(20) 0;
     gap: rem(8);
   }
 }
 
 .service-lead__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex: 1;
   min-width: 0;
   aspect-ratio: 130 / 90;
-  background-color: #F2F3F4;
+  padding: rem(12);
+
+  @include mq("md") {
+    flex: 0 0 calc((100% - #{rem(16)}) / 3);
+    aspect-ratio: 2 / 1;
+    padding: rem(8);
+  }
+}
+
+.service-lead__logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* ---------- worry（こんなお悩みありませんか） ---------- */

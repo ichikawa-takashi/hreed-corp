@@ -42,13 +42,11 @@
         <div class="service-lead__divider"></div>
 
         <ul class="service-lead__logos">
-          <li class="service-lead__logo"></li>
-          <li class="service-lead__logo"></li>
-          <li class="service-lead__logo"></li>
-          <li class="service-lead__logo"></li>
-          <li class="service-lead__logo"></li>
-          <li class="service-lead__logo"></li>
-          <li class="service-lead__logo"></li>
+          <li class="service-lead__logo"><img src="<?php echo get_template_directory_uri(); ?>/img/service/logo/dely_logo.png" alt="dely株式会社" class="service-lead__logo-img" loading="lazy"></li>
+          <li class="service-lead__logo"><img src="<?php echo get_template_directory_uri(); ?>/img/service/logo/fundbook_logo.jpg" alt="株式会社fundbook" class="service-lead__logo-img" loading="lazy"></li>
+          <li class="service-lead__logo"><img src="<?php echo get_template_directory_uri(); ?>/img/service/logo/leading_mark_logo.jpg" alt="株式会社Leading Mark" class="service-lead__logo-img" loading="lazy"></li>
+          <li class="service-lead__logo"><img src="<?php echo get_template_directory_uri(); ?>/img/service/logo/levarages.jpg" alt="レバレジーズ株式会社" class="service-lead__logo-img" loading="lazy"></li>
+          <li class="service-lead__logo"><img src="<?php echo get_template_directory_uri(); ?>/img/service/logo/ma_soken_logo.png" alt="株式会社M&amp;A総合研究所" class="service-lead__logo-img" loading="lazy"></li>
         </ul>
       </div>
     </section>
