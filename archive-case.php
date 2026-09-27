@@ -9,7 +9,7 @@
         </div>
 
         <div class="lower-mv__photo">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/top/case-photo-systemrenovate.jpg" alt="Caseページメインビュー">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/case/mv-photo.png" alt="Caseページメインビュー">
         </div>
 
         <svg width="56" height="124" viewBox="0 0 56 124" fill="none" xmlns="http://www.w3.org/2000/svg" class="lower-mv__deco lower-mv__deco--01" aria-hidden="true">
@@ -76,28 +76,7 @@
       </div>
     </section>
 
-    <section class="cta-banner">
-      <div class="cta-banner__inner inner">
-        <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="cta-banner__link">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/top/service-bg.jpg" alt="お問い合わせ背景" class="cta-banner__bg">
-
-          <div class="cta-banner__wrapper">
-            <div class="sec-title sec-title--reverse cta-banner__title">
-              <h2 class="sec-title__en"><span class="sec-title__text">Contact us</span></h2>
-              <p class="sec-title__ja"><span class="sec-title__text">お問い合わせ</span></p>
-            </div>
-
-            <div class="cta-banner__note">
-              <p class="cta-banner__text">採用にお困りの方はこちらから</p>
-              <span class="btn-more__arrow" aria-hidden="true">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="矢印アイコン" class="btn-more__arrow-icon btn-more__arrow-icon--current">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
-              </span>
-            </div>
-          </div>
-        </a>
-      </div>
-    </section>
+    <?php get_template_part('template-parts/cta-banner'); ?>
 
   </main>
 

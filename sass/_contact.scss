@@ -12,7 +12,7 @@
 }
 
 .contact-form__panel {
-  padding: rem(40) rem(75);
+  padding: rem(80) rem(75) rem(40);
   background-color: rgba($green, .1);
 
   @include mq("md") {
@@ -162,29 +162,39 @@
   }
 }
 
+// functions.phpで<button>に置き換え、矢印は共通のbtn-more__arrowを使う
 .contact-form__submit-btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: rem(24);
   border: none;
   cursor: pointer;
-  padding: rem(21) rem(95) rem(21) rem(24);
+  padding: rem(16) rem(16) rem(16) rem(28);
   background-color: $green;
-  background-image: url(../img/common/icon-arrow_wh.svg);
-  background-repeat: no-repeat;
-  background-position: right rem(24) center;
-  background-size: rem(31) rem(31);
   color: $white;
+  font-family: $sans;
   @include font(16, 23, 50, $bold);
 
-  &:hover {
-    opacity: .8;
-  }
-
   @include mq("md") {
-    padding: rem(16) rem(52) rem(16) rem(20);
-    background-position: right rem(16) center;
-    background-size: rem(24) rem(24);
+    gap: rem(16);
+    padding: rem(12) rem(12) rem(12) rem(20);
     @include font(14, 20, 50, $bold);
   }
+}
+
+.contact-form__submit-btn .btn-more__arrow {
+  background-color: $white;
+}
+
+.contact-form__submit-btn:hover .btn-more__arrow-icon--current {
+  opacity: 0;
+  transform: translate(120%, -50%);
+}
+
+.contact-form__submit-btn:hover .btn-more__arrow-icon--next {
+  opacity: 1;
+  transform: translate(-50%, -50%);
 }
 
 // Contact Form 7が入力欄を囲むspan

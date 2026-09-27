@@ -98,7 +98,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 // --- あしらい(lower-mv__deco)のマウス連動パララックス -----------------------
 // オープニングアニメーションのロゴと同じ考え方: マウス位置に応じて
-// あしらいを3D的に傾ける。奥にあるものほど振れ幅を小さくして視差を出す
+// あしらいを3D的に傾けつつ、上下左右にも移動させる。
+// 要素ごとに移動量・向きを変えて、手前/奥にあるような視差を出す
 (function () {
   var lowerMv = document.querySelector(".lower-mv");
   var decos = lowerMv ? lowerMv.querySelectorAll(".lower-mv__deco") : [];
@@ -106,15 +107,30 @@ gsap.registerPlugin(ScrollTrigger);
   if (!window.matchMedia("(pointer: fine)").matches) return;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-  gsap.set(decos, { transformPerspective: 700 });
+  var TILT_Y = 18; // 左右方向の傾き(deg)
+  var TILT_X = 14; // 上下方向の傾き(deg)
+  var TILT_Z = 4; // 左右移動に合わせたひねり(deg)
+
+  // 各あしらいの移動量(px)。マイナスはマウスと逆方向に動く(奥にあるように見える)
+  var depths = [
+    { x: 24, y: 16 },
+    { x: -20, y: -14 },
+    { x: 32, y: 22 },
+    { x: -28, y: -18 },
+  ];
+
+  gsap.set(decos, { transformPerspective: 600 });
 
   var setters = [];
   decos.forEach(function (deco, i) {
-    var strength = 1 - i * 0.15; // 後の要素ほど少し控えめに傾ける
+    var opts = { duration: 0.8, ease: "power3" };
     setters.push({
-      rotateY: gsap.quickTo(deco, "rotationY", { duration: 0.7, ease: "power3" }),
-      rotateX: gsap.quickTo(deco, "rotationX", { duration: 0.7, ease: "power3" }),
-      strength: strength,
+      rotateY: gsap.quickTo(deco, "rotationY", opts),
+      rotateX: gsap.quickTo(deco, "rotationX", opts),
+      rotateZ: gsap.quickTo(deco, "rotation", opts),
+      moveX: gsap.quickTo(deco, "x", opts),
+      moveY: gsap.quickTo(deco, "y", opts),
+      depth: depths[i % depths.length],
     });
   });
 
@@ -132,10 +148,15 @@ gsap.registerPlugin(ScrollTrigger);
     var rect = lowerMv.getBoundingClientRect();
     var px = ((e.clientX - rect.left) / rect.width) * 2 - 1;
     var py = ((e.clientY - rect.top) / rect.height) * 2 - 1;
+    px = gsap.utils.clamp(-1, 1, px);
+    py = gsap.utils.clamp(-1, 1, py);
 
     setters.forEach(function (s) {
-      s.rotateY(px * 10 * s.strength);
-      s.rotateX(-py * 8 * s.strength);
+      s.rotateY(px * TILT_Y);
+      s.rotateX(-py * TILT_X);
+      s.rotateZ(px * TILT_Z);
+      s.moveX(px * s.depth.x);
+      s.moveY(py * s.depth.y);
     });
   }
   window.addEventListener("pointermove", onPointerMove);

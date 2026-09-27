@@ -231,7 +231,9 @@
           <div class="case__col">
             <article class="case__card">
               <p class="case__client">株式会社システム・リノベイト様</p>
-              <img class="case__photo" src="<?php echo get_template_directory_uri(); ?>/img/top/case-photo-systemrenovate.jpg" alt="株式会社システム・リノベイト様">
+              <div class="case__photo-frame">
+                <img class="case__photo" src="<?php echo get_template_directory_uri(); ?>/img/top/case-photo-systemrenovate.jpg" alt="株式会社システム・リノベイト様">
+              </div>
               <h3 class="case__card-title">研修満足度97%を達成!研修参加率も向上しました</h3>
               <p class="case__card-text">業種や従業員数、より詳しい効果についての説明が入ります。業種や従業員数、より詳しい効果についての説明が入ります。</p>
               <span class="case__pill">採用コンサル</span>
@@ -239,7 +241,9 @@
 
             <article class="case__card">
               <p class="case__client">freee株式会社様</p>
-              <img class="case__photo" src="<?php echo get_template_directory_uri(); ?>/img/top/case-photo-freee.jpg" alt="freee株式会社様">
+              <div class="case__photo-frame">
+                <img class="case__photo" src="<?php echo get_template_directory_uri(); ?>/img/top/case-photo-freee.jpg" alt="freee株式会社様">
+              </div>
               <h3 class="case__card-title">研修満足度97%を達成!研修参加率も向上しました</h3>
               <p class="case__card-text">業種や従業員数、より詳しい効果についての説明が入ります。業種や従業員数、より詳しい効果についての説明が入ります。</p>
               <span class="case__pill">RPO</span>
@@ -249,7 +253,9 @@
           <div class="case__col case__col--offset">
             <article class="case__card">
               <p class="case__client">freee株式会社様</p>
-              <img class="case__photo" src="<?php echo get_template_directory_uri(); ?>/img/top/case-photo-freee.jpg" alt="freee株式会社様">
+              <div class="case__photo-frame">
+                <img class="case__photo" src="<?php echo get_template_directory_uri(); ?>/img/top/case-photo-freee.jpg" alt="freee株式会社様">
+              </div>
               <h3 class="case__card-title">研修満足度97%を達成!研修参加率も向上しました</h3>
               <p class="case__card-text">業種や従業員数、より詳しい効果についての説明が入ります。業種や従業員数、より詳しい効果についての説明が入ります。</p>
               <span class="case__pill">RPO</span>
@@ -257,7 +263,9 @@
 
             <article class="case__card">
               <p class="case__client">株式会社システム・リノベイト様</p>
-              <img class="case__photo" src="<?php echo get_template_directory_uri(); ?>/img/top/case-photo-systemrenovate.jpg" alt="株式会社システム・リノベイト様">
+              <div class="case__photo-frame">
+                <img class="case__photo" src="<?php echo get_template_directory_uri(); ?>/img/top/case-photo-systemrenovate.jpg" alt="株式会社システム・リノベイト様">
+              </div>
               <h3 class="case__card-title">研修満足度97%を達成!研修参加率も向上しました</h3>
               <p class="case__card-text">業種や従業員数、より詳しい効果についての説明が入ります。業種や従業員数、より詳しい効果についての説明が入ります。</p>
               <span class="case__pill">採用コンサル</span>
@@ -462,74 +470,10 @@
     </section>
 
     <!-- ================= Link cards (Company / Recruit) ================= -->
-    <section class="link-cards">
-      <div class="link-cards__inner inner">
-        <ul class="link-cards__list">
-          <li class="link-cards__item">
-            <a href="<?php echo esc_url(home_url('/company/')); ?>" class="link-cards__card">
-              <div class="link-cards__photo">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/company/mv-photo.jpg" alt="Company">
-              </div>
-              <div class="link-cards__foot">
-                <div class="sec-title sec-title--reverse">
-                  <h3 class="sec-title__en"><span class="sec-title__text">Company</span></h3>
-                  <p class="sec-title__ja"><span class="sec-title__text">会社概要</span></p>
-                </div>
-                <span class="arrow-btn">
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/common/icon-arrow_grn.svg" alt="矢印アイコン">
-                </span>
-              </div>
-            </a>
-          </li>
-
-          <li class="link-cards__item">
-            <a href="<?php echo esc_url(home_url('/recruit/')); ?>" class="link-cards__card">
-              <div class="link-cards__photo">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/common/link-recruit.jpg" alt="Recruit">
-              </div>
-              <div class="link-cards__foot">
-                <div class="sec-title sec-title--reverse">
-                  <h3 class="sec-title__en"><span class="sec-title__text">Recruit</span></h3>
-                  <p class="sec-title__ja"><span class="sec-title__text">採用情報</span></p>
-                </div>
-                <span class="arrow-btn">
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/common/icon-arrow_grn.svg" alt="矢印アイコン">
-                </span>
-              </div>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <img src="<?php echo get_template_directory_uri(); ?>/img/common/link-deco01.png" alt="装飾01" class="link-cards__deco link-cards__deco--01">
-      <img src="<?php echo get_template_directory_uri(); ?>/img/common/link-deco02.png" alt="装飾02" class="link-cards__deco link-cards__deco--02">
-      <img src="<?php echo get_template_directory_uri(); ?>/img/common/link-deco03.png" alt="装飾03" class="link-cards__deco link-cards__deco--03">
-      <img src="<?php echo get_template_directory_uri(); ?>/img/common/link-deco04.png" alt="装飾04" class="link-cards__deco link-cards__deco--04">
-      <img src="<?php echo get_template_directory_uri(); ?>/img/common/link-deco05.png" alt="装飾05" class="link-cards__deco link-cards__deco--05">
-    </section>
+    <?php get_template_part('template-parts/link-cards', null, ['cards' => ['company', 'recruit']]); ?>
 
     <!-- ================= CTA banner (Contact) ================= -->
-    <section class="cta-banner">
-      <div class="cta-banner__inner inner">
-        <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="cta-banner__link">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/top/service-bg.jpg" alt="お問い合わせ背景" class="cta-banner__bg">
-
-          <div class="cta-banner__wrapper">
-            <div class="sec-title sec-title--reverse cta-banner__title">
-              <h2 class="sec-title__en"><span class="sec-title__text">Contact us</span></h2>
-              <p class="sec-title__ja"><span class="sec-title__text">お問い合わせ</span></p>
-            </div>
-
-            <div class="cta-banner__note">
-              <p class="cta-banner__text">採用にお困りの方はこちらから</p>
-              <span class="btn-more__arrow" aria-hidden="true">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="矢印アイコン" class="btn-more__arrow-icon btn-more__arrow-icon--current">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
-              </span>
-            </div>
-          </div>
-        </a>
-      </div>
-    </section>
+    <?php get_template_part('template-parts/cta-banner'); ?>
   </main>
 
 <?php get_footer(); ?>
