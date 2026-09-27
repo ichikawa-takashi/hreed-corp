@@ -2902,16 +2902,20 @@ body.is-drawer-open {
   left: 50%;
   z-index: 2;
   transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
   width: 95%;
   max-width: 70rem;
-  max-height: 90vh;
-  overflow-y: auto;
+  max-height: min(90vh, 40rem);
   padding: 2.5rem 3.5rem;
   border: 1px solid #0c998a;
   background-color: #ffffff;
 }
 @media screen and (max-width: 768px) {
   .modal__inner {
+    display: block;
+    max-height: 90vh;
+    overflow-y: auto;
     padding: 1.25rem;
   }
 }
@@ -2962,6 +2966,7 @@ body.is-drawer-open {
 .modal__row {
   display: flex;
   gap: 2.5rem;
+  min-height: 0;
 }
 @media screen and (max-width: 768px) {
   .modal__row {
@@ -2972,6 +2977,7 @@ body.is-drawer-open {
 
 .modal__photo {
   flex-shrink: 0;
+  align-self: flex-start;
   max-width: 17.5rem;
   width: 100%;
 }
@@ -2993,6 +2999,15 @@ body.is-drawer-open {
   flex: 1;
   max-width: 41.625rem;
   width: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 1rem;
+}
+@media screen and (max-width: 768px) {
+  .modal__info {
+    overflow-y: visible;
+    padding-right: 0;
+  }
 }
 
 .modal__role {

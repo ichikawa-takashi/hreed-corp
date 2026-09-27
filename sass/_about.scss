@@ -441,15 +441,19 @@
   left: 50%;
   z-index: 2;
   transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
   width: 95%;
   max-width: rem(1120);
-  max-height: 90vh;
-  overflow-y: auto;
+  max-height: min(90vh, rem(640));
   padding: rem(40) rem(56);
   border: 1px solid $green;
   background-color: $white;
 
   @include mq("md") {
+    display: block;
+    max-height: 90vh;
+    overflow-y: auto;
     padding: rem(20);
   }
 }
@@ -498,6 +502,7 @@
 .modal__row {
   display: flex;
   gap: rem(40);
+  min-height: 0;
 
   @include mq("md") {
     flex-direction: column;
@@ -507,6 +512,7 @@
 
 .modal__photo {
   flex-shrink: 0;
+  align-self: flex-start;
   max-width: rem(280);
   width: 100%;
 
@@ -527,6 +533,14 @@
   flex: 1;
   max-width: rem(666);
   width: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: rem(16);
+
+  @include mq("md") {
+    overflow-y: visible;
+    padding-right: 0;
+  }
 }
 
 .modal__role {
