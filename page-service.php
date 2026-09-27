@@ -41,13 +41,27 @@
 
         <div class="service-lead__divider"></div>
 
-        <ul class="service-lead__logos">
-          <li class="service-lead__logo"><img src="<?php echo get_template_directory_uri(); ?>/img/service/logo/dely_logo.png" alt="dely株式会社" class="service-lead__logo-img" loading="lazy"></li>
-          <li class="service-lead__logo"><img src="<?php echo get_template_directory_uri(); ?>/img/service/logo/fundbook_logo.jpg" alt="株式会社fundbook" class="service-lead__logo-img" loading="lazy"></li>
-          <li class="service-lead__logo"><img src="<?php echo get_template_directory_uri(); ?>/img/service/logo/leading_mark_logo.jpg" alt="株式会社Leading Mark" class="service-lead__logo-img" loading="lazy"></li>
-          <li class="service-lead__logo"><img src="<?php echo get_template_directory_uri(); ?>/img/service/logo/levarages.jpg" alt="レバレジーズ株式会社" class="service-lead__logo-img" loading="lazy"></li>
-          <li class="service-lead__logo"><img src="<?php echo get_template_directory_uri(); ?>/img/service/logo/ma_soken_logo.png" alt="株式会社M&amp;A総合研究所" class="service-lead__logo-img" loading="lazy"></li>
-        </ul>
+        <?php
+        $service_logos = [
+          ['file' => 'dely_logo.png',         'alt' => 'dely株式会社'],
+          ['file' => 'fundbook_logo.jpg',     'alt' => '株式会社fundbook'],
+          ['file' => 'leading_mark_logo.jpg', 'alt' => '株式会社Leading Mark'],
+          ['file' => 'levarages.jpg',         'alt' => 'レバレジーズ株式会社'],
+          ['file' => 'ma_soken_logo.png',     'alt' => '株式会社M&A総合研究所'],
+        ];
+        ?>
+        <div class="service-lead__logos swiper js-logo-marquee">
+          <ul class="service-lead__logo-list swiper-wrapper">
+            <?php // ループ再生で途切れないよう2周分出力し、2周目は読み上げ対象から外す ?>
+            <?php for ($round = 0; $round < 2; $round++) : ?>
+            <?php foreach ($service_logos as $logo) : ?>
+            <li class="service-lead__logo swiper-slide"<?php echo $round ? ' aria-hidden="true"' : ''; ?>>
+              <img src="<?php echo get_template_directory_uri(); ?>/img/service/logo/<?php echo esc_attr($logo['file']); ?>" alt="<?php echo $round ? '' : esc_attr($logo['alt']); ?>" class="service-lead__logo-img">
+            </li>
+            <?php endforeach; ?>
+            <?php endfor; ?>
+          </ul>
+        </div>
       </div>
     </section>
 

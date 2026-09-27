@@ -84,41 +84,33 @@
 .service-lead__logos {
   position: relative;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: rem(16);
-  padding: rem(32) 0;
+  padding: rem(48) 0;
   border-bottom: 1px solid $green;
 
   @include mq("md") {
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: rem(20) 0;
-    gap: rem(8);
+    padding: rem(28) 0;
   }
 }
 
-.service-lead__logo {
-  display: flex;
+// マーキー(js/logo-marquee.js)で一定速度で流すため、スライド間の移動を等速にする
+.service-lead__logo-list {
   align-items: center;
-  justify-content: center;
-  flex: 1;
-  min-width: 0;
-  aspect-ratio: 130 / 90;
-  padding: rem(12);
+  transition-timing-function: linear;
+}
 
-  @include mq("md") {
-    flex: 0 0 calc((100% - #{rem(16)}) / 3);
-    aspect-ratio: 2 / 1;
-    padding: rem(8);
-  }
+// ロゴは横幅ではなく縦幅で揃える(横幅は各ロゴの比率なり)
+.service-lead__logo {
+  width: auto;
 }
 
 .service-lead__logo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  display: block;
+  width: auto;
+  height: rem(40);
+
+  @include mq("md") {
+    height: rem(28);
+  }
 }
 
 /* ---------- worry（こんなお悩みありませんか） ---------- */

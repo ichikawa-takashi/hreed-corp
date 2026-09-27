@@ -65,8 +65,8 @@ function enqueue_custom_styles_and_scripts() {
     // Google Fonts
     wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;600;700&display=swap', [], null );
 
-    // Swiper CSS(トップのMVスライドショー)
-    if ( $is_top ) {
+    // Swiper CSS(トップのMVスライドショー、Serviceの導入企業ロゴのマーキー)
+    if ( $is_top || is_page('service') ) {
         wp_enqueue_style( 'swiper-css', $uri . '/css/swiper-bundle.min.css', [], null );
     }
 
@@ -111,6 +111,12 @@ function enqueue_custom_styles_and_scripts() {
     // リンクカード(template-parts/link-cards.php を使うページ)
     if ( $is_top || is_page(['about', 'company', 'service']) ) {
         wp_enqueue_script( 'link-cards-animation', $uri . '/js/link-cards-animation.js', ['gsap-scrolltrigger'], filemtime( $path . '/js/link-cards-animation.js' ), true );
+    }
+
+    // Service 導入企業ロゴのマーキー
+    if ( is_page('service') ) {
+        wp_enqueue_script( 'swiper-js', $uri . '/js/vendor/swiper-bundle.min.js', [], null, true );
+        wp_enqueue_script( 'logo-marquee', $uri . '/js/logo-marquee.js', ['swiper-js'], filemtime( $path . '/js/logo-marquee.js' ), true );
     }
 
     if ( $is_top ) {

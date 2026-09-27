@@ -5181,43 +5181,33 @@ body.is-drawer-open {
 .service-lead__logos {
   position: relative;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 2rem 0;
+  padding: 3rem 0;
   border-bottom: 1px solid #0c998a;
 }
 @media screen and (max-width: 768px) {
   .service-lead__logos {
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 1.25rem 0;
-    gap: 0.5rem;
+    padding: 1.75rem 0;
   }
+}
+
+.service-lead__logo-list {
+  align-items: center;
+  transition-timing-function: linear;
 }
 
 .service-lead__logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-  min-width: 0;
-  aspect-ratio: 130/90;
-  padding: 0.75rem;
-}
-@media screen and (max-width: 768px) {
-  .service-lead__logo {
-    flex: 0 0 calc((100% - 1rem) / 3);
-    aspect-ratio: 2/1;
-    padding: 0.5rem;
-  }
+  width: auto;
 }
 
 .service-lead__logo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  display: block;
+  width: auto;
+  height: 2.5rem;
+}
+@media screen and (max-width: 768px) {
+  .service-lead__logo-img {
+    height: 1.75rem;
+  }
 }
 
 /* ---------- worry（こんなお悩みありませんか） ---------- */
