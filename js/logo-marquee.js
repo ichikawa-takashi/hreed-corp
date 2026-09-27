@@ -20,7 +20,10 @@
       spaceBetween: 40,
       loop: true,
       allowTouchMove: false,
+      // 初期化と同時に自動再生が始まると、1枚目だけ既定の速度(0.3秒)で動いてしまうため、
+      // ここでは開始せず、速度を合わせてから下でstart()する
       autoplay: {
+        enabled: false,
         delay: 0,
         disableOnInteraction: false,
       },
@@ -34,13 +37,9 @@
     });
 
     // 視差効果を減らす設定の環境では流さない
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      swiper.autoplay.stop();
-      return;
-    }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    // 1枚目の移動から一定速度にするため、速度を合わせてから自動再生を始め直す
-    swiper.autoplay.stop();
+    // 1枚目の移動から一定速度で流れるよう、速度を合わせてから自動再生を始める
     syncSpeed(swiper);
     swiper.autoplay.start();
   }
