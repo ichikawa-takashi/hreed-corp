@@ -47,29 +47,4 @@ gsap.registerPlugin(ScrollTrigger);
     });
   });
 
-  // マグネティックボタン(カーソルに矢印が少し寄る)
-  var isFinePointer = window.matchMedia("(pointer: fine)").matches;
-  if (!isFinePointer) return;
-
-  linkCards.querySelectorAll(".link-cards__card").forEach(function (card) {
-    var arrow = card.querySelector(".arrow-btn");
-    if (!arrow) return;
-
-    card.addEventListener("mousemove", function (e) {
-      var rect = card.getBoundingClientRect();
-      var relX = (e.clientX - rect.left) / rect.width - 0.5;
-      var relY = (e.clientY - rect.top) / rect.height - 0.5;
-
-      gsap.to(arrow, {
-        x: relX * 14,
-        y: relY * 14,
-        duration: 0.4,
-        ease: "power2.out",
-      });
-    });
-
-    card.addEventListener("mouseleave", function () {
-      gsap.to(arrow, { x: 0, y: 0, duration: 0.5, ease: "power3.out" });
-    });
-  });
 })();

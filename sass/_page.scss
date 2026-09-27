@@ -87,7 +87,8 @@
     padding: rem(96) 0 rem(64);
 
     @include mq('md') {
-        padding: rem(48) 0 rem(40);
+        // 固定ヘッダー(SP:60px)の下から見出しが始まるよう、下層MVと同じ上余白を取る
+        padding: rem(92) 0 rem(48);
     }
 }
 
@@ -173,6 +174,11 @@
     display: grid;
     // お知らせのスライダー(横並びのスライド)の幅で列が広がらないよう、列幅を親に合わせる
     grid-template-columns: minmax(0, 1fr);
+
+    @include mq('md') {
+        // 縦並び(align-items: flex-start)だと幅がお知らせの中身に合わせて縮み、写真が画面幅いっぱいにならないため親幅に広げる
+        width: 100%;
+    }
 }
 
 .mv__photo {
@@ -181,6 +187,11 @@
     aspect-ratio: 1020 / 535;
     position: relative;
     overflow: hidden;
+
+    @include mq('md') {
+        // SPはお知らせカードが重なっても写真が十分見えるよう縦長にする
+        aspect-ratio: 4 / 3;
+    }
 }
 
 .mv__photo .swiper-wrapper {
@@ -479,6 +490,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    will-change: transform;
 }
 
 .service__bg::after {
@@ -813,6 +825,8 @@
 
     @include mq('md') {
         margin-top: rem(48);
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 }
 

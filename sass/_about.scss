@@ -241,9 +241,15 @@
   }
 }
 
-.about-message__photo img {
-  width: 100%;
+// キャプションが写真の外にはみ出すため、パララックスではみ出す画像は内側の枠で切り抜く
+.about-message__photo-frame {
   aspect-ratio: 300 / 400;
+  overflow: hidden;
+}
+
+.about-message__photo-img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
 }

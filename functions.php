@@ -83,6 +83,9 @@ function enqueue_custom_styles_and_scripts() {
     wp_enqueue_script( 'gsap-core', $uri . '/js/gsap.js', [], null, true );
     if ( $has_scroll_anim ) {
         wp_enqueue_script( 'gsap-scrolltrigger', $uri . '/js/ScrollTrigger.js', ['gsap-core'], null, true );
+
+        // Service / リンクカード / お問い合わせCTA の背景、About代表写真のパララックス(全ページ共通)
+        wp_enqueue_script( 'parallax-bg', $uri . '/js/parallax-bg.js', ['gsap-scrolltrigger'], filemtime( $path . '/js/parallax-bg.js' ), true );
     }
 
     // トップページ
@@ -100,11 +103,20 @@ function enqueue_custom_styles_and_scripts() {
         wp_enqueue_script( 'lower-mv-animation', $uri . '/js/lower-mv-animation.js', ['gsap-scrolltrigger'], filemtime( $path . '/js/lower-mv-animation.js' ), true );
     }
 
+    // About / Company の本文スクロールアニメーション
+    if ( is_page(['about', 'company']) ) {
+        wp_enqueue_script( 'page-content-animation', $uri . '/js/page-content-animation.js', ['gsap-scrolltrigger'], filemtime( $path . '/js/page-content-animation.js' ), true );
+    }
+
+    // リンクカード(template-parts/link-cards.php を使うページ)
+    if ( $is_top || is_page(['about', 'company', 'service']) ) {
+        wp_enqueue_script( 'link-cards-animation', $uri . '/js/link-cards-animation.js', ['gsap-scrolltrigger'], filemtime( $path . '/js/link-cards-animation.js' ), true );
+    }
+
     if ( $is_top ) {
         wp_enqueue_script( 'service-animation', $uri . '/js/service-animation.js', ['gsap-scrolltrigger'], filemtime( $path . '/js/service-animation.js' ), true );
         wp_enqueue_script( 'case-animation', $uri . '/js/case-animation.js', ['gsap-scrolltrigger'], filemtime( $path . '/js/case-animation.js' ), true );
         wp_enqueue_script( 'news-animation', $uri . '/js/news-animation.js', ['gsap-scrolltrigger'], filemtime( $path . '/js/news-animation.js' ), true );
-        wp_enqueue_script( 'link-cards-animation', $uri . '/js/link-cards-animation.js', ['gsap-scrolltrigger'], filemtime( $path . '/js/link-cards-animation.js' ), true );
 
         // Swiper Script
         wp_enqueue_script( 'swiper-js', $uri . '/js/vendor/swiper-bundle.min.js', [], null, true );
@@ -248,6 +260,26 @@ function hreed_escape_multiform_value($value)
     return esc_html($value);
 }
 add_filter('cf7msm_form_field_value', 'hreed_escape_multiform_value');
+
+// 送信ボタンを<button>に置き換え、共通ボタン(btn-more)と同じ矢印アニメーションを付ける
+// (CF7の[submit]は<input>で出力され、矢印の要素を中に入れられないため)
+function hreed_cf7_submit_button($html)
+{
+    $arrow = get_template_directory_uri() . '/img/common/arrow-green.svg';
+    return preg_replace_callback(
+        '/<input([^>]*?)class="([^"]*contact-form__submit-btn[^"]*)"([^>]*?)type="submit"([^>]*?)value="([^"]*)"([^>]*?)\/?>/',
+        function ($m) use ($arrow) {
+            return sprintf(
+                '<button type="submit" class="%1$s"><span class="contact-form__submit-text">%2$s</span><span class="btn-more__arrow" aria-hidden="true"><img src="%3$s" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current"><img src="%3$s" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next"></span></button>',
+                $m[2],
+                $m[5],
+                esc_url($arrow)
+            );
+        },
+        $html
+    );
+}
+add_filter('wpcf7_form_elements', 'hreed_cf7_submit_button');
 
 
 // 支援事例のスラッグが日本語(URLエンコード)になる場合は「case-{投稿ID}」にする

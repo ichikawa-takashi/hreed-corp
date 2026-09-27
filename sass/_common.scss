@@ -438,7 +438,7 @@ body.is-drawer-open {
   @include font(72, 88, 50, $bold);
 
   @include mq("md") {
-    @include font(32, 39, 50, $bold);
+    @include font(48, 60, 50, $bold);
   }
 }
 
@@ -528,7 +528,7 @@ body.is-drawer-open {
 
 .lower-mv__deco--03 {
   top: rem(185);
-  right: rem(770);
+  right: 50%;
   width: rem(44);
 
   @include mq("md") {
@@ -567,7 +567,7 @@ body.is-drawer-open {
   @include font(56, 68, 50, $bold);
 
   @include mq("md") {
-    @include font(28, 34, 20, $bold);
+    @include font(36, 46, 20, $bold);
   }
 }
 
@@ -600,16 +600,30 @@ body.is-drawer-open {
 .link-cards {
   position: relative;
   overflow: hidden;
-  background-image: linear-gradient(rgba($green, .82), rgba($green, .82)), url(../img/top/service-bg.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   padding-top: rem(80);
   padding-bottom: rem(80);
 
   @include mq("md") {
     padding-top: rem(60);
     padding-bottom: rem(60);
+  }
+
+  // 背景画像はパララックスで動かすため疑似要素に持たせ、上下に10%ずつ余白をとっておく
+  // (--parallax-y は js/parallax-bg.js がスクロール量に応じて更新する)
+  &::before {
+    content: "";
+    position: absolute;
+    top: -10%;
+    left: 0;
+    right: 0;
+    bottom: -10%;
+    background-image: linear-gradient(rgba($green, .82), rgba($green, .82)), url(../img/top/service-bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transform: translate3d(0, var(--parallax-y, 0), 0);
+    will-change: transform;
+    pointer-events: none;
   }
 }
 
@@ -682,13 +696,25 @@ body.is-drawer-open {
   background-color: #F5F7F9;
 }
 
-.link-cards__foot .arrow-btn{
-  max-width: rem(56);
-  width: 100%;
+.link-cards__foot .btn-more__arrow {
+  width: rem(56);
+  height: rem(56);
 
   @include mq(md){
-    max-width: rem(36);
+    width: rem(36);
+    height: rem(36);
   }
+}
+
+// カードにホバーすると矢印が右へ抜け、左から次の矢印が入ってくる(共通ボタンと同じ動き)
+.link-cards__card:hover .btn-more__arrow-icon--current {
+  opacity: 0;
+  transform: translate(120%, -50%);
+}
+
+.link-cards__card:hover .btn-more__arrow-icon--next {
+  opacity: 1;
+  transform: translate(-50%, -50%);
 }
 
 .link-cards__deco {
@@ -785,6 +811,7 @@ body.is-drawer-open {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 1;
     background-color: $green;
     opacity: .82;
     pointer-events: none;
@@ -793,6 +820,7 @@ body.is-drawer-open {
 
 .cta-banner__bg {
   width: 100%;
+  will-change: transform;
   aspect-ratio: 1120 / 262;
   object-fit: cover;
   display: block;
@@ -806,6 +834,7 @@ body.is-drawer-open {
   position: absolute;
   top: 50%;
   left: 50%;
+  z-index: 2;
   transform: translate(-50%, -50%);
   width: 100%;
   display: flex;
