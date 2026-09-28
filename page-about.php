@@ -5,11 +5,11 @@
       <div class="lower-mv__inner inner">
         <div class="lower-mv__head">
           <span class="lower-mv__tag"><span class="lower-mv__text">About</span></span>
-          <h2 class="lower-mv__heading"><span class="lower-mv__text">私たちについて</span></h2>
+          <h1 class="lower-mv__heading"><span class="lower-mv__text">私たちについて</span></h1>
         </div>
 
         <div class="lower-mv__photo">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/about/mv-photo.jpg" alt="Aboutページメインビュー">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/about/mv-photo.jpg" alt="Hreedのメンバー">
         </div>
 
         <svg width="56" height="124" viewBox="0 0 56 124" fill="none" xmlns="http://www.w3.org/2000/svg" class="lower-mv__deco lower-mv__deco--01" aria-hidden="true">
@@ -40,7 +40,7 @@
 
         <div class="about-mc__row">
           <div class="about-mc__side">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/about/mc-side.png" alt="装飾">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/about/mc-side.png" alt="">
           </div>
 
           <div class="about-mc__body">
@@ -75,7 +75,7 @@
               </p>
               
               <p class="about-mc__text">
-                短期的な成果よりも、 派手さよりも、<br>
+                短期的な成果よりも、派手さよりも、<br>
                 10年後、20年後に振り返ったときに「<span class="about-mc__accent">正しかった</span>」と言える選択を積み重ねること。
               </p>
             </div>
@@ -105,7 +105,7 @@
             <div class="about-value__content">
               <h3 class="about-value__title">チームで成し遂げる</h3>
               <p class="about-value__box">
-                個の足し算では想像の範囲内の事しか成しえない。<br class="pc">
+                個の足し算では想像の範囲内のことしか成しえない。<br class="pc">
                 個の掛け算でチームとなって想像以上のことを成し遂げよう
               </p>
             </div>
@@ -149,7 +149,7 @@
             <div class="about-value__content">
               <h3 class="about-value__title">黒を好もう</h3>
               <p class="about-value__box">
-                ビジネスは厳しい成果主義の世界。 黒字、黒子、黒い服。ビシッといこう
+                ビジネスは厳しい成果主義の世界。黒字、黒子、黒い服。ビシッといこう
               </p>
             </div>
           </li>
@@ -167,7 +167,7 @@
         <div class="about-message__row">
           <div class="about-message__photo">
             <div class="about-message__photo-frame">
-              <img class="about-message__photo-img" src="<?php echo get_template_directory_uri(); ?>/img/about/isogimi_image.jpg" alt="代表取締役社長 五十君 隆之介">
+              <img class="about-message__photo-img" src="<?php echo get_template_directory_uri(); ?>/img/about/isogimi_image.jpg" alt="代表取締役 五十君 隆之介">
             </div>
             <p class="about-message__caption">
               Hreed株式会社 代表取締役<br>
@@ -177,13 +177,13 @@
 
           <div class="about-message__body">
             <p class="about-message__text">
-              小さな頃から、自営業を営む家庭の子どもとして育ちました。常々、組織は人がすべて。と言われていた私は、社会に出た時にどんな貢献ができたらおもしろい人生になるだろうかと考えて、就職しました。<br>
+              小さな頃から、自営業を営む家庭の子どもとして育ちました。常々、「組織は人がすべて」と言われていた私は、社会に出た時にどんな貢献ができたらおもしろい人生になるだろうかと考えて、就職しました。<br>
               <br>
               そこから時を経て、Hreed（フレッド）は組織の中の人に関わる問題の解決を軸とした事業を展開してきました。<br>
               <br>
               2022年末の創業以来、たくさんのお客様、転職者様、ならびに一緒に働く仲間に支えられ事業拡大を実現してきましたが、まだまだこれからの会社です。<br>
               <br>
-              今後も、日々変わる情勢の中、我々にできることは何か、未来に続く残していくべき価値は何かに向き合い、社会への価値貢献の輪を広げていきます。
+              今後も、日々変わる情勢の中、我々にできることは何か、未来に残していくべき価値は何かに向き合い、社会への価値貢献の輪を広げていきます。
             </p>
           </div>
         </div>

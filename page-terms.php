@@ -6,25 +6,25 @@
     <section class="legal">
       <div class="legal__inner inner">
         <div class="legal__section">
-          <h3 class="legal__heading">1. 個人情報に関する取り扱い</h3>
+          <h3 class="legal__heading">1. 総則</h3>
           <p class="legal__text">Hreed株式会社（以下「Hreed」といいます。）が提供する人材紹介サービスのご利用申込みにあたっては、以下の利用規約（以下「本規約」といいます。）についてご承諾の上でお申込みいただきますようお願いいたします。</p>
         </div>
 
         <div class="legal__section">
           <h3 class="legal__heading">2. 定義</h3>
-          <p class="legal__text"><strong>a. 人材紹介サービス</strong><br>利用者から受領したお申込み内容と求人企業が希望する求人条件との照合、求人票および補足情報の提供、電話・面談による転職相談、担当キャリアアドバイザーによる活動支援、応募手続の代行、および Hreed が運営する関連サービスの案内等の総称。</p>
-          <p class="legal__text"><strong>b. 利用者</strong><br>人材紹介サービスの利用を申し込み、Hreed が承諾しサービス提供を開始した方。<br>利用者は登録・利用時点で本規約および「プライバシーポリシー」を承諾したものとみなされます。</p>
+          <p class="legal__text"><strong>a. 人材紹介サービス</strong><br>利用者から受領したお申込み内容と求人企業が希望する求人条件との照合、求人票および補足情報の提供、電話・面談による転職相談、担当キャリアアドバイザーによる活動支援、応募手続きの代行、および Hreed が運営する関連サービスの案内等の総称。</p>
+          <p class="legal__text"><strong>b. 利用者</strong><br>人材紹介サービスの利用を申込み、Hreed が承諾しサービス提供を開始した方。<br>利用者は登録・利用時点で本規約および「プライバシーポリシー」を承諾したものとみなされます。</p>
           <p class="legal__text"><strong>c. 求人企業</strong><br>Hreed と人材紹介契約を締結し、Hreed に人材紹介を委託した企業の総称。</p>
         </div>
 
         <div class="legal__section">
           <h3 class="legal__heading">3. 申込み方法</h3>
-          <p class="legal__text">人材紹介サービスの申込みは、Hreed のランディングページまたは Hreed が指定する方法により行います。<br>過去に Hreed の提供するサービス利用規約に違反した方には、サービス提供を行わない場合があります。</p>
+          <p class="legal__text">人材紹介サービスの申込みは、Hreed のWebサイトまたは Hreed が指定する方法により行います。<br>過去に Hreed の提供するサービス利用規約に違反した方には、サービス提供を行わない場合があります。</p>
         </div>
 
         <div class="legal__section">
           <h3 class="legal__heading">4. サービスの提供</h3>
-          <p class="legal__text">Hreed は、以下のサービスの中から適切と判断するサービスを提供します。<br>a. 申込内容と求人条件との照合、および求人情報の提供<br>b. 適合度が高いと判断した利用者への応募勧誘<br>c. 応募手続きの代行<br>d. 電話または面談による転職相談<br>e. キャリアアドバイザーによる転職支援<br>f. その他利用者の転職に有益と判断するサービス</p>
+          <p class="legal__text">Hreed は、以下のサービスの中から適切と判断するサービスを提供します。<br>a. 申込み内容と求人条件との照合、および求人情報の提供<br>b. 適合度が高いと判断した利用者への応募勧誘<br>c. 応募手続きの代行<br>d. 電話または面談による転職相談<br>e. キャリアアドバイザーによる転職支援<br>f. その他利用者の転職に有益と判断するサービス</p>
         </div>
 
         <div class="legal__section">
@@ -59,7 +59,7 @@
 
         <div class="legal__section">
           <h3 class="legal__heading">11. 求人照合</h3>
-          <p class="legal__text">Hreed は、申込内容と求人条件を照合しますが、判断基準・理由等は開示しません。<br>適合しないと判断した場合、応募依頼があっても推薦を行わない場合があります。</p>
+          <p class="legal__text">Hreed は、申込み内容と求人条件を照合しますが、判断基準・理由等は開示しません。<br>適合しないと判断した場合、応募依頼があっても推薦を行わない場合があります。</p>
         </div>
 
         <div class="legal__section">
@@ -123,7 +123,7 @@
         </div>
 
         <div class="legal__section">
-          <h3 class="legal__heading">24. 管轄裁判所（修正済）</h3>
+          <h3 class="legal__heading">24. 管轄裁判所</h3>
           <p class="legal__text">本規約に関する紛争は、<strong>東京地方裁判所</strong>を第一審の専属管轄裁判所とします。</p>
         </div>
       </div>

@@ -1,11 +1,11 @@
   <footer class="footer">
     <div class="footer__inner inner">
       <div class="footer__top">
-        <h2 class="footer__logo">
+        <div class="footer__logo">
           <a href="<?php echo esc_url(home_url('/')); ?>">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/common/logo.svg" alt="Hreed">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/common/logo.svg" alt="Hreed株式会社">
           </a>
-        </h2>
+        </div>
 
         <div class="footer__wrap">
           <nav class="footer__nav">

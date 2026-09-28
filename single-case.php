@@ -3,7 +3,7 @@
   <main>
     <?php while (have_posts()) : the_post(); ?>
     <?php
-    $client = hreed_first_term(get_the_ID(), 'case_client');
+    $client = hreed_case_client();
     $cat    = hreed_first_term(get_the_ID(), 'case_cat');
     $cats   = get_the_terms(get_the_ID(), 'case_cat');
     $tags   = get_the_terms(get_the_ID(), 'case_tag');
@@ -14,7 +14,7 @@
           <?php if ($cat) : ?>
           <span class="case-hero__pill"><?php echo esc_html($cat->name); ?></span>
           <?php endif; ?>
-          <h2 class="case-hero__title"><?php the_title(); ?></h2>
+          <h1 class="case-hero__title"><?php the_title(); ?></h1>
           <p class="case-hero__meta">
             <span>作成日：<?php echo get_the_date('Y.m.d'); ?></span>
             <span>更新日：<?php echo get_the_modified_date('Y.m.d'); ?></span>
@@ -23,7 +23,7 @@
 
         <?php if (has_post_thumbnail()) : ?>
         <div class="case-hero__photo">
-          <?php the_post_thumbnail('large', ['alt' => $client ? $client->name . '様' : get_the_title()]); ?>
+          <?php the_post_thumbnail('large', ['alt' => $client ? $client . '様' : get_the_title()]); ?>
         </div>
         <?php endif; ?>
       </div>
@@ -35,7 +35,7 @@
           <div class="case-detail__main">
             <div class="case-overview">
               <?php if ($client) : ?>
-              <h3 class="case-overview__name"><?php echo esc_html($client->name); ?></h3>
+              <h3 class="case-overview__name"><?php echo esc_html($client); ?></h3>
               <?php endif; ?>
               <?php if (has_excerpt()) : ?>
               <p class="case-overview__lead"><?php echo esc_html(get_the_excerpt()); ?></p>
@@ -65,10 +65,42 @@
               <?php the_content(); ?>
             </div>
 
+            <?php
+            // 前後の支援事例(並び順は管理画面の並び順に従う)
+            $pager = array_filter([
+              'prev' => get_previous_post(),
+              'next' => get_next_post(),
+            ]);
+            ?>
+            <?php if ($pager) : ?>
+            <nav class="case-pager" aria-label="前後の支援事例">
+              <?php foreach ($pager as $dir => $item) : ?>
+              <div class="case-pager__item case-pager__item--<?php echo $dir; ?>">
+                <a href="<?php echo esc_url(get_permalink($item)); ?>" class="case-pager__link">
+                  <span class="case-pager__icon btn-more__arrow" aria-hidden="true">
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
+                  </span>
+                  <?php if (has_post_thumbnail($item)) : ?>
+                  <span class="case-pager__thumb">
+                    <?php echo get_the_post_thumbnail($item, 'medium', ['alt' => '']); ?>
+                  </span>
+                  <?php endif; ?>
+                  <span class="case-pager__body">
+                    <span class="case-pager__label"><?php echo $dir === 'prev' ? 'Prev' : 'Next'; ?></span>
+                    <span class="case-pager__title"><?php echo esc_html(get_the_title($item)); ?></span>
+                  </span>
+                </a>
+              </div>
+              <?php endforeach; ?>
+            </nav>
+            <?php endif; ?>
+
             <div class="case-detail__back">
               <a href="<?php echo esc_url(get_post_type_archive_link('case')); ?>" class="case-detail__back-link">
-                <span class="case-detail__back-icon">
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/common/icon-arrow_wh.svg" alt="矢印アイコン">
+                <span class="case-detail__back-icon btn-more__arrow" aria-hidden="true">
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
                 </span>
                 一覧に戻る
               </a>
@@ -77,10 +109,13 @@
 
           <aside class="case-detail__side">
             <?php
+            // 管理画面で「ピックアップ記事に表示」(ACF: case_pickup)をオンにした事例を表示する
+            // (閲覧中の記事も除外しない。除外すると事例が少ないときにチェックした記事が出ず、枠ごと消えてしまうため)
             $pickup = new WP_Query([
               'post_type'      => 'case',
               'posts_per_page' => 3,
-              'post__not_in'   => [get_the_ID()],
+              'meta_key'       => 'case_pickup',
+              'meta_value'     => '1',
             ]);
             ?>
             <?php if ($pickup->have_posts()) : ?>

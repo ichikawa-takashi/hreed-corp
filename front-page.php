@@ -18,17 +18,17 @@
                             <div class="swiper-slide mv__photo-slide">
                                 <img class="mv__photo-img"
                                     src="<?php echo get_template_directory_uri(); ?>/img/top/mv-photo.jpg"
-                                    alt="Hreedのオフィス風景">
+                                    alt="Hreedのメンバー集合写真">
                             </div>
                             <div class="swiper-slide mv__photo-slide">
                                 <img class="mv__photo-img"
                                     src="<?php echo get_template_directory_uri(); ?>/img/top/mv-photo-reception.jpg"
-                                    alt="Hreedのオフィス風景">
+                                    alt="オフィスで談笑するHreedのメンバー">
                             </div>
                             <div class="swiper-slide mv__photo-slide">
                                 <img class="mv__photo-img"
                                     src="<?php echo get_template_directory_uri(); ?>/img/top/mv-photo-meeting.jpg"
-                                    alt="Hreedのオフィス風景">
+                                    alt="会議室で打ち合わせをするHreedのメンバー">
                             </div>
                         </div>
                     </div>
@@ -110,7 +110,7 @@
             <div class="about__body">
                 <div class="about__photos">
                     <img class="about__photo about__photo--1"
-                        src="<?php echo get_template_directory_uri(); ?>/img/top/about-photo-sub.jpg" alt="">
+                        src="<?php echo get_template_directory_uri(); ?>/img/top/about-photo-sub.jpg" alt="ノートパソコンで作業するメンバーの手元">
                     <img class="about__photo about__photo--2"
                         src="<?php echo get_template_directory_uri(); ?>/img/top/about-photo-main.jpg"
                         alt="採用コンサルティングの様子">
@@ -129,7 +129,7 @@
                         もっと見る
                         <span class="btn-more__arrow" aria-hidden="true">
                             <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg"
-                                alt="矢印アイコン" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+                                alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
                             <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg" alt=""
                                 class="btn-more__arrow-icon btn-more__arrow-icon--next">
                         </span>
@@ -202,7 +202,7 @@
             <a href="<?php echo esc_url(home_url('/service/')); ?>" class="service__more btn-more">
                 もっと見る
                 <span class="btn-more__arrow" aria-hidden="true">
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg" alt="矢印アイコン"
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg" alt=""
                         class="btn-more__arrow-icon btn-more__arrow-icon--current">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg" alt=""
                         class="btn-more__arrow-icon btn-more__arrow-icon--next">
@@ -247,7 +247,7 @@
                 class="case__more btn-more btn-more--solid">
                 一覧を見る
                 <span class="btn-more__arrow" aria-hidden="true">
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="矢印アイコン"
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt=""
                         class="btn-more__arrow-icon btn-more__arrow-icon--current">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt=""
                         class="btn-more__arrow-icon btn-more__arrow-icon--next">
@@ -304,7 +304,7 @@
                         一覧を見る
                         <span class="btn-more__arrow" aria-hidden="true">
                             <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg"
-                                alt="矢印アイコン" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+                                alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
                             <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt=""
                                 class="btn-more__arrow-icon btn-more__arrow-icon--next">
                         </span>

@@ -2,13 +2,13 @@
 // 支援事例カード
 // $args['frame']: 写真を枠(.case__photo-frame)で囲むか(関連記事一覧では囲まない)
 $frame  = $args['frame'] ?? true;
-$client = hreed_first_term(get_the_ID(), 'case_client');
+$client = hreed_case_client();
 $cat    = hreed_first_term(get_the_ID(), 'case_cat');
-$photo  = get_the_post_thumbnail(null, 'large', ['class' => 'case__photo', 'alt' => $client ? $client->name . '様' : get_the_title()]);
+$photo  = get_the_post_thumbnail(null, 'large', ['class' => 'case__photo', 'alt' => $client ? $client . '様' : get_the_title()]);
 ?>
 <a href="<?php the_permalink(); ?>" class="case__card">
   <?php if ($client) : ?>
-  <p class="case__client"><?php echo esc_html($client->name); ?>様</p>
+  <p class="case__client"><?php echo esc_html($client); ?>様</p>
   <?php endif; ?>
   <?php if ($frame) : ?>
   <div class="case__photo-frame">

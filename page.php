@@ -8,7 +8,7 @@ get_header();
     <?php while (have_posts()) : the_post(); ?>
     <section class="news-detail">
       <div class="news-detail__inner inner">
-        <h2 class="news-detail__title"><?php the_title(); ?></h2>
+        <h1 class="news-detail__title"><?php the_title(); ?></h1>
 
         <div class="news-detail__content">
           <?php the_content(); ?>

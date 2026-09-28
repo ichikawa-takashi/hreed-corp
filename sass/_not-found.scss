@@ -1,0 +1,84 @@
+/* ==================================================
+*  404(ページが見つかりません)
+*  MVは template-parts/text-mv.php(_legal.scssの.lower-mv--text)を共用
+================================================== */
+
+.not-found {
+  padding-top: rem(80);
+  padding-bottom: rem(120);
+  background-color: $white;
+
+  @include mq("md") {
+    padding-top: rem(48);
+    padding-bottom: rem(80);
+  }
+}
+
+.not-found__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.not-found__code {
+  font-family: $en;
+  @include font(120, 120, 50, $bold);
+  color: $mint;
+
+  @include mq("md") {
+    @include font(80, 80, 50, $bold);
+  }
+}
+
+.not-found__title {
+  margin-top: rem(24);
+  color: $green;
+  @include font(24, 35, 50, $bold);
+
+  @include mq("md") {
+    margin-top: rem(16);
+    @include font(18, 27, 50, $bold);
+  }
+}
+
+.not-found__text {
+  margin-top: rem(24);
+  color: $black;
+  @include font(16, 28, 50, $regular);
+
+  @include mq("md") {
+    margin-top: rem(16);
+    text-align: left;
+    @include font(14, 26, 50, $regular);
+  }
+}
+
+.not-found__back {
+  margin-top: rem(48);
+  padding: rem(16) rem(28) rem(16) rem(16);
+
+  @include mq("md") {
+    margin-top: rem(32);
+    padding: rem(12) rem(20) rem(12) rem(12);
+  }
+}
+
+// 共通のbtn-more__arrowを左右反転し、右→左へ抜ける「戻る」動きにする(支援事例詳細の「一覧に戻る」と同様)
+.not-found__back-icon .btn-more__arrow-icon {
+  transform: translate(-50%, -50%) scaleX(-1);
+}
+
+.not-found__back-icon .btn-more__arrow-icon--next {
+  transform: translate(120%, -50%) scaleX(-1);
+}
+
+.not-found__back:hover .not-found__back-icon .btn-more__arrow-icon--current {
+  opacity: 0;
+  transform: translate(-220%, -50%) scaleX(-1);
+}
+
+.not-found__back:hover .not-found__back-icon .btn-more__arrow-icon--next {
+  opacity: 1;
+  transform: translate(-50%, -50%) scaleX(-1);
+}

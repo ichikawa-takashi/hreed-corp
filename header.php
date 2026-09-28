@@ -26,11 +26,11 @@
 
   <header class="header js-header">
     <div class="header__inner">
-      <h1 class="header__logo">
+      <div class="header__logo">
         <a href="<?php echo esc_url(home_url('/')); ?>">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/common/logo.svg" alt="Hreed">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/common/logo.svg" alt="Hreed株式会社">
         </a>
-      </h1>
+      </div>
 
       <nav class="header__nav">
         <ul class="header__nav-list">
@@ -80,7 +80,7 @@
         <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="header__contact">
           Contact
           <span class="btn-more__arrow" aria-hidden="true">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="矢印アイコン" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
             <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
           </span>
         </a>
@@ -142,7 +142,7 @@
         <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="header__drawer-contact">
           Contact
           <span class="btn-more__arrow" aria-hidden="true">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="矢印アイコン" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
             <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
           </span>
         </a>

@@ -17,7 +17,7 @@ $theme_uri  = get_template_directory_uri();
           <li class="link-cards__item">
             <a href="<?php echo esc_url(home_url($card['url'])); ?>" class="link-cards__card">
               <div class="link-cards__photo">
-                <img src="<?php echo $theme_uri; ?>/img/<?php echo $card['img']; ?>" alt="<?php echo esc_attr($card['en']); ?>">
+                <img src="<?php echo $theme_uri; ?>/img/<?php echo $card['img']; ?>" alt="">
               </div>
               <div class="link-cards__foot">
                 <div class="sec-title sec-title--reverse">
@@ -34,9 +34,9 @@ $theme_uri  = get_template_directory_uri();
           <?php endforeach; ?>
         </ul>
       </div>
-      <img src="<?php echo $theme_uri; ?>/img/common/link-deco01.png" alt="装飾01" class="link-cards__deco link-cards__deco--01">
-      <img src="<?php echo $theme_uri; ?>/img/common/link-deco02.png" alt="装飾02" class="link-cards__deco link-cards__deco--02">
-      <img src="<?php echo $theme_uri; ?>/img/common/link-deco03.png" alt="装飾03" class="link-cards__deco link-cards__deco--03">
-      <img src="<?php echo $theme_uri; ?>/img/common/link-deco04.png" alt="装飾04" class="link-cards__deco link-cards__deco--04">
-      <img src="<?php echo $theme_uri; ?>/img/common/link-deco05.png" alt="装飾05" class="link-cards__deco link-cards__deco--05">
+      <img src="<?php echo $theme_uri; ?>/img/common/link-deco01.png" alt="" class="link-cards__deco link-cards__deco--01">
+      <img src="<?php echo $theme_uri; ?>/img/common/link-deco02.png" alt="" class="link-cards__deco link-cards__deco--02">
+      <img src="<?php echo $theme_uri; ?>/img/common/link-deco03.png" alt="" class="link-cards__deco link-cards__deco--03">
+      <img src="<?php echo $theme_uri; ?>/img/common/link-deco04.png" alt="" class="link-cards__deco link-cards__deco--04">
+      <img src="<?php echo $theme_uri; ?>/img/common/link-deco05.png" alt="" class="link-cards__deco link-cards__deco--05">
     </section>

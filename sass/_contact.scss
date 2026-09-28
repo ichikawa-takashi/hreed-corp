@@ -153,6 +153,77 @@
   }
 }
 
+// プライバシーポリシーへの同意(CF7 acceptance)
+.contact-form__agree {
+  margin-top: rem(40);
+  text-align: center;
+
+  @include mq("md") {
+    margin-top: rem(30);
+  }
+}
+
+.contact-form__agree .wpcf7-list-item {
+  margin-left: 0;
+}
+
+.contact-form__agree label {
+  display: inline-flex;
+  align-items: center;
+  gap: rem(12);
+  color: $black;
+  @include font(16, 24, 0, $regular);
+
+  @include mq("md") {
+    gap: rem(8);
+    @include font(14, 20, 0, $regular);
+  }
+}
+
+// resetでcheckboxはdisplay:noneのため、input自体を枠として表示する(resetより詳細度を上げる)
+.contact-form__agree-check[type="checkbox"] {
+  display: block;
+  flex-shrink: 0;
+  width: rem(22);
+  height: rem(22);
+  border: 1px solid #DBDBDB;
+  background-color: $white;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: rem(14) auto;
+  transition: background-color .2s, border-color .2s;
+
+  &:checked {
+    border-color: $green;
+    background-color: $green;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='10' viewBox='0 0 14 10' fill='none'%3E%3Cpath d='M1 5L5 9L13 1' stroke='%23FFFFFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  }
+
+  &:focus-visible {
+    outline: 2px solid $green;
+    outline-offset: 2px;
+  }
+
+  @include mq("md") {
+    width: rem(20);
+    height: rem(20);
+  }
+}
+
+.contact-form__agree-link {
+  color: $green;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.contact-form__agree .wpcf7-not-valid-tip {
+  margin-top: rem(8);
+  @include font(14, 20, 0, $regular);
+}
+
 .contact-form__submit {
   margin-top: rem(40);
   text-align: center;

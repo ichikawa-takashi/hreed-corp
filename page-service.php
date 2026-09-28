@@ -5,11 +5,11 @@
       <div class="lower-mv__inner inner">
         <div class="lower-mv__head">
           <span class="lower-mv__tag"><span class="lower-mv__text">Service</span></span>
-          <h2 class="lower-mv__heading"><span class="lower-mv__text">事業内容</span></h2>
+          <h1 class="lower-mv__heading"><span class="lower-mv__text">事業内容</span></h1>
         </div>
 
         <div class="lower-mv__photo">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/service/feature-photo-internal.jpg" alt="Serviceページメインビュー">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/service/feature-photo-internal.jpg" alt="打ち合わせをするHreedのメンバー">
         </div>
 
         <svg width="56" height="124" viewBox="0 0 56 124" fill="none" xmlns="http://www.w3.org/2000/svg" class="lower-mv__deco lower-mv__deco--01" aria-hidden="true">
@@ -31,36 +31,40 @@
 
     <!-- ================= Lead ================= -->
     <section class="service-lead">
-      <div class="service-lead__inner inner">
-        <span class="service-lead__rays" aria-hidden="true"></span>
+      <img class="service-lead__arrows" src="<?php echo get_template_directory_uri(); ?>/img/service/second-arrow.svg" alt="" aria-hidden="true">
 
+      <div class="service-lead__inner inner">
         <h2 class="service-lead__heading">
           採用に悩む時間を、<span class="service-lead__heading-accent">事業成長の時間へ。</span>
         </h2>
         <p class="service-lead__text">「採用できない」を、「採用が仕組みで回る」状態へ</p>
+      </div>
 
-        <div class="service-lead__divider"></div>
+      <div class="service-lead__divider"></div>
 
-        <?php
-        $service_logos = [
-          ['file' => 'kurashiru_logo.png',    'alt' => 'クラシル株式会社'],
-          ['file' => 'fundbook_logo.jpg',     'alt' => '株式会社fundbook'],
-          ['file' => 'leading_mark_logo.jpg', 'alt' => '株式会社Leading Mark'],
-          ['file' => 'levarages.jpg',         'alt' => 'レバレジーズ株式会社'],
-          ['file' => 'ma_soken_logo.png',     'alt' => '株式会社M&A総合研究所'],
-        ];
-        ?>
-        <div class="service-lead__logos swiper js-logo-marquee">
-          <ul class="service-lead__logo-list swiper-wrapper">
-            <?php // ループ再生で途切れないよう2周分出力し、2周目は読み上げ対象から外す ?>
-            <?php for ($round = 0; $round < 2; $round++) : ?>
-            <?php foreach ($service_logos as $logo) : ?>
-            <li class="service-lead__logo swiper-slide"<?php echo $round ? ' aria-hidden="true"' : ''; ?>>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/service/logo/<?php echo esc_attr($logo['file']); ?>" alt="<?php echo $round ? '' : esc_attr($logo['alt']); ?>" class="service-lead__logo-img">
-            </li>
-            <?php endforeach; ?>
-            <?php endfor; ?>
-          </ul>
+      <?php
+      $service_logos = [
+        ['file' => 'kurashiru_logo.png',    'alt' => 'クラシル株式会社'],
+        ['file' => 'fundbook_logo.jpg',     'alt' => '株式会社fundbook'],
+        ['file' => 'leading_mark_logo.jpg', 'alt' => '株式会社Leading Mark'],
+        ['file' => 'levarages.jpg',         'alt' => 'レバレジーズ株式会社'],
+        ['file' => 'ma_soken_logo.png',     'alt' => '株式会社M&A総合研究所'],
+      ];
+      ?>
+      <div class="service-lead__logo-band">
+        <div class="inner">
+          <div class="service-lead__logos swiper js-logo-marquee">
+            <ul class="service-lead__logo-list swiper-wrapper">
+              <?php // ループ再生で途切れないよう2周分出力し、2周目は読み上げ対象から外す ?>
+              <?php for ($round = 0; $round < 2; $round++) : ?>
+              <?php foreach ($service_logos as $logo) : ?>
+              <li class="service-lead__logo swiper-slide"<?php echo $round ? ' aria-hidden="true"' : ''; ?>>
+                <img src="<?php echo get_template_directory_uri(); ?>/img/service/logo/<?php echo esc_attr($logo['file']); ?>" alt="<?php echo $round ? '' : esc_attr($logo['alt']); ?>" class="service-lead__logo-img">
+              </li>
+              <?php endforeach; ?>
+              <?php endfor; ?>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -174,7 +178,7 @@
           <li class="feature__item">
             <div class="feature__photo">
               <span class="feature__num">1</span>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/service/feature-photo-team.jpg" alt="">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/service/feature-photo-team.jpg" alt="会議室で打ち合わせをするメンバー">
             </div>
             <div class="feature__body">
               <h3 class="feature__title">集客から実行まで一貫して対応</h3>
@@ -193,7 +197,7 @@
           <li class="feature__item feature__item--reverse">
             <div class="feature__photo">
               <span class="feature__num">2</span>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/service/feature-photo-industry.jpg" alt="">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/service/feature-photo-industry.jpg" alt="オフィス・店舗・物流などさまざまな業界で働く人々">
             </div>
             <div class="feature__body">
               <h3 class="feature__title">幅広い業界の支援実績</h3>
@@ -212,7 +216,7 @@
           <li class="feature__item">
             <div class="feature__photo">
               <span class="feature__num">3</span>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/service/feature-photo-internal.jpg" alt="">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/service/feature-photo-internal.jpg" alt="ノートパソコンを使って打ち合わせをするメンバー">
             </div>
             <div class="feature__body">
               <h3 class="feature__title">内製化支援でノウハウを蓄積</h3>
@@ -239,56 +243,34 @@
           <p class="sec-title__ja"><span class="sec-title__text">ご支援事例</span></p>
         </div>
 
+        <?php
+        $cases = new WP_Query([
+          'post_type'      => 'case',
+          'posts_per_page' => 4,
+        ]);
+        // 2列に振り分ける(右列は下にずらして配置)
+        $cols = [[], []];
+        foreach ($cases->posts as $i => $case) {
+          $cols[$i % 2][] = $case;
+        }
+        ?>
+        <?php if ($cases->have_posts()) : ?>
         <div class="case__grid">
-          <div class="case__col">
-            <article class="case__card">
-              <p class="case__client">株式会社システム・リノベイト様</p>
-              <div class="case__photo-frame">
-                <img class="case__photo" src="<?php echo get_template_directory_uri(); ?>/img/top/case-photo-systemrenovate.jpg" alt="株式会社システム・リノベイト様">
-              </div>
-              <h3 class="case__card-title">研修満足度97%を達成!研修参加率も向上しました</h3>
-              <p class="case__card-text">業種や従業員数、より詳しい効果についての説明が入ります。業種や従業員数、より詳しい効果についての説明が入ります。</p>
-              <span class="case__pill">採用コンサル</span>
-            </article>
-
-            <article class="case__card">
-              <p class="case__client">freee株式会社様</p>
-              <div class="case__photo-frame">
-                <img class="case__photo" src="<?php echo get_template_directory_uri(); ?>/img/top/case-photo-freee.jpg" alt="freee株式会社様">
-              </div>
-              <h3 class="case__card-title">研修満足度97%を達成!研修参加率も向上しました</h3>
-              <p class="case__card-text">業種や従業員数、より詳しい効果についての説明が入ります。業種や従業員数、より詳しい効果についての説明が入ります。</p>
-              <span class="case__pill">RPO</span>
-            </article>
+          <?php foreach ($cols as $n => $col) : ?>
+          <div class="case__col<?php echo $n === 1 ? ' case__col--offset' : ''; ?>">
+            <?php foreach ($col as $post) : setup_postdata($post); ?>
+            <?php get_template_part('template-parts/case-card'); ?>
+            <?php endforeach; ?>
           </div>
-
-          <div class="case__col case__col--offset">
-            <article class="case__card">
-              <p class="case__client">freee株式会社様</p>
-              <div class="case__photo-frame">
-                <img class="case__photo" src="<?php echo get_template_directory_uri(); ?>/img/top/case-photo-freee.jpg" alt="freee株式会社様">
-              </div>
-              <h3 class="case__card-title">研修満足度97%を達成!研修参加率も向上しました</h3>
-              <p class="case__card-text">業種や従業員数、より詳しい効果についての説明が入ります。業種や従業員数、より詳しい効果についての説明が入ります。</p>
-              <span class="case__pill">RPO</span>
-            </article>
-
-            <article class="case__card">
-              <p class="case__client">株式会社システム・リノベイト様</p>
-              <div class="case__photo-frame">
-                <img class="case__photo" src="<?php echo get_template_directory_uri(); ?>/img/top/case-photo-systemrenovate.jpg" alt="株式会社システム・リノベイト様">
-              </div>
-              <h3 class="case__card-title">研修満足度97%を達成!研修参加率も向上しました</h3>
-              <p class="case__card-text">業種や従業員数、より詳しい効果についての説明が入ります。業種や従業員数、より詳しい効果についての説明が入ります。</p>
-              <span class="case__pill">採用コンサル</span>
-            </article>
-          </div>
+          <?php endforeach; ?>
         </div>
+        <?php endif; ?>
+        <?php wp_reset_postdata(); ?>
 
         <a href="<?php echo esc_url(home_url('/case/')); ?>" class="case__more btn-more btn-more--solid">
           一覧を見る
           <span class="btn-more__arrow" aria-hidden="true">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="矢印アイコン" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
             <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
           </span>
         </a>

@@ -27,12 +27,8 @@
         delay: 0,
         disableOnInteraction: false,
       },
-      breakpoints: {
-        768: { spaceBetween: 64 },
-      },
       on: {
         transitionStart: syncSpeed,
-        breakpoint: syncSpeed,
       },
     });
 

@@ -1,0 +1,53 @@
+{
+    "key": "group_case_info",
+    "title": "支援事例情報",
+    "fields": [
+        {
+            "key": "field_case_client",
+            "label": "クライアント名",
+            "name": "case_client",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "一覧カードの企業名ラベル・詳細ページの企業名に表示されます(「様」は自動で付きます)。例:freee株式会社",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_case_pickup",
+            "label": "ピックアップ記事に表示",
+            "name": "case_pickup",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "オンにした事例が、支援事例詳細ページのサイドバー「ピックアップ記事」に表示されます(最大3件)。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "message": "表示する",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            { "param": "post_type", "operator": "==", "value": "case" }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1790583600
+}

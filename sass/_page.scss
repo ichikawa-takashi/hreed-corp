@@ -193,12 +193,18 @@
     grid-area: 1 / 1;
     width: 100%;
     aspect-ratio: 1020 / 535;
+    // 写真の下端とそこに重ねたお知らせがスクロールせずに見えるよう、画面の高さから
+    // 写真より上の要素(上余白96+見出し124-重なり24)とお知らせのはみ出し14・下の余白24を引いた高さを上限にする
+    max-height: calc(100svh - #{rem(234)});
+    min-height: rem(360);
     position: relative;
     overflow: hidden;
 
     @include mq('md') {
         // SPはお知らせを写真の下に出すため、縦長にせず横長の比率で見せる
         aspect-ratio: 3 / 2;
+        max-height: none;
+        min-height: 0;
     }
 }
 

@@ -6,7 +6,7 @@
       <div class="lower-mv__inner inner">
         <div class="lower-mv__head">
           <span class="lower-mv__tag"><span class="lower-mv__text"><?php echo esc_html($args['en']); ?></span></span>
-          <h2 class="lower-mv__heading"><span class="lower-mv__text"><?php echo esc_html($args['ja']); ?></span></h2>
+          <h1 class="lower-mv__heading"><span class="lower-mv__text"><?php echo esc_html($args['ja']); ?></span></h1>
         </div>
 
         <svg width="170" height="141" viewBox="0 0 170 141" fill="none" xmlns="http://www.w3.org/2000/svg" class="lower-mv__deco lower-mv__deco--02" aria-hidden="true">

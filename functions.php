@@ -73,6 +73,17 @@ function my_case_archive_keyword($keyword)
 }
 add_filter('ssp_output_keyword', 'my_case_archive_keyword');
 
+// 支援事例詳細のdescriptionは抜粋を使う(未指定だと本文の見出しから自動生成されるため)
+// SEO SIMPLE PACKの記事ごとのディスクリプションが入力されている場合はそちらを優先する
+function my_case_description($description)
+{
+    if (is_singular('case') && !get_post_meta(get_the_ID(), 'ssp_meta_description', true) && has_excerpt()) {
+        return get_the_excerpt();
+    }
+    return $description;
+}
+add_filter('ssp_output_description', 'my_case_description');
+
 
 function enqueue_custom_styles_and_scripts() {
     $uri  = get_template_directory_uri();
@@ -81,8 +92,8 @@ function enqueue_custom_styles_and_scripts() {
     // ページの種類(トップ / MVのある下層ページ / セクション見出しアニメを使うページ)
     $is_top          = is_front_page();
     $is_news_list    = is_home() || is_category();
-    $is_case_list    = is_post_type_archive('case') || is_tax(['case_cat', 'case_tag', 'case_client']);
-    $has_lower_mv    = is_page(['about', 'company', 'service', 'contact', 'confirm', 'thanks', 'privacy', 'terms', 'harassment-policy']) || $is_news_list || $is_case_list;
+    $is_case_list    = is_post_type_archive('case') || is_tax(['case_cat', 'case_tag']);
+    $has_lower_mv    = is_page(['about', 'company', 'service', 'contact', 'confirm', 'thanks', 'privacy', 'terms', 'harassment-policy']) || is_404() || $is_news_list || $is_case_list;
     $has_sec_title   = $is_top || is_page(['about', 'company', 'service']) || $is_news_list || $is_case_list || is_singular('case');
     $has_scroll_anim = $is_top || $has_lower_mv || $has_sec_title;
 
@@ -204,6 +215,12 @@ function hreed_first_term($post_id, $taxonomy)
     return ($terms && !is_wp_error($terms)) ? $terms[0] : null;
 }
 
+// 支援事例のクライアント名(ACF: case_client)を取得する(「様」は付けない / 未入力なら空文字)
+function hreed_case_client($post_id = null)
+{
+    return trim((string) get_field('case_client', $post_id ?: get_the_ID()));
+}
+
 // テキストエリアの値を1行ずつの配列にする(空行は除く)
 function hreed_lines($text)
 {
@@ -261,7 +278,7 @@ function hreed_pre_get_posts($query)
     if (is_admin() || !$query->is_main_query()) {
         return;
     }
-    if ($query->is_post_type_archive('case') || $query->is_tax(['case_cat', 'case_tag', 'case_client'])) {
+    if ($query->is_post_type_archive('case') || $query->is_tax(['case_cat', 'case_tag'])) {
         $query->set('posts_per_page', 10);
     }
 }

@@ -5,11 +5,11 @@
       <div class="lower-mv__inner inner">
         <div class="lower-mv__head">
           <span class="lower-mv__tag"><span class="lower-mv__text">Case</span></span>
-          <h2 class="lower-mv__heading"><span class="lower-mv__text">支援事例</span></h2>
+          <h1 class="lower-mv__heading"><span class="lower-mv__text">支援事例</span></h1>
         </div>
 
         <div class="lower-mv__photo">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/case/mv-photo.png" alt="Caseページメインビュー">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/case/mv-photo.png" alt="">
         </div>
 
         <svg width="56" height="124" viewBox="0 0 56 124" fill="none" xmlns="http://www.w3.org/2000/svg" class="lower-mv__deco lower-mv__deco--01" aria-hidden="true">

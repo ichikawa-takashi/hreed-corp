@@ -5,11 +5,11 @@
       <div class="lower-mv__inner inner">
         <div class="lower-mv__head">
           <span class="lower-mv__tag"><span class="lower-mv__text">Company</span></span>
-          <h2 class="lower-mv__heading"><span class="lower-mv__text">会社概要</span></h2>
+          <h1 class="lower-mv__heading"><span class="lower-mv__text">会社概要</span></h1>
         </div>
 
         <div class="lower-mv__photo">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/company/mv-photo.png" alt="Companyページメインビュー">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/company/mv-photo.png" alt="Hreedのオフィスの会議室">
         </div>
 
         <svg width="56" height="124" viewBox="0 0 56 124" fill="none" xmlns="http://www.w3.org/2000/svg" class="lower-mv__deco lower-mv__deco--01" aria-hidden="true">
@@ -130,7 +130,7 @@
               東京都渋谷区渋谷2-12-4 ネクストサイト渋谷ビル 5F
             </p>
             <p class="company-access__walk">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/company/icon-walk.svg" alt="徒歩">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/company/icon-walk.svg" alt="">
               渋谷駅より 徒歩5分
             </p>
           </div>
