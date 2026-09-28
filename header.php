@@ -60,13 +60,13 @@
           </li>
           <li class="header__nav-item">
             <a href="<?php echo esc_url(home_url('/case/')); ?>" class="header__nav-link">
-              <span class="header__nav-link-ja">支援事例</span>
+              <span class="header__nav-link-ja">ご支援事例</span>
               <span class="header__nav-link-en">Case</span>
             </a>
           </li>
           <li class="header__nav-item">
-            <a href="<?php echo esc_url(home_url('/recruit/')); ?>" class="header__nav-link">
-              <span class="header__nav-link-ja">採用</span>
+            <a href="<?php echo esc_url(hreed_recruit_url()); ?>" class="header__nav-link" target="_blank" rel="noopener noreferrer">
+              <span class="header__nav-link-ja">採用情報</span>
               <span class="header__nav-link-en">Recruit</span>
             </a>
           </li>
@@ -122,13 +122,13 @@
           </li>
           <li class="header__drawer-item">
             <a href="<?php echo esc_url(home_url('/case/')); ?>" class="header__drawer-link">
-              <span class="header__drawer-link-ja">支援事例</span>
+              <span class="header__drawer-link-ja">ご支援事例</span>
               <span class="header__drawer-link-en">Case</span>
             </a>
           </li>
           <li class="header__drawer-item">
-            <a href="<?php echo esc_url(home_url('/recruit/')); ?>" class="header__drawer-link">
-              <span class="header__drawer-link-ja">採用</span>
+            <a href="<?php echo esc_url(hreed_recruit_url()); ?>" class="header__drawer-link" target="_blank" rel="noopener noreferrer">
+              <span class="header__drawer-link-ja">採用情報</span>
               <span class="header__drawer-link-en">Recruit</span>
             </a>
           </li>

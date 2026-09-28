@@ -208,6 +208,12 @@ function add_thanks_page()
 <?php }
 
 
+// 採用情報のURL(外部の求人ページ。ヘッダー・フッター・リンクカードから別タブで開く)
+function hreed_recruit_url()
+{
+    return 'https://circus-job.com/search/368971?jobDetailPublicToken=69904ebf-07b1-4111-b4d2-2b022dc01487';
+}
+
 // 投稿に紐づく最初のタームを取得する(なければnull)
 function hreed_first_term($post_id, $taxonomy)
 {

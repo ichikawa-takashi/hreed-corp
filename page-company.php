@@ -88,7 +88,7 @@
 
           <div class="company-table__row">
             <dt class="company-table__label">
-              代表
+              代表取締役
             </dt>
             <dd class="company-table__value">五十君 隆之介</dd>
           </div>

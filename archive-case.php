@@ -5,7 +5,7 @@
       <div class="lower-mv__inner inner">
         <div class="lower-mv__head">
           <span class="lower-mv__tag"><span class="lower-mv__text">Case</span></span>
-          <h1 class="lower-mv__heading"><span class="lower-mv__text">支援事例</span></h1>
+          <h1 class="lower-mv__heading"><span class="lower-mv__text">ご支援事例</span></h1>
         </div>
 
         <div class="lower-mv__photo">
@@ -65,9 +65,9 @@
         <?php else : ?>
         <p class="case-list__empty">
           <?php if (is_tax()) : ?>
-          「<?php single_term_title(); ?>」に該当する支援事例は、現在登録されていません。
+          「<?php single_term_title(); ?>」に該当するご支援事例は、現在登録されていません。
           <?php else : ?>
-          支援事例は、現在登録されていません。
+          ご支援事例は、現在登録されていません。
           <?php endif; ?>
         </p>
         <?php endif; ?>

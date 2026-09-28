@@ -2,10 +2,11 @@
 // ページ下部の関連ページへのリンクカード(トップ・About・Company・Serviceで共通)
 // 使い方: get_template_part('template-parts/link-cards', null, ['cards' => ['company', 'recruit']]);
 // cards を省略した場合は Service / Recruit を表示する
+// Recruit は外部の求人ページなので別タブで開く
 $link_cards_all = [
-  'service' => ['url' => '/service/', 'img' => 'common/link-service.jpg', 'en' => 'Service', 'ja' => 'サービス'],
-  'company' => ['url' => '/company/', 'img' => 'common/mv-photo.png', 'en' => 'Company', 'ja' => '会社概要'],
-  'recruit' => ['url' => '/recruit/', 'img' => 'common/link-recruit.png', 'en' => 'Recruit', 'ja' => '採用情報'],
+  'service' => ['url' => home_url('/service/'), 'img' => 'common/link-service.jpg', 'en' => 'Service', 'ja' => 'サービス'],
+  'company' => ['url' => home_url('/company/'), 'img' => 'common/mv-photo.png', 'en' => 'Company', 'ja' => '会社概要'],
+  'recruit' => ['url' => hreed_recruit_url(), 'img' => 'common/link-recruit.png', 'en' => 'Recruit', 'ja' => '採用情報', 'external' => true],
 ];
 $link_cards = $args['cards'] ?? ['service', 'recruit'];
 $theme_uri  = get_template_directory_uri();
@@ -15,7 +16,7 @@ $theme_uri  = get_template_directory_uri();
         <ul class="link-cards__list">
           <?php foreach ($link_cards as $key) : $card = $link_cards_all[$key]; ?>
           <li class="link-cards__item">
-            <a href="<?php echo esc_url(home_url($card['url'])); ?>" class="link-cards__card">
+            <a href="<?php echo esc_url($card['url']); ?>" class="link-cards__card"<?php echo !empty($card['external']) ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>>
               <div class="link-cards__photo">
                 <img src="<?php echo $theme_uri; ?>/img/<?php echo $card['img']; ?>" alt="">
               </div>

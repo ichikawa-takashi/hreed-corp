@@ -8,7 +8,7 @@
         <p class="legal__lead">当社は、企業理念に「Make Classic」を掲げ、また、人権方針を定め、自らの企業活動や取引関係において人権尊重に取り組んでいます。私たちの企業活動によって影響を受ける可能性があるすべての人々の基本的な人権を尊重し、心身の健康や安全を確保することは企業の重要な責務であると考えています。<br>就職活動やインターンシップ等において、求職者の皆様が安心して選考に臨める環境を提供し、いかなるハラスメント行為や人権を侵害する行為も容認しません。万が一そのような行為が発生した場合には、厳正に対処いたします。</p>
 
         <div class="legal__section">
-          <h3 class="legal__heading">１．求職者の皆様との面談・接触に関するルール</h3>
+          <h3 class="legal__heading">1. 求職者の皆様との面談・接触に関するルール</h3>
           <ul class="legal__list legal__list--disc">
             <li class="legal__item">面談は、オンラインまたは対面で実施します。対面の場合は、第三者の目が届く場所（会社施設や就職・転職イベント等）で行います。</li>
             <li class="legal__item">連絡は、会社メールまたは会社携帯電話のみを使用し、個人の SNS や LINE 等を用いたやり取りは行いません。</li>
@@ -18,7 +18,7 @@
         </div>
 
         <div class="legal__section">
-          <h3 class="legal__heading">２．就活ハラスメントに該当する行為の禁止</h3>
+          <h3 class="legal__heading">2. 就活ハラスメントに該当する行為の禁止</h3>
           <ul class="legal__list legal__list--disc">
             <li class="legal__item">業務と関係のない事項（容姿、年齢、婚姻状況、家族構成、出身地、恋愛・結婚、思想・信条、性的指向・ジェンダーアイデンティティ等）に関する質問</li>
             <li class="legal__item">性的な行動となる身体的接触や、性的・差別的な言動、または性別に基づく固定的な役割観を押し付ける発言</li>
@@ -32,7 +32,7 @@
         </div>
 
         <div class="legal__section">
-          <h3 class="legal__heading">３．本方針の周知と教育・研修の実施</h3>
+          <h3 class="legal__heading">3. 本方針の周知と教育・研修の実施</h3>
           <ul class="legal__list legal__list--disc">
             <li class="legal__item">ハラスメント行為や人権を侵害する行為を発生させないために、本方針を社内外に明示し、採用活動に関与する全役員・従業員に周知します。</li>
             <li class="legal__item">求職者の皆様と接点を持つ役員・従業員に対する教育・研修を実施します。</li>
@@ -40,14 +40,14 @@
         </div>
 
         <div class="legal__section">
-          <h3 class="legal__heading">４．就活ハラスメント相談窓口の設置とプライバシーの保護</h3>
+          <h3 class="legal__heading">4. 就活ハラスメント相談窓口の設置とプライバシーの保護</h3>
           <ul class="legal__list legal__list--disc">
             <li class="legal__item">就活ハラスメントに関する相談窓口を設置し、プライバシー保護にも配慮して、秘密を厳守します。</li>
           </ul>
         </div>
 
         <div class="legal__section">
-          <h3 class="legal__heading">５．迅速かつ適切な対応</h3>
+          <h3 class="legal__heading">5. 迅速かつ適切な対応</h3>
           <ul class="legal__list legal__list--disc">
             <li class="legal__item">採用活動においてハラスメント行為や人権を侵害する行為に関する相談・通報があった場合、事実関係を確認の上、迅速かつ適切に対応します。</li>
             <li class="legal__item">これらの行為の事実が確認された場合、被害者の心情に配慮し、不安軽減のための必要な措置（面談者変更等）を行うとともに、就業規則に則り、当該行為者に対して必要な懲戒その他の措置を講じ、当該行為者による被害者への謝罪等を行います。</li>
@@ -57,7 +57,7 @@
         </div>
 
         <div class="legal__section">
-          <h3 class="legal__heading">６．就活ハラスメント相談窓口</h3>
+          <h3 class="legal__heading">6. 就活ハラスメント相談窓口</h3>
           <p class="legal__text">就職活動を通じ、ハラスメント等の人権侵害に遭われた、あるいはその疑いがある場合は、以下の窓口までご連絡ください。この窓口は、人事部門ではなく、コンプライアンス部門が管轄しています。相談・通報に関する秘密保持や相談者・通報者の保護を徹底していますので、相談・通報による選考プロセスへの影響はありません。</p>
           <p class="legal__text"><a href="<?php echo esc_url(home_url('/contact/')); ?>">【取引先・求職者相談窓口】</a></p>
         </div>

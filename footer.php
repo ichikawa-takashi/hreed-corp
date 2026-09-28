@@ -14,8 +14,8 @@
               <li class="footer__nav-item"><a href="<?php echo esc_url(home_url('/company/')); ?>">会社概要</a></li>
               <li class="footer__nav-item"><a href="<?php echo esc_url(home_url('/service/')); ?>">サービス</a></li>
               <li class="footer__nav-item"><a href="<?php echo esc_url(home_url('/news/')); ?>">お知らせ</a></li>
-              <li class="footer__nav-item"><a href="<?php echo esc_url(home_url('/case/')); ?>">支援事例</a></li>
-              <li class="footer__nav-item"><a href="<?php echo esc_url(home_url('/recruit/')); ?>">採用</a></li>
+              <li class="footer__nav-item"><a href="<?php echo esc_url(home_url('/case/')); ?>">ご支援事例</a></li>
+              <li class="footer__nav-item"><a href="<?php echo esc_url(hreed_recruit_url()); ?>" target="_blank" rel="noopener noreferrer">採用情報</a></li>
               <li class="footer__nav-item"><a href="https://note.com/hreed_1212" target="_blank" rel="noopener noreferrer"><img src="<?php echo get_template_directory_uri(); ?>/img/common/icon-note.svg" alt="note"></a></li>
             </ul>
           </nav>

@@ -16,7 +16,7 @@
           <?php endif; ?>
           <h1 class="case-hero__title"><?php the_title(); ?></h1>
           <p class="case-hero__meta">
-            <span>作成日：<?php echo get_the_date('Y.m.d'); ?></span>
+            <span>公開日：<?php echo get_the_date('Y.m.d'); ?></span>
             <span>更新日：<?php echo get_the_modified_date('Y.m.d'); ?></span>
           </p>
         </div>
@@ -44,7 +44,7 @@
               <div class="case-overview__list">
                 <?php if ($cats && !is_wp_error($cats)) : ?>
                 <div class="case-overview__row">
-                  <span class="case-overview__label">カテゴリ</span>
+                  <span class="case-overview__label">カテゴリー</span>
                   <span class="case-overview__value"><?php echo esc_html(implode('、', wp_list_pluck($cats, 'name'))); ?></span>
                 </div>
                 <?php endif; ?>
@@ -54,10 +54,6 @@
                   <span class="case-overview__value"><?php echo esc_html(implode('、', wp_list_pluck($tags, 'name'))); ?></span>
                 </div>
                 <?php endif; ?>
-                <div class="case-overview__row">
-                  <span class="case-overview__label">公開日</span>
-                  <span class="case-overview__value"><?php echo get_the_date('Y.m'); ?></span>
-                </div>
               </div>
             </div>
 
@@ -66,14 +62,14 @@
             </div>
 
             <?php
-            // 前後の支援事例(並び順は管理画面の並び順に従う)
+            // 前後のご支援事例(並び順は管理画面の並び順に従う)
             $pager = array_filter([
               'prev' => get_previous_post(),
               'next' => get_next_post(),
             ]);
             ?>
             <?php if ($pager) : ?>
-            <nav class="case-pager" aria-label="前後の支援事例">
+            <nav class="case-pager" aria-label="前後のご支援事例">
               <?php foreach ($pager as $dir => $item) : ?>
               <div class="case-pager__item case-pager__item--<?php echo $dir; ?>">
                 <a href="<?php echo esc_url(get_permalink($item)); ?>" class="case-pager__link">

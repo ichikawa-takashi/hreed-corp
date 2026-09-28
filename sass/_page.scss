@@ -282,19 +282,25 @@
     width: 100%;
 }
 
+// PCは左列に日付・タグ・タイトル、右列に矢印を置く
+// 左列をminmax(0, 1fr)にして、タイトルが長くても矢印の列に食い込まず折り返させる
 .mv__news-item {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: rem(16);
+    align-items: center;
     padding: rem(20);
     // 回転中に裏面が透けないようにする
     backface-visibility: hidden;
 
     @include mq('md') {
+        grid-template-columns: minmax(0, 1fr);
         padding: rem(12);
     }
 }
 
 .mv__news-meta {
+    grid-column: 1;
     display: flex;
     align-items: center;
     gap: rem(8);
@@ -318,21 +324,28 @@
 }
 
 .mv__news-text {
+    grid-column: 1;
     margin-top: rem(8);
     font-family: $sans;
     @include font(13, 22, null, $regular);
     color: $black;
+    // 英数字の長い連続文字列(URL等)でも列幅内で折り返す
+    overflow-wrap: anywhere;
 }
 
 .mv__news-arrow {
+    grid-column: 2;
+    grid-row: 1 / span 2;
     width: rem(32);
     height: rem(32);
-    margin-top: rem(12);
-    margin-left: auto;
 
     @include mq('md') {
+        grid-column: 1;
+        grid-row: auto;
+        justify-self: end;
         width: rem(26);
         height: rem(26);
+        margin-top: rem(12);
     }
 }
 

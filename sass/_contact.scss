@@ -225,12 +225,29 @@
 }
 
 .contact-form__submit {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: rem(24);
   margin-top: rem(40);
-  text-align: center;
 
   @include mq("md") {
+    gap: rem(16);
     margin-top: rem(30);
   }
+}
+
+// CF7がJSで送信ボタンの直後に挿入するスピナー。
+// 非表示でも幅(左右margin込み72px)を取りボタンが左にずれるため、送信中以外は領域ごと消す
+.contact-form__submit .wpcf7-spinner {
+  display: none;
+}
+
+// 送信中はボタンの下の行に中央寄せで表示する(幅24px + 左右marginで1行を埋めて改行させる)
+.wpcf7-form.submitting .contact-form__submit .wpcf7-spinner {
+  display: block;
+  margin: 0 calc(50% - 12px);
 }
 
 // functions.phpで<button>に置き換え、矢印は共通のbtn-more__arrowを使う
@@ -296,18 +313,6 @@
 
   @include mq("md") {
     @include font(14, 24, 0, $regular);
-  }
-}
-
-.contact-form__submit--confirm {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: rem(24);
-
-  @include mq("md") {
-    gap: rem(16);
   }
 }
 
