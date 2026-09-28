@@ -74,8 +74,8 @@
               <div class="case-pager__item case-pager__item--<?php echo $dir; ?>">
                 <a href="<?php echo esc_url(get_permalink($item)); ?>" class="case-pager__link">
                   <span class="case-pager__icon btn-more__arrow" aria-hidden="true">
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
+                    <img src="<?php echo esc_url(hreed_img_url('common/arrow-white.svg')); ?>" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+                    <img src="<?php echo esc_url(hreed_img_url('common/arrow-white.svg')); ?>" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
                   </span>
                   <?php if (has_post_thumbnail($item)) : ?>
                   <span class="case-pager__thumb">
@@ -95,8 +95,8 @@
             <div class="case-detail__back">
               <a href="<?php echo esc_url(get_post_type_archive_link('case')); ?>" class="case-detail__back-link">
                 <span class="case-detail__back-icon btn-more__arrow" aria-hidden="true">
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
+                  <img src="<?php echo esc_url(hreed_img_url('common/arrow-green.svg')); ?>" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+                  <img src="<?php echo esc_url(hreed_img_url('common/arrow-green.svg')); ?>" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
                 </span>
                 一覧に戻る
               </a>

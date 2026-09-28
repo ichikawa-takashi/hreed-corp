@@ -65,6 +65,10 @@ body {
   color: #031A23;
 }
 
+/*--------------------------
+画像URL(コンパイルごとに ?v= の値が変わり、画像差し替え時にブラウザキャッシュが残らないようにする)
+例: background-image: img-url("common/icon-play_wh.svg");
+---------------------------*/
 *,
 *::before,
 *::after {
@@ -867,7 +871,7 @@ body.is-drawer-open {
   left: 0;
   right: 0;
   bottom: -10%;
-  background-image: linear-gradient(rgba(12, 153, 138, 0.82), rgba(12, 153, 138, 0.82)), url(../img/top/service-bg.jpg);
+  background-image: linear-gradient(rgba(12, 153, 138, 0.82), rgba(12, 153, 138, 0.82)), url("../img/top/service-bg.jpg?v=uyos03g");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -2369,7 +2373,7 @@ body.is-drawer-open {
   border-radius: 50%;
   border: 1px solid #0c998a;
   background-color: transparent;
-  background-image: url(../img/common/icon-play_grn.svg);
+  background-image: url("../img/common/icon-play_grn.svg?v=uyos03g");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 0.625rem auto;
@@ -2382,7 +2386,7 @@ body.is-drawer-open {
 
 .news__item-link:hover .news__item-arrow {
   background-color: #0c998a;
-  background-image: url(../img/common/icon-play_wh.svg);
+  background-image: url("../img/common/icon-play_wh.svg?v=uyos03g");
 }
 
 .news__watermark {
@@ -2831,7 +2835,7 @@ body.is-drawer-open {
 
 .about-member__list {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 0.25rem;
   margin-top: 2.5rem;
 }
@@ -3171,7 +3175,7 @@ body.is-drawer-open {
 }
 .modal__btn a::after {
   content: "";
-  background-image: url(../img/common/icon-arrow_wh.svg);
+  background-image: url("../img/common/icon-arrow_wh.svg?v=uyos03g");
   background-size: 100%;
   background-repeat: no-repeat;
   display: inline-block;
@@ -3591,7 +3595,7 @@ body.is-drawer-open {
   height: 3rem;
   border-radius: 50%;
   border: 1px solid #0c998a;
-  background-image: url(../img/common/icon-play_grn.svg);
+  background-image: url("../img/common/icon-play_grn.svg?v=uyos03g");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 0.75rem auto;
@@ -3619,7 +3623,7 @@ body.is-drawer-open {
 
 .news-list__link:hover .news-list__arrow {
   background-color: #0c998a;
-  background-image: url(../img/common/icon-play_wh.svg);
+  background-image: url("../img/common/icon-play_wh.svg?v=uyos03g");
 }
 
 /* ---------- pagination ---------- */
@@ -5770,7 +5774,7 @@ body.is-drawer-open {
 
 .worry__item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 1rem;
 }
 @media screen and (max-width: 768px) {
@@ -5779,12 +5783,9 @@ body.is-drawer-open {
   }
 }
 
-.worry__item + .worry__item {
-  margin-top: -2.125rem;
-}
 @media screen and (max-width: 768px) {
   .worry__item + .worry__item {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
   }
 }
 

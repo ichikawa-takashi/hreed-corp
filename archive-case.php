@@ -9,7 +9,7 @@
         </div>
 
         <div class="lower-mv__photo">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/case/mv-photo.jpg" alt="">
+          <img src="<?php echo esc_url(hreed_img_url('case/mv-photo.jpg')); ?>" alt="">
         </div>
 
         <svg width="56" height="124" viewBox="0 0 56 124" fill="none" xmlns="http://www.w3.org/2000/svg" class="lower-mv__deco lower-mv__deco--01" aria-hidden="true">
@@ -41,8 +41,8 @@
           <a href="<?php echo esc_url(get_post_type_archive_link('case')); ?>" class="case-list__current-link btn-more">
             すべての事例を見る
             <span class="btn-more__arrow" aria-hidden="true">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
+              <img src="<?php echo esc_url(hreed_img_url('common/arrow-white.svg')); ?>" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+              <img src="<?php echo esc_url(hreed_img_url('common/arrow-white.svg')); ?>" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
             </span>
           </a>
         </div>

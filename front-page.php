@@ -3,7 +3,7 @@
 <main>
     <!-- ================= MV ================= -->
     <section class="mv">
-        <img class="mv__deco" src="<?php echo get_template_directory_uri(); ?>/img/top/mv-deco.svg" alt=""
+        <img class="mv__deco" src="<?php echo esc_url(hreed_img_url('top/mv-deco.svg')); ?>" alt=""
             aria-hidden="true">
 
         <div class="mv__inner">
@@ -17,17 +17,17 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide mv__photo-slide">
                                 <img class="mv__photo-img"
-                                    src="<?php echo get_template_directory_uri(); ?>/img/top/mv-photo.jpg"
+                                    src="<?php echo esc_url(hreed_img_url('top/mv-photo.jpg')); ?>"
                                     alt="Hreedのメンバー集合写真">
                             </div>
                             <div class="swiper-slide mv__photo-slide">
                                 <img class="mv__photo-img"
-                                    src="<?php echo get_template_directory_uri(); ?>/img/top/mv-photo-reception.jpg"
+                                    src="<?php echo esc_url(hreed_img_url('top/mv-photo-reception.jpg')); ?>"
                                     alt="オフィスで談笑するHreedのメンバー">
                             </div>
                             <div class="swiper-slide mv__photo-slide">
                                 <img class="mv__photo-img"
-                                    src="<?php echo get_template_directory_uri(); ?>/img/top/mv-photo-meeting.jpg"
+                                    src="<?php echo esc_url(hreed_img_url('top/mv-photo-meeting.jpg')); ?>"
                                     alt="会議室で打ち合わせをするHreedのメンバー">
                             </div>
                         </div>
@@ -61,9 +61,9 @@
                                     </div>
                                     <p class="mv__news-text"><?php echo esc_html(get_the_title($pickup)); ?></p>
                                     <span class="mv__news-arrow btn-more__arrow" aria-hidden="true">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg"
+                                        <img src="<?php echo esc_url(hreed_img_url('common/arrow-white.svg')); ?>"
                                             alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg"
+                                        <img src="<?php echo esc_url(hreed_img_url('common/arrow-white.svg')); ?>"
                                             alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
                                     </span>
                                 </a>
@@ -110,9 +110,9 @@
             <div class="about__body">
                 <div class="about__photos">
                     <img class="about__photo about__photo--1"
-                        src="<?php echo get_template_directory_uri(); ?>/img/top/about-photo-sub.jpg" alt="ノートパソコンで作業するメンバーの手元">
+                        src="<?php echo esc_url(hreed_img_url('top/about-photo-sub.jpg')); ?>" alt="ノートパソコンで作業するメンバーの手元">
                     <img class="about__photo about__photo--2"
-                        src="<?php echo get_template_directory_uri(); ?>/img/top/about-photo-main.jpg"
+                        src="<?php echo esc_url(hreed_img_url('top/about-photo-main.jpg')); ?>"
                         alt="採用コンサルティングの様子">
                 </div>
 
@@ -128,9 +128,9 @@
                     <a href="<?php echo esc_url(home_url('/about/')); ?>" class="about__more btn-more">
                         もっと見る
                         <span class="btn-more__arrow" aria-hidden="true">
-                            <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg"
+                            <img src="<?php echo esc_url(hreed_img_url('common/arrow-white.svg')); ?>"
                                 alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
-                            <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg" alt=""
+                            <img src="<?php echo esc_url(hreed_img_url('common/arrow-white.svg')); ?>" alt=""
                                 class="btn-more__arrow-icon btn-more__arrow-icon--next">
                         </span>
                     </a>
@@ -142,7 +142,7 @@
     <!-- ================= Service ================= -->
     <section class="service">
         <div class="service__bg">
-            <img class="service__bg-img" src="<?php echo get_template_directory_uri(); ?>/img/top/service-bg.jpg"
+            <img class="service__bg-img" src="<?php echo esc_url(hreed_img_url('top/service-bg.jpg')); ?>"
                 alt="">
         </div>
         <p class="service__watermark" aria-hidden="true">Service</p>
@@ -159,7 +159,7 @@
                     <div class="service__cards">
                         <div class="service__logo">
                             <img class="service__logo-img"
-                                src="<?php echo get_template_directory_uri(); ?>/img/top/service-logo-growth.png"
+                                src="<?php echo esc_url(hreed_img_url('top/service-logo-growth.png')); ?>"
                                 alt="Growth&amp;Growth">
                         </div>
                         <div class="service__body">
@@ -176,7 +176,7 @@
                     <div class="service__cards">
                         <div class="service__logo">
                             <img class="service__logo-img"
-                                src="<?php echo get_template_directory_uri(); ?>/img/top/service-logo-banson.png"
+                                src="<?php echo esc_url(hreed_img_url('top/service-logo-banson.png')); ?>"
                                 alt="バーソン">
                         </div>
                         <div class="service__body">
@@ -202,9 +202,9 @@
             <a href="<?php echo esc_url(home_url('/service/')); ?>" class="service__more btn-more">
                 もっと見る
                 <span class="btn-more__arrow" aria-hidden="true">
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg" alt=""
+                    <img src="<?php echo esc_url(hreed_img_url('common/arrow-white.svg')); ?>" alt=""
                         class="btn-more__arrow-icon btn-more__arrow-icon--current">
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg" alt=""
+                    <img src="<?php echo esc_url(hreed_img_url('common/arrow-white.svg')); ?>" alt=""
                         class="btn-more__arrow-icon btn-more__arrow-icon--next">
                 </span>
             </a>
@@ -247,9 +247,9 @@
                 class="case__more btn-more btn-more--solid">
                 一覧を見る
                 <span class="btn-more__arrow" aria-hidden="true">
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt=""
+                    <img src="<?php echo esc_url(hreed_img_url('common/arrow-green.svg')); ?>" alt=""
                         class="btn-more__arrow-icon btn-more__arrow-icon--current">
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt=""
+                    <img src="<?php echo esc_url(hreed_img_url('common/arrow-green.svg')); ?>" alt=""
                         class="btn-more__arrow-icon btn-more__arrow-icon--next">
                 </span>
             </a>
@@ -303,9 +303,9 @@
                         class="news__more btn-more btn-more--solid">
                         一覧を見る
                         <span class="btn-more__arrow" aria-hidden="true">
-                            <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg"
+                            <img src="<?php echo esc_url(hreed_img_url('common/arrow-green.svg')); ?>"
                                 alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
-                            <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt=""
+                            <img src="<?php echo esc_url(hreed_img_url('common/arrow-green.svg')); ?>" alt=""
                                 class="btn-more__arrow-icon btn-more__arrow-icon--next">
                         </span>
                     </a>

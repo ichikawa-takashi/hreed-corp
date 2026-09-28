@@ -9,7 +9,7 @@
         </div>
 
         <div class="lower-mv__photo">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/news/mv-photo.jpg" alt="">
+          <img src="<?php echo esc_url(hreed_img_url('news/mv-photo.jpg')); ?>" alt="">
         </div>
 
         <svg width="56" height="124" viewBox="0 0 56 124" fill="none" xmlns="http://www.w3.org/2000/svg" class="lower-mv__deco lower-mv__deco--01" aria-hidden="true">

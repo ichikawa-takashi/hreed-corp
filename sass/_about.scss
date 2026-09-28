@@ -354,7 +354,7 @@
 
 .about-member__list {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: rem(4);
   margin-top: rem(40);
 
@@ -632,7 +632,7 @@
 
   &::after{
     content: "";
-    background-image: url(../img/common/icon-arrow_wh.svg);
+    background-image: img-url("common/icon-arrow_wh.svg");
     background-size: 100%;
     background-repeat: no-repeat;
     display: inline-block;

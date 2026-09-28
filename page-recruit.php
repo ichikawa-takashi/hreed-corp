@@ -80,7 +80,7 @@ $recruit_steps = [
         </div>
 
         <div class="lower-mv__photo">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/common/link-recruit.jpg" alt="ノートパソコンで作業をするHreedのメンバー">
+          <img src="<?php echo esc_url(hreed_img_url('common/link-recruit.jpg')); ?>" alt="ノートパソコンで作業をするHreedのメンバー">
         </div>
 
         <svg width="56" height="124" viewBox="0 0 56 124" fill="none" xmlns="http://www.w3.org/2000/svg" class="lower-mv__deco lower-mv__deco--01" aria-hidden="true">
@@ -152,7 +152,7 @@ $recruit_steps = [
 
         <div class="recruit-work__row">
           <div class="recruit-work__photo">
-            <img class="recruit-work__photo-img" src="<?php echo get_template_directory_uri(); ?>/img/top/about-photo-sub.jpg" alt="ノートパソコンで作業をするメンバーの手元" loading="lazy">
+            <img class="recruit-work__photo-img" src="<?php echo esc_url(hreed_img_url('top/about-photo-sub.jpg')); ?>" alt="ノートパソコンで作業をするメンバーの手元" loading="lazy">
           </div>
 
           <div class="recruit-work__business">
@@ -300,7 +300,7 @@ $recruit_steps = [
           <li class="flow__item">
             <div class="flow__num">
               <span class="flow__num-circle"><?php echo $i + 1; ?></span>
-              <img class="flow__num-arrow" src="<?php echo get_template_directory_uri(); ?>/img/service/arrow-bottom.svg" alt="" aria-hidden="true">
+              <img class="flow__num-arrow" src="<?php echo esc_url(hreed_img_url('service/arrow-bottom.svg')); ?>" alt="" aria-hidden="true">
             </div>
             <div class="flow__body">
               <p class="flow__title"><?php echo esc_html($step['title']); ?></p>
@@ -329,8 +329,8 @@ $recruit_steps = [
         <a href="<?php echo esc_url(home_url('/contact/?subject=recruit')); ?>" class="recruit-entry__btn btn-more">
           エントリーフォームへ進む
           <span class="btn-more__arrow" aria-hidden="true">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
+            <img src="<?php echo esc_url(hreed_img_url('common/arrow-white.svg')); ?>" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+            <img src="<?php echo esc_url(hreed_img_url('common/arrow-white.svg')); ?>" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
           </span>
         </a>
       </div>

@@ -28,7 +28,7 @@
     <div class="header__inner">
       <div class="header__logo">
         <a href="<?php echo esc_url(home_url('/')); ?>">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/common/logo.svg" alt="Hreed株式会社">
+          <img src="<?php echo esc_url(hreed_img_url('common/logo.svg')); ?>" alt="Hreed株式会社">
         </a>
       </div>
 
@@ -75,13 +75,13 @@
 
       <div class="header__side">
         <a href="https://note.com/hreed_1212" class="header__note" target="_blank" rel="noopener noreferrer">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/common/icon-note.svg" alt="note">
+          <img src="<?php echo esc_url(hreed_img_url('common/icon-note.svg')); ?>" alt="note">
         </a>
         <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="header__contact">
           Contact
           <span class="btn-more__arrow" aria-hidden="true">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
+            <img src="<?php echo esc_url(hreed_img_url('common/arrow-green.svg')); ?>" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+            <img src="<?php echo esc_url(hreed_img_url('common/arrow-green.svg')); ?>" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
           </span>
         </a>
       </div>
@@ -137,13 +137,13 @@
 
       <div class="header__drawer-side">
         <a href="https://note.com/hreed_1212" class="header__drawer-note" target="_blank" rel="noopener noreferrer">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/common/icon-note.svg" alt="note">
+          <img src="<?php echo esc_url(hreed_img_url('common/icon-note.svg')); ?>" alt="note">
         </a>
         <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="header__drawer-contact">
           Contact
           <span class="btn-more__arrow" aria-hidden="true">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
+            <img src="<?php echo esc_url(hreed_img_url('common/arrow-green.svg')); ?>" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+            <img src="<?php echo esc_url(hreed_img_url('common/arrow-green.svg')); ?>" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
           </span>
         </a>
       </div>

@@ -9,7 +9,7 @@
         </div>
 
         <div class="lower-mv__photo">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/service/feature-photo-internal.jpg" alt="打ち合わせをするHreedのメンバー">
+          <img src="<?php echo esc_url(hreed_img_url('service/feature-photo-internal.jpg')); ?>" alt="打ち合わせをするHreedのメンバー">
         </div>
 
         <svg width="56" height="124" viewBox="0 0 56 124" fill="none" xmlns="http://www.w3.org/2000/svg" class="lower-mv__deco lower-mv__deco--01" aria-hidden="true">
@@ -31,7 +31,7 @@
 
     <!-- ================= Lead ================= -->
     <section class="service-lead">
-      <img class="service-lead__arrows" src="<?php echo get_template_directory_uri(); ?>/img/service/second-arrow.svg" alt="" aria-hidden="true">
+      <img class="service-lead__arrows" src="<?php echo esc_url(hreed_img_url('service/second-arrow.svg')); ?>" alt="" aria-hidden="true">
 
       <div class="service-lead__inner inner">
         <h2 class="service-lead__heading">
@@ -59,7 +59,7 @@
               <?php for ($round = 0; $round < 2; $round++) : ?>
               <?php foreach ($service_logos as $logo) : ?>
               <li class="service-lead__logo swiper-slide"<?php echo $round ? ' aria-hidden="true"' : ''; ?>>
-                <img src="<?php echo get_template_directory_uri(); ?>/img/service/logo/<?php echo esc_attr($logo['file']); ?>" alt="<?php echo $round ? '' : esc_attr($logo['alt']); ?>" class="service-lead__logo-img">
+                <img src="<?php echo esc_url(hreed_img_url('service/logo/' . $logo['file'])); ?>" alt="<?php echo $round ? '' : esc_attr($logo['alt']); ?>" class="service-lead__logo-img">
               </li>
               <?php endforeach; ?>
               <?php endfor; ?>
@@ -77,7 +77,7 @@
         <ul class="worry__list">
           <li class="worry__item">
             <span class="worry__icon">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/service/worry-icon-turnover.png" alt="">
+              <img src="<?php echo esc_url(hreed_img_url('service/worry-icon-turnover.png')); ?>" alt="">
             </span>
             <div class="worry__card">
               <span class="worry__title">採用したのに、すぐに辞めてしまう</span>
@@ -87,7 +87,7 @@
 
           <li class="worry__item worry__item--reverse">
             <span class="worry__icon">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/service/worry-icon-busy.png" alt="">
+              <img src="<?php echo esc_url(hreed_img_url('service/worry-icon-busy.png')); ?>" alt="">
             </span>
             <div class="worry__card">
               <span class="worry__title">採用活動に手が回らない</span>
@@ -97,7 +97,7 @@
 
           <li class="worry__item">
             <span class="worry__icon">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/service/worry-icon-mismatch.png" alt="">
+              <img src="<?php echo esc_url(hreed_img_url('service/worry-icon-mismatch.png')); ?>" alt="">
             </span>
             <div class="worry__card">
               <span class="worry__title">欲しい人材が集まらない</span>
@@ -107,7 +107,7 @@
 
           <li class="worry__item worry__item--reverse">
             <span class="worry__icon">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/service/worry-icon-noteam.png" alt="">
+              <img src="<?php echo esc_url(hreed_img_url('service/worry-icon-noteam.png')); ?>" alt="">
             </span>
             <div class="worry__card">
               <span class="worry__title">自社に採用担当がいない</span>
@@ -117,7 +117,7 @@
 
           <li class="worry__item">
             <span class="worry__icon">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/service/worry-icon-strength.png" alt="">
+              <img src="<?php echo esc_url(hreed_img_url('service/worry-icon-strength.png')); ?>" alt="">
             </span>
             <div class="worry__card">
               <span class="worry__title">自社の強みが分からない</span>
@@ -131,13 +131,13 @@
     <!-- ================= Approach ================= -->
     <section class="approach">
       <div class="approach__inner inner">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/common/mv-deco01.png" alt="" aria-hidden="true" class="approach__deco approach__deco--01">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/common/mv-deco02.png" alt="" aria-hidden="true" class="approach__deco approach__deco--02">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/common/mv-deco03.png" alt="" aria-hidden="true" class="approach__deco approach__deco--03">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/common/mv-deco04.png" alt="" aria-hidden="true" class="approach__deco approach__deco--04">
+        <img src="<?php echo esc_url(hreed_img_url('common/mv-deco01.png')); ?>" alt="" aria-hidden="true" class="approach__deco approach__deco--01">
+        <img src="<?php echo esc_url(hreed_img_url('common/mv-deco02.png')); ?>" alt="" aria-hidden="true" class="approach__deco approach__deco--02">
+        <img src="<?php echo esc_url(hreed_img_url('common/mv-deco03.png')); ?>" alt="" aria-hidden="true" class="approach__deco approach__deco--03">
+        <img src="<?php echo esc_url(hreed_img_url('common/mv-deco04.png')); ?>" alt="" aria-hidden="true" class="approach__deco approach__deco--04">
 
         <h2 class="approach__head">
-          採用を「<span class="approach__head-accent">作業</span>」ではなく「<span class="approach__head-accent">仕組み</span>」に変えます
+          採用を「<span class="approach__head-accent">作業</span>」ではなく<br class="sp">「<span class="approach__head-accent">仕組み</span>」に変えます
         </h2>
         <p class="approach__lead">私たちは、単なる採用代行ではありません。</p>
 
@@ -165,7 +165,7 @@
     <!-- ================= Feature ================= -->
     <section class="feature">
       <div class="feature__bg">
-        <img class="feature__bg-img" src="<?php echo get_template_directory_uri(); ?>/img/top/service-bg.jpg" alt="">
+        <img class="feature__bg-img" src="<?php echo esc_url(hreed_img_url('top/service-bg.jpg')); ?>" alt="">
       </div>
 
       <div class="inner">
@@ -178,7 +178,7 @@
           <li class="feature__item">
             <div class="feature__photo">
               <span class="feature__num">1</span>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/service/feature-photo-team.jpg" alt="会議室で打ち合わせをするメンバー">
+              <img src="<?php echo esc_url(hreed_img_url('service/feature-photo-team.jpg')); ?>" alt="会議室で打ち合わせをするメンバー">
             </div>
             <div class="feature__body">
               <h3 class="feature__title">集客から実行まで一貫して対応</h3>
@@ -197,7 +197,7 @@
           <li class="feature__item feature__item--reverse">
             <div class="feature__photo">
               <span class="feature__num">2</span>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/service/feature-photo-industry.jpg" alt="オフィス・店舗・物流などさまざまな業界で働く人々">
+              <img src="<?php echo esc_url(hreed_img_url('service/feature-photo-industry.jpg')); ?>" alt="オフィス・店舗・物流などさまざまな業界で働く人々">
             </div>
             <div class="feature__body">
               <h3 class="feature__title">幅広い業界の支援実績</h3>
@@ -216,7 +216,7 @@
           <li class="feature__item">
             <div class="feature__photo">
               <span class="feature__num">3</span>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/service/feature-photo-internal.jpg" alt="ノートパソコンを使って打ち合わせをするメンバー">
+              <img src="<?php echo esc_url(hreed_img_url('service/feature-photo-internal.jpg')); ?>" alt="ノートパソコンを使って打ち合わせをするメンバー">
             </div>
             <div class="feature__body">
               <h3 class="feature__title">内製化支援でノウハウを蓄積</h3>
@@ -270,8 +270,8 @@
         <a href="<?php echo esc_url(home_url('/case/')); ?>" class="case__more btn-more btn-more--solid">
           一覧を見る
           <span class="btn-more__arrow" aria-hidden="true">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
+            <img src="<?php echo esc_url(hreed_img_url('common/arrow-green.svg')); ?>" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+            <img src="<?php echo esc_url(hreed_img_url('common/arrow-green.svg')); ?>" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
           </span>
         </a>
       </div>
@@ -290,7 +290,7 @@
           <li class="flow__item">
             <div class="flow__num">
               <span class="flow__num-circle">1</span>
-              <img class="flow__num-arrow" src="<?php echo get_template_directory_uri(); ?>/img/service/arrow-bottom.svg" alt="" aria-hidden="true">
+              <img class="flow__num-arrow" src="<?php echo esc_url(hreed_img_url('service/arrow-bottom.svg')); ?>" alt="" aria-hidden="true">
             </div>
             <div class="flow__body">
               <p class="flow__title">採用全体の設計</p>
@@ -303,7 +303,7 @@
           <li class="flow__item">
             <div class="flow__num">
               <span class="flow__num-circle">2</span>
-              <img class="flow__num-arrow" src="<?php echo get_template_directory_uri(); ?>/img/service/arrow-bottom.svg" alt="" aria-hidden="true">
+              <img class="flow__num-arrow" src="<?php echo esc_url(hreed_img_url('service/arrow-bottom.svg')); ?>" alt="" aria-hidden="true">
             </div>
             <div class="flow__body">
               <p class="flow__title">集客方法の選定</p>
@@ -316,7 +316,7 @@
           <li class="flow__item">
             <div class="flow__num">
               <span class="flow__num-circle">3</span>
-              <img class="flow__num-arrow" src="<?php echo get_template_directory_uri(); ?>/img/service/arrow-bottom.svg" alt="" aria-hidden="true">
+              <img class="flow__num-arrow" src="<?php echo esc_url(hreed_img_url('service/arrow-bottom.svg')); ?>" alt="" aria-hidden="true">
             </div>
             <div class="flow__body">
               <p class="flow__title">ブランディング支援</p>
@@ -329,7 +329,7 @@
           <li class="flow__item">
             <div class="flow__num">
               <span class="flow__num-circle">4</span>
-              <img class="flow__num-arrow" src="<?php echo get_template_directory_uri(); ?>/img/service/arrow-bottom.svg" alt="" aria-hidden="true">
+              <img class="flow__num-arrow" src="<?php echo esc_url(hreed_img_url('service/arrow-bottom.svg')); ?>" alt="" aria-hidden="true">
             </div>
             <div class="flow__body">
               <p class="flow__title">実行（採用オペレーション・面接代行）</p>
@@ -342,7 +342,7 @@
           <li class="flow__item">
             <div class="flow__num">
               <span class="flow__num-circle">5</span>
-              <img class="flow__num-arrow" src="<?php echo get_template_directory_uri(); ?>/img/service/arrow-bottom.svg" alt="" aria-hidden="true">
+              <img class="flow__num-arrow" src="<?php echo esc_url(hreed_img_url('service/arrow-bottom.svg')); ?>" alt="" aria-hidden="true">
             </div>
             <div class="flow__body">
               <p class="flow__title">定着支援（OJT・フォロー面談）</p>

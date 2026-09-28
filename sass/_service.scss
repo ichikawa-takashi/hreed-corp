@@ -186,7 +186,7 @@
 
 .worry__item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: rem(16);
 
   @include mq("md") {
@@ -195,10 +195,10 @@
 }
 
 .worry__item+.worry__item {
-  margin-top: rem(-34);
+//   margin-top: rem(-34);
 
   @include mq("md") {
-    margin-top: rem(16);
+    margin-top: rem(24);
   }
 }
 

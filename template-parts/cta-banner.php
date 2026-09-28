@@ -5,7 +5,7 @@
     <section class="cta-banner">
       <div class="cta-banner__inner inner">
         <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="cta-banner__link">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/top/service-bg.jpg" alt="" class="cta-banner__bg">
+          <img src="<?php echo esc_url(hreed_img_url('top/service-bg.jpg')); ?>" alt="" class="cta-banner__bg">
 
           <div class="cta-banner__wrapper">
             <div class="sec-title sec-title--reverse cta-banner__title">
@@ -16,8 +16,8 @@
             <div class="cta-banner__note">
               <p class="cta-banner__text">採用にお困りの方はこちらから</p>
               <span class="btn-more__arrow" aria-hidden="true">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-green.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
+                <img src="<?php echo esc_url(hreed_img_url('common/arrow-green.svg')); ?>" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+                <img src="<?php echo esc_url(hreed_img_url('common/arrow-green.svg')); ?>" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
               </span>
             </div>
           </div>

@@ -621,7 +621,7 @@ body.is-drawer-open {
     left: 0;
     right: 0;
     bottom: -10%;
-    background-image: linear-gradient(rgba($green, .82), rgba($green, .82)), url(../img/top/service-bg.jpg);
+    background-image: linear-gradient(rgba($green, .82), rgba($green, .82)), img-url("top/service-bg.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

@@ -3,7 +3,7 @@
       <div class="footer__top">
         <div class="footer__logo">
           <a href="<?php echo esc_url(home_url('/')); ?>">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/common/logo.svg" alt="Hreed株式会社">
+            <img src="<?php echo esc_url(hreed_img_url('common/logo.svg')); ?>" alt="Hreed株式会社">
           </a>
         </div>
 
@@ -16,7 +16,7 @@
               <li class="footer__nav-item"><a href="<?php echo esc_url(home_url('/news/')); ?>">お知らせ</a></li>
               <li class="footer__nav-item"><a href="<?php echo esc_url(home_url('/case/')); ?>">ご支援事例</a></li>
               <li class="footer__nav-item"><a href="<?php echo esc_url(home_url('/recruit/')); ?>">採用情報</a></li>
-              <li class="footer__nav-item"><a href="https://note.com/hreed_1212" target="_blank" rel="noopener noreferrer"><img src="<?php echo get_template_directory_uri(); ?>/img/common/icon-note.svg" alt="note"></a></li>
+              <li class="footer__nav-item"><a href="https://note.com/hreed_1212" target="_blank" rel="noopener noreferrer"><img src="<?php echo esc_url(hreed_img_url('common/icon-note.svg')); ?>" alt="note"></a></li>
             </ul>
           </nav>
 

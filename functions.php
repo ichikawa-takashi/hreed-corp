@@ -8,6 +8,16 @@ function my_theme_setup()
 }
 add_action('after_setup_theme', 'my_theme_setup');
 
+// テーマ内画像のURLを返す(更新日時を ?v= に付けて、差し替え時にブラウザキャッシュが残らないようにする)
+// 例: hreed_img_url('common/arrow-green.svg')
+function hreed_img_url($path)
+{
+    $path = ltrim($path, '/');
+    $file = get_template_directory() . '/img/' . $path;
+    $url  = get_template_directory_uri() . '/img/' . $path;
+    return file_exists($file) ? $url . '?v=' . filemtime($file) : $url;
+}
+
 // タイトルの区切り文字を「|」にする(例: 私たちについて | Hreed株式会社)
 function my_document_title_separator()
 {
@@ -67,7 +77,7 @@ function my_favicon()
     if (has_site_icon()) {
         return;
     }
-    $icon = get_template_directory_uri() . '/img/favicon.png';
+    $icon = hreed_img_url('favicon.png');
     echo '<link rel="icon" href="' . esc_url($icon) . '" type="image/png">' . "\n";
     echo '<link rel="apple-touch-icon" href="' . esc_url($icon) . '">' . "\n";
 }
@@ -192,10 +202,10 @@ add_action( 'wp_enqueue_scripts', 'enqueue_custom_styles_and_scripts' );
 
 function custom_wp_pagenavi($html) {
     // 前へのリンクのテキストを画像に置き換える
-    $html = str_replace('←', '<img src="' . get_template_directory_uri() . '/img/common/next-arrow.svg" alt="前へ">', $html);
+    $html = str_replace('←', '<img src="' . esc_url(hreed_img_url('common/next-arrow.svg')) . '" alt="前へ">', $html);
 
     // 次へのリンクのテキストを画像に置き換える
-    $html = str_replace('→', '<img src="' . get_template_directory_uri() . '/img/common/next-arrow.svg" alt="次へ">', $html);
+    $html = str_replace('→', '<img src="' . esc_url(hreed_img_url('common/next-arrow.svg')) . '" alt="次へ">', $html);
 
     return $html;
 }
@@ -325,7 +335,7 @@ add_filter('cf7msm_form_field_value', 'hreed_escape_multiform_value');
 // (CF7の[submit]は<input>で出力され、矢印の要素を中に入れられないため)
 function hreed_cf7_submit_button($html)
 {
-    $arrow = get_template_directory_uri() . '/img/common/arrow-green.svg';
+    $arrow = hreed_img_url('common/arrow-green.svg');
     return preg_replace_callback(
         '/<input([^>]*?)class="([^"]*contact-form__submit-btn[^"]*)"([^>]*?)type="submit"([^>]*?)value="([^"]*)"([^>]*?)\/?>/',
         function ($m) use ($arrow) {

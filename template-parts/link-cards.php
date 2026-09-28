@@ -8,7 +8,6 @@ $link_cards_all = [
   'recruit' => ['url' => home_url('/recruit/'), 'img' => 'common/link-recruit.jpg', 'en' => 'Recruit', 'ja' => '採用情報'],
 ];
 $link_cards = $args['cards'] ?? ['service', 'recruit'];
-$theme_uri  = get_template_directory_uri();
 ?>
     <section class="link-cards">
       <div class="link-cards__inner inner">
@@ -17,7 +16,7 @@ $theme_uri  = get_template_directory_uri();
           <li class="link-cards__item">
             <a href="<?php echo esc_url($card['url']); ?>" class="link-cards__card">
               <div class="link-cards__photo">
-                <img src="<?php echo $theme_uri; ?>/img/<?php echo $card['img']; ?>" alt="">
+                <img src="<?php echo esc_url(hreed_img_url($card['img'])); ?>" alt="">
               </div>
               <div class="link-cards__foot">
                 <div class="sec-title sec-title--reverse">
@@ -25,8 +24,8 @@ $theme_uri  = get_template_directory_uri();
                   <p class="sec-title__ja"><span class="sec-title__text"><?php echo esc_html($card['ja']); ?></span></p>
                 </div>
                 <span class="btn-more__arrow" aria-hidden="true">
-                  <img src="<?php echo $theme_uri; ?>/img/common/arrow-white.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
-                  <img src="<?php echo $theme_uri; ?>/img/common/arrow-white.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
+                  <img src="<?php echo esc_url(hreed_img_url('common/arrow-white.svg')); ?>" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+                  <img src="<?php echo esc_url(hreed_img_url('common/arrow-white.svg')); ?>" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
                 </span>
               </div>
             </a>
@@ -34,9 +33,9 @@ $theme_uri  = get_template_directory_uri();
           <?php endforeach; ?>
         </ul>
       </div>
-      <img src="<?php echo $theme_uri; ?>/img/common/link-deco01.png" alt="" class="link-cards__deco link-cards__deco--01">
-      <img src="<?php echo $theme_uri; ?>/img/common/link-deco02.png" alt="" class="link-cards__deco link-cards__deco--02">
-      <img src="<?php echo $theme_uri; ?>/img/common/link-deco03.png" alt="" class="link-cards__deco link-cards__deco--03">
-      <img src="<?php echo $theme_uri; ?>/img/common/link-deco04.png" alt="" class="link-cards__deco link-cards__deco--04">
-      <img src="<?php echo $theme_uri; ?>/img/common/link-deco05.png" alt="" class="link-cards__deco link-cards__deco--05">
+      <img src="<?php echo esc_url(hreed_img_url('common/link-deco01.png')); ?>" alt="" class="link-cards__deco link-cards__deco--01">
+      <img src="<?php echo esc_url(hreed_img_url('common/link-deco02.png')); ?>" alt="" class="link-cards__deco link-cards__deco--02">
+      <img src="<?php echo esc_url(hreed_img_url('common/link-deco03.png')); ?>" alt="" class="link-cards__deco link-cards__deco--03">
+      <img src="<?php echo esc_url(hreed_img_url('common/link-deco04.png')); ?>" alt="" class="link-cards__deco link-cards__deco--04">
+      <img src="<?php echo esc_url(hreed_img_url('common/link-deco05.png')); ?>" alt="" class="link-cards__deco link-cards__deco--05">
     </section>

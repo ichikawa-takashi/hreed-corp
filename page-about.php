@@ -9,7 +9,7 @@
         </div>
 
         <div class="lower-mv__photo">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/about/mv-photo.jpg" alt="Hreedのメンバー">
+          <img src="<?php echo esc_url(hreed_img_url('about/mv-photo.jpg')); ?>" alt="Hreedのメンバー">
         </div>
 
         <svg width="56" height="124" viewBox="0 0 56 124" fill="none" xmlns="http://www.w3.org/2000/svg" class="lower-mv__deco lower-mv__deco--01" aria-hidden="true">
@@ -40,7 +40,7 @@
 
         <div class="about-mc__row">
           <div class="about-mc__side">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/about/mc-side.png" alt="">
+            <img src="<?php echo esc_url(hreed_img_url('about/mc-side.png')); ?>" alt="">
           </div>
 
           <div class="about-mc__body">
@@ -167,7 +167,7 @@
         <div class="about-message__row">
           <div class="about-message__photo">
             <div class="about-message__photo-frame">
-              <img class="about-message__photo-img" src="<?php echo get_template_directory_uri(); ?>/img/about/isogimi_image.jpg" alt="代表取締役 五十君 隆之介">
+              <img class="about-message__photo-img" src="<?php echo esc_url(hreed_img_url('about/isogimi_image.jpg')); ?>" alt="代表取締役 五十君 隆之介">
             </div>
             <p class="about-message__caption">
               Hreed株式会社 代表取締役<br>

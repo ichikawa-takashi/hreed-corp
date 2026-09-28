@@ -142,7 +142,7 @@
   height: rem(48);
   border-radius: 50%;
   border: 1px solid $green;
-  background-image: url(../img/common/icon-play_grn.svg);
+  background-image: img-url("common/icon-play_grn.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: rem(12) auto;
@@ -169,7 +169,7 @@
 
 .news-list__link:hover .news-list__arrow {
   background-color: $green;
-  background-image: url(../img/common/icon-play_wh.svg);
+  background-image: img-url("common/icon-play_wh.svg");
 }
 
 /* ---------- pagination ---------- */

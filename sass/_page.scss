@@ -1001,7 +1001,7 @@
     border-radius: 50%;
     border: 1px solid $green;
     background-color: transparent;
-    background-image: url(../img/common/icon-play_grn.svg);
+    background-image: img-url("common/icon-play_grn.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: rem(10) auto;
@@ -1014,7 +1014,7 @@
 
 .news__item-link:hover .news__item-arrow {
     background-color: $green;
-    background-image: url(../img/common/icon-play_wh.svg);
+    background-image: img-url("common/icon-play_wh.svg");
 }
 
 .news__watermark {

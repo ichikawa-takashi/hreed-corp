@@ -292,6 +292,16 @@ $breakpoints: (
   }
 }
 
+/*--------------------------
+画像URL(コンパイルごとに ?v= の値が変わり、画像差し替え時にブラウザキャッシュが残らないようにする)
+例: background-image: img-url("common/icon-play_wh.svg");
+---------------------------*/
+$img-ver: unique-id();
+
+@function img-url($path) {
+  @return url("../img/#{$path}?v=#{$img-ver}");
+}
+
 @import "reset";
 @import "common";
 @import "page";
