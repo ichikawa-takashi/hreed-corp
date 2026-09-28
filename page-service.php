@@ -43,7 +43,7 @@
 
         <?php
         $service_logos = [
-          ['file' => 'dely_logo.png',         'alt' => 'dely株式会社'],
+          ['file' => 'kurashiru_logo.png',    'alt' => 'クラシル株式会社'],
           ['file' => 'fundbook_logo.jpg',     'alt' => '株式会社fundbook'],
           ['file' => 'leading_mark_logo.jpg', 'alt' => '株式会社Leading Mark'],
           ['file' => 'levarages.jpg',         'alt' => 'レバレジーズ株式会社'],
@@ -67,8 +67,8 @@
 
     <!-- ================= Worry ================= -->
     <section class="worry">
-      <div class="inner">
-        <span class="worry__tag">こんなお悩みありませんか？</span>
+      <div class="worry__inner inner">
+        <span class="worry__tag">こんな<span class="worry__tag-accent">お悩み</span>ありませんか？</span>
 
         <ul class="worry__list">
           <li class="worry__item">
@@ -308,7 +308,7 @@
           <li class="flow__item">
             <div class="flow__num">
               <span class="flow__num-circle">1</span>
-              <span class="flow__num-arrow" aria-hidden="true">↓</span>
+              <img class="flow__num-arrow" src="<?php echo get_template_directory_uri(); ?>/img/service/arrow-bottom.svg" alt="" aria-hidden="true">
             </div>
             <div class="flow__body">
               <p class="flow__title">採用全体の設計</p>
@@ -321,7 +321,7 @@
           <li class="flow__item">
             <div class="flow__num">
               <span class="flow__num-circle">2</span>
-              <span class="flow__num-arrow" aria-hidden="true">↓</span>
+              <img class="flow__num-arrow" src="<?php echo get_template_directory_uri(); ?>/img/service/arrow-bottom.svg" alt="" aria-hidden="true">
             </div>
             <div class="flow__body">
               <p class="flow__title">集客方法の選定</p>
@@ -334,7 +334,7 @@
           <li class="flow__item">
             <div class="flow__num">
               <span class="flow__num-circle">3</span>
-              <span class="flow__num-arrow" aria-hidden="true">↓</span>
+              <img class="flow__num-arrow" src="<?php echo get_template_directory_uri(); ?>/img/service/arrow-bottom.svg" alt="" aria-hidden="true">
             </div>
             <div class="flow__body">
               <p class="flow__title">ブランディング支援</p>
@@ -347,7 +347,7 @@
           <li class="flow__item">
             <div class="flow__num">
               <span class="flow__num-circle">4</span>
-              <span class="flow__num-arrow" aria-hidden="true">↓</span>
+              <img class="flow__num-arrow" src="<?php echo get_template_directory_uri(); ?>/img/service/arrow-bottom.svg" alt="" aria-hidden="true">
             </div>
             <div class="flow__body">
               <p class="flow__title">実行（採用オペレーション・面接代行）</p>
@@ -360,7 +360,7 @@
           <li class="flow__item">
             <div class="flow__num">
               <span class="flow__num-circle">5</span>
-              <span class="flow__num-arrow" aria-hidden="true">↓</span>
+              <img class="flow__num-arrow" src="<?php echo get_template_directory_uri(); ?>/img/service/arrow-bottom.svg" alt="" aria-hidden="true">
             </div>
             <div class="flow__body">
               <p class="flow__title">定着支援（OJT・フォロー面談）</p>
@@ -384,12 +384,7 @@
         <ul class="faq__list">
           <li class="faq__item is-open">
             <button type="button" class="faq__question js-faq-question" aria-expanded="true">
-              <span class="faq__q-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <circle cx="10" cy="10" r="7" stroke="#0C998A" stroke-width="2" />
-                  <line x1="15" y1="15" x2="21" y2="21" stroke="#0C998A" stroke-width="2" stroke-linecap="round" />
-                </svg>
-              </span>
+              <span class="faq__q-icon" aria-hidden="true">Q</span>
               <span class="faq__q-text">RPO（採用代行）とはどこまで対応してもらえるサービスですか？</span>
               <span class="faq__toggle" aria-hidden="true"></span>
             </button>
@@ -404,12 +399,7 @@
 
           <li class="faq__item">
             <button type="button" class="faq__question js-faq-question" aria-expanded="false">
-              <span class="faq__q-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <circle cx="10" cy="10" r="7" stroke="#0C998A" stroke-width="2" />
-                  <line x1="15" y1="15" x2="21" y2="21" stroke="#0C998A" stroke-width="2" stroke-linecap="round" />
-                </svg>
-              </span>
+              <span class="faq__q-icon" aria-hidden="true">Q</span>
               <span class="faq__q-text">採用担当者がいなくても依頼できますか？</span>
               <span class="faq__toggle" aria-hidden="true"></span>
             </button>
@@ -423,12 +413,7 @@
 
           <li class="faq__item">
             <button type="button" class="faq__question js-faq-question" aria-expanded="false">
-              <span class="faq__q-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <circle cx="10" cy="10" r="7" stroke="#0C998A" stroke-width="2" />
-                  <line x1="15" y1="15" x2="21" y2="21" stroke="#0C998A" stroke-width="2" stroke-linecap="round" />
-                </svg>
-              </span>
+              <span class="faq__q-icon" aria-hidden="true">Q</span>
               <span class="faq__q-text">スポット（短期間）での利用は可能ですか？</span>
               <span class="faq__toggle" aria-hidden="true"></span>
             </button>
@@ -442,12 +427,7 @@
 
           <li class="faq__item">
             <button type="button" class="faq__question js-faq-question" aria-expanded="false">
-              <span class="faq__q-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <circle cx="10" cy="10" r="7" stroke="#0C998A" stroke-width="2" />
-                  <line x1="15" y1="15" x2="21" y2="21" stroke="#0C998A" stroke-width="2" stroke-linecap="round" />
-                </svg>
-              </span>
+              <span class="faq__q-icon" aria-hidden="true">Q</span>
               <span class="faq__q-text">採用できなかった場合でも費用は発生しますか？</span>
               <span class="faq__toggle" aria-hidden="true"></span>
             </button>
@@ -461,12 +441,7 @@
 
           <li class="faq__item">
             <button type="button" class="faq__question js-faq-question" aria-expanded="false">
-              <span class="faq__q-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <circle cx="10" cy="10" r="7" stroke="#0C998A" stroke-width="2" />
-                  <line x1="15" y1="15" x2="21" y2="21" stroke="#0C998A" stroke-width="2" stroke-linecap="round" />
-                </svg>
-              </span>
+              <span class="faq__q-icon" aria-hidden="true">Q</span>
               <span class="faq__q-text">土日や平日夜の面接も代行してもらえますか？</span>
               <span class="faq__toggle" aria-hidden="true"></span>
             </button>

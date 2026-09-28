@@ -36,6 +36,9 @@ gsap.registerPlugin(ScrollTrigger);
       );
     }
   });
+
+  // 初期状態(幅0・透明)をセットしてから、CSSで隠していた見出しを表示する
+  gsap.set(head, { visibility: "visible" });
 })();
 
 // --- 写真(lower-mv__photo)の表示アニメーション -------------------------------

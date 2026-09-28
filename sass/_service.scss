@@ -46,6 +46,8 @@
   color: $black;
   @include font(32, 46, 50, $bold);
   padding: rem(16) rem(32);
+  // 読み込み直後に素の状態が一瞬見えないよう、JSでアニメーションの初期状態をセットするまで隠す
+  visibility: hidden;
 
   @include mq("md") {
     @include font(18, 27, 50, $bold);
@@ -63,6 +65,8 @@
   margin-top: rem(24);
   color: $black;
   @include font(16, 26, 50, $medium);
+  // 読み込み直後に素の状態が一瞬見えないよう、JSでアニメーションの初期状態をセットするまで隠す
+  visibility: hidden;
 
   @include mq("md") {
     margin-top: rem(16);
@@ -75,6 +79,8 @@
   z-index: 1;
   margin-top: rem(48);
   border-top: 1px solid $green;
+  // 読み込み直後に素の状態が一瞬見えないよう、JSでアニメーションの初期状態をセットするまで隠す
+  visibility: hidden;
 
   @include mq("md") {
     margin-top: rem(32);
@@ -86,6 +92,8 @@
   z-index: 1;
   padding: rem(48) 0;
   border-bottom: 1px solid $green;
+  // 読み込み直後に素の状態が一瞬見えないよう、JSでアニメーションの初期状態をセットするまで隠す
+  visibility: hidden;
 
   @include mq("md") {
     padding: rem(28) 0;
@@ -116,48 +124,74 @@
 /* ---------- worry（こんなお悩みありませんか） ---------- */
 .worry {
   position: relative;
-  overflow: hidden;
+  // 横からスライドするアニメーションで横スクロールが出ないよう横方向だけ切り取る(見出しタグは上にはみ出させる)
+  overflow-x: clip;
   background-color: $bg;
-  padding: rem(96) 0;
+  padding-bottom: rem(41);
 
   @include mq("md") {
     padding: rem(56) 0;
   }
 }
 
+// 見出しタグの負のmarginがセクションの外へ相殺されないよう、flexコンテナにする
+.worry__inner {
+  display: flex;
+  flex-direction: column;
+}
+
+// PCは見出しタグをセクション上端の境目にまたがらせる
 .worry__tag {
-  display: inline-block;
+  position: relative;
+  z-index: 1;
+  align-self: center;
+  margin-top: rem(-28);
   background-color: $green;
   color: $white;
-  @include font(28, 41, 50, $bold);
-  padding: rem(12) rem(24);
+  @include font(24, 35, 50, $bold);
+  padding: rem(10) rem(26);
 
   @include mq("md") {
+    align-self: flex-start;
+    margin-top: 0;
     @include font(18, 27, 50, $bold);
     padding: rem(10) rem(16);
   }
 }
 
+.worry__tag-accent {
+  // 大きい文字の行ボックスでタグの高さが広がらないよう、行の高さは文字サイズと同じにする
+  @include font(32, 24, 50, $bold);
+
+  @include mq("md") {
+    @include font(22, 27, 50, $bold);
+  }
+}
+
 .worry__list {
-  margin-top: rem(64);
+  width: 100%;
+  max-width: rem(988);
+  margin-top: rem(41);
+  margin-left: rem(86);
 
   @include mq("md") {
     margin-top: rem(40);
+    margin-left: 0;
   }
 }
 
 .worry__item {
   display: flex;
-  align-items: center;
-  gap: rem(32);
+  align-items: flex-start;
+  gap: rem(16);
 
   @include mq("md") {
-    gap: rem(16);
+    align-items: center;
   }
 }
 
 .worry__item+.worry__item {
-  margin-top: rem(-24);
+  margin-top: rem(-34);
 
   @include mq("md") {
     margin-top: rem(16);
@@ -166,13 +200,16 @@
 
 .worry__item--reverse {
   flex-direction: row-reverse;
-  justify-content: flex-end;
+
+  @include mq("md") {
+    justify-content: flex-end;
+  }
 }
 
 .worry__icon {
   flex-shrink: 0;
-  width: rem(200);
-  height: rem(200);
+  width: rem(204);
+  height: rem(153);
   border-radius: 50%;
   background-color: $white;
   display: flex;
@@ -186,27 +223,41 @@
 }
 
 .worry__icon img {
-  width: 70%;
+  width: rem(136);
   height: auto;
+
+  @include mq("md") {
+    width: 70%;
+  }
 }
 
 .worry__card {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   min-width: 0;
-  max-width: rem(480);
+
+  @include mq("md") {
+    flex: 1;
+  }
 }
 
 .worry__item--reverse .worry__card {
-  margin-left: auto;
+  align-items: flex-end;
+
+  @include mq("md") {
+    align-items: flex-start;
+  }
 }
 
 .worry__title {
-  display: inline-block;
+  position: relative;
+  z-index: 1;
   border: 1px solid $green;
   background-color: $white;
   color: $black;
   @include font(18, 26, 50, $bold);
-  padding: rem(10) rem(20);
+  padding: rem(8) rem(16);
 
   @include mq("md") {
     @include font(14, 20, 50, $bold);
@@ -214,14 +265,15 @@
   }
 }
 
+// 見出しの下の枠線と説明の上の枠線を1本に重ねる
 .worry__text {
   display: block;
-  margin-top: rem(8);
+  margin-top: -1px;
   border: 1px solid $green;
   background-color: $white;
   color: $black;
   @include font(14, 24, 50, $regular);
-  padding: rem(10) rem(20);
+  padding: rem(5) rem(16);
 
   @include mq("md") {
     @include font(12, 20, 50, $regular);
@@ -239,6 +291,23 @@
 
   @include mq("md") {
     padding: rem(48) 0;
+  }
+}
+
+// 上端中央に、お悩みセクションの背景色が下向きに食い込むV字を置く
+.approach::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: rem(946);
+  height: rem(81);
+  background-color: $bg;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform: translateX(-50%);
+
+  @include mq("md") {
+    display: none;
   }
 }
 
@@ -422,11 +491,14 @@
 }
 
 .feature__item {
-  display: flex;
-  align-items: flex-start;
-  gap: rem(40);
+  // PCは写真(2〜3列目)と本文(3〜4列目)を重なり用の列(3列目)にまたがらせ、本文を写真に少し重ねる。
+  // 1列目は番号の箱が写真からはみ出す分の余白
+  display: grid;
+  grid-template-columns: rem(24) rem(360) rem(40) minmax(0, 1fr);
+  align-items: start;
 
   @include mq("md") {
+    display: flex;
     flex-direction: column;
     gap: rem(16);
   }
@@ -441,80 +513,96 @@
 }
 
 .feature__item--reverse {
-  flex-direction: row-reverse;
-
-  @include mq("md") {
-    flex-direction: column;
-  }
+  grid-template-columns: minmax(0, 1fr) rem(40) rem(360) rem(24);
 }
 
 .feature__photo {
   position: relative;
-  flex-shrink: 0;
-  width: rem(480);
-
-  @include mq("md") {
-    width: 100%;
-  }
+  grid-row: 1;
+  grid-column: 2 / 4;
 }
 
 .feature__photo img {
   width: 100%;
-  aspect-ratio: 480 / 320;
+  aspect-ratio: 400 / 233;
   object-fit: cover;
 }
 
 .feature__num {
   position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(-30%, -30%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: rem(56);
-  height: rem(56);
-  background-color: $green;
-  color: $white;
-  @include font(28, 42, 50, $extra);
+  z-index: 1;
+  top: rem(-6);
+  left: rem(-24);
+  padding: 0 rem(15);
+  background-color: $white;
+  color: $green;
+  font-family: $en;
+  @include font(40, 63, null, $extra);
 
   @include mq("md") {
-    width: rem(40);
-    height: rem(40);
-    @include font(20, 30, 50, $extra);
+    top: rem(-12);
+    left: rem(-12);
+    padding: 0 rem(10);
+    @include font(24, 40, null, $extra);
   }
 }
 
 .feature__item--reverse .feature__num {
+  top: rem(-23);
   left: auto;
-  right: 0;
-  transform: translate(30%, -30%);
+  right: rem(-24);
+
+  @include mq("md") {
+    top: rem(-12);
+    right: rem(-12);
+  }
 }
 
 .feature__body {
-  flex: 1;
-  min-width: 0;
+  position: relative;
+  z-index: 1;
+  grid-row: 1;
+  grid-column: 3 / 5;
+  margin-top: rem(41);
   background-color: $white;
-  padding: rem(32);
+  padding: rem(24);
 
   @include mq("md") {
+    margin-top: 0;
     padding: rem(20);
   }
 }
 
+.feature__item--reverse .feature__body {
+  grid-column: 1 / 3;
+}
+
 .feature__title {
   color: $green;
-  @include font(22, 32, 50, $bold);
+  @include font(24, 40, 50, $bold);
+
+  @include mq("md") {
+    @include font(22, 32, 50, $bold);
+  }
 }
 
 .feature__text {
-  margin-top: rem(16);
+  margin-top: rem(8);
   color: $black;
-  @include font(14, 26, 50, $regular);
+  @include font(16, 28, 50, $regular);
+
+  @include mq("md") {
+    margin-top: rem(16);
+    @include font(14, 26, 50, $regular);
+  }
 }
 
 .feature__text+.feature__text {
-  margin-top: rem(12);
+  margin-top: rem(8);
+
+  @include mq("md") {
+    margin-top: rem(12);
+  }
 }
 
 /* ---------- flow（ご支援の流れ） ---------- */
@@ -529,11 +617,11 @@
 }
 
 .flow__list {
-  margin-top: rem(64);
-  max-width: rem(760);
+  margin-top: rem(40);
+  margin-left: rem(144);
 
   @include mq("md") {
-    margin-top: rem(40);
+    margin-left: 0;
   }
 }
 
@@ -551,46 +639,60 @@
   margin-top: rem(8);
 }
 
+// 丸は本文(見出し+説明)の縦中央に来るよう少し下げ、下に矢印を並べる
 .flow__num {
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: rem(7);
+
+  @include mq("md") {
+    margin-top: 0;
+  }
 }
 
 .flow__num-circle {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: rem(56);
-  height: rem(56);
+  width: rem(64);
+  height: rem(64);
   border-radius: 50%;
   background-color: $green;
   color: $white;
-  @include font(20, 30, 50, $bold);
+  font-family: $en;
+  @include font(28, 34, null, $bold);
 
   @include mq("md") {
     width: rem(40);
     height: rem(40);
-    @include font(15, 22, 50, $bold);
+    @include font(18, 22, null, $bold);
   }
 }
 
 .flow__num-arrow {
-  margin-top: rem(6);
-  margin-bottom: rem(6);
-  color: $green;
-  @include font(16, 16, null, $bold);
+  display: block;
+  margin-top: rem(15);
+  width: rem(16);
+  height: rem(28);
+
+  @include mq("md") {
+    margin-top: rem(8);
+    width: rem(12);
+    height: rem(21);
+  }
 }
 
 .flow__item:last-child .flow__num-arrow {
-  visibility: hidden;
+  display: none;
 }
 
 .flow__body {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   min-width: 0;
-  padding-bottom: rem(28);
 
   @include mq("md") {
     padding-bottom: rem(20);
@@ -598,11 +700,13 @@
 }
 
 .flow__title {
-  display: inline-block;
+  position: relative;
+  z-index: 1;
   border: 1px solid $green;
+  background-color: $white;
   color: $black;
-  @include font(16, 24, 50, $bold);
-  padding: rem(6) rem(16);
+  @include font(18, 26, 50, $bold);
+  padding: rem(7) rem(16);
 
   @include mq("md") {
     @include font(13, 20, 50, $bold);
@@ -610,10 +714,18 @@
   }
 }
 
+// 見出しの下の枠線と説明の上の枠線を1本に重ねる
 .flow__text {
-  margin-top: rem(10);
+  margin-top: -1px;
+  border: 1px solid $green;
   color: $black;
   @include font(14, 24, 50, $regular);
+  padding: rem(5) rem(16);
+
+  @include mq("md") {
+    @include font(13, 22, 50, $regular);
+    padding: rem(8) rem(12);
+  }
 }
 
 .flow__text-accent {
@@ -633,24 +745,24 @@
 }
 
 .faq__list {
-  margin-top: rem(64);
+  margin-top: rem(40);
   background-color: $white;
-
-  @include mq("md") {
-    margin-top: rem(40);
-  }
 }
 
 .faq__item {
-  border-bottom: 1px solid #E1E5E8;
+  border-bottom: 1px solid #DBDBDB;
+}
+
+.faq__item:last-child {
+  border-bottom: none;
 }
 
 .faq__question {
   width: 100%;
   display: flex;
   align-items: center;
-  gap: rem(16);
-  padding: rem(24) rem(32);
+  gap: rem(32);
+  padding: rem(24) rem(35) rem(24) rem(31);
   text-align: left;
   background: none;
   border: none;
@@ -662,23 +774,27 @@
   }
 }
 
+// 線だけの「Q」
 .faq__q-icon {
   flex-shrink: 0;
-  display: flex;
-  width: rem(24);
-  height: rem(24);
-}
+  width: rem(35);
+  text-align: center;
+  font-family: $en;
+  @include font(44, 40, null, $regular);
+  color: transparent;
+  -webkit-text-stroke: 1px $green;
 
-.faq__q-icon svg {
-  width: 100%;
-  height: 100%;
+  @include mq("md") {
+    width: rem(24);
+    @include font(28, 28, null, $regular);
+  }
 }
 
 .faq__q-text {
   flex: 1;
   min-width: 0;
   color: $black;
-  @include font(16, 24, 50, $bold);
+  @include font(18, 26, 10, $medium);
 
   @include mq("md") {
     @include font(13, 20, 50, $bold);
@@ -688,8 +804,8 @@
 .faq__toggle {
   flex-shrink: 0;
   position: relative;
-  width: rem(20);
-  height: rem(20);
+  width: rem(14);
+  height: rem(14);
 }
 
 .faq__toggle::before,
@@ -718,28 +834,39 @@
   transform: translate(-50%, -50%) rotate(90deg);
 }
 
+// 回答は背景色の帯にして、質問の白い行と区別する
 .faq__answer {
   display: flex;
-  align-items: flex-start;
-  gap: rem(16);
-  padding: 0 rem(32) rem(24) rem(64);
+  align-items: center;
+  gap: rem(32);
+  background-color: $bg;
+  padding: rem(19) rem(35) rem(19) rem(31);
 
   @include mq("md") {
-    padding: 0 rem(20) rem(20) rem(46);
+    gap: rem(10);
+    padding: rem(16) rem(20);
   }
 }
 
 .faq__a-icon {
   flex-shrink: 0;
+  width: rem(35);
+  text-align: center;
   color: $green;
-  @include font(20, 24, 50, $extra);
+  font-family: $en;
+  @include font(41, 40, null, $bold);
+
+  @include mq("md") {
+    width: rem(24);
+    @include font(24, 28, null, $bold);
+  }
 }
 
 .faq__a-text {
   flex: 1;
   min-width: 0;
   color: $black;
-  @include font(14, 26, 50, $regular);
+  @include font(16, 25, 0, $regular);
 
   @include mq("md") {
     @include font(12, 22, 50, $regular);

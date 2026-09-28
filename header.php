@@ -74,7 +74,7 @@
       </nav>
 
       <div class="header__side">
-        <a href="https://note.com/" class="header__note" target="_blank" rel="noopener noreferrer">
+        <a href="https://note.com/hreed_1212" class="header__note" target="_blank" rel="noopener noreferrer">
           <img src="<?php echo get_template_directory_uri(); ?>/img/common/icon-note.svg" alt="note">
         </a>
         <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="header__contact">
@@ -136,7 +136,7 @@
       </nav>
 
       <div class="header__drawer-side">
-        <a href="https://note.com/" class="header__drawer-note" target="_blank" rel="noopener noreferrer">
+        <a href="https://note.com/hreed_1212" class="header__drawer-note" target="_blank" rel="noopener noreferrer">
           <img src="<?php echo get_template_directory_uri(); ?>/img/common/icon-note.svg" alt="note">
         </a>
         <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="header__drawer-contact">

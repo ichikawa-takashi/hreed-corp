@@ -14,6 +14,8 @@
   gap: rem(40);
   padding: rem(15.5) rem(200);
   border-bottom: 1px solid #DBDBDB;
+  // 読み込み直後に素の状態が一瞬見えないよう、JSでアニメーションの初期状態をセットするまで隠す
+  visibility: hidden;
 
   @include mq("md") {
     flex-direction: column;

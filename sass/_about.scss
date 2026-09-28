@@ -35,6 +35,8 @@
   width: 100%;
   position: absolute;
   left: calc((#{$inner} + #{$padding-pc} * 2 - 1440px) / 2 - 60px);
+  // 読み込み直後に素の状態が一瞬見えないよう、JSでアニメーションの初期状態をセットするまで隠す
+  visibility: hidden;
 
   @include mq("md") {
     display: none;
@@ -63,6 +65,8 @@
 .about-mc__text {
   color: $black;
   @include font(18, 36, 50, $regular);
+  // 読み込み直後に素の状態が一瞬見えないよう、JSでアニメーションの初期状態をセットするまで隠す
+  visibility: hidden;
 
   @include mq("md") {
     @include font(14, 26, 50, $regular);
@@ -85,6 +89,8 @@
 .about-mc__lead {
   color: $green;
   @include font(24, 48, 50, $bold);
+  // 読み込み直後に素の状態が一瞬見えないよう、JSでアニメーションの初期状態をセットするまで隠す
+  visibility: hidden;
 
   @include mq("md") {
     @include font(16, 28, 50, $bold);

@@ -98,6 +98,8 @@
     top: rem(57);
     width: rem(400);
     pointer-events: none;
+    // 読み込み直後に素の状態が一瞬見えないよう、JSでアニメーションの初期状態をセットするまで隠す
+    visibility: hidden;
 
     @include mq('md') {
         width: rem(200);
@@ -124,9 +126,11 @@
     padding: rem(12) rem(24);
     position: relative;
     z-index: 2;
+    // 読み込み直後に素の状態が一瞬見えないよう、JSでアニメーションの初期状態をセットするまで隠す
+    visibility: hidden;
 
     @include mq('md') {
-        @include font(32, 38, null, $bold);
+        @include font(44, 48, null, $bold);
         padding: rem(6) rem(16);
     }
 }
@@ -158,6 +162,8 @@
     @include font(24, 35, null, $bold);
     padding: rem(8) rem(20);
     white-space: nowrap;
+    // 読み込み直後に素の状態が一瞬見えないよう、JSでアニメーションの初期状態をセットするまで隠す
+    visibility: hidden;
 
     @include mq('md') {
         margin-top: 0;
@@ -174,6 +180,8 @@
     display: grid;
     // お知らせのスライダー(横並びのスライド)の幅で列が広がらないよう、列幅を親に合わせる
     grid-template-columns: minmax(0, 1fr);
+    // 読み込み直後に素の状態が一瞬見えないよう、JSでアニメーションの初期状態をセットするまで隠す
+    visibility: hidden;
 
     @include mq('md') {
         // 縦並び(align-items: flex-start)だと幅がお知らせの中身に合わせて縮み、写真が画面幅いっぱいにならないため親幅に広げる
@@ -189,8 +197,8 @@
     overflow: hidden;
 
     @include mq('md') {
-        // SPはお知らせカードが重なっても写真が十分見えるよう縦長にする
-        aspect-ratio: 4 / 3;
+        // SPはお知らせを写真の下に出すため、縦長にせず横長の比率で見せる
+        aspect-ratio: 3 / 2;
     }
 }
 
@@ -253,9 +261,13 @@
     background-color: $white;
 
     @include mq('md') {
-        width: 62%;
+        // SPは写真に重ねると写真の下部が隠れるため、写真の下の行に全幅で配置する
+        grid-area: 2 / 1;
+        justify-self: stretch;
+        width: 100%;
         min-width: 0;
-        transform: translateY(#{rem(10)});
+        margin-top: rem(12);
+        transform: none;
     }
 }
 
@@ -546,12 +558,13 @@
 }
 
 .service__num {
+    position: relative;
+    z-index: 1;
     display: block;
     font-family: $en;
     @include font(64, 64, null, $extra);
     color: $white;
-    -webkit-text-stroke: 2px $green;
-    paint-order: stroke;
+    -webkit-text-stroke: 1px $green;
 
     @include mq('md') {
         @include font(40, 40, null, $extra);

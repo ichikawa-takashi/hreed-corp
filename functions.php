@@ -50,6 +50,30 @@ function my_resource_hints($urls, $relation_type)
 add_filter('wp_resource_hints', 'my_resource_hints', 10, 2);
 
 
+// favicon(管理画面の「サイトアイコン」が設定されている場合はそちらを優先する)
+function my_favicon()
+{
+    if (has_site_icon()) {
+        return;
+    }
+    $icon = get_template_directory_uri() . '/img/favicon.png';
+    echo '<link rel="icon" href="' . esc_url($icon) . '" type="image/png">' . "\n";
+    echo '<link rel="apple-touch-icon" href="' . esc_url($icon) . '">' . "\n";
+}
+add_action('wp_head', 'my_favicon');
+
+
+// 支援事例一覧のkeywords(SEO SIMPLE PACKはアーカイブページのキーワード欄がなく、トップのキーワードが使われるため)
+function my_case_archive_keyword($keyword)
+{
+    if (is_post_type_archive('case')) {
+        return '採用支援 事例,RPO 事例,採用コンサル 実績';
+    }
+    return $keyword;
+}
+add_filter('ssp_output_keyword', 'my_case_archive_keyword');
+
+
 function enqueue_custom_styles_and_scripts() {
     $uri  = get_template_directory_uri();
     $path = get_template_directory();
@@ -103,8 +127,8 @@ function enqueue_custom_styles_and_scripts() {
         wp_enqueue_script( 'lower-mv-animation', $uri . '/js/lower-mv-animation.js', ['gsap-scrolltrigger'], filemtime( $path . '/js/lower-mv-animation.js' ), true );
     }
 
-    // About / Company の本文スクロールアニメーション
-    if ( is_page(['about', 'company']) ) {
+    // About / Company / Service の本文スクロールアニメーション
+    if ( is_page(['about', 'company', 'service']) ) {
         wp_enqueue_script( 'page-content-animation', $uri . '/js/page-content-animation.js', ['gsap-scrolltrigger'], filemtime( $path . '/js/page-content-animation.js' ), true );
     }
 
@@ -115,6 +139,8 @@ function enqueue_custom_styles_and_scripts() {
 
     // Service 導入企業ロゴのマーキー
     if ( is_page('service') ) {
+        // ご支援事例はトップと同じマークアップなので、トップのアニメーションを共用する
+        wp_enqueue_script( 'case-animation', $uri . '/js/case-animation.js', ['gsap-scrolltrigger'], filemtime( $path . '/js/case-animation.js' ), true );
         wp_enqueue_script( 'swiper-js', $uri . '/js/vendor/swiper-bundle.min.js', [], null, true );
         wp_enqueue_script( 'logo-marquee', $uri . '/js/logo-marquee.js', ['swiper-js'], filemtime( $path . '/js/logo-marquee.js' ), true );
     }

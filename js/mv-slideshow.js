@@ -22,6 +22,9 @@
     if (tagText) gsap.set(tagText, { opacity: 0, y: 8 });
     if (media) gsap.set(media, { opacity: 0, y: 24 });
     if (news) gsap.set(news, { opacity: 0, y: 16 });
+
+    // 初期状態をセットしてから、読み込み直後に見えないようCSSで隠していた要素を表示する
+    gsap.set([deco, head, tag, media].filter(Boolean), { visibility: "visible" });
   }
 
   var swiper = new Swiper(el, {

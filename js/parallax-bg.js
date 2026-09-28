@@ -1,6 +1,6 @@
 gsap.registerPlugin(ScrollTrigger);
 
-// Service / リンクカード / お問い合わせCTA の背景画像、About代表写真のパララックス
+// Service / Serviceページの特長 / リンクカード / お問い合わせCTA の背景画像、About代表写真のパララックス
 // セクションが画面下から入って上へ抜けるまでの間、背景画像のトリミング位置を
 // 少しずつずらす(scrubでスクロール量をそのまま反映するので、戻しても破綻しない)
 (function () {
@@ -12,6 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 
   var imgTargets = [
     { section: ".service", bg: ".service__bg-img" },
+    { section: ".feature", bg: ".feature__bg-img" },
     { section: ".cta-banner", bg: ".cta-banner__bg" },
     { section: ".about-message__photo-frame", bg: ".about-message__photo-img" },
   ];

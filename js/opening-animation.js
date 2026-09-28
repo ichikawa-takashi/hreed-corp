@@ -4,6 +4,7 @@
 
   var STORAGE_KEY = "hreedOpeningPlayed";
 
+//   オープニングを一回のみにするにはここから消す
 //   var alreadyPlayed = false;
 //   try {
 //     alreadyPlayed = sessionStorage.getItem(STORAGE_KEY) === "1";
@@ -13,6 +14,8 @@
 //     opening.remove();
 //     return;
 //   }
+
+//   オープニングを一回のみにするにはここまで消す
 
   if (!window.gsap) {
     opening.remove();

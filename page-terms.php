@@ -7,7 +7,7 @@
       <div class="legal__inner inner">
         <div class="legal__section">
           <h3 class="legal__heading">1. 個人情報に関する取り扱い</h3>
-          <p class="legal__text">株式会社Hreed（以下「Hreed」といいます。）が提供する人材紹介サービスのご利用申込みにあたっては、以下の利用規約（以下「本規約」といいます。）についてご承諾の上でお申込みいただきますようお願いいたします。</p>
+          <p class="legal__text">Hreed株式会社（以下「Hreed」といいます。）が提供する人材紹介サービスのご利用申込みにあたっては、以下の利用規約（以下「本規約」といいます。）についてご承諾の上でお申込みいただきますようお願いいたします。</p>
         </div>
 
         <div class="legal__section">

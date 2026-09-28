@@ -424,6 +424,8 @@ body.is-drawer-open {
   align-items: flex-start;
   position: relative;
   z-index: 10;
+  // 読み込み直後に素の状態が一瞬見えないよう、JSでアニメーションの初期状態をセットするまで隠す
+  visibility: hidden;
 }
 
 .lower-mv__text {
@@ -558,6 +560,8 @@ body.is-drawer-open {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  // 読み込み直後に素の状態が一瞬見えないよう、JSでアニメーションの初期状態をセットするまで隠す
+  visibility: hidden;
 }
 .sec-title__en {
   color: $white;
@@ -988,11 +992,18 @@ body.is-drawer-open {
   display: flex;
   align-items: center;
   gap: rem(24);
+  @include mq('md'){
+    flex-wrap: wrap;
+    gap: rem(16);
+  }
 }
 
 .footer__legal a {
   color: $black;
   @include font(12, 14, 50, $regular);
+  @include mq('md'){
+    @include font(10);
+  }
 }
 
 .footer__copyright {

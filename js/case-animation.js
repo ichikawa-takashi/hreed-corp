@@ -21,6 +21,35 @@ gsap.registerPlugin(ScrollTrigger);
 
   var cols = caseSection.querySelectorAll(".case__col");
 
+  // PCでは左右のカードがほぼ同じ位置にあり、スクロールが速いと複数枚が同時に出てしまうため、
+  // 画面に入ったカードを順番待ちにして、前のカードから一定時間ずらして1枚ずつ再生する
+  var CARD_INTERVAL = 0.35;
+  var queue = [];
+  var isWaiting = false;
+
+  function enqueue(card, tl) {
+    if (tl.queued) return;
+    tl.queued = true;
+    queue.push({ card: card, tl: tl });
+    // 同じスクロールで入ったカードが揃うのを1フレーム待ち、画面上の位置が高いものから順に出す
+    requestAnimationFrame(function () {
+      queue.sort(function (a, b) {
+        return a.card.getBoundingClientRect().top - b.card.getBoundingClientRect().top;
+      });
+      playNext();
+    });
+  }
+
+  function playNext() {
+    if (isWaiting || !queue.length) return;
+    queue.shift().tl.play();
+    isWaiting = true;
+    gsap.delayedCall(CARD_INTERVAL, function () {
+      isWaiting = false;
+      playNext();
+    });
+  }
+
   cols.forEach(function (col) {
     var isOffset = col.classList.contains("case__col--offset");
     var cards = col.querySelectorAll(".case__card");
@@ -37,11 +66,17 @@ gsap.registerPlugin(ScrollTrigger);
       if (photo) gsap.set(photo, { scale: 1.15 });
       if (pill) gsap.set(pill, { opacity: 0, y: 6, scale: 0.85 });
 
-      var tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: card,
-          start: "top 88%",
-          toggleActions: "play none none none",
+      var tl = gsap.timeline({ paused: true });
+
+      // 途中の位置で読み込んで既に通り過ぎている場合もonLeaveで再生する
+      ScrollTrigger.create({
+        trigger: card,
+        start: "top 75%",
+        onEnter: function () {
+          enqueue(card, tl);
+        },
+        onLeave: function () {
+          enqueue(card, tl);
         },
       });
 

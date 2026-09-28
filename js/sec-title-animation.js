@@ -37,5 +37,8 @@ gsap.registerPlugin(ScrollTrigger);
         );
       }
     });
+
+    // 初期状態(幅0・透明)をセットしてから、CSSで隠していた見出しを表示する
+    gsap.set(title, { visibility: "visible" });
   });
 })();

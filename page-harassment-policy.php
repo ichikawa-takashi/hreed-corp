@@ -10,7 +10,7 @@
         <div class="legal__section">
           <h3 class="legal__heading">１．求職者の皆様との面談・接触に関するルール</h3>
           <ul class="legal__list legal__list--disc">
-            <li class="legal__item">面談は、オンラインまたは対面で実施します。対面の場合は、第三者の目が届く場所（会社施設や学校等）で行います。</li>
+            <li class="legal__item">面談は、オンラインまたは対面で実施します。対面の場合は、第三者の目が届く場所（会社施設や就職・転職イベント等）で行います。</li>
             <li class="legal__item">連絡は、会社メールまたは会社携帯電話のみを使用し、個人の SNS や LINE 等を用いたやり取りは行いません。</li>
             <li class="legal__item">求職者の皆様より OB・OG 訪問の申込みを受ける際は、あらかじめ人事部門と共有の上、面談場所、時間等を取り決めます。</li>
             <li class="legal__item">求職者と従業員の 1 対 1 での会食は禁止とします。</li>
