@@ -134,13 +134,18 @@
             <?php wp_reset_postdata(); ?>
 
             <?php foreach (['case_cat' => 'カテゴリー', 'case_tag' => 'タグ'] as $taxonomy => $label) : ?>
-            <?php $terms = get_terms(['taxonomy' => $taxonomy]); ?>
+            <?php
+            $terms = get_terms(['taxonomy' => $taxonomy]);
+            // タグは「#タグ名」の羅列で表示する
+            $modifier = $taxonomy === 'case_tag' ? ' case-side__tags--hash' : '';
+            $tag_modifier = $taxonomy === 'case_tag' ? ' case-side__tag--hash' : '';
+            ?>
             <?php if ($terms && !is_wp_error($terms)) : ?>
             <div class="case-side">
               <h3 class="case-side__title"><?php echo esc_html($label); ?></h3>
-              <ul class="case-side__tags">
+              <ul class="case-side__tags<?php echo $modifier; ?>">
                 <?php foreach ($terms as $term) : ?>
-                <li><a href="<?php echo esc_url(get_term_link($term)); ?>" class="case-side__tag"><?php echo esc_html($term->name); ?></a></li>
+                <li><a href="<?php echo esc_url(get_term_link($term)); ?>" class="case-side__tag<?php echo $tag_modifier; ?>"><?php echo esc_html($term->name); ?></a></li>
                 <?php endforeach; ?>
               </ul>
             </div>

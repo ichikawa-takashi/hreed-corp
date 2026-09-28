@@ -95,6 +95,14 @@ jQuery(function ($) { // この中であればWordpressでも「$」が使用可
         $(this).attr("aria-expanded", item.hasClass("is-open"));
         answer.stop().slideToggle(300);
     });
+
+    // 採用ページのエントリーボタンから来たときは、お問い合わせの種別を「採用について」にしておく
+    var subjectParams = { recruit: "採用について" };
+    var subject = subjectParams[new URLSearchParams(location.search).get("subject")];
+    var subjectSelect = $("#your-subject");
+    if (subject && subjectSelect.find('option[value="' + subject + '"]').length) {
+        subjectSelect.val(subject).trigger("change");
+    }
 });
 
 

@@ -9,7 +9,7 @@
         </div>
 
         <div class="lower-mv__photo">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/company/mv-photo.png" alt="Hreedのオフィスの会議室">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/company/mv-photo.jpg" alt="Hreedのオフィスの会議室">
         </div>
 
         <svg width="56" height="124" viewBox="0 0 56 124" fill="none" xmlns="http://www.w3.org/2000/svg" class="lower-mv__deco lower-mv__deco--01" aria-hidden="true">

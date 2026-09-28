@@ -1,0 +1,527 @@
+/* ==================================================
+*  recruit page
+================================================== */
+
+/* ---------- lead（キャリアパートナーを募集しています） ---------- */
+.recruit-lead {
+  background-color: $mint;
+  padding: rem(96) 0;
+  text-align: center;
+
+  @include mq("md") {
+    padding: rem(48) 0;
+  }
+}
+
+.recruit-lead__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recruit-lead__position {
+  background-color: $green;
+  color: $white;
+  @include font(16, 24, 50, $bold);
+  padding: rem(6) rem(16);
+  // 読み込み直後に素の状態が一瞬見えないよう、JSでアニメーションの初期状態をセットするまで隠す
+  visibility: hidden;
+
+  @include mq("md") {
+    @include font(12, 18, 50, $bold);
+    padding: rem(4) rem(10);
+  }
+}
+
+.recruit-lead__heading {
+  margin-top: rem(24);
+  color: $black;
+  @include font(32, 48, 50, $bold);
+  visibility: hidden;
+
+  @include mq("md") {
+    margin-top: rem(16);
+    @include font(20, 32, 50, $bold);
+  }
+}
+
+.recruit-lead__heading-accent {
+  color: $green;
+}
+
+.recruit-lead__text {
+  margin-top: rem(24);
+  color: $black;
+  @include font(16, 30, 50, $regular);
+  visibility: hidden;
+
+  @include mq("md") {
+    margin-top: rem(16);
+    @include font(14, 26, 50, $regular);
+    text-align: left;
+  }
+}
+
+.recruit-lead__tags {
+  margin-top: rem(40);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: rem(12);
+
+  @include mq("md") {
+    margin-top: rem(24);
+    gap: rem(8);
+  }
+}
+
+.recruit-lead__tag {
+  border: 1px solid $green;
+  background-color: $white;
+  color: $green;
+  @include font(16, 24, 50, $bold);
+  padding: rem(10) rem(20);
+  visibility: hidden;
+
+  @include mq("md") {
+    @include font(12, 18, 50, $bold);
+    padding: rem(6) rem(12);
+  }
+}
+
+/* ---------- appeal（このポジションの魅力） ---------- */
+.recruit-appeal {
+  background-color: $bg;
+  padding: rem(96) 0;
+
+  @include mq("md") {
+    padding: rem(56) 0;
+  }
+}
+
+.recruit-appeal__list {
+  margin-top: rem(48);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: rem(24);
+
+  @include mq("md") {
+    margin-top: rem(28);
+    grid-template-columns: 1fr;
+    gap: rem(16);
+  }
+}
+
+.recruit-appeal__item {
+  min-height: rem(240);
+  background-color: $white;
+  border-top: 4px solid $green;
+  padding: rem(32) rem(32) rem(36);
+  visibility: hidden;
+
+  @include mq("md") {
+    min-height: 0;
+    border-top-width: 3px;
+    padding: rem(20) rem(16) rem(24);
+  }
+}
+
+.recruit-appeal__num {
+  display: block;
+  color: $green;
+  font-family: $en;
+  @include font(40, 48, 50, $bold);
+
+  @include mq("md") {
+    @include font(28, 34, 50, $bold);
+  }
+}
+
+.recruit-appeal__title {
+  margin-top: rem(12);
+  color: $black;
+  @include font(20, 32, 50, $bold);
+
+  @include mq("md") {
+    margin-top: rem(8);
+    @include font(16, 26, 50, $bold);
+  }
+}
+
+.recruit-appeal__text {
+  margin-top: rem(16);
+  color: $black;
+  @include font(15, 27, 50, $regular);
+
+  @include mq("md") {
+    margin-top: rem(10);
+    @include font(14, 24, 50, $regular);
+  }
+}
+
+/* ---------- work（仕事内容） ---------- */
+.recruit-work {
+  background-color: $white;
+  padding: rem(96) 0;
+
+  @include mq("md") {
+    padding: rem(56) 0;
+  }
+}
+
+.recruit-work__row {
+  margin-top: rem(48);
+  display: flex;
+  align-items: flex-start;
+  gap: rem(56);
+
+  @include mq("md") {
+    margin-top: rem(28);
+    flex-direction: column;
+    gap: rem(24);
+  }
+}
+
+.recruit-work__photo {
+  flex-shrink: 0;
+  width: per(1120, 480);
+  visibility: hidden;
+
+  @include mq("md") {
+    width: 100%;
+  }
+}
+
+.recruit-work__photo-img {
+  width: 100%;
+  aspect-ratio: 480 / 360;
+  object-fit: cover;
+  display: block;
+}
+
+.recruit-work__business {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: rem(32);
+
+  @include mq("md") {
+    gap: rem(20);
+  }
+}
+
+.recruit-work__business-item {
+  visibility: hidden;
+}
+
+.recruit-work__business-title {
+  padding-left: rem(11);
+  border-left: 5px solid $green;
+  color: $black;
+  @include font(22, 32, 50, $bold);
+
+  @include mq("md") {
+    padding-left: rem(8);
+    border-left-width: 3px;
+    @include font(17, 26, 50, $bold);
+  }
+}
+
+.recruit-work__business-text {
+  margin-top: rem(12);
+  color: $black;
+  @include font(15, 28, 50, $regular);
+
+  @include mq("md") {
+    margin-top: rem(8);
+    @include font(14, 25, 50, $regular);
+  }
+}
+
+.recruit-work__tasks {
+  margin-top: rem(56);
+  border: 1px solid $green;
+  padding: rem(32) rem(40) rem(28);
+  visibility: hidden;
+
+  @include mq("md") {
+    margin-top: rem(32);
+    padding: rem(20) rem(16);
+  }
+}
+
+.recruit-work__tasks-title {
+  color: $green;
+  @include font(20, 29, 50, $bold);
+
+  @include mq("md") {
+    @include font(16, 24, 50, $bold);
+  }
+}
+
+.recruit-work__tasks-list {
+  margin-top: rem(16);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: rem(12) rem(40);
+
+  @include mq("md") {
+    margin-top: rem(12);
+    grid-template-columns: 1fr;
+    gap: rem(8);
+  }
+}
+
+.recruit-work__tasks-item {
+  position: relative;
+  padding-left: rem(20);
+  color: $black;
+  @include font(15, 26, 50, $regular);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: rem(9);
+    left: 0;
+    width: rem(8);
+    height: rem(8);
+    background-color: $green;
+  }
+
+  @include mq("md") {
+    padding-left: rem(16);
+    @include font(14, 24, 50, $regular);
+
+    &::before {
+      top: rem(8);
+      width: rem(6);
+      height: rem(6);
+    }
+  }
+}
+
+.recruit-work__note {
+  margin-top: rem(20);
+  color: $black;
+  @include font(13, 20, 50, $regular);
+
+  @include mq("md") {
+    margin-top: rem(14);
+    @include font(12, 18, 50, $regular);
+  }
+}
+
+/* ---------- person（求める人物像） ---------- */
+.recruit-person {
+  background-color: $mint;
+  padding: rem(96) 0;
+
+  @include mq("md") {
+    padding: rem(56) 0;
+  }
+}
+
+.recruit-person__list {
+  margin-top: rem(48);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: rem(24);
+
+  @include mq("md") {
+    margin-top: rem(28);
+    grid-template-columns: 1fr;
+    gap: rem(16);
+  }
+}
+
+.recruit-person__card {
+  min-height: rem(220);
+  background-color: $white;
+  padding: rem(28) rem(32) rem(32);
+  visibility: hidden;
+
+  @include mq("md") {
+    min-height: 0;
+    padding: rem(20) rem(16) rem(24);
+  }
+}
+
+.recruit-person__title {
+  padding-bottom: rem(12);
+  border-bottom: 1px solid $green;
+  color: $green;
+  @include font(20, 29, 50, $bold);
+
+  @include mq("md") {
+    padding-bottom: rem(8);
+    @include font(16, 24, 50, $bold);
+  }
+}
+
+.recruit-person__items {
+  margin-top: rem(16);
+  display: flex;
+  flex-direction: column;
+  gap: rem(8);
+
+  @include mq("md") {
+    margin-top: rem(12);
+    gap: rem(6);
+  }
+}
+
+.recruit-person__item {
+  position: relative;
+  padding-left: rem(24);
+  color: $black;
+  @include font(15, 26, 50, $regular);
+
+  // チェックマーク
+  &::before {
+    content: "";
+    position: absolute;
+    top: rem(7);
+    left: rem(2);
+    width: rem(12);
+    height: rem(7);
+    border-left: 2px solid $green;
+    border-bottom: 2px solid $green;
+    transform: rotate(-45deg);
+  }
+
+  @include mq("md") {
+    padding-left: rem(20);
+    @include font(14, 24, 50, $regular);
+
+    &::before {
+      top: rem(7);
+      width: rem(10);
+      height: rem(6);
+    }
+  }
+}
+
+/* ---------- requirements（募集要項） ---------- */
+.recruit-requirements {
+  background-color: $white;
+  padding: rem(96) 0 0;
+
+  @include mq("md") {
+    padding: rem(56) 0 0;
+  }
+}
+
+.recruit-table {
+  margin-top: rem(48);
+  border-top: 1px solid #DBDBDB;
+
+  @include mq("md") {
+    margin-top: rem(28);
+  }
+}
+
+.recruit-table__row {
+  display: flex;
+  align-items: flex-start;
+  gap: rem(40);
+  padding: rem(20) rem(120);
+  border-bottom: 1px solid #DBDBDB;
+  visibility: hidden;
+
+  @include mq("md") {
+    flex-direction: column;
+    gap: rem(8);
+    padding: rem(14) rem(4);
+  }
+}
+
+.recruit-table__label {
+  flex-shrink: 0;
+  width: rem(146);
+  padding-left: rem(11);
+  border-left: 5px solid $green;
+  color: $black;
+  @include font(18, 26, 0, $bold);
+
+  @include mq("md") {
+    width: 100%;
+    padding-left: rem(8);
+    border-left-width: 3px;
+    @include font(16, 24, 0, $bold);
+  }
+}
+
+.recruit-table__value {
+  flex: 1;
+  color: $black;
+  @include font(16, 28, 0, $regular);
+
+  @include mq("md") {
+    @include font(14, 25, 0, $regular);
+  }
+}
+
+.recruit-table__list li {
+  margin-left: 1.5em;
+  list-style-type: disc;
+
+  @include mq("md") {
+    margin-left: 1.2em;
+  }
+}
+
+.recruit-table__sub {
+  margin-top: rem(6);
+  @include font(14, 22, 0, $regular);
+
+  @include mq("md") {
+    margin-top: rem(4);
+    @include font(12, 20, 0, $regular);
+  }
+}
+
+/* ---------- entry（エントリー） ---------- */
+.recruit-entry {
+  background-color: $green;
+  padding: rem(88) 0 rem(96);
+
+  @include mq("md") {
+    padding: rem(48) 0 rem(56);
+  }
+}
+
+.recruit-entry__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.recruit-entry__head {
+  align-items: center;
+}
+
+.recruit-entry__text {
+  margin-top: rem(32);
+  color: $white;
+  @include font(16, 30, 50, $medium);
+  visibility: hidden;
+
+  @include mq("md") {
+    margin-top: rem(20);
+    @include font(14, 25, 50, $medium);
+  }
+}
+
+.recruit-entry__btn {
+  margin-top: rem(40);
+  min-width: rem(360);
+  visibility: hidden;
+
+  @include mq("md") {
+    margin-top: rem(24);
+    min-width: 0;
+    width: 100%;
+  }
+}

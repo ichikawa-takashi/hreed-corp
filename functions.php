@@ -15,6 +15,17 @@ function my_document_title_separator()
 }
 add_filter('document_title_separator', 'my_document_title_separator');
 
+// 支援事例のタグ一覧のタイトルを「#タグ名 のご支援事例」にする(例: #市場調査 のご支援事例 | Hreed株式会社)
+// タイトルはSEO SIMPLE PACKが出力しているため、そのフィルターで差し替える(og:titleにも反映される)
+function my_case_tag_document_title($title)
+{
+    if (is_tax('case_tag')) {
+        $title = '#' . single_term_title('', false) . ' のご支援事例 | ' . get_bloginfo('name');
+    }
+    return $title;
+}
+add_filter('ssp_output_title', 'my_case_tag_document_title');
+
 
 // bodyに固定ページのスラッグを付与する
 // .about / .service / .case / .news などはトップのセクション用クラスと重なるため「page-」を付ける
@@ -93,8 +104,8 @@ function enqueue_custom_styles_and_scripts() {
     $is_top          = is_front_page();
     $is_news_list    = is_home() || is_category();
     $is_case_list    = is_post_type_archive('case') || is_tax(['case_cat', 'case_tag']);
-    $has_lower_mv    = is_page(['about', 'company', 'service', 'contact', 'confirm', 'thanks', 'privacy', 'terms', 'harassment-policy']) || is_404() || $is_news_list || $is_case_list;
-    $has_sec_title   = $is_top || is_page(['about', 'company', 'service']) || $is_news_list || $is_case_list || is_singular('case');
+    $has_lower_mv    = is_page(['about', 'company', 'service', 'recruit', 'contact', 'confirm', 'thanks', 'privacy', 'terms', 'harassment-policy']) || is_404() || $is_news_list || $is_case_list;
+    $has_sec_title   = $is_top || is_page(['about', 'company', 'service', 'recruit']) || $is_news_list || $is_case_list || is_singular('case');
     $has_scroll_anim = $is_top || $has_lower_mv || $has_sec_title;
 
     // Google Fonts
@@ -138,13 +149,13 @@ function enqueue_custom_styles_and_scripts() {
         wp_enqueue_script( 'lower-mv-animation', $uri . '/js/lower-mv-animation.js', ['gsap-scrolltrigger'], filemtime( $path . '/js/lower-mv-animation.js' ), true );
     }
 
-    // About / Company / Service の本文スクロールアニメーション
-    if ( is_page(['about', 'company', 'service']) ) {
+    // About / Company / Service / Recruit の本文スクロールアニメーション
+    if ( is_page(['about', 'company', 'service', 'recruit']) ) {
         wp_enqueue_script( 'page-content-animation', $uri . '/js/page-content-animation.js', ['gsap-scrolltrigger'], filemtime( $path . '/js/page-content-animation.js' ), true );
     }
 
     // リンクカード(template-parts/link-cards.php を使うページ)
-    if ( $is_top || is_page(['about', 'company', 'service']) ) {
+    if ( $is_top || is_page(['about', 'company', 'service', 'recruit']) ) {
         wp_enqueue_script( 'link-cards-animation', $uri . '/js/link-cards-animation.js', ['gsap-scrolltrigger'], filemtime( $path . '/js/link-cards-animation.js' ), true );
     }
 
@@ -207,12 +218,6 @@ function add_thanks_page()
 	</script>
 <?php }
 
-
-// 採用情報のURL(外部の求人ページ。ヘッダー・フッター・リンクカードから別タブで開く)
-function hreed_recruit_url()
-{
-    return 'https://circus-job.com/search/368971?jobDetailPublicToken=69904ebf-07b1-4111-b4d2-2b022dc01487';
-}
 
 // 投稿に紐づく最初のタームを取得する(なければnull)
 function hreed_first_term($post_id, $taxonomy)

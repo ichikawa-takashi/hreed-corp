@@ -35,6 +35,47 @@
   }
 }
 
+/* ---------- current（タグ一覧で表示中のタグ） ---------- */
+.case-list__current {
+  padding-bottom: rem(24);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: rem(16) rem(40);
+  border-bottom: 1px solid $green;
+
+  @include mq("md") {
+    padding-bottom: rem(16);
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.case-list__current-text {
+  color: $black;
+  @include font(16, 28, 50, $medium);
+
+  @include mq("md") {
+    @include font(14, 24, 50, $medium);
+  }
+}
+
+.case-list__current-name {
+  margin-right: rem(4);
+  color: $green;
+  @include font(28, 40, 50, $bold);
+
+  @include mq("md") {
+    @include font(20, 30, 50, $bold);
+  }
+}
+
+.case-list__current-link {
+  flex-shrink: 0;
+  padding: 0;
+}
+
 /* ---------- grid（トップページのcase__cardを再利用、案内列のオフセットなしで揃える） ---------- */
 .case-list__grid {
   margin-top: rem(80);
@@ -277,19 +318,13 @@
 .case-overview__list {
   margin-top: rem(16);
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: rem(16) rem(40);
-
-  @include mq("md") {
-    margin-top: rem(16);
-    grid-template-columns: 1fr;
-    gap: rem(12);
-  }
+  grid-template-columns: 1fr;
+  gap: rem(12);
 }
 
 .case-overview__row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: rem(8);
 }
 
@@ -318,10 +353,8 @@
   min-width: 0;
   color: $black;
   @include font(16, 23, 50, $medium);
-  white-space: nowrap;
 
   @include mq("md") {
-    white-space: normal;
     font-size: rem(14);
   }
 }
@@ -808,6 +841,28 @@
   background-color: #fff;
   color: $green;
   @include font(14, 20, 50, $regular);
+}
+
+.case-side__tags--hash {
+  gap: rem(8) rem(16);
+}
+
+.case-side__tag--hash {
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  color: $black;
+  transition: color 0.3s;
+
+  &::before {
+    content: "#";
+    color: $green;
+  }
+
+  &:hover {
+    color: $green;
+  }
 }
 
 /* ---------- related articles（トップページのcase__cardを再利用） ---------- */

@@ -329,4 +329,30 @@ gsap.registerPlugin(ScrollTrigger);
 
   // FAQ：質問を順番に
   staggerUp(".faq__list", ".faq__item", { y: 24, stagger: 0.08 });
+
+  /* ------------------------------
+    Recruit
+  ------------------------------ */
+
+  // リード：職種→見出し→本文の順に下から、タグは順番に
+  fadeUp(".recruit-lead__position", { y: 20 });
+  fadeUp(".recruit-lead__heading", { y: 40, duration: 1.1, delay: 0.1 });
+  fadeUp(".recruit-lead__text", { delay: 0.25 });
+  staggerUp(".recruit-lead__tags", ".recruit-lead__tag", { y: 20, stagger: 0.08 });
+
+  // Appeal / Person：カードを順番に
+  staggerUp(".recruit-appeal__list", ".recruit-appeal__item", { stagger: 0.12 });
+  staggerUp(".recruit-person__list", ".recruit-person__card", { stagger: 0.12 });
+
+  // Work：写真、事業説明、業務内容の順に
+  fadeUp(".recruit-work__photo", { y: 48, duration: 1.1 });
+  fadeUp(".recruit-work__business-item", { delay: 0.15 });
+  fadeUp(".recruit-work__tasks");
+
+  // 募集要項テーブル：行ごとに下から
+  fadeUp(".recruit-table__row", { y: 20, duration: 0.7, start: "top 90%" });
+
+  // Entry：本文、ボタンの順に
+  fadeUp(".recruit-entry__text");
+  fadeUp(".recruit-entry__btn", { delay: 0.15 });
 })();

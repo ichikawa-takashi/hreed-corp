@@ -65,7 +65,7 @@
             </a>
           </li>
           <li class="header__nav-item">
-            <a href="<?php echo esc_url(hreed_recruit_url()); ?>" class="header__nav-link" target="_blank" rel="noopener noreferrer">
+            <a href="<?php echo esc_url(home_url('/recruit/')); ?>" class="header__nav-link">
               <span class="header__nav-link-ja">採用情報</span>
               <span class="header__nav-link-en">Recruit</span>
             </a>
@@ -127,7 +127,7 @@
             </a>
           </li>
           <li class="header__drawer-item">
-            <a href="<?php echo esc_url(hreed_recruit_url()); ?>" class="header__drawer-link" target="_blank" rel="noopener noreferrer">
+            <a href="<?php echo esc_url(home_url('/recruit/')); ?>" class="header__drawer-link">
               <span class="header__drawer-link-ja">採用情報</span>
               <span class="header__drawer-link-en">Recruit</span>
             </a>

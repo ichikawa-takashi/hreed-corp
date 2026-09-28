@@ -9,7 +9,7 @@
         </div>
 
         <div class="lower-mv__photo">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/case/mv-photo.png" alt="">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/case/mv-photo.jpg" alt="">
         </div>
 
         <svg width="56" height="124" viewBox="0 0 56 124" fill="none" xmlns="http://www.w3.org/2000/svg" class="lower-mv__deco lower-mv__deco--01" aria-hidden="true">
@@ -31,6 +31,22 @@
 
     <section class="case-list">
       <div class="case-list__inner inner">
+        <?php if (is_tax('case_tag')) : ?>
+        <?php // タグ一覧では、カテゴリーの絞り込みの代わりに表示中のタグを出す ?>
+        <div class="case-list__current">
+          <p class="case-list__current-text">
+            <span class="case-list__current-name">#<?php single_term_title(); ?></span>
+            のご支援事例（<?php echo (int) $GLOBALS['wp_query']->found_posts; ?>件）
+          </p>
+          <a href="<?php echo esc_url(get_post_type_archive_link('case')); ?>" class="case-list__current-link btn-more">
+            すべての事例を見る
+            <span class="btn-more__arrow" aria-hidden="true">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/common/arrow-white.svg" alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
+            </span>
+          </a>
+        </div>
+        <?php else : ?>
         <ul class="case-list__filter">
           <li>
             <a href="<?php echo esc_url(get_post_type_archive_link('case')); ?>" class="case-list__filter-link<?php echo is_post_type_archive('case') ? ' is-active' : ''; ?>">すべて</a>
@@ -41,6 +57,7 @@
           </li>
           <?php endforeach; ?>
         </ul>
+        <?php endif; ?>
 
         <?php if (have_posts()) : ?>
         <?php
