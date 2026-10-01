@@ -331,6 +331,35 @@ function hreed_escape_multiform_value($value)
 }
 add_filter('cf7msm_form_field_value', 'hreed_escape_multiform_value');
 
+// Multi-Stepの入力値はCookieではなくPHPセッションに保存する
+// (Cookieは1つ約4KBまでのため、日本語の長文を入力すると値が消え、メールのタグが置換されずに届くため)
+add_filter('cf7msm_force_session', '__return_true');
+
+// 確認画面の送信時に入力画面の値が取得できない場合は、空のメールを送らずにエラーにする
+function hreed_validate_multistep_data($result, $tags)
+{
+    $contact_form = WPCF7_ContactForm::get_current();
+    $submission   = WPCF7_Submission::get_instance();
+    if (!$contact_form || !$submission || !$contact_form->scan_form_tags(['type' => 'multiform'])) {
+        return $result;
+    }
+    if ($submission->get_posted_data('your-email') === null) {
+        $result->invalidate(
+            ['type' => 'hidden', 'basetype' => 'hidden', 'name' => 'your-email'],
+            '入力内容を取得できませんでした。'
+        );
+        add_filter('wpcf7_feedback_response', 'hreed_multistep_data_message');
+    }
+    return $result;
+}
+add_filter('wpcf7_validate', 'hreed_validate_multistep_data', 20, 2);
+
+function hreed_multistep_data_message($response)
+{
+    $response['message'] = '入力内容を取得できませんでした。お手数ですが、入力画面からやり直してください。';
+    return $response;
+}
+
 // 送信ボタンを<button>に置き換え、共通ボタン(btn-more)と同じ矢印アニメーションを付ける
 // (CF7の[submit]は<input>で出力され、矢印の要素を中に入れられないため)
 function hreed_cf7_submit_button($html)

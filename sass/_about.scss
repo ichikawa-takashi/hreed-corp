@@ -458,6 +458,7 @@
 
   @include mq("md") {
     display: block;
+    width: calc(100% - #{rem(36)});
     max-height: 90vh;
     overflow-y: auto;
     padding: rem(20);
@@ -503,6 +504,67 @@
 
 .modal__close span:nth-child(2) {
   transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+// 前後のメンバーへの切り替えボタン。.modal__inner はSPでスクロールするため外に置き、枠の左右の線上に重ねる
+.modal__nav {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: rem(56);
+  height: rem(56);
+  padding: 0;
+  border: 1px solid $green;
+  border-radius: 50%;
+  background-color: $white;
+  cursor: pointer;
+  transition: background-color .3s ease;
+
+  @include mq("md") {
+    width: rem(36);
+    height: rem(36);
+  }
+
+  &::before {
+    content: "";
+    width: rem(20);
+    height: rem(12);
+    background: img-url("common/arrow-green.svg") no-repeat center / contain;
+
+    @include mq("md") {
+      width: rem(14);
+      height: rem(9);
+    }
+  }
+
+  &:hover {
+    background-color: $green;
+  }
+
+  &:hover::before {
+    background-image: img-url("common/arrow-white.svg");
+  }
+}
+
+.modal__nav--prev {
+  left: calc(50% - min(47.5%, #{rem(560)}));
+  transform: translate(-50%, -50%) rotate(180deg);
+
+  @include mq("md") {
+    left: rem(18);
+  }
+}
+
+.modal__nav--next {
+  left: calc(50% + min(47.5%, #{rem(560)}));
+  transform: translate(-50%, -50%);
+
+  @include mq("md") {
+    left: calc(100% - #{rem(18)});
+  }
 }
 
 .modal__row {

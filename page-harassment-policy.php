@@ -59,7 +59,7 @@
         <div class="legal__section">
           <h3 class="legal__heading">6. 就活ハラスメント相談窓口</h3>
           <p class="legal__text">就職活動を通じ、ハラスメント等の人権侵害に遭われた、あるいはその疑いがある場合は、以下の窓口までご連絡ください。この窓口は、人事部門ではなく、コンプライアンス部門が管轄しています。相談・通報に関する秘密保持や相談者・通報者の保護を徹底していますので、相談・通報による選考プロセスへの影響はありません。</p>
-          <p class="legal__text"><a href="<?php echo esc_url(home_url('/contact/')); ?>">【取引先・求職者相談窓口】</a></p>
+          <p class="legal__text"><a href="<?php echo esc_url(home_url('/contact/?subject=harassment')); ?>">【取引先・求職者相談窓口】</a></p>
         </div>
 
         <div class="legal__section">

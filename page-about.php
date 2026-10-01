@@ -227,6 +227,10 @@
       <?php while ($members->have_posts()) : $members->the_post(); ?>
       <div class="modal js-modal" id="member-modal<?php the_ID(); ?>">
         <div class="modal__overlay js-modal-close"></div>
+        <?php if ($members->post_count > 1) : ?>
+        <button type="button" class="modal__nav modal__nav--prev js-modal-prev" aria-label="前のメンバー"></button>
+        <button type="button" class="modal__nav modal__nav--next js-modal-next" aria-label="次のメンバー"></button>
+        <?php endif; ?>
         <div class="modal__inner">
           <button type="button" class="modal__close js-modal-close" aria-label="閉じる">
             <span></span><span></span>

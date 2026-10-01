@@ -86,6 +86,29 @@ jQuery(function ($) { // この中であればWordpressでも「$」が使用可
         $("html,body").css("overflow", "initial");
     });
 
+    // モーダルを開いたまま前後のメンバーに切り替える(端まで行ったら反対側へループ)
+    function switchModal(step) {
+        var modals = $(".js-modal");
+        var current = modals.filter(":visible").first();
+        if (!current.length) return;
+        var next = modals.eq((modals.index(current) + step + modals.length) % modals.length);
+        current.stop(true, true).hide();
+        next.show();
+        next.find(".modal__inner, .modal__info").scrollTop(0);
+        next.find(".modal__inner").css("opacity", 0).animate({ opacity: 1 }, 250);
+    }
+    $(".js-modal-prev").on("click", function () {
+        switchModal(-1);
+    });
+    $(".js-modal-next").on("click", function () {
+        switchModal(1);
+    });
+    $(document).on("keydown", function (e) {
+        if (!$(".js-modal:visible").length) return;
+        if (e.key === "ArrowLeft") switchModal(-1);
+        if (e.key === "ArrowRight") switchModal(1);
+    });
+
     // FAQ アコーディオン
     $(".js-faq-question").on("click", function () {
         var item = $(this).closest(".faq__item");
@@ -96,8 +119,8 @@ jQuery(function ($) { // この中であればWordpressでも「$」が使用可
         answer.stop().slideToggle(300);
     });
 
-    // 採用ページのエントリーボタンから来たときは、お問い合わせの種別を「採用について」にしておく
-    var subjectParams = { recruit: "採用について" };
+    // 採用ページのエントリーボタン・ハラスメント防止方針の相談窓口リンクから来たときは、お問い合わせの種別を選択済みにしておく
+    var subjectParams = { recruit: "採用について", harassment: "就活ハラスメント相談窓口" };
     var subject = subjectParams[new URLSearchParams(location.search).get("subject")];
     var subjectSelect = $("#your-subject");
     if (subject && subjectSelect.find('option[value="' + subject + '"]').length) {

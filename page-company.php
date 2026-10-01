@@ -104,7 +104,7 @@
             <dt class="company-table__label">
               取引銀行
             </dt>
-            <dd class="company-table__value">りそな銀行芝支店</dd>
+            <dd class="company-table__value">りそな銀行芝支店<br>芝信用金庫赤坂オフィス</dd>
           </div>
         </dl>
       </div>
