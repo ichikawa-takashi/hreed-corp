@@ -17,8 +17,13 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide mv__photo-slide">
                                 <img class="mv__photo-img"
-                                    src="<?php echo esc_url(hreed_img_url('top/mv-photo.jpg')); ?>"
-                                    alt="Hreedのメンバー集合写真">
+                                    src="<?php echo esc_url(hreed_img_url('top/mv-photo-talk.jpg')); ?>"
+                                    alt="オフィスのラウンジで会話するHreedのメンバー">
+                            </div>
+                            <div class="swiper-slide mv__photo-slide">
+                                <img class="mv__photo-img"
+                                    src="<?php echo esc_url(hreed_img_url('top/mv-photo-table.jpg')); ?>"
+                                    alt="会議室のテーブルを囲んで話すHreedのメンバー">
                             </div>
                             <div class="swiper-slide mv__photo-slide">
                                 <img class="mv__photo-img"
@@ -34,43 +39,43 @@
                     </div>
 
                     <?php
-          // 管理画面で「トップページのファーストビューに表示」(ACF: mv_pickup)をオンにした記事を表示する。
-          // 1件もなければ最新の記事を1件表示する
-          $pickups = get_posts([
-            'posts_per_page' => -1,
-            'meta_key'       => 'mv_pickup',
-            'meta_value'     => '1',
-          ]);
-          if (!$pickups) {
-            $pickups = get_posts(['posts_per_page' => 1]);
-          }
-          ?>
+                    // 管理画面で「トップページのファーストビューに表示」(ACF: mv_pickup)をオンにした記事を表示する。
+                    // 1件もなければ最新の記事を1件表示する
+                    $pickups = get_posts([
+                        'posts_per_page' => -1,
+                        'meta_key'       => 'mv_pickup',
+                        'meta_value'     => '1',
+                    ]);
+                    if (!$pickups) {
+                        $pickups = get_posts(['posts_per_page' => 1]);
+                    }
+                    ?>
                     <?php if ($pickups) : ?>
-                    <div class="mv__news">
-                        <div class="mv__news-slider swiper<?php echo count($pickups) > 1 ? ' js-mv-news' : ''; ?>">
-                            <div class="swiper-wrapper">
-                                <?php foreach ($pickups as $pickup) : ?>
-                                <a href="<?php echo esc_url(get_permalink($pickup)); ?>"
-                                    class="mv__news-item swiper-slide">
-                                    <div class="mv__news-meta">
-                                        <time class="mv__news-date"
-                                            datetime="<?php echo get_the_date('Y-m-d', $pickup); ?>"><?php echo get_the_date('Y.m.d', $pickup); ?></time>
-                                        <?php if ($cat = hreed_first_term($pickup->ID, 'category')) : ?>
-                                        <span class="mv__news-tag"><?php echo esc_html($cat->name); ?></span>
-                                        <?php endif; ?>
-                                    </div>
-                                    <p class="mv__news-text"><?php echo esc_html(get_the_title($pickup)); ?></p>
-                                    <span class="mv__news-arrow btn-more__arrow" aria-hidden="true">
-                                        <img src="<?php echo esc_url(hreed_img_url('common/arrow-white.svg')); ?>"
-                                            alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
-                                        <img src="<?php echo esc_url(hreed_img_url('common/arrow-white.svg')); ?>"
-                                            alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
-                                    </span>
-                                </a>
-                                <?php endforeach; ?>
+                        <div class="mv__news">
+                            <div class="mv__news-slider swiper<?php echo count($pickups) > 1 ? ' js-mv-news' : ''; ?>">
+                                <div class="swiper-wrapper">
+                                    <?php foreach ($pickups as $pickup) : ?>
+                                        <a href="<?php echo esc_url(get_permalink($pickup)); ?>"
+                                            class="mv__news-item swiper-slide">
+                                            <div class="mv__news-meta">
+                                                <time class="mv__news-date"
+                                                    datetime="<?php echo get_the_date('Y-m-d', $pickup); ?>"><?php echo get_the_date('Y.m.d', $pickup); ?></time>
+                                                <?php if ($cat = hreed_first_term($pickup->ID, 'category')) : ?>
+                                                    <span class="mv__news-tag"><?php echo esc_html($cat->name); ?></span>
+                                                <?php endif; ?>
+                                            </div>
+                                            <p class="mv__news-text"><?php echo esc_html(get_the_title($pickup)); ?></p>
+                                            <span class="mv__news-arrow btn-more__arrow" aria-hidden="true">
+                                                <img src="<?php echo esc_url(hreed_img_url('common/arrow-white.svg')); ?>"
+                                                    alt="" class="btn-more__arrow-icon btn-more__arrow-icon--current">
+                                                <img src="<?php echo esc_url(hreed_img_url('common/arrow-white.svg')); ?>"
+                                                    alt="" class="btn-more__arrow-icon btn-more__arrow-icon--next">
+                                            </span>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     <?php endif; ?>
                 </div>
             </div>
@@ -191,7 +196,7 @@
                 <li class="service__item service__item--wide">
                     <span class="service__num">03</span>
                     <div class="service__body service__body--wide">
-                        <h3 class="service__body-title service__body-title--center">クリエイティブ制作</h3>
+                        <h3 class="service__body-title service__body-title--center">広告代理店事業</h3>
                         <p class="service__body-text">
                             コーポレートサイトやサービスサイト、採用サイトなどのWeb制作をはじめ、バナーや各種広告物などのクリエイティブ制作、採用サイトの運用支援を行っております。企業ごとの課題や目的に合わせ、企画・設計から制作、公開後の運用・改善までを一気通貫で支援し、集客や採用成果の向上につながるWeb活用を実現していきます。
                         </p>
@@ -220,26 +225,26 @@
             </div>
 
             <?php
-      $cases = new WP_Query([
-        'post_type'      => 'case',
-        'posts_per_page' => 4,
-      ]);
-      // 2列に振り分ける(右列は下にずらして配置)
-      $cols = [[], []];
-      foreach ($cases->posts as $i => $case) {
-        $cols[$i % 2][] = $case;
-      }
-      ?>
+            $cases = new WP_Query([
+                'post_type'      => 'case',
+                'posts_per_page' => 4,
+            ]);
+            // 2列に振り分ける(右列は下にずらして配置)
+            $cols = [[], []];
+            foreach ($cases->posts as $i => $case) {
+                $cols[$i % 2][] = $case;
+            }
+            ?>
             <?php if ($cases->have_posts()) : ?>
-            <div class="case__grid">
-                <?php foreach ($cols as $n => $col) : ?>
-                <div class="case__col<?php echo $n === 1 ? ' case__col--offset' : ''; ?>">
-                    <?php foreach ($col as $post) : setup_postdata($post); ?>
-                    <?php get_template_part('template-parts/case-card'); ?>
+                <div class="case__grid">
+                    <?php foreach ($cols as $n => $col) : ?>
+                        <div class="case__col<?php echo $n === 1 ? ' case__col--offset' : ''; ?>">
+                            <?php foreach ($col as $post) : setup_postdata($post); ?>
+                                <?php get_template_part('template-parts/case-card'); ?>
+                            <?php endforeach; ?>
+                        </div>
                     <?php endforeach; ?>
                 </div>
-                <?php endforeach; ?>
-            </div>
             <?php endif; ?>
             <?php wp_reset_postdata(); ?>
 
@@ -268,34 +273,34 @@
                     </div>
 
                     <?php
-          // 「すべて」+ お知らせの各カテゴリー。カテゴリーは作成順(ID順)に並べる
-          $news_filters = [[
-            'slug' => 'all',
-            'name' => 'すべて',
-            'link' => get_permalink(get_option('page_for_posts')),
-            'args' => [],
-          ]];
-          foreach (get_categories(['hide_empty' => false, 'orderby' => 'term_id']) as $cat) {
-            $news_filters[] = [
-              'slug' => $cat->slug,
-              'name' => $cat->name,
-              'link' => get_category_link($cat),
-              'args' => ['cat' => $cat->term_id],
-            ];
-          }
-          ?>
+                    // 「すべて」+ お知らせの各カテゴリー。カテゴリーは作成順(ID順)に並べる
+                    $news_filters = [[
+                        'slug' => 'all',
+                        'name' => 'すべて',
+                        'link' => get_permalink(get_option('page_for_posts')),
+                        'args' => [],
+                    ]];
+                    foreach (get_categories(['hide_empty' => false, 'orderby' => 'term_id']) as $cat) {
+                        $news_filters[] = [
+                            'slug' => $cat->slug,
+                            'name' => $cat->name,
+                            'link' => get_category_link($cat),
+                            'args' => ['cat' => $cat->term_id],
+                        ];
+                    }
+                    ?>
                     <ul class="news__filter">
                         <?php foreach ($news_filters as $i => $filter) : ?>
-                        <li class="news__filter-item">
-                            <label class="news__filter-label">
-                                <input type="radio" name="news-category"
-                                    value="<?php echo esc_attr($filter['slug']); ?>"
-                                    data-link="<?php echo esc_url($filter['link']); ?>" class="news__filter-input"
-                                    <?php echo $i === 0 ? ' checked' : ''; ?>>
-                                <span class="news__filter-radio" aria-hidden="true"></span>
-                                <?php echo esc_html($filter['name']); ?>
-                            </label>
-                        </li>
+                            <li class="news__filter-item">
+                                <label class="news__filter-label">
+                                    <input type="radio" name="news-category"
+                                        value="<?php echo esc_attr($filter['slug']); ?>"
+                                        data-link="<?php echo esc_url($filter['link']); ?>" class="news__filter-input"
+                                        <?php echo $i === 0 ? ' checked' : ''; ?>>
+                                    <span class="news__filter-radio" aria-hidden="true"></span>
+                                    <?php echo esc_html($filter['name']); ?>
+                                </label>
+                            </li>
                         <?php endforeach; ?>
                     </ul>
 
@@ -313,34 +318,34 @@
 
                 <div class="news__body">
                     <?php foreach ($news_filters as $i => $filter) : ?>
-                    <?php $news = new WP_Query(array_merge(['posts_per_page' => 5], $filter['args'])); ?>
-                    <div class="news__panel" data-news-panel="<?php echo esc_attr($filter['slug']); ?>"
-                        <?php echo $i === 0 ? '' : ' hidden'; ?>>
-                        <?php if ($news->have_posts()) : ?>
-                        <ul class="news__list">
-                            <?php while ($news->have_posts()) : $news->the_post(); ?>
-                            <li class="news__item">
-                                <a href="<?php the_permalink(); ?>" class="news__item-link">
-                                    <div class="news__item-meta">
-                                        <time class="news__item-date"
-                                            datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('Y.m.d'); ?></time>
-                                        <?php if ($cat = hreed_first_term(get_the_ID(), 'category')) : ?>
-                                        <span class="news__item-tag"><?php echo esc_html($cat->name); ?></span>
-                                        <?php endif; ?>
-                                    </div>
-                                    <p class="news__item-text"><?php the_title(); ?></p>
-                                    <span class="news__item-arrow" aria-hidden="true"></span>
-                                </a>
-                            </li>
-                            <?php endwhile; ?>
-                        </ul>
-                        <?php else : ?>
-                        <p class="news__empty">
-                            <?php echo $filter['slug'] === 'all' ? 'お知らせは、現在登録されていません。' : '「' . esc_html($filter['name']) . '」に該当するお知らせは、現在登録されていません。'; ?>
-                        </p>
-                        <?php endif; ?>
-                        <?php wp_reset_postdata(); ?>
-                    </div>
+                        <?php $news = new WP_Query(array_merge(['posts_per_page' => 5], $filter['args'])); ?>
+                        <div class="news__panel" data-news-panel="<?php echo esc_attr($filter['slug']); ?>"
+                            <?php echo $i === 0 ? '' : ' hidden'; ?>>
+                            <?php if ($news->have_posts()) : ?>
+                                <ul class="news__list">
+                                    <?php while ($news->have_posts()) : $news->the_post(); ?>
+                                        <li class="news__item">
+                                            <a href="<?php the_permalink(); ?>" class="news__item-link">
+                                                <div class="news__item-meta">
+                                                    <time class="news__item-date"
+                                                        datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('Y.m.d'); ?></time>
+                                                    <?php if ($cat = hreed_first_term(get_the_ID(), 'category')) : ?>
+                                                        <span class="news__item-tag"><?php echo esc_html($cat->name); ?></span>
+                                                    <?php endif; ?>
+                                                </div>
+                                                <p class="news__item-text"><?php the_title(); ?></p>
+                                                <span class="news__item-arrow" aria-hidden="true"></span>
+                                            </a>
+                                        </li>
+                                    <?php endwhile; ?>
+                                </ul>
+                            <?php else : ?>
+                                <p class="news__empty">
+                                    <?php echo $filter['slug'] === 'all' ? 'お知らせは、現在登録されていません。' : '「' . esc_html($filter['name']) . '」に該当するお知らせは、現在登録されていません。'; ?>
+                                </p>
+                            <?php endif; ?>
+                            <?php wp_reset_postdata(); ?>
+                        </div>
                     <?php endforeach; ?>
                 </div>
             </div>
