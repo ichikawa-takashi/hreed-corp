@@ -2,12 +2,66 @@
 *  contact page
 ================================================== */
 .contact-form {
-  margin-top: rem(-22);
+//   margin-top: rem(-22);
   padding-bottom: rem(80);
 
   @include mq("md") {
     margin-top: 0;
     padding-bottom: rem(60);
+  }
+}
+
+// 営業・協業の連絡はGoogleフォームへ誘導する
+.contact-form__notice {
+  padding: rem(24) rem(32);
+//   background-color: rgba($green, .05);
+text-align: center;
+
+  @include mq("md") {
+    padding: rem(16) rem(16);
+  }
+}
+
+.contact-form__notice + .wpcf7 {
+  margin-top: rem(40);
+
+  @include mq("md") {
+    margin-top: rem(24);
+  }
+}
+
+.contact-form__notice-title {
+  color: $green;
+  @include font(18, 27, 50, $bold);
+
+  @include mq("md") {
+    @include font(15, 22, 50, $bold);
+  }
+}
+
+.contact-form__notice-text {
+  margin-top: rem(8);
+  color: $black;
+  @include font(15, 26, 0, $regular);
+
+  @include mq("md") {
+    @include font(13, 22, 0, $regular);
+  }
+}
+
+.contact-form__notice-link {
+  display: inline-block;
+  margin-top: rem(12);
+  color: $green;
+  text-decoration: underline;
+  @include font(15, 26, 0, $bold);
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  @include mq("md") {
+    @include font(13, 22, 0, $bold);
   }
 }
 
