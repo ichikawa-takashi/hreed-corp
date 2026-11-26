@@ -84,6 +84,10 @@ function my_favicon()
 add_action('wp_head', 'my_favicon');
 
 
+// 構造化データ(JSON-LD)
+require_once get_template_directory() . '/inc/structured-data.php';
+
+
 // 支援事例一覧のkeywords(SEO SIMPLE PACKはアーカイブページのキーワード欄がなく、トップのキーワードが使われるため)
 function my_case_archive_keyword($keyword)
 {

@@ -394,77 +394,23 @@
                 <p class="sec-title__ja"><span class="sec-title__text">よくあるご質問</span></p>
             </div>
 
+            <?php // 質問と回答は inc/structured-data.php の hreed_service_faqs() で管理(構造化データと共通) ?>
             <ul class="faq__list">
-                <li class="faq__item is-open">
-                    <button type="button" class="faq__question js-faq-question" aria-expanded="true">
+                <?php foreach (hreed_service_faqs() as $i => $faq) : ?>
+                <li class="faq__item<?php echo $i === 0 ? ' is-open' : ''; ?>">
+                    <button type="button" class="faq__question js-faq-question" aria-expanded="<?php echo $i === 0 ? 'true' : 'false'; ?>">
                         <span class="faq__q-icon" aria-hidden="true">Q</span>
-                        <span class="faq__q-text">RPO（採用代行）とはどこまで対応してもらえるサービスですか？</span>
+                        <span class="faq__q-text"><?php echo esc_html($faq['q']); ?></span>
                         <span class="faq__toggle" aria-hidden="true"></span>
                     </button>
-                    <div class="faq__answer">
+                    <div class="faq__answer"<?php echo $i === 0 ? '' : ' style="display:none;"'; ?>>
                         <span class="faq__a-icon">A</span>
                         <p class="faq__a-text">
-                            採用戦略の設計から、集客、応募対応、面接代行、入社後の定着支援まで対応します。<br>
-                            企業の状況に応じて、必要な業務だけを切り出して依頼することも可能です。
+                            <?php echo wp_kses($faq['a'], ['br' => []]); ?>
                         </p>
                     </div>
                 </li>
-
-                <li class="faq__item">
-                    <button type="button" class="faq__question js-faq-question" aria-expanded="false">
-                        <span class="faq__q-icon" aria-hidden="true">Q</span>
-                        <span class="faq__q-text">採用担当者がいなくても依頼できますか？</span>
-                        <span class="faq__toggle" aria-hidden="true"></span>
-                    </button>
-                    <div class="faq__answer" style="display:none;">
-                        <span class="faq__a-icon">A</span>
-                        <p class="faq__a-text">
-                            問題ございません。採用業務を兼任・未経験の方でも、当社が実務を代行しながら進め方をお伝えします。
-                        </p>
-                    </div>
-                </li>
-
-                <li class="faq__item">
-                    <button type="button" class="faq__question js-faq-question" aria-expanded="false">
-                        <span class="faq__q-icon" aria-hidden="true">Q</span>
-                        <span class="faq__q-text">スポット（短期間）での利用は可能ですか？</span>
-                        <span class="faq__toggle" aria-hidden="true"></span>
-                    </button>
-                    <div class="faq__answer" style="display:none;">
-                        <span class="faq__a-icon">A</span>
-                        <p class="faq__a-text">
-                            可能です。繁忙期のみの応募対応や面接調整など、必要な期間・業務のみのご依頼にも対応しています。
-                        </p>
-                    </div>
-                </li>
-
-                <li class="faq__item">
-                    <button type="button" class="faq__question js-faq-question" aria-expanded="false">
-                        <span class="faq__q-icon" aria-hidden="true">Q</span>
-                        <span class="faq__q-text">採用できなかった場合でも費用は発生しますか？</span>
-                        <span class="faq__toggle" aria-hidden="true"></span>
-                    </button>
-                    <div class="faq__answer" style="display:none;">
-                        <span class="faq__a-icon">A</span>
-                        <p class="faq__a-text">
-                            料金体系はご契約プランにより異なります。詳細はお問い合わせ時に採用状況に合わせてご案内いたします。
-                        </p>
-                    </div>
-                </li>
-
-                <li class="faq__item">
-                    <button type="button" class="faq__question js-faq-question" aria-expanded="false">
-                        <span class="faq__q-icon" aria-hidden="true">Q</span>
-                        <span class="faq__q-text">土日や平日夜の面接も代行してもらえますか？</span>
-                        <span class="faq__toggle" aria-hidden="true"></span>
-                    </button>
-                    <div class="faq__answer" style="display:none;">
-                        <span class="faq__a-icon">A</span>
-                        <p class="faq__a-text">
-                            対応可能です。候補者の都合に合わせて、土日・平日夜間の日程調整や面接代行も承っております。
-                        </p>
-                    </div>
-                </li>
+                <?php endforeach; ?>
             </ul>
         </div>
     </section>
